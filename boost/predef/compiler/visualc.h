@@ -1,7 +1,9 @@
-//~ Copyright Redshift Software, Inc. 2008-2010
-//~ Distributed under the Boost Software License, Version 1.0.
-//~ (See accompanying file LICENSE_1_0.txt or copy at
-//~ http://www.boost.org/LICENSE_1_0.txt)
+/*
+Copyright Redshift Software, Inc. 2008-2010
+Distributed under the Boost Software License, Version 1.0.
+(See accompanying file LICENSE_1_0.txt or copy at
+http://www.boost.org/LICENSE_1_0.txt)
+*/
 
 #ifndef BOOST_PREDEF_COMPILER_VISUALC_H
 #define BOOST_PREDEF_COMPILER_VISUALC_H
@@ -16,13 +18,12 @@
     #if !defined (_MSC_FULL_VER)
         #define BOOST_CXX_MSVC_BUILD 0
     #else
-        // how many digits does the build number have?
-        //
+        /* how many digits does the build number have? */
         #if _MSC_FULL_VER / 10000 == _MSC_VER
-            // four digits
+            /* four digits */
             #define BOOST_CXX_MSVC_BUILD (_MSC_FULL_VER % 10000)
         #elif _MSC_FULL_VER / 100000 == _MSC_VER
-            // five digits
+            /* five digits */
             #define BOOST_CXX_MSVC_BUILD (_MSC_FULL_VER % 100000)
         #else
             #error "Cannot determine build number from _MSC_FULL_VER"
