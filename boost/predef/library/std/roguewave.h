@@ -9,7 +9,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_LIBRARY_STD_ROGUEWAVE_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_LIBSTD_RW BOOST_VERSION_NUMBER(0,0,0)
 
@@ -17,13 +17,16 @@ http://www.boost.org/LICENSE_1_0.txt)
     #undef BOOST_LIBSTD_RW
     #if defined(_RWSTD_VER)
         #if _RWSTD_VER < 0x010000
-            #define BOOST_LIBSTD_RW BOOST_PREDEF_VRP_FF_FF_F(_RWSTD_VER)
+            #define BOOST_LIBSTD_RW BOOST_PREDEF_MAKE_FF_FF_F(_RWSTD_VER)
         #else
-            #define BOOST_LIBSTD_RW BOOST_PREDEF_VRP_FF_FF_FF(_RWSTD_VER)
+            #define BOOST_LIBSTD_RW BOOST_PREDEF_MAKE_FF_FF_FF(_RWSTD_VER)
         #endif
     #else
         #define BOOST_LIBSTD_RW BOOST_VERSION_NUMBER(0,0,1)
     #endif
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_LIBSTD_RW,"Roguewave")
 
 #endif

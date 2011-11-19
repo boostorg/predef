@@ -9,7 +9,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_LIBRARY_C_UC_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_LIBC_UC BOOST_VERSION_NUMBER(0,0,0)
 
@@ -18,5 +18,8 @@ http://www.boost.org/LICENSE_1_0.txt)
     #define BOOST_LIBC_UC BOOST_VERSION_NUMBER(\
         __UCLIBC_MAJOR__,__UCLIBC_MINOR__,__UCLIBC_SUBLEVEL__)
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_LIBC_UC,"uC")
 
 #endif

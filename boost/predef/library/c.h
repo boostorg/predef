@@ -8,7 +8,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #ifndef BOOST_PREDEF_LIBRARY_C_H
 #define BOOST_PREDEF_LIBRARY_C_H
 
-#include <cassert>
+#include <boost/predef/detail/_cassert.h>
 
 #include <boost/predef/library/c/gnu.h>
 #include <boost/predef/library/c/uc.h>

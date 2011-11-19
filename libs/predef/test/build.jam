@@ -1,0 +1,19 @@
+# Copyright Redshift Software, Inc. 2011
+# Distributed under the Boost Software License, Version 1.0.
+# (See accompanying file LICENSE_1_0.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt)
+
+project test
+    :   requirements
+        <include>$(BOOST_PREDEF_ROOT)
+        <dependency>$(BOOST_PREDEF_ROOT)/boost/predef.h
+    ;
+
+using testing ;
+
+run info_as_cpp.cpp ;
+run info_as_c.c ;
+run info_as_objcpp.mm ;
+run info_as_objc.m ;
+run version.cpp ;
+run make.cpp ;

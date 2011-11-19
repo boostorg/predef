@@ -5,11 +5,11 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
-#ifndef BOOST_PREDEF_COMPILER_BSD_H
-#define BOOST_PREDEF_COMPILER_BSD_H
+#ifndef BOOST_PREDEF_OS_BSD_H
+#define BOOST_PREDEF_OS_BSD_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_OS_BSD BOOST_VERSION_NUMBER(0,0,0)
 #define BOOST_OS_DRAGONFLY_BSD BOOST_VERSION_NUMBER(0,0,0)
@@ -35,7 +35,7 @@ http://www.boost.org/LICENSE_1_0.txt)
     #elif defined(BSD4_4)
         #define BOOST_OS_BSD BOOST_VERSION_NUMBER(4,4,0)
     #elif defined(BSD)
-        #define BOOST_OS_BSD BOOST_PREDEF_VRP_NN_NN(BSD)
+        #define BOOST_OS_BSD BOOST_PREDEF_MAKE_NN_NN(BSD)
     #else
         #define BOOST_OS_BSD BOOST_VERSION_NUMBER(0,0,1)
     #endif
@@ -68,6 +68,9 @@ http://www.boost.org/LICENSE_1_0.txt)
         #elif defined(__NetBSD_Version)
             #define BOOST_OS_NET_BSD \
                 BOOST_PREDEF_VRP_NN_NN_00_NN_00(__NetBSD_Version)
+        #else
+            #define BOOST_OS_NET_BSD BOOST_VERSION_NUMBER(0,0,1)
+        #endif
     #endif
     #if defined(__OpenBSD__)
         #if defined(OpenBSD2_0)
@@ -123,5 +126,13 @@ http://www.boost.org/LICENSE_1_0.txt)
         #endif
     #endif
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_BSD,"BSD")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_DRAGONFLY_BSD,"Dragonfly BSD")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_FREE_BSD,"Free BSD")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_BSDI_BSD,"BSDI BSD")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_NET_BSD,"Net BSD")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_OPEN_BSD,"Open BSD")
 
 #endif

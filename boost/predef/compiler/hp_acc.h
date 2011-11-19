@@ -9,13 +9,16 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_COMPILER_HP_ACC_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_CXX_HPACC BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__HP_aCC)
     #undef BOOST_CXX_HPACC
-    #define BOOST_CXX_HPACC BOOST_PREDEF_VRP_NN_NN_NN(__HP_aCC)
+    #define BOOST_CXX_HPACC BOOST_PREDEF_MAKE_NN_NN_NN(__HP_aCC)
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_HPACC,"HP ACC")
 
 #endif

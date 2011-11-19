@@ -9,7 +9,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_LIBRARY_STD_MODENA_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_LIBSTD_MSIPL BOOST_VERSION_NUMBER(0,0,0)
 
@@ -17,5 +17,8 @@ http://www.boost.org/LICENSE_1_0.txt)
     #undef BOOST_LIBSTD_MSIPL
     #define BOOST_LIBSTD_MSIPL BOOST_VERSION_NUMBER(0,0,1)
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_LIBSTD_MSIPL,"Modena MSIPL")
 
 #endif

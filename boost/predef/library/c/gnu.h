@@ -9,7 +9,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_LIBRARY_C_GNU_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
+
+#if defined(__STDC__)
+#include <stddef.h>
+#elif defined(__cplusplus)
+#include <cstddef>
+#endif
 
 #define BOOST_LIBC_GNU BOOST_VERSION_NUMBER(0,0,0)
 
@@ -21,6 +27,10 @@ http://www.boost.org/LICENSE_1_0.txt)
     #else
         #define BOOST_LIBC_GNU \
             BOOST_VERSION_NUMBER(__GNU_LIBRARY__,__GNU_LIBRARY_MINOR__,0)
+    #endif
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_LIBC_GNU,"GNU")
 
 #endif

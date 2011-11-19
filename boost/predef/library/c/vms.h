@@ -9,7 +9,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_LIBRARY_C_VMS_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_LIBC_VMS BOOST_VERSION_NUMBER(0,0,0)
 
@@ -20,5 +20,8 @@ http://www.boost.org/LICENSE_1_0.txt)
         (__CRTL_VER%10000000)/100000,\
         (__CRTL_VER%10000)/100)
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_LIBC_VMS,"VMS")
 
 #endif

@@ -9,7 +9,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_COMPILER_METROWERKS_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_CXX_MWERKS BOOST_VERSION_NUMBER(0,0,0)
 
@@ -36,8 +36,11 @@ http://www.boost.org/LICENSE_1_0.txt)
     #elif __MWERKS__ == 0x3206
         #define BOOST_CXX_MWERKS BOOST_VERSION_NUMBER(9,5,0)
     #else
-        #define BOOST_CXX_MWERKS BOOST_PREDEF_VRP_F_F_FF(__MWERKS__)
+        #define BOOST_CXX_MWERKS BOOST_PREDEF_MAKE_F_F_FF(__MWERKS__)
     #endif
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_MWERKS,"Metrowerks")
 
 #endif

@@ -9,13 +9,16 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_COMPILER_WATCOM_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_CXX_WATCOM BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__WATCOMC__)
     #undef BOOST_CXX_WATCOM
-    #define BOOST_CXX_WATCOM BOOST_PREDEF_VRP_NN_NN(__WATCOMC__)
+    #define BOOST_CXX_WATCOM BOOST_PREDEF_MAKE_NN_NN(__WATCOMC__)
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_WATCOM,"Watcom")
 
 #endif

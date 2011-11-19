@@ -16,11 +16,11 @@ seems to be <exception>. Boost uses <utility> but as far
 as I can tell (RR) it's not a standalone header in most
 implementations. Using <exception> also has the benefit of
 being available in EC++, so we get a chance to make this work
-for embeded users. And since it's not a header impacted by TR1
+for embedded users. And since it's not a header impacted by TR1
 there's no magic needed for inclusion in the face of the
 Boost.TR1 library.
 */
-#include <exception>
+#include <boost/predef/detail/_exception.h>
 
 /*
 STLPort library; this _must_ come first, otherwise since
@@ -30,7 +30,7 @@ can end up detecting that first rather than STLport:
 #include <boost/predef/library/std/stlport.h>
 
 /*
-The rest in apha order, except for Dinkumware.
+The rest in alpha order, except for Dinkumware.
 */
 #include <boost/predef/library/std/libcomo.h>
 #include <boost/predef/library/std/modena.h>

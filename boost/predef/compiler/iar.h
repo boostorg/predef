@@ -9,13 +9,16 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_COMPILER_IAR_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_CXX_IAR BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__IAR_SYSTEMS_ICC__)
     #undef BOOST_CXX_IAR
-    #define BOOST_CXX_IAR BOOST_PREDEF_VRP_NN_NN(__VER__)
+    #define BOOST_CXX_IAR BOOST_PREDEF_MAKE_NN_NN(__VER__)
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_IAR,"IAR")
 
 #endif

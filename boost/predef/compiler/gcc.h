@@ -9,7 +9,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_COMPILER_GCC_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_CXX_GNUC BOOST_VERSION_NUMBER(0,0,0)
 
@@ -23,5 +23,8 @@ http://www.boost.org/LICENSE_1_0.txt)
             BOOST_VERSION_NUMBER(__GNUC__,__GNUC_MINOR__,0)
     #endif
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_GNUC,"GNUC")
 
 #endif

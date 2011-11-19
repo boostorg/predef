@@ -9,7 +9,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_LIBRARY_STD_STLPORT_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_LIBSTD_STLPORT BOOST_VERSION_NUMBER(0,0,0)
 
@@ -19,10 +19,13 @@ http://www.boost.org/LICENSE_1_0.txt)
         #define BOOST_LIBSTD_STLPORT \
             BOOST_VERSION_NUMBER(_STLPORT_MAJOR,_STLPORT_MINOR,_STLPORT_PATCHLEVEL)
     #elif defined(_STLPORT_VERSION)
-        #define BOOST_LIBSTD_STLPORT BOOST_PREDEF_VRP_F_F_F(_STLPORT_VERSION)
+        #define BOOST_LIBSTD_STLPORT BOOST_PREDEF_MAKE_F_F_F(_STLPORT_VERSION)
     #else
-        #define BOOST_LIBSTD_STLPORT BOOST_PREDEF_VRP_F_F_F(__SGI_STL_PORT)
+        #define BOOST_LIBSTD_STLPORT BOOST_PREDEF_MAKE_F_F_F(__SGI_STL_PORT)
     #endif
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_LIBSTD_STLPORT,"STLport")
 
 #endif

@@ -5,11 +5,11 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
-#ifndef BOOST_PREDEF_COMPILER_H
-#define BOOST_PREDEF_COMPILER_H
+#ifndef BOOST_PREDEF_OS_MACOS_H
+#define BOOST_PREDEF_OS_MACOS_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/detail/vrp.h>
+#include <boost/predef/make.h>
 
 #define BOOST_OS_MACOS BOOST_VERSION_NUMBER(0,0,0)
 
@@ -22,5 +22,8 @@ http://www.boost.org/LICENSE_1_0.txt)
         #define BOOST_OS_MACOS BOOST_VERSION_NUMBER(9,0,0)
     #endif
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_MACOS,"MacOS")
 
 #endif
