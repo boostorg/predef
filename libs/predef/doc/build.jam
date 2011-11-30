@@ -13,6 +13,8 @@ if ! $(BOOST_ROOT)
 xml predef
     :
         predef.qbk
+    :
+        <dependency>$(BOOST_PREDEF_ROOT)/boost/predef.h
     ;
 explicit predef ;
 
@@ -21,7 +23,7 @@ boostbook standalone
         predef
     :
         <xsl:param>boost.root=../../..
-        <xsl:param>generate.section.toc.level=3
+        #<xsl:param>generate.section.toc.level=3
         <xsl:param>chunk.section.depth=1
         <xsl:param>chunk.first.sections=1
     

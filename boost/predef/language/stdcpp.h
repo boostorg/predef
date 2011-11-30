@@ -14,8 +14,19 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_LANGUAGE_STDCPP`]
 
-Standard C++ language. If available, the year of the standard
-is detected as 0.0.YYYY.
+[@http://en.wikipedia.org/wiki/C%2B%2B Standard C++] language.
+If available, the year of the standard is detected as 0.0.YYYY.
+Because of the way the C++ standardization process works the
+defined version year will not be the commonly known year standard.
+Specifically the defined versions will be:
+
+[table Detected Version Number vs. C++ Standard Year
+  [[Detected Version Number] [Standard Year] [C++ Standard]]
+  [[0.0.1997] [1998] [ISO/IEC 14882:1998]]
+  [[0.0.?] [2003] [ISO/IEC 14882:2003]]
+  [[0.0.?] [2007] [ISO/IEC TR 19768:2007]]
+  [[0.0.2011] [2011] [ISO/IEC 14882:2011]]
+]
  */
 
 #define BOOST_LANGUAGE_STDCPP BOOST_VERSION_NUMBER(0,0,0)
@@ -35,8 +46,8 @@ BOOST_PREDEF_DECLARE_TEST(BOOST_LANGUAGE_STDCPP,"Standard C++")
 /*`
 [heading `BOOST_LANGUAGE_STDCPPCLI`]
 
-Standard C++/CLI language. If available, the year of the standard
-is detected as 0.0.YYYY.
+[@http://en.wikipedia.org/wiki/C%2B%2B/CLI Standard C++/CLI] language.
+If available, the year of the standard is detected as 0.0.YYYY.
  */
 
 #define BOOST_LANGUAGE_STDCPPCLI BOOST_VERSION_NUMBER(0,0,0)
@@ -56,7 +67,7 @@ BOOST_PREDEF_DECLARE_TEST(BOOST_LANGUAGE_STDCPPCLI,"Standard C++/CLI")
 /*`
 [heading `BOOST_LANGUAGE_STDECPP`]
 
-Standard Embedded C++ language.
+[@http://en.wikipedia.org/wiki/Embedded_C%2B%2B Standard Embedded C++] language.
  */
 
 #define BOOST_LANGUAGE_STDECPP BOOST_VERSION_NUMBER(0,0,0)

@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_LANGUAGE_OBJC`]
 
-Objective C language.
+[@http://en.wikipedia.org/wiki/Objective-C Objective-C] language.
  */
 
 #define BOOST_LANGUAGE_OBJC BOOST_VERSION_NUMBER(0,0,0)
@@ -25,6 +25,6 @@ Objective C language.
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LANGUAGE_OBJC,"Objective C")
+BOOST_PREDEF_DECLARE_TEST(BOOST_LANGUAGE_OBJC,"Objective-C")
 
 #endif

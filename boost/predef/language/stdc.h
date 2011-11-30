@@ -14,8 +14,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_LANGUAGE_STDC`]
 
-Standard C language. If available, the year of the standard
-is detected as 0.0.YYYY.
+[@http://en.wikipedia.org/wiki/C_(programming_language) Standard C] language.
+If available, the year of the standard is detected as 0.0.YYYY.
  */
 
 #define BOOST_LANGUAGE_STDC BOOST_VERSION_NUMBER(0,0,0)

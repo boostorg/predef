@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2010
+Copyright Redshift Software, Inc. 2008-2011
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -16,6 +16,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 #elif defined(__cplusplus)
 #include <cstddef>
 #endif
+
+/*`
+[heading `BOOST_LIBC_GNU`]
+
+[@http://en.wikipedia.org/wiki/Glibc GNU glibc] Standard C library.
+Version number available as major, and minor.
+ */
 
 #define BOOST_LIBC_GNU BOOST_VERSION_NUMBER(0,0,0)
 

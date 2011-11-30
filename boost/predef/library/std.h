@@ -1,7 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2010
-Copyright John Maddock 2001-2003
-Copyright Jens Maurer 2001-2002
+Copyright Redshift Software, Inc. 2008-2011
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -32,6 +30,7 @@ can end up detecting that first rather than STLport:
 /*
 The rest in alpha order, except for Dinkumware.
 */
+#include <boost/predef/library/std/cxx.h>
 #include <boost/predef/library/std/libcomo.h>
 #include <boost/predef/library/std/modena.h>
 #include <boost/predef/library/std/msl.h>

@@ -10,7 +10,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_VERSION_NUMBER_H
 
 /*`
-[heading BOOST_VERSION_NUMBER]
+[heading `BOOST_VERSION_NUMBER`]
 
 ``
 BOOST_VERSION_NUMBER(major,minor,patch)
@@ -18,12 +18,12 @@ BOOST_VERSION_NUMBER(major,minor,patch)
 
 Defines standard version numbers, with these properties:
 
-* Decimal base whole numbers in the range [0,major*10000000].
+* Decimal base whole numbers in the range \[0,1000000000).
   The number range is designed to allow for a (2,2,5) triplet.
   Which fits within a 32 bit value.
-* The `major` number can be in the [0,99] range.
-* The `minor` number can be in the [0,99] range.
-* The `patch` number can be in the [0,99999] range.
+* The `major` number can be in the \[0,99\] range.
+* The `minor` number can be in the \[0,99\] range.
+* The `patch` number can be in the \[0,99999\] range.
 * Values can be specified in any base. As the defined value
   is an constant expression.
 * Value can be directly used in both preprocessor and compiler

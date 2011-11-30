@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2010
+Copyright Redshift Software, Inc. 2008-2011
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,6 +12,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 #define BOOST_CXX_COMO BOOST_VERSION_NUMBER(0,0,0)
+
+/*`
+[heading `BOOST_CXX_COMO`]
+
+[@http://en.wikipedia.org/wiki/XXX Comeau] compiler.
+Version number available as major, minor, and patch.
+ */
 
 #if defined(__COMO__)
     #undef BOOST_CXX_COMO

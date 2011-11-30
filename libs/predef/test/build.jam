@@ -11,9 +11,11 @@ project test
 
 using testing ;
 
-run info_as_cpp.cpp ;
-run info_as_c.c ;
-run info_as_objcpp.mm ;
-run info_as_objc.m ;
-run version.cpp ;
-run make.cpp ;
+test-suite config :
+    [ run info_as_cpp.cpp : : : <test-info>always_show_run_output ]
+    [ run info_as_c.c : : : <test-info>always_show_run_output ]
+    [ run info_as_objcpp.mm : : : <test-info>always_show_run_output ]
+    [ run info_as_objc.m : : : <test-info>always_show_run_output ]
+    [ run version.cpp ]
+    [ run make.cpp ]
+    ;

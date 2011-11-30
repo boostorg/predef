@@ -11,6 +11,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 
+/*`
+[heading `BOOST_OS_`]
+
+[@http://en.wikipedia.org/wiki/XXX AIX] operating system.
+Version number available as major, minor, and patch.
+ */
+
 #define BOOST_OS_AIX BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(_AIX) || defined(__TOS_AIX__)

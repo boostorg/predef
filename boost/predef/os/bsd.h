@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2010
+Copyright Redshift Software, Inc. 2008-2011
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -10,6 +10,25 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
+
+/*`
+[heading `BOOST_OS_BSD`]
+
+[@http://en.wikipedia.org/wiki/XXX BSD] operating system.
+
+BSD has various branch operating systems possible and each detected
+individually. This detects the following variations and sets a specific
+version number macro to match:
+
+* `BOOST_OS_DRAGONFLY_BSD` [@http://en.wikipedia.org/wiki/XXX Dragonfly BSD]
+* `BOOST_OS_FREE_BSD` [@http://en.wikipedia.org/wiki/XXX Free BSD]
+* `BOOST_OS_BSDI_BSD` [@http://en.wikipedia.org/wiki/XXX BSDI]
+* `BOOST_OS_NET_BSD` [@http://en.wikipedia.org/wiki/XXX Net BSD]
+* `BOOST_OS_OPEN_BSD` [@http://en.wikipedia.org/wiki/XXX Open BSD]
+
+[note The general `BOOST_OS_BSD` is set in all cases to indicate some form
+of BSD. If the above variants is detected the corresponding macro is also set.]
+ */
 
 #define BOOST_OS_BSD BOOST_VERSION_NUMBER(0,0,0)
 #define BOOST_OS_DRAGONFLY_BSD BOOST_VERSION_NUMBER(0,0,0)
@@ -49,10 +68,10 @@ http://www.boost.org/LICENSE_1_0.txt)
         #if defined(__FreeBSD_version)
             #if __FreeBSD_version < 500000
                 #define BOOST_OS_FREE_BSD \
-                    BOOST_PREDEF_VRP_N_N_N_000(__FreeBSD_version)
+                    BOOST_PREDEF_MAKE_N_N_N_000(__FreeBSD_version)
             #else
                 #define BOOST_OS_FREE_BSD \
-                    BOOST_PREDEF_VRP_N_NN_000(__FreeBSD_version)
+                    BOOST_PREDEF_MAKE_N_NN_000(__FreeBSD_version)
             #endif
         #else
             #define BOOST_OS_FREE_BSD BOOST_VERSION_NUMBER(0,0,1)
@@ -67,7 +86,7 @@ http://www.boost.org/LICENSE_1_0.txt)
             #define BOOST_OS_NET_BSD BOOST_VERSION_NUMBER(1,0,0)
         #elif defined(__NetBSD_Version)
             #define BOOST_OS_NET_BSD \
-                BOOST_PREDEF_VRP_NN_NN_00_NN_00(__NetBSD_Version)
+                BOOST_PREDEF_MAKE_NN_NN_00_NN_00(__NetBSD_Version)
         #else
             #define BOOST_OS_NET_BSD BOOST_VERSION_NUMBER(0,0,1)
         #endif

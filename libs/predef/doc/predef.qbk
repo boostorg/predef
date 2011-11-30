@@ -9,8 +9,11 @@
         (See accompanying file LICENSE_1_0.txt or copy at
         [@http://www.boost.org/LICENSE_1_0.txt])
     ]
-    [source-mode teletype]
+    [source-mode c++]
 ]
+
+[warning This is a *proposed* Boost Libnrary and *is not* part of the
+Boost C++ Libraries.]
 
 [section Introduction]
 
@@ -49,7 +52,7 @@ consistently represent their version. This includes:
 
 The current Predef library is now, both an independent library, and expanded
 in scope. It includes detection and definition of architectures, compilers,
-libraries, and operating systems. The key benefits are:
+languages, libraries, and operating systems. The key benefits are:
 
 * Version numbers that are always defined so that one doesn't have to guard
   with `#ifdef`.
@@ -89,7 +92,7 @@ for instance, of limiting the major version number to 20 (or, with further
 constraints, to 21).]
 
 It might reassure the reader that this decision is actually encoded in one place
-in the code; the definition of BOOST_VERSION_NUMBER.
+in the code; the definition of `BOOST_VERSION_NUMBER`.
 
 [heading Future work]
 
@@ -112,7 +115,7 @@ done:
 * And obviously there's lots of work to do in reformulating the existing
   Boost libraries to use the Predef library once it's accepted.
 * And there's the continuing work of adding definitions for present and
-  future compilers, platforms, architectures, and libraries.
+  future compilers, platforms, architectures, languages, and libraries.
 
 [endsect] [/Introduction]
 
@@ -128,11 +131,12 @@ single top-level header:
 This defines [*all] the version macros known to the library. For each
 macro it will be defined to either a /zero/ valued expression for when
 the particular item is not detected, and to a /positive/ value if it
-is detected. The predef macros fall onto the four categories each with
+is detected. The predef macros fall onto the five categories each with
 macros of a particular prefix:
 
 * `BOOST_ARCHITECTURE_`for system/CPU architecture one is compiling for.
 * `BOOST_CXX_` for the compiler one is using.
+* `BOOST_LANGUAGE_` for language standards one is compiling against.
 * `BOOST_LIBC_` and `BOOST_LIBSTD_` for the C and C++ standard library
   in use.
 * `BOOST_OS_` for the operating system we are compiling to.
@@ -141,41 +145,149 @@ macros of a particular prefix:
 during the compile. In particular in a cross-compile this means the target
 system, and not the host system.]
 
+One uses the individual definitions to compare against specific versions
+by comparing against the `BOOST_VERSION_NUMBER` macro. For example, to make
+a choice based on the version of the GCC C++ compiler one would:
+
 ``
   #include <boost/predef.h>
   #include <iostream>
 
-  #if (APPLICATION_VERSION >= BOOST_VERSION_NUMBER(1,0,0))
-  bool application_is_at_least_version_1 = true;
-  #else
-  bool application_is_at_least_version_1 = false;
-  #endif
-
   int main()
   {
-    if (application_is_at_least_version_1)
-      std::cout << "Application is at least version 1.0.0" << std::endl;
-    if (APPLICATION_VERSION >= BOOST_VERSION_NUMBER(2,0,0))
-      std::cout << "Application is at least version 2.0.0" << std::endl;
+    if (BOOST_CXX_GNUC >= BOOST_VERSION_NUMBER(4,0,0))
+      std::cout << "GCC compiler is at least version 4.0.0" << std::endl;
+    else
+      std::cout << "GCC compiler is at older than version 4.0.0, or not a GCC compiler" << std::endl;
     return 0;
   }
 ``
 
-[heading Using existing version predefs]
+As you might notice above the `else` clause also covers the case where
+we the particular compiler is not detected. But one can make the test
+specifically test for the detection. All predef definitions are defined
+as a zero (0) expression when not detected. Hence one could use the
+detection with a natural single condition. For example:
+
+``
+  #include <boost/predef.h>
+  #include <iostream>
+
+  int main()
+  {
+    if (BOOST_CXX_GNUC)
+      std::cout << "This is GNU GCC!" << std::endl;
+    else
+      std::cout << "Not GNU GCC." << std::endl;
+    return 0;
+  }
+``
+
+And since the predef's are preprocessor definitions the same is possible
+from the preprocessor:
+
+``
+  #include <boost/predef.h>
+  #include <iostream>
+
+  #if BOOST_CXX_GNUC
+    #if BOOST_CXX_GNUC >= BOOST_VERSION_NUMBER(4,0,0)
+      const char * the_compiler = "GNU GCC, of at least version 4."
+    #else
+      const char * the_compiler = "GNU GCC, less than version 4."
+    #endif
+  #else
+    const char * the_compiler = "Not GNU GCC."
+  #endif
+  
+  int main()
+  {
+    std::cout << the_compiler << std::endl;
+    return 0;
+  }
+``
 
 [heading Using the `BOOST_VERSION_NUMBER` macro]
+
+All the predefs are defined to be a use of the `BOOST_VERSION_NUMBER` macro.
+The macro takes individual major, minor, and patch value expressions:
+
+``
+  #define BOOST_VERSION_NUMBER( major, minor, patch ) ...
+``
+
+The arguments are:
+
+# Major version number, as a constant value expression in the range [0,99].
+# Minor version number, as a constant value expression in the range [0,99].
+# Patch-level version number, as a constant value expression in the
+  range [0,99999].
+
+The ranges for each are "enforced" by the use of a modulo ("%"), i.e. truncation,
+as opposed to a clamp. And hence this means that the limits are enforced only
+enough to keep from having out-of-range problems. But not enough to prevent
+other kinds of problems. Like exceeding the range and geting false detections,
+or non-detections. It is up to the individual predefs to ensure correct
+usage beyond the range guarantee.
+
+The values for the arguments can be any preprocessor valid constant value expression.
+Only constant value arithmetic is used in the definition of the `BOOST_VERSION_NUMBER`
+macro and in any of the other predef macros. This means that any allowed base is
+possible, i.e. binary, octal, decimal, and hexadecimal. For example:
+
+``
+  #define MY_APPLICATION_VERSION_NUMBER BOOST_VERSION_NUMBER(2,0xA,015)
+``
+
+Is equivalent to:
+
+``
+  #define MY_APPLICATION_VERSION_NUMBER BOOST_VERSION_NUMBER(2,10,13)
+``
 
 [endsect]
 
 [section Adding new predefs]
 
+We know that a library like this one will be an eternal work-in-progress. And
+as such we expect, and look forward to, others contributing corrections and
+additions to the predefs. With that in mind we need to keep a consistent way
+of defining the new predefs. Hence all current, and future, predefs follow
+the same structure and requirements.
+
 [heading Requirements of the header]
+
+All predefs need to follow a set of requirements:
+
+* The headers must use the Boost Software License.
+* The predef must, by default, be defined as `BOOST_VERSION_NUMBER(0,0,0)`.
+* The predef must be redefined to a non-zero value once detected.
+* The predef must, by default, be defined to `BOOST_VERSION_NUMBER(0,0,1)`
+  when the predef is detected.
+* If possible, the predef will be defined as the version number detected.
+* The predef must declare itself, after being defined, for the testing
+  system.
+
+And there are some extra guidelines that predef headers should follow:
+
+* The detection should avoid including extra headers that might otherwise
+  not be included by default.
+* If the detection must include a header, prefer guarding it within the
+  detection if possible.
+* If the detection must include a headers unconditionally, and has a choice
+  of headers to include, prefer the ones with the least impact. I.e.
+  include the one with the minimal set of definitions and other
+  dependencies.
 
 [heading Structure of the header]
 
+For general consistency it's suggested that new predef headers follow the
+structure below, as current predef headers do. First we have the copyright
+and license statement, followed by the include guard:
+
 ``
 /*
-Copyright Jane Doe 20xx
+Copyright Jane Doe YYYY
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -183,49 +295,117 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #ifndef BOOST_PREDEF_category_tag_H
 #define BOOST_PREDEF_category_tag_H
+``
 
+Depending on how you are defining the predef you will at minimum have
+to include the `version_number.h` header. But you might also want to
+include the `make.h` header for the version number decomposing utility
+macros:
+
+``
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
+``
+
+The Predef library uses Quickbook for documentation and for the
+individual predefs to appear in the reference section we add in-code
+documentation followed by the zero-value default definition of the
+predef macro. We strongly recommend this particular placement of the
+documentation and default definition because some development
+environments automatically interpret this and provide in-line help
+for the macro. In particular this works for the popular Eclipse IDE:
+
+``
+/*`
+[heading `BOOST_category_tag`]
+
+Documentation about what is detected.
+*/
 
 #define BOOST_category_tag BOOST_VERSION_NUMBER(0,0,0)
+``
 
-#if defined(condition)
+Next is the detection and definition of the particular predef. The
+structure for this is to do a single overall check (`condition_a`) and
+place the further version detection inside this. The first action inside
+the overall check is to "`#undef BOOST_category_tag`" which undefines
+the zero-value default. The rest is up to the you how to do the checks
+for defining the version. But at minimum it must
+"`#define BOOST_category_tag BOOST_VERSION_NUMBER(0,0,1)`" as the fallback
+to minimally indicate that the predef was detected:
+
+``
+#if (condition_a)
     #undef BOOST_category_tag
-    #if defined(condition)
-        #define BOOST_category_tag BOOST_VERSION_NUMBER(1,0,0)
-    #elif defined(__alpha_ev5__)
-        #define BOOST_category_tag BOOST_VERSION_NUMBER(2,0,0)
+    #if (condition_b)
+        #define BOOST_category_tag BOOST_VERSION_NUMBER(major,minor,patch)
     #else
         #define BOOST_category_tag BOOST_VERSION_NUMBER(0,0,1)
     #endif
 #endif
+``
 
+The testing of the predef macros is automated to generate checks for all
+the defined predefs, whether detected or not. To do this we need to
+declare the predef to the test system. This declaration is empty for
+regular use. And during the test programs theexpand out specially
+to create informational output:
+
+``
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_categiry_tag,"Name")
+BOOST_PREDEF_DECLARE_TEST(BOOST_category_tag,"Name")
+``
 
+And, of course, we last need to close out the include guard:
+
+``
 #endif
 ``
 
 [heading Using utility pattern macros]
+
+By including:
+
+``
+#include <boost/predef/make.h>
+``
+
+One will get a set utlity macros to decompose common version
+macros as defined by compilers. For example the EDG compiler
+uses a simple 3-digit version macro (M,N,P). It can be decomesed
+and defined as:
+
+``
+#define BOOST_CXX_EDG BOOST_PREDEF_MAKE_N_N_N(__EDG_VERSION__)
+``
+
+The decomposition macros are split into three types: decimal
+decomposition, hexadecimal decomposition, and date decomposition.
+They follow the format of using "N" for decimal, "F" for hexadecimal,
+and "Y", "M", "D" for dates.
 
 [endsect]
 
 [section Reference]
 
 [section `BOOST_ARCHITECTURE_` architecture macros]
-[/import ../../../boost/predef/architecture/.*\.h]
+[include ../../../boost/predef/architecture/*.h]
 [endsect]
 
 [section `BOOST_CXX_` compiler macros]
-[/import ../../../boost/predef/compiler/.*\.h]
+[include ../../../boost/predef/compiler/*.h]
+[endsect]
+
+[section `BOOST_LANGUAGE_` language standards macros]
+[include ../../../boost/predef/language/*.h]
 [endsect]
 
 [section `BOOST_LIBC_` and `BOOST_LIBSTD_` library macros]
-[/import ../../../boost/predef/library/.*/.*\.h]
+[include ../../../boost/predef/library/*/*.h]
 [endsect]
 
 [section `BOOST_OS_` operating system macros]
-[/import ../../../boost/predef/os/.*\.h]
+[include ../../../boost/predef/os/*.h]
 [endsect]
 
 [section Version definition macros]
