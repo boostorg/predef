@@ -11,6 +11,12 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 
+/*`
+[heading `BOOST_OS_SOLARIS`]
+
+[@http://en.wikipedia.org/wiki/XXX Solaris] operating system.
+ */
+
 #define BOOST_OS_SOLARIS BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(sun) || defined(__sun)

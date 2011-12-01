@@ -11,6 +11,14 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 
+/*`
+[heading `BOOST_OS_QNX`]
+
+[@http://en.wikipedia.org/wiki/XXX QNX-NTO] operating system.
+Version number available as major, and minor if possible. And
+version 4 is specifically detected.
+ */
+
 #define BOOST_OS_QNX BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__QNX__) || defined(__QNXNTO__)

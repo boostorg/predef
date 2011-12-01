@@ -18,7 +18,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 If available, the year of the standard is detected as 0.0.YYYY.
 Because of the way the C++ standardization process works the
 defined version year will not be the commonly known year standard.
-Specifically the defined versions will be:
+Specifically the defined versions are:
 
 [table Detected Version Number vs. C++ Standard Year
   [[Detected Version Number] [Standard Year] [C++ Standard]]

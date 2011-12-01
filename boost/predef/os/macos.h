@@ -11,6 +11,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 
+/*`
+[heading `BOOST_OS_MACOS`]
+
+[@http://en.wikipedia.org/wiki/XXX MacOS] operating system.
+Versions \[9-10\] are specifically detected.
+ */
+
 #define BOOST_OS_MACOS BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(macintosh) || defined(Macintosh) || \

@@ -15,7 +15,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 [heading `BOOST_ARCHITECTURE_SH`]
 
 [@http://en.wikipedia.org/wiki/SuperH SuperH] architecture:
-If available versions [1-5] are specifically detected.
+If available versions \[1-5\] are specifically detected.
  */
 
 #define BOOST_ARCHITECTURE_SH BOOST_VERSION_NUMBER(0,0,0)

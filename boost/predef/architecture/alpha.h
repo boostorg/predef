@@ -15,7 +15,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 [heading `BOOST_ARCHITECTURE_ALPHA`]
 
 [@http://en.wikipedia.org/wiki/DEC_Alpha DEC Alpha] architecture:
-If available versions [4-6] are specifically detected.
+If available versions \[4-6\] are specifically detected.
  */
 
 #define BOOST_ARCHITECTURE_ALPHA BOOST_VERSION_NUMBER(0,0,0)

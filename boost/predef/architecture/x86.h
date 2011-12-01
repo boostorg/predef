@@ -17,7 +17,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 [heading `BOOST_ARCHITECTURE_X86`]
 
 [@http://en.wikipedia.org/wiki/X86 Intel x86] architecture:
-If available versions [3-6] are specifically detected.
+If available versions \[3-6\] are specifically detected.
  */
 
 #if defined(i386) || defined(__i386__) || \
