@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_OS_SOLARIS`]
 
-[@http://en.wikipedia.org/wiki/XXX Solaris] operating system.
+[@http://en.wikipedia.org/wiki/Solaris_Operating_Environment Solaris] operating system.
  */
 
 #define BOOST_OS_SOLARIS BOOST_VERSION_NUMBER(0,0,0)

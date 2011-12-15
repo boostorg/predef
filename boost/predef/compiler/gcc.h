@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_GNUC`]
 
-[@http://en.wikipedia.org/wiki/XXX Gnu C/C++] compiler.
+[@http://en.wikipedia.org/wiki/GNU_Compiler_Collection Gnu GCC C/C++] compiler.
 Version number available as major, minor, and patch (if available).
  */
 
@@ -32,6 +32,6 @@ Version number available as major, minor, and patch (if available).
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_GNUC,"Gnu C/C++")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_GNUC,"Gnu GCC C/C++")
 
 #endif

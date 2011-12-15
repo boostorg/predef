@@ -17,9 +17,11 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/os/irix.h>
 #include <boost/predef/os/linux.h>
 #include <boost/predef/os/macos.h>
+#include <boost/predef/os/os400.h>
 #include <boost/predef/os/qnxnto.h>
 #include <boost/predef/os/solaris.h>
 #include <boost/predef/os/unix.h>
+#include <boost/predef/os/vms.h>
 #include <boost/predef/os/windows.h>
 
 #endif

@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_DMC`]
 
-[@http://en.wikipedia.org/wiki/XXX Digital Mars] compiler.
+[@http://en.wikipedia.org/wiki/Digital_Mars Digital Mars] compiler.
 Version number available as major, minor, and patch.
  */
 

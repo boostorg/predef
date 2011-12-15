@@ -14,21 +14,23 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_DEC`]
 
-[@http://en.wikipedia.org/wiki/XXX Compaq DEC] compiler.
+[@http://www.openvms.compaq.com/openvms/brochures/deccplus/ Compaq C/C++] compiler.
 Version number available as major, minor, and patch.
  */
 
 #define BOOST_CXX_DEC BOOST_VERSION_NUMBER(0,0,0)
 
-#if defined(__DECC)
+#if defined(__DECC) || defined(__DECCXX)
     #undef BOOST_CXX_DEC
-    #define BOOST_CXX_DEC BOOST_VERSION_NUMBER(\
-        (__DECC_VER)/10000000,\
-        (__DECC_VER%10000000)/100000,\
-        (__DECC_VER%10000))
+    #if defined(__DECCXX_VER)
+        #define BOOST_CXX_DEC BOOST_PREDEF_MAKE_NN_NN_0_NN_00(__DECCXX_VER)
+    #elif defined(__DECC_VER)
+        #define BOOST_CXX_DEC BOOST_PREDEF_MAKE_NN_NN_0_NN_00(__DECC_VER)
+    #else
+    #endif
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_DEC,"Compaq")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_DEC,"Compaq C/C++")
 
 #endif

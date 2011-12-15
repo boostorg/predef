@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_OS_CYGWIN`]
 
-[@http://en.wikipedia.org/wiki/XXX Cygwin] operating system.
+[@http://en.wikipedia.org/wiki/Cygwin Cygwin] evironment.
  */
 
 #define BOOST_OS_CYGWIN BOOST_VERSION_NUMBER(0,0,0)

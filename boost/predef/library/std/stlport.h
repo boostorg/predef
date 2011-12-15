@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_LIBSTD_STLPORT`]
 
-[@http://en.wikipedia.org/wiki/XXX STLport Standard C++] library.
+[@http://sourceforge.net/projects/stlport/ STLport Standard C++] library.
 Version number available as major, minor, and patch.
  */
 

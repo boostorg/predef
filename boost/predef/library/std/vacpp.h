@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_LIBSTD_IBM`]
 
-[@http://en.wikipedia.org/wiki/XXX IBM VACPP Standard C++] library.
+[@http://www.ibm.com/software/awdtools/xlcpp/ IBM VACPP Standard C++] library.
  */
 
 #define BOOST_LIBSTD_IBM BOOST_VERSION_NUMBER(0,0,0)

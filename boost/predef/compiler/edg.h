@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_EDG`]
 
-[@http://en.wikipedia.org/wiki/XXX EDG] compiler.
+[@http://en.wikipedia.org/wiki/Edison_Design_Group EDG C++ Frontend] compiler.
 Version number available as major, minor, and patch.
  */
 
@@ -22,10 +22,10 @@ Version number available as major, minor, and patch.
 
 #if defined(__EDG__)
     #undef BOOST_CXX_EDG
-    #define BOOST_CXX_EDG BOOST_PREDEF_MAKE_N_N_N(__EDG_VERSION__)
+    #define BOOST_CXX_EDG BOOST_PREDEF_MAKE_N_NN(__EDG_VERSION__)
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_EDG,"EDG")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_EDG,"EDG C++ Frontend")
 
 #endif

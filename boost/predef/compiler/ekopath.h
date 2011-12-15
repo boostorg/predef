@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_PATH`]
 
-[@http://en.wikipedia.org/wiki/XXX Ekopath] compiler.
+[@http://en.wikipedia.org/wiki/PathScale EKOpath] compiler.
 Version number available as major, minor, and patch.
  */
 
@@ -27,6 +27,6 @@ Version number available as major, minor, and patch.
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_PATH,"Ekopath")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_PATH,"EKOpath")
 
 #endif

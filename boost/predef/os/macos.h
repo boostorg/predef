@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_OS_MACOS`]
 
-[@http://en.wikipedia.org/wiki/XXX MacOS] operating system.
+[@http://en.wikipedia.org/wiki/Mac_OS Mac OS] operating system.
 Versions \[9-10\] are specifically detected.
  */
 
@@ -31,6 +31,6 @@ Versions \[9-10\] are specifically detected.
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_MACOS,"MacOS")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_MACOS,"Mac OS")
 
 #endif

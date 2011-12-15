@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_KCC`]
 
-[@http://en.wikipedia.org/wiki/XXX Kai] compiler.
+Kai C++ compiler.
 Version number available as major, minor, and patch.
  */
 
@@ -26,6 +26,6 @@ Version number available as major, minor, and patch.
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_KCC,"Kai")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_KCC,"Kai C++")
 
 #endif

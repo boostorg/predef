@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_OS_AMIGAOS`]
 
-[@http://en.wikipedia.org/wiki/XXX AmigaOS] operating system.
+[@http://en.wikipedia.org/wiki/AmigaOS AmigaOS] operating system.
  */
 
 #define BOOST_OS_AMIGAOS BOOST_VERSION_NUMBER(0,0,0)

@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_LLVM`]
 
-[@http://en.wikipedia.org/wiki/XXX LLVM] compiler.
+[@http://en.wikipedia.org/wiki/LLVM LLVM] compiler.
  */
 
 #define BOOST_CXX_LLVM BOOST_VERSION_NUMBER(0,0,0)

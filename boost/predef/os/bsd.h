@@ -14,17 +14,17 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_OS_BSD`]
 
-[@http://en.wikipedia.org/wiki/XXX BSD] operating system.
+[@http://en.wikipedia.org/wiki/Berkeley_Software_Distribution BSD] operating system.
 
 BSD has various branch operating systems possible and each detected
 individually. This detects the following variations and sets a specific
 version number macro to match:
 
-* `BOOST_OS_DRAGONFLY_BSD` [@http://en.wikipedia.org/wiki/XXX Dragonfly BSD]
-* `BOOST_OS_FREE_BSD` [@http://en.wikipedia.org/wiki/XXX Free BSD]
-* `BOOST_OS_BSDI_BSD` [@http://en.wikipedia.org/wiki/XXX BSDI]
-* `BOOST_OS_NET_BSD` [@http://en.wikipedia.org/wiki/XXX Net BSD]
-* `BOOST_OS_OPEN_BSD` [@http://en.wikipedia.org/wiki/XXX Open BSD]
+* `BOOST_OS_DRAGONFLY_BSD` [@http://en.wikipedia.org/wiki/DragonFly_BSD DragonFly BSD]
+* `BOOST_OS_FREE_BSD` [@http://en.wikipedia.org/wiki/Freebsd FreeBSD]
+* `BOOST_OS_BSDI_BSD` [@http://en.wikipedia.org/wiki/BSD/OS BSDi BSD/OS]
+* `BOOST_OS_NET_BSD` [@http://en.wikipedia.org/wiki/Netbsd NetBSD]
+* `BOOST_OS_OPEN_BSD` [@http://en.wikipedia.org/wiki/Openbsd OpenBSD]
 
 [note The general `BOOST_OS_BSD` is set in all cases to indicate some form
 of BSD. If the above variants is detected the corresponding macro is also set.]
@@ -47,6 +47,7 @@ of BSD. If the above variants is detected the corresponding macro is also set.]
     #undef BOOST_OS_FREE_BSD
     #undef BOOST_OS_NET_BSD
     #undef BOOST_OS_OPEN_BSD
+    #include <sys/param.h>
     #if defined(BSD4_2)
         #define BOOST_OS_BSD BOOST_VERSION_NUMBER(4,2,0)
     #elif defined(BSD4_3)
@@ -148,10 +149,10 @@ of BSD. If the above variants is detected the corresponding macro is also set.]
 
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_BSD,"BSD")
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_DRAGONFLY_BSD,"Dragonfly BSD")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_DRAGONFLY_BSD,"DragonFly BSD")
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_FREE_BSD,"Free BSD")
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_BSDI_BSD,"BSDI BSD")
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_NET_BSD,"Net BSD")
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_OPEN_BSD,"Open BSD")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_BSDI_BSD,"BSDi BSD/OS")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_NET_BSD,"NetBSD")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_OPEN_BSD,"OpenBSD")
 
 #endif

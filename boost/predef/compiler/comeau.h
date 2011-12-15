@@ -16,16 +16,20 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_COMO`]
 
-[@http://en.wikipedia.org/wiki/XXX Comeau] compiler.
+[@http://en.wikipedia.org/wiki/Comeau_C/C%2B%2B Comeau C++] compiler.
 Version number available as major, minor, and patch.
  */
 
 #if defined(__COMO__)
     #undef BOOST_CXX_COMO
-    #define BOOST_CXX_COMO BOOST_PREDEF_MAKE_F_F_FF(__COMO_VERSION__)
+    #if defined(__CONO_VERSION__)
+        #define BOOST_CXX_COMO BOOST_PREDEF_MAKE_F_F_F(__COMO_VERSION__)
+    #else
+        #define BOOST_CXX_COMO BOOST_VERSION_NUMBER(0,0,1)
+    #endif
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_COMO,"Comeau")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_COMO,"Comeau C++")
 
 #endif

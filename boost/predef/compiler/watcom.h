@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_WATCOM`]
 
-[@http://en.wikipedia.org/wiki/XXX Watcom] compiler.
+[@http://en.wikipedia.org/wiki/Watcom Watcom C++] compiler.
 Version number available as major, and minor.
  */
 
@@ -26,6 +26,6 @@ Version number available as major, and minor.
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_WATCOM,"Watcom")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_WATCOM,"Watcom C++")
 
 #endif

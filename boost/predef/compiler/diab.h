@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_DIAB`]
 
-[@http://en.wikipedia.org/wiki/XXX Diab] compiler.
+[@http://www.windriver.com/products/development_suite/wind_river_compiler/ Diab C/C++] compiler.
 Version number available as major, minor, and patch.
  */
 
@@ -26,6 +26,6 @@ Version number available as major, minor, and patch.
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_DIAB,"Diab")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_DIAB,"Diab C/C++")
 
 #endif

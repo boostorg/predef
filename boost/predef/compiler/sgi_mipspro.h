@@ -14,22 +14,24 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_SGI`]
 
-[@http://en.wikipedia.org/wiki/XXX SGI Mips-pro] compiler.
+[@http://en.wikipedia.org/wiki/MIPSpro SGI MIPSpro] compiler.
 Version number available as major, minor, and patch.
  */
 
 #define BOOST_CXX_SGI BOOST_VERSION_NUMBER(0,0,0)
 
-#if defined(__sgi)
+#if defined(__sgi) || defined(sgi)
     #undef BOOST_CXX_SGI
     #if defined(_SGI_COMPILER_VERSION)
         #define BOOST_CXX_SGI BOOST_PREDEF_MAKE_N_N_N(_SGI_COMPILER_VERSION)
-    #else
+    #elif defined(_COMPILER_VERSION)
         #define BOOST_CXX_SGI BOOST_PREDEF_MAKE_N_N_N(_COMPILER_VERSION)
+    #else
+        #define BOOST_CXX_SGI BOOST_VERSION_NUMBER(0,0,1)
     #endif
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_SGI,"SGI Mips-pro")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_SGI,"SGI MIPSpro")
 
 #endif

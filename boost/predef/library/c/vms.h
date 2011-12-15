@@ -22,10 +22,7 @@ Version number available as major, minor, and patch.
 
 #if defined(__CRTL_VER)
     #undef BOOST_LIBC_VMS
-    #define BOOST_LIBC_VMS BOOST_VERSION_NUMBER(
-        (__CRTL_VER)/10000000,\
-        (__CRTL_VER%10000000)/100000,\
-        (__CRTL_VER%10000)/100)
+    #define BOOST_LIBC_VMS BOOST_PREDEF_MAKE_NN_NN_0_NN_00(__CRTL_VER)
 #endif
 
 #include <boost/predef/detail/test.h>

@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_LIBSTD_RW`]
 
-[@http://en.wikipedia.org/wiki/XXX Roguewave Standard C++] library.
+[@http://stdcxx.apache.org/ Roguewave] Standard C++ library.
 If available version number as major, minor, and patch.
  */
 

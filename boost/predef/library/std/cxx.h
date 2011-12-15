@@ -22,7 +22,7 @@ If available version number as major, minor, and patch.
 
 #if defined(_LIBCPP_VERSION)
     #undef BOOST_LIBSTD_CXX
-    #define BOOST_LIBSTD_CXX BOOST_PREDEF_MAKE_NN_NN(__CPPLIB_VER)
+    #define BOOST_LIBSTD_CXX BOOST_PREDEF_MAKE_N__NNN(_LIBCPP_VERSION)
 #endif
 
 #include <boost/predef/detail/test.h>

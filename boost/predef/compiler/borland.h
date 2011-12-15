@@ -14,18 +14,22 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_BORLAND`]
 
-[@http://en.wikipedia.org/wiki/XXX Borland] compiler.
+[@http://en.wikipedia.org/wiki/C_plus_plus_builder Borland C++] compiler.
 Version number available as major, minor, and patch.
  */
 
 #define BOOST_CXX_BORLAND BOOST_VERSION_NUMBER(0,0,0)
 
-#if defined(__BORLANDC__)
+#if defined(__BORLANDC__) || defined(__CODEGEARC__)
     #undef BOOST_CXX_BORLAND
-    #define BOOST_CXX_BORLAND BOOST_PREDEF_MAKE_FF_F_F(__BORLANDC__)
+    #if defined(__CODEGEARC__)
+        #define BOOST_CXX_BORLAND BOOST_PREDEF_MAKE_FF_F_F(__CODEGEARC__)
+    #else
+        #define BOOST_CXX_BORLAND BOOST_PREDEF_MAKE_FF_F_F(__BORLANDC__)
+    #endif
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_BORLAND,"Borland")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_BORLAND,"Borland C++")
 
 #endif

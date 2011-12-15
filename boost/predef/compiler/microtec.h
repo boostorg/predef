@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_MRI`]
 
-[@http://en.wikipedia.org/wiki/XXX Microtec] compiler.
+[@http://www.mentor.com/microtec/ Microtec C/C++] compiler.
  */
 
 #define BOOST_CXX_MRI BOOST_VERSION_NUMBER(0,0,0)
@@ -25,6 +25,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_MRI,"Microtec")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_MRI,"Microtec C/C++")
 
 #endif

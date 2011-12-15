@@ -10,8 +10,6 @@
 <link rel="next" href="reference.html" title="Reference">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr><td valign="top"></td></tr></table>
-<hr>
 <div class="spirit-nav">
 <a accesskey="p" href="using_the_predefs.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="reference.html"><img src="../images/next.png" alt="Next"></a>
 </div>
@@ -82,8 +80,6 @@
       below, as current predef headers do. First we have the copyright and license
       statement, followed by the include guard:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="comment">/*
 Copyright Jane Doe YYYY
 Distributed under the Boost Software License, Version 1.0.
@@ -95,20 +91,14 @@ http://www.boost.org/LICENSE_1_0.txt)
 <span class="preprocessor">#define</span> <span class="identifier">BOOST_PREDEF_category_tag_H</span>
 </pre>
 <p>
-    </p>
-<p>
       Depending on how you are defining the predef you will at minimum have to include
       the <code class="computeroutput"><span class="identifier">version_number</span><span class="special">.</span><span class="identifier">h</span></code> header. But you might also want to include
       the <code class="computeroutput"><span class="identifier">make</span><span class="special">.</span><span class="identifier">h</span></code> header for the version number decomposing
       utility macros:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">/</span><span class="identifier">version_number</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">/</span><span class="identifier">make</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span>
 </pre>
-<p>
-    </p>
 <p>
       The Predef library uses Quickbook for documentation and for the individual
       predefs to appear in the reference section we add in-code documentation followed
@@ -117,8 +107,6 @@ http://www.boost.org/LICENSE_1_0.txt)
       some development environments automatically interpret this and provide in-line
       help for the macro. In particular this works for the popular Eclipse IDE:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="comment">/*`
 [heading `BOOST_category_tag`]
 
@@ -127,8 +115,6 @@ Documentation about what is detected.
 
 <span class="preprocessor">#define</span> <span class="identifier">BOOST_category_tag</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">)</span>
 </pre>
-<p>
-    </p>
 <p>
       Next is the detection and definition of the particular predef. The structure
       for this is to do a single overall check (<code class="computeroutput"><span class="identifier">condition_a</span></code>)
@@ -140,8 +126,6 @@ Documentation about what is detected.
       <span class="identifier">BOOST_category_tag</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">1</span><span class="special">)</span></code>" as the fallback to minimally indicate
       that the predef was detected:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#if</span> <span class="special">(</span><span class="identifier">condition_a</span><span class="special">)</span>
     <span class="preprocessor">#undef</span> <span class="identifier">BOOST_category_tag</span>
     <span class="preprocessor">#if</span> <span class="special">(</span><span class="identifier">condition_b</span><span class="special">)</span>
@@ -152,29 +136,19 @@ Documentation about what is detected.
 <span class="preprocessor">#endif</span>
 </pre>
 <p>
-    </p>
-<p>
       The testing of the predef macros is automated to generate checks for all the
       defined predefs, whether detected or not. To do this we need to declare the
       predef to the test system. This declaration is empty for regular use. And during
       the test programs theexpand out specially to create informational output:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">/</span><span class="identifier">detail</span><span class="special">/</span><span class="identifier">test</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span>
 <span class="identifier">BOOST_PREDEF_DECLARE_TEST</span><span class="special">(</span><span class="identifier">BOOST_category_tag</span><span class="special">,</span><span class="string">"Name"</span><span class="special">)</span>
 </pre>
 <p>
-    </p>
-<p>
       And, of course, we last need to close out the include guard:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#endif</span>
 </pre>
-<p>
-    </p>
 <h4>
 <a name="predef.adding_new_predefs.h2"></a>
       <span><a name="predef.adding_new_predefs.using_utility_pattern_macros"></a></span><a class="link" href="adding_new_predefs.html#predef.adding_new_predefs.using_utility_pattern_macros">Using utility
@@ -183,23 +157,15 @@ Documentation about what is detected.
 <p>
       By including:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">/</span><span class="identifier">make</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span>
 </pre>
-<p>
-    </p>
 <p>
       One will get a set utlity macros to decompose common version macros as defined
       by compilers. For example the EDG compiler uses a simple 3-digit version macro
       (M,N,P). It can be decomesed and defined as:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#define</span> <span class="identifier">BOOST_CXX_EDG</span> <span class="identifier">BOOST_PREDEF_MAKE_N_N_N</span><span class="special">(</span><span class="identifier">__EDG_VERSION__</span><span class="special">)</span>
 </pre>
-<p>
-    </p>
 <p>
       The decomposition macros are split into three types: decimal decomposition,
       hexadecimal decomposition, and date decomposition. They follow the format of

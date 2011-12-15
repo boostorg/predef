@@ -27,6 +27,6 @@ Version number available as major, minor, and patch.
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIBC_UC,"uC")
+BOOST_PREDEF_DECLARE_TEST(BOOST_LIBC_UC,"uClibc")
 
 #endif

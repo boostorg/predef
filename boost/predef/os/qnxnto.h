@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_OS_QNX`]
 
-[@http://en.wikipedia.org/wiki/XXX QNX-NTO] operating system.
+[@http://en.wikipedia.org/wiki/QNX QNX] operating system.
 Version number available as major, and minor if possible. And
 version 4 is specifically detected.
  */
@@ -33,6 +33,6 @@ version 4 is specifically detected.
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_QNX,"QNX-NTO")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_QNX,"QNX")
 
 #endif

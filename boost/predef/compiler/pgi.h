@@ -14,17 +14,21 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_PGI`]
 
-[@http://en.wikipedia.org/wiki/XXX PGI] compiler.
+[@http://en.wikipedia.org/wiki/The_Portland_Group Portland Group C/C++] compiler.
  */
 
 #define BOOST_CXX_PGI BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__PGI)
     #undef BOOST_CXX_PGI
-    #define BOOST_CXX_PGI BOOST_VERSION_NUMBER(0,0,1)
+    #if defined(__PGIC__) && defined(__PGIC_MINOR__) && defined(__PGIC_PATCHLEVEL__)
+        #define BOOST_CXX_PGI BOOST_VERSION_NUMBER(__PGIC__,__PGIC_MINOR__,__PGIC_PATCHLEVEL__)
+    #else
+        #define BOOST_CXX_PGI BOOST_VERSION_NUMBER(0,0,1)
+    #endif
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_PGI,"PGI")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_PGI,"Portland Group C/C++")
 
 #endif

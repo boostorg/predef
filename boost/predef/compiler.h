@@ -9,6 +9,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_COMPILER_H
 
 #include <boost/predef/compiler/borland.h>
+#include <boost/predef/compiler/clang.h>
 #include <boost/predef/compiler/comeau.h>
 #include <boost/predef/compiler/compaq.h>
 #include <boost/predef/compiler/cygwin.h>

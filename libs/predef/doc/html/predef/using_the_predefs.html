@@ -10,8 +10,6 @@
 <link rel="next" href="adding_new_predefs.html" title="Adding new predefs">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr><td valign="top"></td></tr></table>
-<hr>
 <div class="spirit-nav">
 <a accesskey="p" href="introduction.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="adding_new_predefs.html"><img src="../images/next.png" alt="Next"></a>
 </div>
@@ -23,12 +21,8 @@
       To use the automatically defined predefs one needs to only include the single
       top-level header:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span>
 </pre>
-<p>
-    </p>
 <p>
       This defines <span class="bold"><strong>all</strong></span> the version macros known
       to the library. For each macro it will be defined to either a <span class="emphasis"><em>zero</em></span>
@@ -75,8 +69,6 @@
       macro. For example, to make a choice based on the version of the GCC C++ compiler
       one would:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
 
@@ -90,16 +82,12 @@
 <span class="special">}</span>
 </pre>
 <p>
-    </p>
-<p>
       As you might notice above the <code class="computeroutput"><span class="keyword">else</span></code>
       clause also covers the case where we the particular compiler is not detected.
       But one can make the test specifically test for the detection. All predef definitions
       are defined as a zero (0) expression when not detected. Hence one could use
       the detection with a natural single condition. For example:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
 
@@ -113,13 +101,9 @@
 <span class="special">}</span>
 </pre>
 <p>
-    </p>
-<p>
       And since the predef's are preprocessor definitions the same is possible from
       the preprocessor:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
 
@@ -139,8 +123,6 @@
   <span class="keyword">return</span> <span class="number">0</span><span class="special">;</span>
 <span class="special">}</span>
 </pre>
-<p>
-    </p>
 <h4>
 <a name="predef.using_the_predefs.h0"></a>
       <span><a name="predef.using_the_predefs.using_the_boost_version_number_m"></a></span><a class="link" href="using_the_predefs.html#predef.using_the_predefs.using_the_boost_version_number_m">Using the
@@ -150,12 +132,8 @@
       All the predefs are defined to be a use of the <code class="computeroutput"><span class="identifier">BOOST_VERSION_NUMBER</span></code>
       macro. The macro takes individual major, minor, and patch value expressions:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#define</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span> <span class="identifier">major</span><span class="special">,</span> <span class="identifier">minor</span><span class="special">,</span> <span class="identifier">patch</span> <span class="special">)</span> <span class="special">...</span>
 </pre>
-<p>
-    </p>
 <p>
       The arguments are:
     </p>
@@ -185,21 +163,13 @@
       the other predef macros. This means that any allowed base is possible, i.e.
       binary, octal, decimal, and hexadecimal. For example:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#define</span> <span class="identifier">MY_APPLICATION_VERSION_NUMBER</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="number">2</span><span class="special">,</span><span class="number">0xA</span><span class="special">,</span><span class="number">015</span><span class="special">)</span>
 </pre>
 <p>
-    </p>
-<p>
       Is equivalent to:
     </p>
-<p>
-</p>
 <pre class="programlisting"><span class="preprocessor">#define</span> <span class="identifier">MY_APPLICATION_VERSION_NUMBER</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="number">2</span><span class="special">,</span><span class="number">10</span><span class="special">,</span><span class="number">13</span><span class="special">)</span>
 </pre>
-<p>
-    </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>

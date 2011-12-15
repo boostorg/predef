@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_TENDRA`]
 
-[@http://en.wikipedia.org/wiki/XXX Tendra] compiler.
+[@http://en.wikipedia.org/wiki/TenDRA_Compiler TenDRA C/C++] compiler.
  */
 
 #define BOOST_CXX_TENDRA BOOST_VERSION_NUMBER(0,0,0)
@@ -25,6 +25,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_TENDRA,"Tendra")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_TENDRA,"TenDRA C/C++")
 
 #endif

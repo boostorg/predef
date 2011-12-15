@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_OS_BEOS`]
 
-[@http://en.wikipedia.org/wiki/XXX Be] operating system.
+[@http://en.wikipedia.org/wiki/BeOS BeOS] operating system.
  */
 
 #define BOOST_OS_BEOS BOOST_VERSION_NUMBER(0,0,0)
@@ -25,6 +25,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_BEOS,"Be OS")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_BEOS,"BeOS")
 
 #endif

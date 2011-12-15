@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_MSVC`]
 
-[@http://en.wikipedia.org/wiki/XXX Microsoft Visual C/C++] compiler.
+[@http://en.wikipedia.org/wiki/Visual_studio Microsoft Visual C/C++] compiler.
 Version number available as major, minor, and patch.
  */
 

@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_LIBSTD_SGI`]
 
-[@http://en.wikipedia.org/wiki/XXX SGI Standard C++] library.
+[@http://www.sgi.com/tech/stl/ SGI] Standard C++ library.
 If available version number as major, minor, and patch.
  */
 

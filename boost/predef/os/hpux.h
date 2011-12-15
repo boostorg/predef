@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_OS_HPUX`]
 
-[@http://en.wikipedia.org/wiki/XXX HP-UX] operating system.
+[@http://en.wikipedia.org/wiki/HP-UX HP-UX] operating system.
  */
 
 #define BOOST_OS_HPUX BOOST_VERSION_NUMBER(0,0,0)

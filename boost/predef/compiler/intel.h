@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_INTEL`]
 
-[@http://en.wikipedia.org/wiki/XXX Intel] compiler.
+[@http://en.wikipedia.org/wiki/Intel_C%2B%2B Intel C/C++] compiler.
 Version number available as major, minor, and patch.
  */
 
@@ -23,10 +23,14 @@ Version number available as major, minor, and patch.
 #if defined(__INTEL_COMPILER) || defined(__ICL) || defined(__ICC) || \
     defined(__ECC)
     #undef BOOST_CXX_INTEL
-    #define BOOST_CXX_INTEL BOOST_PREDEF_MAKE_N_N_N(__INTEL_COMPILER)
+    #if defined(__INTEL_COMPILER)
+        #define BOOST_CXX_INTEL BOOST_PREDEF_MAKE_N_N_N(__INTEL_COMPILER)
+    #else
+        #define BOOST_CXX_INTEL BOOST_VERSION_NUMBER(0,0,1)
+    #endif
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_INTEL,"Intel")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_INTEL,"Intel C/C++")
 
 #endif

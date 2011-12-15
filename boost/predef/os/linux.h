@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_OS_LINUX`]
 
-[@http://en.wikipedia.org/wiki/XXX Linux] operating system.
+[@http://en.wikipedia.org/wiki/Linux Linux] operating system.
  */
 
 #define BOOST_OS_LINUX BOOST_VERSION_NUMBER(0,0,0)

@@ -12,9 +12,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_OS_`]
+[heading `BOOST_OS_AIX`]
 
-[@http://en.wikipedia.org/wiki/XXX AIX] operating system.
+[@http://en.wikipedia.org/wiki/AIX_operating_system IBM AIX] operating system.
 Version number available as major, minor, and patch.
  */
 
@@ -36,6 +36,6 @@ Version number available as major, minor, and patch.
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_AIX,"AIX")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_AIX,"IBM AIX")
 
 #endif

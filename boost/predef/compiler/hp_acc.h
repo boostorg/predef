@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_CXX_HPACC`]
 
-[@http://en.wikipedia.org/wiki/XXX HP ACC] compiler.
+HP aC++ compiler.
 Version number available as major, minor, and patch.
  */
 
@@ -22,10 +22,14 @@ Version number available as major, minor, and patch.
 
 #if defined(__HP_aCC)
     #undef BOOST_CXX_HPACC
-    #define BOOST_CXX_HPACC BOOST_PREDEF_MAKE_NN_NN_NN(__HP_aCC)
+    #if (__HP_aCC > 1)
+        #define BOOST_CXX_HPACC BOOST_PREDEF_MAKE_NN_NN_NN(__HP_aCC)
+    #else
+        #define BOOST_CXX_HPACC BOOST_VERSION_NUMBER(0,0,1)
+    #endif
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_HPACC,"HP ACC")
+BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_HPACC,"HP aC++")
 
 #endif
