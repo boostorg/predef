@@ -23,7 +23,7 @@ If available version number as major, minor, and patch.
 #if (defined(_YVALS) && !defined(__IBMCPP__)) || defined(_CPPLIB_VER)
     #undef BOOST_LIBSTD_DINKUMWARE
     #if defined(_CPPLIB_VER)
-        #define BOOST_LIBSTD_DINKUMWARE BOOST_PREDEF_MAKE_NN_NN(__CPPLIB_VER)
+        #define BOOST_LIBSTD_DINKUMWARE BOOST_PREDEF_MAKE_NN_NN(_CPPLIB_VER)
     #else
         #define BOOST_LIBSTD_DINKUMWARE BOOST_VERSION_NUMBER(0,0,1)
     #endif

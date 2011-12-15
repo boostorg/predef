@@ -35,6 +35,7 @@ int predef_info_compare(const void * a, const void * b)
 
 int main()
 {
+	unsigned x = 0;
 	predef_info ** predefs = 0;
 	unsigned predef_count = 0;
 	unsigned * i = &first_predef_info.tag;
@@ -50,7 +51,6 @@ int main()
 		}
 	}
 	qsort(predefs,predef_count,sizeof(predef_info*),predef_info_compare);
-	int x = 0;
 	puts("** Detected **");
 	for (x = 0; x < predef_count; ++x)
 	{
