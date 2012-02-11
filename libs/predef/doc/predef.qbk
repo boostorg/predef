@@ -33,7 +33,7 @@ consistently represent their version. This includes:
 * A unique BOOST_VERSION_NUMBER(major,minor,patch) macro to specify version
   numbers (unfortunately, the name BOOST_VERSION is already taken to designate
   the version number of boost itself).
-* A compiler identification macro, suitable for use in #if/#elif directives,
+* A compiler identification macro, suitable for use in `#if`/`#elif` directives,
   for each of the supported compilers. All macros would be defined, regardless
   of the compiler. The one macro corresponding to the compiler being used would
   be defined, in terms of BOOST_VERSION_NUMBER, to carry the exact compiler
@@ -45,8 +45,7 @@ consistently represent their version. This includes:
   identification macro would be #undef and re-#defined in the corresponding
   boost/compiler/(cc).hpp; however in the context of the Boost.Config
   infrastructure using a "prefix" header (to be introduced) or
-  boost/config/suffix.hpp is a better solution. This point is further
-  clarified later.
+  boost/config/suffix.hpp is a better solution.
 
 [heading Current Library]
 
@@ -131,7 +130,7 @@ single top-level header:
 This defines [*all] the version macros known to the library. For each
 macro it will be defined to either a /zero/ valued expression for when
 the particular item is not detected, and to a /positive/ value if it
-is detected. The predef macros fall onto the five categories each with
+is detected. The predef macros fall onto five categories each with
 macros of a particular prefix:
 
 * `BOOST_ARCHITECTURE_`for system/CPU architecture one is compiling for.
@@ -164,7 +163,7 @@ a choice based on the version of the GCC C++ compiler one would:
 ``
 
 As you might notice above the `else` clause also covers the case where
-we the particular compiler is not detected. But one can make the test
+the particular compiler is not detected. But one can make the test
 specifically test for the detection. All predef definitions are defined
 as a zero (0) expression when not detected. Hence one could use the
 detection with a natural single condition. For example:
@@ -226,7 +225,7 @@ The arguments are:
 The ranges for each are "enforced" by the use of a modulo ("%"), i.e. truncation,
 as opposed to a clamp. And hence this means that the limits are enforced only
 enough to keep from having out-of-range problems. But not enough to prevent
-other kinds of problems. Like exceeding the range and geting false detections,
+other kinds of problems. Like exceeding the range and getting false detections,
 or non-detections. It is up to the individual predefs to ensure correct
 usage beyond the range guarantee.
 
@@ -274,7 +273,7 @@ And there are some extra guidelines that predef headers should follow:
   not be included by default.
 * If the detection must include a header, prefer guarding it within the
   detection if possible.
-* If the detection must include a headers unconditionally, and has a choice
+* If the detection must include headers unconditionally, and has a choice
   of headers to include, prefer the ones with the least impact. I.e.
   include the one with the minimal set of definitions and other
   dependencies.
@@ -327,7 +326,7 @@ Documentation about what is detected.
 
 Next is the detection and definition of the particular predef. The
 structure for this is to do a single overall check (`condition_a`) and
-place the further version detection inside this. The first action inside
+place further version detection inside this. The first action inside
 the overall check is to "`#undef BOOST_category_tag`" which undefines
 the zero-value default. The rest is up to the you how to do the checks
 for defining the version. But at minimum it must
@@ -348,7 +347,7 @@ to minimally indicate that the predef was detected:
 The testing of the predef macros is automated to generate checks for all
 the defined predefs, whether detected or not. To do this we need to
 declare the predef to the test system. This declaration is empty for
-regular use. And during the test programs theexpand out specially
+regular use. And during the test programs they expand out specially
 to create informational output:
 
 ``
@@ -370,7 +369,7 @@ By including:
 #include <boost/predef/make.h>
 ``
 
-One will get a set utlity macros to decompose common version
+One will get a set of utlity macros to decompose common version
 macros as defined by compilers. For example the EDG compiler
 uses a simple 3-digit version macro (M,N,P). It can be decomesed
 and defined as:

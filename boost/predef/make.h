@@ -74,7 +74,13 @@ and "`0`" indicates an ignored decimal digit. Macros are:
 #define BOOST_PREDEF_MAKE_NN_NN_0_NNNN(V) BOOST_VERSION_NUMBER(((V)/10000000)%100,((V)/100000)%100,(V)%10000)
 /*` `BOOST_PREDEF_MAKE_NN_NN_00_NN_00(V)` */
 #define BOOST_PREDEF_MAKE_NN_NN_00_NN_00(V) BOOST_VERSION_NUMBER(((V)/100000000)%100,((V)/1000000)%100,((V)/100)%100)
-/*` `BOOST_PREDEF_MAKE_YYYY_MM_DD(V)` */
+/*`
+`BOOST_PREDEF_MAKE_YYYY_MM_DD(V)`
+
+The date decomposition returns a date in the form
+`BOOST_VERSION_NUMBER(YYYY-1970,MM,DD)`. I.e. a date relative to the 1970
+Epoch date.
+*/
 #define BOOST_PREDEF_MAKE_YYYY_MM_DD(V) BOOST_VERSION_NUMBER(((V)/10000)%10000-1970,((V)/100)%100,(V)%100)
 
 #endif
