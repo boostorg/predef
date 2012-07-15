@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,20 +12,31 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_CXX_DIAB`]
+[heading `BOOST_COMP_DIAB`]
 
 [@http://www.windriver.com/products/development_suite/wind_river_compiler/ Diab C/C++] compiler.
 Version number available as major, minor, and patch.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
-#define BOOST_CXX_DIAB BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_DIAB BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__DCC__)
-    #undef BOOST_CXX_DIAB
-    #define BOOST_CXX_DIAB BOOST_PREDEF_MAKE_N_N_NN(__VERSION_NUMBER__)
+#   undef BOOST_COMP_DIAB
+#   define BOOST_COMP_DIAB BOOST_PREDEF_MAKE_10_VRPP(__VERSION_NUMBER__)
 #endif
 
+#define BOOST_COMP_DIAB_NAME "Diab C/C++"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_DIAB,"Diab C/C++")
+BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_DIAB,BOOST_COMP_DIAB_NAME)
+
 
 #endif

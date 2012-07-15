@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2010
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,7 +12,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/compiler/clang.h>
 #include <boost/predef/compiler/comeau.h>
 #include <boost/predef/compiler/compaq.h>
-#include <boost/predef/compiler/cygwin.h>
 #include <boost/predef/compiler/diab.h>
 #include <boost/predef/compiler/digitalmars.h>
 #include <boost/predef/compiler/dignus.h>

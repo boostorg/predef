@@ -385,21 +385,25 @@ and "Y", "M", "D" for dates.
 
 [endsect]
 
+[def __predef_symbol__ Symbol]
+[def __predef_version__ Version]
+[def __predef_detection__ *detection*]
+
 [section Reference]
 
-[section `BOOST_ARCHITECTURE_` architecture macros]
+[section `BOOST_ARCH` architecture macros]
 [include ../../../boost/predef/architecture/*.h]
 [endsect]
 
-[section `BOOST_CXX_` compiler macros]
+[section `BOOST_COMP` compiler macros]
 [include ../../../boost/predef/compiler/*.h]
 [endsect]
 
-[section `BOOST_LANGUAGE_` language standards macros]
+[section `BOOST_LANG` language standards macros]
 [include ../../../boost/predef/language/*.h]
 [endsect]
 
-[section `BOOST_LIBC_` and `BOOST_LIBSTD_` library macros]
+[section `BOOST_LIB` library macros]
 [include ../../../boost/predef/library/*/*.h]
 [endsect]
 

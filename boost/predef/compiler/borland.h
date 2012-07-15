@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,24 +12,35 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_CXX_BORLAND`]
+[heading `BOOST_COMP_BORLAND`]
 
 [@http://en.wikipedia.org/wiki/C_plus_plus_builder Borland C++] compiler.
 Version number available as major, minor, and patch.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
-#define BOOST_CXX_BORLAND BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_BORLAND BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__BORLANDC__) || defined(__CODEGEARC__)
-    #undef BOOST_CXX_BORLAND
-    #if defined(__CODEGEARC__)
-        #define BOOST_CXX_BORLAND BOOST_PREDEF_MAKE_FF_F_F(__CODEGEARC__)
-    #else
-        #define BOOST_CXX_BORLAND BOOST_PREDEF_MAKE_FF_F_F(__BORLANDC__)
-    #endif
+#   undef BOOST_COMP_BORLAND
+#   if defined(__CODEGEARC__)
+#       define BOOST_COMP_BORLAND BOOST_PREDEF_MAKE_0X_VVRP(__CODEGEARC__)
+#   else
+#       define BOOST_COMP_BORLAND BOOST_PREDEF_MAKE_0X_VVRP(__BORLANDC__)
+#   endif
 #endif
 
+#define BOOST_COMP_BORLAND_NAME "Borland C++"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_BORLAND,"Borland C++")
+BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_BORLAND,BOOST_COMP_BORLAND_NAME)
+
 
 #endif

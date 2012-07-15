@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,19 +12,30 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_CXX_GCCXML`]
+[heading `BOOST_COMP_GCCXML`]
 
 [@http://en.wikipedia.org/wiki/XXX GCC XML] compiler.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
-#define BOOST_CXX_GCCXML BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_GCCXML BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__GCCXML__)
-    #undef BOOST_CXX_GCCXML
-    #define BOOST_CXX_GCCXML BOOST_VERSION_NUMBER(0,0,1)
+#   undef BOOST_COMP_GCCXML
+#   define BOOST_COMP_GCCXML BOOST_VERSION_NUMBER(0,0,1)
 #endif
 
+#define BOOST_COMP_GCCXML_NAME "GCC XML"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_GCCXML,"GCC XML")
+BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_GCCXML,BOOST_COMP_GCCXML_NAME)
+
 
 #endif

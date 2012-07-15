@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -11,13 +11,21 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 
-#define BOOST_ARCHITECTURE_X86 BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(0,0,0)
 
 /*`
-[heading `BOOST_ARCHITECTURE_X86`]
+[heading `BOOST_ARCH_X86`]
 
 [@http://en.wikipedia.org/wiki/X86 Intel x86] architecture:
 If available versions \[3-6\] are specifically detected.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
 #if defined(i386) || defined(__i386__) || \
@@ -26,25 +34,28 @@ If available versions \[3-6\] are specifically detected.
     defined(_M_IX86) || defined(_X86_) || \
     defined(__THW_INTEL__) || defined(__I86__) || \
     defined(__INTEL__)
-    #undef BOOST_ARCHITECTURE_X86
-    #if defined(__I86__)
-        #define BOOST_ARCHITECTURE_X86 BOOST_VERSION_NUMBER(__I86__,0,0)
-    #elif defined(_M_IX86)
-        #define BOOST_ARCHITECTURE_X86 BOOST_PREDEF_MAKE_NN_00(_M_IX86)
-    #elif defined(__i686__)
-        #define BOOST_ARCHITECTURE_X86 BOOST_VERSION_NUMBER(6,0,0)
-    #elif defined(__i586__)
-        #define BOOST_ARCHITECTURE_X86 BOOST_VERSION_NUMBER(5,0,0)
-    #elif defined(__i486__)
-        #define BOOST_ARCHITECTURE_X86 BOOST_VERSION_NUMBER(4,0,0)
-    #elif defined(__i386__)
-        #define BOOST_ARCHITECTURE_X86 BOOST_VERSION_NUMBER(3,0,0)
-    #else
-        #define BOOST_ARCHITECTURE_X86 BOOST_VERSION_NUMBER(0,0,1)
-    #endif
+#   undef BOOST_ARCH_X86
+#   if defined(__I86__)
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(__I86__,0,0)
+#   elif defined(_M_IX86)
+#       define BOOST_ARCH_X86 BOOST_PREDEF_MAKE_10_VV00(_M_IX86)
+#   elif defined(__i686__)
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(6,0,0)
+#   elif defined(__i586__)
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(5,0,0)
+#   elif defined(__i486__)
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(4,0,0)
+#   elif defined(__i386__)
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(3,0,0)
+#   else
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(0,0,1)
+#   endif
 #endif
 
+#define BOOST_ARCH_X86_NAME "Intel x86"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCHITECTURE_X86,"Intel x86")
+BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_X86,BOOST_ARCH_X86_NAME)
+
 
 #endif

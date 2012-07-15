@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,37 +12,48 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_CXX_MSVC`]
+[heading `BOOST_COMP_MSVC`]
 
 [@http://en.wikipedia.org/wiki/Visual_studio Microsoft Visual C/C++] compiler.
 Version number available as major, minor, and patch.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
-#define BOOST_CXX_MSVC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_MSVC BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(_MSC_VER)
-    #undef BOOST_CXX_MSVC
-    #if !defined (_MSC_FULL_VER)
-        #define BOOST_CXX_MSVC_BUILD 0
-    #else
+#   undef BOOST_COMP_MSVC
+#   if !defined (_MSC_FULL_VER)
+#       define BOOST_COMP_MSVC_BUILD 0
+#   else
         /* how many digits does the build number have? */
-        #if _MSC_FULL_VER / 10000 == _MSC_VER
+#       if _MSC_FULL_VER / 10000 == _MSC_VER
             /* four digits */
-            #define BOOST_CXX_MSVC_BUILD (_MSC_FULL_VER % 10000)
-        #elif _MSC_FULL_VER / 100000 == _MSC_VER
+#           define BOOST_COMP_MSVC_BUILD (_MSC_FULL_VER % 10000)
+#       elif _MSC_FULL_VER / 100000 == _MSC_VER
             /* five digits */
-            #define BOOST_CXX_MSVC_BUILD (_MSC_FULL_VER % 100000)
-        #else
-            #error "Cannot determine build number from _MSC_FULL_VER"
-        #endif
-    #endif
-    #define BOOST_CXX_MSVC BOOST_VERSION_NUMBER(\
+#           define BOOST_COMP_MSVC_BUILD (_MSC_FULL_VER % 100000)
+#       else
+#           error "Cannot determine build number from _MSC_FULL_VER"
+#       endif
+#   endif
+#   define BOOST_COMP_MSVC BOOST_VERSION_NUMBER(\
         _MSC_VER/100-6,\
         _MSC_VER%100,\
-        BOOST_CXX_MSVC_BUILD)
+        BOOST_COMP_MSVC_BUILD)
 #endif
 
+#define BOOST_COMP_MSVC_NAME "Microsoft Visual C/C++"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_MSVC,"Microsoft Visual C/C++")
+BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_MSVC,BOOST_COMP_MSVC_NAME)
+
 
 #endif

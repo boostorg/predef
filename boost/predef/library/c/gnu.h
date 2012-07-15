@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -18,26 +18,37 @@ http://www.boost.org/LICENSE_1_0.txt)
 #endif
 
 /*`
-[heading `BOOST_LIBC_GNU`]
+[heading `BOOST_LIB_C_GNU`]
 
 [@http://en.wikipedia.org/wiki/Glibc GNU glibc] Standard C library.
 Version number available as major, and minor.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
-#define BOOST_LIBC_GNU BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_C_GNU BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__GLIBC__) || defined(__GNU_LIBRARY__)
-    #undef BOOST_LIBC_GNU
-    #if defined(__GLIBC__)
-        #define BOOST_LIBC_GNU \
+#   undef BOOST_LIB_C_GNU
+#   if defined(__GLIBC__)
+#       define BOOST_LIB_C_GNU \
             BOOST_VERSION_NUMBER(__GLIBC__,__GLIBC_MINOR__,0)
-    #else
-        #define BOOST_LIBC_GNU \
+#   else
+#       define BOOST_LIB_C_GNU \
             BOOST_VERSION_NUMBER(__GNU_LIBRARY__,__GNU_LIBRARY_MINOR__,0)
-    #endif
+#   endif
 #endif
 
+#define BOOST_LIB_C_GNU_NAME "GNU"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIBC_GNU,"GNU")
+BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_C_GNU,BOOST_LIB_C_GNU_NAME)
+
 
 #endif

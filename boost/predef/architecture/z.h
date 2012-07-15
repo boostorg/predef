@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,18 +12,30 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_ARCHITECTURE_Z`]
+[heading `BOOST_ARCH_Z`]
 
-[@http://en.wikipedia.org/wiki/Z/Architecture z/Architecture] architecture. */
+[@http://en.wikipedia.org/wiki/Z/Architecture z/Architecture] architecture.
 
-#define BOOST_ARCHITECTURE_Z BOOST_VERSION_NUMBER(0,0,0)
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
+ */
+
+#define BOOST_ARCH_Z BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__SYSC_ZARCH__)
-    #undef BOOST_ARCHITECTURE_Z
-    #define BOOST_ARCHITECTURE_Z BOOST_VERSION_NUMBER(0,0,1)
+#   undef BOOST_ARCH_Z
+#   define BOOST_ARCH_Z BOOST_VERSION_NUMBER(0,0,1)
 #endif
 
+#define BOOST_ARCH_Z_NAME "z/Architecture"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCHITECTURE_Z,"z/Architecture")
+BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_Z,BOOST_ARCH_Z_NAME)
+
 
 #endif

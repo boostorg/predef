@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software Inc. 2011
+Copyright Redshift Software Inc. 2011-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,7 +12,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_LANGUAGE_STDCPP`]
+[heading `BOOST_LANG_STDCPP`]
 
 [@http://en.wikipedia.org/wiki/C%2B%2B Standard C++] language.
 If available, the year of the standard is detected as 0.0.YYYY.
@@ -27,57 +27,74 @@ Specifically the defined versions are:
   [[0.0.?] [2007] [ISO/IEC TR 19768:2007]]
   [[0.0.2011] [2011] [ISO/IEC 14882:2011]]
 ]
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
-#define BOOST_LANGUAGE_STDCPP BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LANG_STDCPP BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__cplusplus)
-    #undef BOOST_LANGUAGE_STDCPP
-    #if (__cplusplus > 100)
-        #define BOOST_LANGUAGE_STDCPP BOOST_VERSION_NUMBER(0,0,__cplusplus/100)
-    #else
-        #define BOOST_LANGUAGE_STDCPP BOOST_VERSION_NUMBER(0,0,1)
-    #endif
+#   undef BOOST_LANG_STDCPP
+#   if (__cplusplus > 100)
+#       define BOOST_LANG_STDCPP BOOST_VERSION_NUMBER(0,0,__cplusplus/100)
+#   else
+#       define BOOST_LANG_STDCPP BOOST_VERSION_NUMBER(0,0,1)
+#   endif
 #endif
 
+#define BOOST_LANG_STDCPP_NAME "Standard C++"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LANGUAGE_STDCPP,"Standard C++")
+BOOST_PREDEF_DECLARE_TEST(BOOST_LANG_STDCPP,BOOST_LANG_STDCPP_NAME)
+
 
 /*`
-[heading `BOOST_LANGUAGE_STDCPPCLI`]
+[heading `BOOST_LANG_STDCPPCLI`]
 
 [@http://en.wikipedia.org/wiki/C%2B%2B/CLI Standard C++/CLI] language.
 If available, the year of the standard is detected as 0.0.YYYY.
  */
 
-#define BOOST_LANGUAGE_STDCPPCLI BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LANG_STDCPPCLI BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__cplusplus_cli)
-    #undef BOOST_LANGUAGE_STDCPPCLI
-    #if (__cplusplus_cli > 100)
-        #define BOOST_LANGUAGE_STDCPPCLI BOOST_VERSION_NUMBER(0,0,__cplusplus_cli/100)
-    #else
-        #define BOOST_LANGUAGE_STDCPPCLI BOOST_VERSION_NUMBER(0,0,1)
-    #endif
+#   undef BOOST_LANG_STDCPPCLI
+#   if (__cplusplus_cli > 100)
+#       define BOOST_LANG_STDCPPCLI BOOST_VERSION_NUMBER(0,0,__cplusplus_cli/100)
+#   else
+#       define BOOST_LANG_STDCPPCLI BOOST_VERSION_NUMBER(0,0,1)
+#   endif
 #endif
 
+#define BOOST_LANG_STDCPPCLI_NAME "Standard C++/CLI"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LANGUAGE_STDCPPCLI,"Standard C++/CLI")
+BOOST_PREDEF_DECLARE_TEST(BOOST_LANG_STDCPPCLI,BOOST_LANG_STDCPPCLI_NAME)
+
 
 /*`
-[heading `BOOST_LANGUAGE_STDECPP`]
+[heading `BOOST_LANG_STDECPP`]
 
 [@http://en.wikipedia.org/wiki/Embedded_C%2B%2B Standard Embedded C++] language.
  */
 
-#define BOOST_LANGUAGE_STDECPP BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LANG_STDECPP BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__embedded_cplusplus)
-    #undef BOOST_LANGUAGE_STDECPP
-	#define BOOST_LANGUAGE_STDECPP BOOST_VERSION_NUMBER(0,0,1)
+#   undef BOOST_LANG_STDECPP
+#   define BOOST_LANG_STDECPP BOOST_VERSION_NUMBER(0,0,1)
 #endif
 
+#define BOOST_LANG_STDECPP_NAME "Standard Embedded C++"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LANGUAGE_STDECPP,"Standard Embedded C++")
+BOOST_PREDEF_DECLARE_TEST(BOOST_LANG_STDECPP,BOOST_LANG_STDECPP_NAME)
+
 
 #endif

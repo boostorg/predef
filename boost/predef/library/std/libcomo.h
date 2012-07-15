@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,20 +12,31 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_LIBSTD_COMO`]
+[heading `BOOST_LIB_STD_COMO`]
 
 [@http://www.comeaucomputing.com/libcomo/ Comeau Computing] Standard C++ Library.
 Version number available as major.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
-#define BOOST_LIBSTD_COMO BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_STD_COMO BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__LIBCOMO__)
-    #undef BOOST_LIBSTD_COMO
-    #define BOOST_LIBSTD_COMO BOOST_VERSION_NUMBER(__LIBCOMO_VERSION__,0,0)
+#   undef BOOST_LIB_STD_COMO
+#   define BOOST_LIB_STD_COMO BOOST_VERSION_NUMBER(__LIBCOMO_VERSION__,0,0)
 #endif
 
+#define BOOST_LIB_STD_COMO_NAME "Comeau Computing"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIBSTD_COMO,"Comeau Computing")
+BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_COMO,BOOST_LIB_STD_COMO_NAME)
+
 
 #endif

@@ -4,17 +4,21 @@
 # http://www.boost.org/LICENSE_1_0.txt)
 
 using quickbook ;
+import path ;
 
 if ! $(BOOST_ROOT)
 {
     BOOST_ROOT = [ modules.peek : BOOST_ROOT ] ;
 }
 
+local BOOST_PREDEF_HEADERS = [ path.glob-tree $(BOOST_PREDEF_ROOT)/boost/predef : *.h ] ;
+
 xml predef
     :
         predef.qbk
     :
         <dependency>$(BOOST_PREDEF_ROOT)/boost/predef.h
+        <dependency>$(BOOST_PREDEF_HEADERS)
     ;
 explicit predef ;
 

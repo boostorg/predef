@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,20 +12,31 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_CXX_WATCOM`]
+[heading `BOOST_COMP_WATCOM`]
 
 [@http://en.wikipedia.org/wiki/Watcom Watcom C++] compiler.
 Version number available as major, and minor.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
-#define BOOST_CXX_WATCOM BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_WATCOM BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__WATCOMC__)
-    #undef BOOST_CXX_WATCOM
-    #define BOOST_CXX_WATCOM BOOST_PREDEF_MAKE_NN_NN(__WATCOMC__)
+#   undef BOOST_COMP_WATCOM
+#   define BOOST_COMP_WATCOM BOOST_PREDEF_MAKE_10_VVRR(__WATCOMC__)
 #endif
 
+#define BOOST_COMP_WATCOM_NAME "Watcom C++"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_WATCOM,"Watcom C++")
+BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_WATCOM,BOOST_COMP_WATCOM_NAME)
+
 
 #endif

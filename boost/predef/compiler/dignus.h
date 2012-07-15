@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,20 +12,31 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_CXX_SYSC`]
+[heading `BOOST_COMP_SYSC`]
 
 [@http://www.dignus.com/dcxx/ Dignus Systems/C++] compiler.
 Version number available as major, minor, and patch.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
-#define BOOST_CXX_SYSC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_SYSC BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__SYSC__)
-    #undef BOOST_CXX_SYSC
-    #define BOOST_CXX_SYSC BOOST_PREDEF_MAKE_N_NN_NN(__SYSC_VER__)
+#   undef BOOST_COMP_SYSC
+#   define BOOST_COMP_SYSC BOOST_PREDEF_MAKE_10_VRRPP(__SYSC_VER__)
 #endif
 
+#define BOOST_COMP_SYSC_NAME "Dignus Systems/C++"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_SYSC,"Dignus Systems/C++")
+BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SYSC,BOOST_COMP_SYSC_NAME)
+
 
 #endif

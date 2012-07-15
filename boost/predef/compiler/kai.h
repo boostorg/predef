@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2011
+Copyright Redshift Software, Inc. 2008-2012
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -12,20 +12,31 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_CXX_KCC`]
+[heading `BOOST_COMP_KCC`]
 
 Kai C++ compiler.
 Version number available as major, minor, and patch.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[``] [__predef_detection__]]
+
+    [[``] [V.R.P]]
+    ]
  */
 
-#define BOOST_CXX_KCC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_KCC BOOST_VERSION_NUMBER(0,0,0)
 
 #if defined(__KCC)
-    #undef BOOST_CXX_KCC
-    #define BOOST_CXX_KCC BOOST_PREDEF_MAKE_F_F_FF(__KCC_VERSION)
+#   undef BOOST_COMP_KCC
+#   define BOOST_COMP_KCC BOOST_PREDEF_MAKE_0X_VRPP(__KCC_VERSION)
 #endif
 
+#define BOOST_COMP_KCC_NAME "Kai C++"
+
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_CXX_KCC,"Kai C++")
+BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_KCC,BOOST_COMP_KCC_NAME)
+
 
 #endif
