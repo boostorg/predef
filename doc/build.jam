@@ -11,13 +11,13 @@ if ! $(BOOST_ROOT)
     BOOST_ROOT = [ modules.peek : BOOST_ROOT ] ;
 }
 
-local BOOST_PREDEF_HEADERS = [ path.glob-tree $(BOOST_PREDEF_ROOT)/boost/predef : *.h ] ;
+local BOOST_PREDEF_HEADERS = [ path.glob-tree $(BOOST_PREDEF_ROOT)/include/boost/predef : *.h ] ;
 
 xml predef
     :
         predef.qbk
     :
-        <dependency>$(BOOST_PREDEF_ROOT)/boost/predef.h
+        <dependency>$(BOOST_PREDEF_ROOT)/include/boost/predef.h
         <dependency>$(BOOST_PREDEF_HEADERS)
     ;
 explicit predef ;

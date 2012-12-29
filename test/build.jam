@@ -5,8 +5,8 @@
 
 project test
     :   requirements
-        <include>$(BOOST_PREDEF_ROOT)
-        <dependency>$(BOOST_PREDEF_ROOT)/boost/predef.h
+        <include>$(BOOST_PREDEF_ROOT)/include
+        <dependency>$(BOOST_PREDEF_ROOT)/include/boost/predef.h
     ;
 
 using testing ;
