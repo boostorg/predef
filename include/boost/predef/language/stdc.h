@@ -15,14 +15,14 @@ http://www.boost.org/LICENSE_1_0.txt)
 [heading `BOOST_LANG_STDC`]
 
 [@http://en.wikipedia.org/wiki/C_(programming_language) Standard C] language.
-If available, the year of the standard is detected as YYYY.1.1 from the Epoc date.
+If available, the year of the standard is detected as YYYY.MM.1 from the Epoc date.
 
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[``] [__predef_detection__]]
+    [[`__STDC__`] [__predef_detection__]]
 
-    [[``] [V.R.P]]
+    [[`__STDC_VERSION__`] [V.R.P]]
     ]
  */
 
@@ -32,7 +32,7 @@ If available, the year of the standard is detected as YYYY.1.1 from the Epoc dat
 #   undef BOOST_LANG_STDC
 #   if defined(__STDC_VERSION__)
 #       if (__STDC_VERSION__ > 100)
-#           define BOOST_LANG_STDC BOOST_PREDEF_MAKE_YYYY(__STDC_VERSION__)
+#           define BOOST_LANG_STDC BOOST_PREDEF_MAKE_YYYYMM(__STDC_VERSION__)
 #       else
 #           define BOOST_LANG_STDC BOOST_VERSION_NUMBER(0,0,1)
 #       endif

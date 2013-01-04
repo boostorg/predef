@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software Inc. 2011-2012
+Copyright Redshift Software Inc. 2011-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -22,10 +22,8 @@ Specifically the defined versions are:
 
 [table Detected Version Number vs. C++ Standard Year
   [[Detected Version Number] [Standard Year] [C++ Standard]]
-  [[0.0.1997] [1998] [ISO/IEC 14882:1998]]
-  [[0.0.?] [2003] [ISO/IEC 14882:2003]]
-  [[0.0.?] [2007] [ISO/IEC TR 19768:2007]]
-  [[0.0.2011] [2011] [ISO/IEC 14882:2011]]
+  [[27.11.1] [1998] [ISO/IEC 14882:1998]]
+  [[41.12.1] [2011] [ISO/IEC 14882:2011]]
 ]
 
 [table
@@ -42,7 +40,7 @@ Specifically the defined versions are:
 #if defined(__cplusplus)
 #   undef BOOST_LANG_STDCPP
 #   if (__cplusplus > 100)
-#       define BOOST_LANG_STDCPP BOOST_VERSION_NUMBER(0,0,__cplusplus/100)
+#       define BOOST_LANG_STDCPP BOOST_PREDEF_MAKE_YYYYMM(__cplusplus)
 #   else
 #       define BOOST_LANG_STDCPP BOOST_VERSION_NUMBER(0,0,1)
 #   endif
@@ -58,7 +56,7 @@ BOOST_PREDEF_DECLARE_TEST(BOOST_LANG_STDCPP,BOOST_LANG_STDCPP_NAME)
 [heading `BOOST_LANG_STDCPPCLI`]
 
 [@http://en.wikipedia.org/wiki/C%2B%2B/CLI Standard C++/CLI] language.
-If available, the year of the standard is detected as 0.0.YYYY.
+If available, the year of the standard is detected as YYYY.MM.1.
  */
 
 #define BOOST_LANG_STDCPPCLI BOOST_VERSION_NUMBER(0,0,0)
@@ -66,7 +64,7 @@ If available, the year of the standard is detected as 0.0.YYYY.
 #if defined(__cplusplus_cli)
 #   undef BOOST_LANG_STDCPPCLI
 #   if (__cplusplus_cli > 100)
-#       define BOOST_LANG_STDCPPCLI BOOST_VERSION_NUMBER(0,0,__cplusplus_cli/100)
+#       define BOOST_LANG_STDCPPCLI BOOST_PREDEF_MAKE_YYYYMM(__cplusplus_cli)
 #   else
 #       define BOOST_LANG_STDCPPCLI BOOST_VERSION_NUMBER(0,0,1)
 #   endif
