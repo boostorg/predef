@@ -32,9 +32,9 @@ of BSD. If the above variants is detected the corresponding macro is also set.]
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[``] [__predef_detection__]]
+    [[`____`] [__predef_detection__]]
 
-    [[``] [V.R.P]]
+    [[`____`] [V.R.P]]
     ]
  */
 

@@ -20,9 +20,9 @@ Version number available as year (from 1970), month, and day.
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[``] [__predef_detection__]]
+    [[`____`] [__predef_detection__]]
 
-    [[``] [V.R.P]]
+    [[`____`] [V.R.P]]
     ]
  */
 

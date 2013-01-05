@@ -20,9 +20,9 @@ If available versions \[1-5\] are specifically detected.
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[``] [__predef_detection__]]
+    [[`____`] [__predef_detection__]]
 
-    [[``] [V.R.P]]
+    [[`____`] [V.R.P]]
     ]
  */
 

@@ -22,9 +22,9 @@ Version number available as major, minor, and patch.
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[``] [__predef_detection__]]
+    [[`____`] [__predef_detection__]]
 
-    [[``] [V.R.P]]
+    [[`____`] [V.R.P]]
     ]
  */
 

@@ -20,11 +20,11 @@ These set of macros decompose common vendor version number
 macros which are composed version, revision, and patch digits.
 The naming convention indicates:
 
-  * The base of the specified version number. "`BOOST_PREDEF_MAKE_0X`" for
-    hexadecimal digits, and "`BOOST_PREDEF_MAKE_10`" for decimal digits.
-  * The format of the vendor version number. Where "`V`" indicates the version digits,
-    "`R`" indicates the revision digits, "`P`" indicates the patch digits, and "`0`"
-    indicates an ignored digit.
+* The base of the specified version number. "`BOOST_PREDEF_MAKE_0X`" for
+  hexadecimal digits, and "`BOOST_PREDEF_MAKE_10`" for decimal digits.
+* The format of the vendor version number. Where "`V`" indicates the version digits,
+  "`R`" indicates the revision digits, "`P`" indicates the patch digits, and "`0`"
+  indicates an ignored digit.
 
 Macros are:
 */

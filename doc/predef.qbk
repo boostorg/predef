@@ -2,7 +2,7 @@
     [quickbook 1.7]
     [version 1.0]
     [authors [Rivera, Rene]]
-    [copyright 2005 Rene Rivera, 2008-2011 Redshift Software Inc]
+    [copyright 2005 Rene Rivera, 2008-2013 Redshift Software Inc]
     [purpose Identification and specification of predefined macros.]
     [license
         Distributed under the Boost Software License, Version 1.0.
@@ -12,7 +12,7 @@
     [source-mode c++]
 ]
 
-[warning This is a *proposed* Boost Libnrary and *is not* part of the
+[warning This is a *proposed* Boost Library and *is not* part of the
 Boost C++ Libraries.]
 
 [section Introduction]
@@ -392,28 +392,28 @@ and "Y", "M", "D" for dates.
 [section Reference]
 
 [section `BOOST_ARCH` architecture macros]
-[include ../../../boost/predef/architecture/*.h]
+[include ../include/boost/predef/architecture/*.h]
 [endsect]
 
 [section `BOOST_COMP` compiler macros]
-[include ../../../boost/predef/compiler/*.h]
+[include ../include/boost/predef/compiler/*.h]
 [endsect]
 
 [section `BOOST_LANG` language standards macros]
-[include ../../../boost/predef/language/*.h]
+[include ../include/boost/predef/language/*.h]
 [endsect]
 
 [section `BOOST_LIB` library macros]
-[include ../../../boost/predef/library/*/*.h]
+[include ../include/boost/predef/library/*/*.h]
 [endsect]
 
 [section `BOOST_OS_` operating system macros]
-[include ../../../boost/predef/os/*.h]
+[include ../include/boost/predef/os/*.h]
 [endsect]
 
 [section Version definition macros]
-[include ../../../boost/predef/version_number.h]
-[include ../../../boost/predef/make.h]
+[include ../include/boost/predef/version_number.h]
+[include ../include/boost/predef/make.h]
 [endsect]
 
 [endsect]
