@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -19,9 +19,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`__PGI`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__PGIC__`, `__PGIC_MINOR__`, `__PGIC_PATCHLEVEL__`] [V.R.P]]
     ]
  */
 

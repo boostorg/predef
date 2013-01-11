@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -20,9 +20,11 @@ Version number available as year (from 1970), month, and day.
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`__GLIBCXX__`] [__predef_detection__]]
+    [[`__GLIBCPP__`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__GLIBCXX__`] [V.R.P]]
+    [[`__GLIBCPP__`] [V.R.P]]
     ]
  */
 

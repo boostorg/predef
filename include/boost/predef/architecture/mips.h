@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -19,9 +19,20 @@ http://www.boost.org/LICENSE_1_0.txt)
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`__mips__`] [__predef_detection__]]
+    [[`__mips`] [__predef_detection__]]
+    [[`__MIPS__`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__mips`] [V.0.0]]
+    [[`_MIPS_ISA_MIPS1`] [1.0.0]]
+    [[`_R3000`] [1.0.0]]
+    [[`_MIPS_ISA_MIPS2`] [2.0.0]]
+    [[`__MIPS_ISA2__`] [2.0.0]]
+    [[`_R4000`] [2.0.0]]
+    [[`_MIPS_ISA_MIPS3`] [3.0.0]]
+    [[`__MIPS_ISA3__`] [3.0.0]]
+    [[`_MIPS_ISA_MIPS4`] [4.0.0]]
+    [[`__MIPS_ISA4__`] [4.0.0]]
     ]
  */
 

@@ -15,9 +15,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 [heading `BOOST_LANG_STDCPP`]
 
 [@http://en.wikipedia.org/wiki/C%2B%2B Standard C++] language.
-If available, the year of the standard is detected as 0.0.YYYY.
+If available, the year of the standard is detected as YYYY.MM.1 from the Epoc date.
 Because of the way the C++ standardization process works the
-defined version year will not be the commonly known year standard.
+defined version year will not be the commonly known year of the standard.
 Specifically the defined versions are:
 
 [table Detected Version Number vs. C++ Standard Year
@@ -29,9 +29,9 @@ Specifically the defined versions are:
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`__cplusplus`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__cplusplus`] [YYYY.MM.1]]
     ]
  */
 
@@ -56,7 +56,15 @@ BOOST_PREDEF_DECLARE_TEST(BOOST_LANG_STDCPP,BOOST_LANG_STDCPP_NAME)
 [heading `BOOST_LANG_STDCPPCLI`]
 
 [@http://en.wikipedia.org/wiki/C%2B%2B/CLI Standard C++/CLI] language.
-If available, the year of the standard is detected as YYYY.MM.1.
+If available, the year of the standard is detected as YYYY.MM.1 from the Epoc date.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[`__cplusplus_cli`] [__predef_detection__]]
+
+    [[`__cplusplus_cli`] [YYYY.MM.1]]
+    ]
  */
 
 #define BOOST_LANG_STDCPPCLI BOOST_VERSION_NUMBER(0,0,0)
@@ -80,6 +88,12 @@ BOOST_PREDEF_DECLARE_TEST(BOOST_LANG_STDCPPCLI,BOOST_LANG_STDCPPCLI_NAME)
 [heading `BOOST_LANG_STDECPP`]
 
 [@http://en.wikipedia.org/wiki/Embedded_C%2B%2B Standard Embedded C++] language.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[`__embedded_cplusplus`] [__predef_detection__]]
+    ]
  */
 
 #define BOOST_LANG_STDECPP BOOST_VERSION_NUMBER(0,0,0)

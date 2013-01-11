@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software Inc 2011-2012
+Copyright Redshift Software Inc 2011-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -15,14 +15,14 @@ http://www.boost.org/LICENSE_1_0.txt)
 [heading `BOOST_OS_VMS`]
 
 [@http://en.wikipedia.org/wiki/Vms VMS] operating system.
-Version number available as major, minor, and patch.
 
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`VMS`] [__predef_detection__]]
+    [[`__VMS`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__VMS_VER`] [V.R.P]]
     ]
  */
 

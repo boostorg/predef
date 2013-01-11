@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -15,14 +15,17 @@ http://www.boost.org/LICENSE_1_0.txt)
 [heading `BOOST_OS_MACOS`]
 
 [@http://en.wikipedia.org/wiki/Mac_OS Mac OS] operating system.
-Versions \[9-10\] are specifically detected.
 
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`macintosh`] [__predef_detection__]]
+    [[`Macintosh`] [__predef_detection__]]
+    [[`__APPLE__`] [__predef_detection__]]
+    [[`__MACH__`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__APPLE__`, `__MACH__`] [10.0.0]]
+    [[ /otherwise/ ] [9.0.0]]
     ]
  */
 

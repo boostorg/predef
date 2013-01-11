@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2012
+Copyright Redshift Software, Inc. 2012-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -8,14 +8,24 @@ http://www.boost.org/LICENSE_1_0.txt)
 #ifndef BOOST_PREDEF_OS_BSD_NET_H
 #define BOOST_PREDEF_OS_BSD_NET_H
 
+#include <boost/predef/os/bsd.h>
+
 /*`
+[heading `BOOST_OS_BSD_NET`]
+
+[@http://en.wikipedia.org/wiki/Netbsd NetBSD] operating system.
 
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`__NETBSD__`] [__predef_detection__]]
+    [[`__NetBSD__`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__NETBSD_version`] [V.R.P]]
+    [[`NetBSD0_8`] [0.8.0]]
+    [[`NetBSD0_9`] [0.9.0]]
+    [[`NetBSD1_0`] [1.0.0]]
+    [[`__NetBSD_Version`] [V.R.P]]
     ]
  */
 

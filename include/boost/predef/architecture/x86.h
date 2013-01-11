@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -22,9 +22,24 @@ If available versions \[3-6\] are specifically detected.
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`i386`] [__predef_detection__]]
+    [[`__i386__`] [__predef_detection__]]
+    [[`__i486__`] [__predef_detection__]]
+    [[`__i586__`] [__predef_detection__]]
+    [[`__i686__`] [__predef_detection__]]
+    [[`__i386`] [__predef_detection__]]
+    [[`_M_IX86`] [__predef_detection__]]
+    [[`_X86_`] [__predef_detection__]]
+    [[`__THW_INTEL__`] [__predef_detection__]]
+    [[`__I86__`] [__predef_detection__]]
+    [[`__INTEL__`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__I86__`] [V.0.0]]
+    [[`_M_IX86`] [V.0.0]]
+    [[`__i686__`] [6.0.0]]
+    [[`__i586__`] [5.0.0]]
+    [[`__i486__`] [4.0.0]]
+    [[`__i386__`] [3.0.0]]
     ]
  */
 

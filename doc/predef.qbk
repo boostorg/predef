@@ -409,6 +409,7 @@ and "Y", "M", "D" for dates.
 
 [section `BOOST_OS_` operating system macros]
 [include ../include/boost/predef/os/*.h]
+[include ../include/boost/predef/os/*/*.h]
 [endsect]
 
 [section Version definition macros]

@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -19,9 +19,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`__arm__`] [__predef_detection__]]
+    [[`__thumb__`] [__predef_detection__]]
+    [[`__TARGET_ARCH_ARM`] [__predef_detection__]]
+    [[`__TARGET_ARCH_THUMB`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__TARGET_ARCH_ARM`] [V.0.0]]
+    [[`__TARGET_ARCH_THUMB`] [V.0.0]]
     ]
  */
 

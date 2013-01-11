@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -19,9 +19,10 @@ http://www.boost.org/LICENSE_1_0.txt)
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
-
-    [[`____`] [V.R.P]]
+    [[`unix`] [__predef_detection__]]
+    [[`__unix`] [__predef_detection__]]
+    [[`_XOPEN_SOURCE`] [__predef_detection__]]
+    [[`_POSIX_SOURCE`] [__predef_detection__]]
     ]
  */
 
@@ -33,10 +34,21 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_OS_UNIX BOOST_VERSION_NUMBER(0,0,1)
 #endif
 
+#define BOOST_OS_UNIX_NAME "Unix Environment"
+
 /*`
 [heading `BOOST_OS_SVR4`]
 
 [@http://en.wikipedia.org/wiki/UNIX_System_V SVR4 Environment] operating system.
+
+[table
+    [[__predef_symbol__] [__predef_version__]]
+
+    [[`__sysv__`] [__predef_detection__]]
+    [[`__SVR4`] [__predef_detection__]]
+    [[`__svr4__`] [__predef_detection__]]
+    [[`_SYSTYPE_SVR4`] [__predef_detection__]]
+    ]
  */
 
 #define BOOST_OS_SVR4 BOOST_VERSION_NUMBER(0,0,0)
@@ -47,11 +59,10 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_OS_SVR4 BOOST_VERSION_NUMBER(0,0,1)
 #endif
 
-#define BOOST_OS_UNIX_NAME "Unix ENvironment"
+#define BOOST_OS_SVR4_NAME "SVR4 Environment"
 
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_UNIX,BOOST_OS_UNIX_NAME)
-
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_SVR4,"SVR4 Environment")
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_SVR4,BOOST_OS_SVR4_NAME)
 
 #endif

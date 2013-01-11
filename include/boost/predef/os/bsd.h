@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -32,9 +32,13 @@ of BSD. If the above variants is detected the corresponding macro is also set.]
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`BSD`] [__predef_detection__]]
+    [[`_SYSTYPE_BSD`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`BSD4_2`] [4.2.0]]
+    [[`BSD4_3`] [4.3.0]]
+    [[`BSD4_4`] [4.4.0]]
+    [[`BSD`] [V.R.0]]
     ]
  */
 

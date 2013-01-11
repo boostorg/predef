@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2012
+Copyright Redshift Software, Inc. 2012-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -8,14 +8,17 @@ http://www.boost.org/LICENSE_1_0.txt)
 #ifndef BOOST_PREDEF_OS_BSD_DRAGONFLY_H
 #define BOOST_PREDEF_OS_BSD_DRAGONFLY_H
 
+#include <boost/predef/os/bsd.h>
+
 /*`
+[heading `BOOST_OS_BSD_DRAGONFLY`]
+
+[@http://en.wikipedia.org/wiki/DragonFly_BSD DragonFly BSD] operating system.
 
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
-
-    [[`____`] [V.R.P]]
+    [[`__DragonFly__`] [__predef_detection__]]
     ]
  */
 

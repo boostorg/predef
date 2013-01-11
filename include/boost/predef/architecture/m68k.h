@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -19,9 +19,27 @@ http://www.boost.org/LICENSE_1_0.txt)
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`__m68k__`] [__predef_detection__]]
+    [[`M68000`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__mc68060__`] [6.0.0]]
+    [[`mc68060`] [6.0.0]]
+    [[`__mc68060`] [6.0.0]]
+    [[`__mc68040__`] [4.0.0]]
+    [[`mc68040`] [4.0.0]]
+    [[`__mc68040`] [4.0.0]]
+    [[`__mc68030__`] [3.0.0]]
+    [[`mc68030`] [3.0.0]]
+    [[`__mc68030`] [3.0.0]]
+    [[`__mc68020__`] [2.0.0]]
+    [[`mc68020`] [2.0.0]]
+    [[`__mc68020`] [2.0.0]]
+    [[`__mc68010__`] [1.0.0]]
+    [[`mc68010`] [1.0.0]]
+    [[`__mc68010`] [1.0.0]]
+    [[`__mc68000__`] [0.0.1]]
+    [[`mc68000`] [0.0.1]]
+    [[`__mc68000`] [0.0.1]]
     ]
  */
 

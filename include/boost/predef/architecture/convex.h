@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software Inc 2011-2012
+Copyright Redshift Software Inc 2011-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -19,9 +19,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`__convex__`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__convex_c1__`] [1.0.0]]
+    [[`__convex_c2__`] [2.0.0]]
+    [[`__convex_c32__`] [3.2.0]]
+    [[`__convex_c34__`] [3.4.0]]
+    [[`__convex_c38__`] [3.8.0]]
     ]
  */
 

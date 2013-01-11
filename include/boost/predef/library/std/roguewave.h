@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -20,9 +20,10 @@ If available version number as major, minor, and patch.
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`__STD_RWCOMPILER_H__`] [__predef_detection__]]
+    [[`_RWSTD_VER`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`_RWSTD_VER`] [V.R.P]]
     ]
  */
 
@@ -34,7 +35,7 @@ If available version number as major, minor, and patch.
 #       if _RWSTD_VER < 0x010000
 #           define BOOST_LIB_STD_RW BOOST_PREDEF_MAKE_0X_VVRRP(_RWSTD_VER)
 #       else
-#          define BOOST_LIB_STD_RW BOOST_PREDEF_MAKE_FF_FF_FF(_RWSTD_VER)
+#           define BOOST_LIB_STD_RW BOOST_PREDEF_MAKE_0X_VVRRPP(_RWSTD_VER)
 #       endif
 #   else
 #       define BOOST_LIB_STD_RW BOOST_VERSION_NUMBER(0,0,1)

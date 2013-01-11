@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software Inc 2011-2012
+Copyright Redshift Software Inc 2011-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -19,9 +19,7 @@ Pyramid 9810 architecture.
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
-
-    [[`____`] [V.R.P]]
+    [[`pyr`] [__predef_detection__]]
     ]
  */
 

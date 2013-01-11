@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -20,9 +20,11 @@ Version number available as major, minor, and patch.
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`____`] [__predef_detection__]]
+    [[`__DECCXX`] [__predef_detection__]]
+    [[`__DECC`] [__predef_detection__]]
 
-    [[`____`] [V.R.P]]
+    [[`__DECCXX_VER`] [V.R.P]]
+    [[`__DECC_VER`] [V.R.P]]
     ]
  */
 
@@ -35,6 +37,7 @@ Version number available as major, minor, and patch.
 #   elif defined(__DECC_VER)
 #       define BOOST_COMP_DEC BOOST_PREDEF_MAKE_10_VVRR0PP00(__DECC_VER)
 #   else
+#       define BOOST_COM_DEV BOOST_VERSION_NUMBER(0,0,1)
 #   endif
 #endif
 
