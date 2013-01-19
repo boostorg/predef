@@ -26,11 +26,15 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_LIB_C_VMS BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_C_VMS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__CRTL_VER)
 #   undef BOOST_LIB_C_VMS
 #   define BOOST_LIB_C_VMS BOOST_PREDEF_MAKE_10_VVRR0PP00(__CRTL_VER)
+#endif
+
+#if BOOST_LIB_C_VMS
+#   define BOOST_LIB_C_VMS_AVAILABLE
 #endif
 
 #define BOOST_LIB_C_VMS_NAME "VMS"

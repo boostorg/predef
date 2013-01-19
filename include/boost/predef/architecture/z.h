@@ -23,11 +23,15 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_ARCH_Z BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_ARCH_Z BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__SYSC_ZARCH__)
 #   undef BOOST_ARCH_Z
-#   define BOOST_ARCH_Z BOOST_VERSION_NUMBER(0,0,1)
+#   define BOOST_ARCH_Z BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
+#if BOOST_ARCH_Z
+#   define BOOST_ARCH_Z_AVAILABLE
 #endif
 
 #define BOOST_ARCH_Z_NAME "z/Architecture"

@@ -26,11 +26,15 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_KCC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_KCC BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__KCC)
 #   undef BOOST_COMP_KCC
 #   define BOOST_COMP_KCC BOOST_PREDEF_MAKE_0X_VRPP(__KCC_VERSION)
+#endif
+
+#if BOOST_COMP_KCC
+#   define BOOST_COMP_KCC_AVAILABLE
 #endif
 
 #define BOOST_COMP_KCC_NAME "Kai C++"

@@ -26,12 +26,16 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_PATH BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_PATH BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__PATHCC__)
 #   undef BOOST_COMP_PATH
 #   define BOOST_COMP_PATH \
         BOOST_VERSION_NUMBER(__PATHCC__,__PATHCC_MINOR__,__PATHCC_PATCHLEVEL__)
+#endif
+
+#if BOOST_COMP_PATH
+#   define BOOST_COMP_PATH_AVAILABLE
 #endif
 
 #define BOOST_COMP_PATH_NAME "EKOpath"

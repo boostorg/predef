@@ -26,15 +26,19 @@ If available version number as major, minor, and patch.
     ]
  */
 
-#define BOOST_LIB_STD_SGI BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_STD_SGI BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__STL_CONFIG_H)
 #   undef BOOST_LIB_STD_SGI
 #   if defined(__SGI_STL)
 #       define BOOST_LIB_STD_SGI BOOST_PREDEF_MAKE_0X_VRP(__SGI_STL)
 #   else
-#       define BOOST_LIB_STD_SGI BOOST_VERSION_NUMBER(0,0,1)
+#       define BOOST_LIB_STD_SGI BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
+#endif
+
+#if BOOST_LIB_STD_SGI
+#   define BOOST_LIB_STD_SGI_AVAILABLE
 #endif
 
 #define BOOST_LIB_STD_SGI_NAME "SGI"

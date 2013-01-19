@@ -23,11 +23,15 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_COMP_MRI BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_MRI BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(_MRI)
 #   undef BOOST_COMP_MRI
-#   define BOOST_COMP_MRI BOOST_VERSION_NUMBER(0,0,1)
+#   define BOOST_COMP_MRI BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
+#if BOOST_COMP_MRI
+#   define BOOST_COMP_MRI_AVAILABLE
 #endif
 
 #define BOOST_COMP_MRI_NAME "Microtec C/C++"

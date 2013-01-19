@@ -26,11 +26,15 @@ Version number available as major, and minor.
     ]
  */
 
-#define BOOST_COMP_WATCOM BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_WATCOM BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__WATCOMC__)
 #   undef BOOST_COMP_WATCOM
 #   define BOOST_COMP_WATCOM BOOST_PREDEF_MAKE_10_VVRR(__WATCOMC__)
+#endif
+
+#if BOOST_COMP_WATCOM
+#   define BOOST_COMP_WATCOM_AVAILABLE
 #endif
 
 #define BOOST_COMP_WATCOM_NAME "Watcom C++"

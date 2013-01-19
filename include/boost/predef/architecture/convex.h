@@ -29,23 +29,32 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__convex__)
 #   undef BOOST_ARCH_CONVEX
-#   if defined(__convex_c1__)
+#   if !defined(BOOST_ARCH_CONVEX) && defined(__convex_c1__)
 #       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(1,0,0)
-#   elif defined(__convex_c2__)
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(2,0,0)
-#   elif defined(__convex_c32__)
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(3,2,0)
-#   elif defined(__convex_c34__)
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(3,4,0)
-#   elif defined(__convex_c38__)
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(3,8,0)
-#   else
-#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_ARCH_CONVEX) && defined(__convex_c2__)
+#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(2,0,0)
+#   endif
+#   if !defined(BOOST_ARCH_CONVEX) && defined(__convex_c32__)
+#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(3,2,0)
+#   endif
+#   if !defined(BOOST_ARCH_CONVEX) && defined(__convex_c34__)
+#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(3,4,0)
+#   endif
+#   if !defined(BOOST_ARCH_CONVEX) && defined(__convex_c38__)
+#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER(3,8,0)
+#   endif
+#   if !defined(BOOST_ARCH_CONVEX)
+#       define BOOST_ARCH_CONVEX BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_ARCH_CONVEX
+#   define BOOST_ARCH_CONVEX_AVAILABLE
 #endif
 
 #define BOOST_ARCH_CONVEX_NAME "Convex Computer"

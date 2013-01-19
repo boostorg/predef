@@ -25,13 +25,17 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_ARCH_AMD64 BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_ARCH_AMD64 BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__amd64__) || defined(__amd64) || \
     defined(__x86_64__) || defined(__x86_64) || \
     defined(_M_X64)
 #   undef BOOST_ARCH_AMD64
-#   define BOOST_ARCH_AMD64 BOOST_VERSION_NUMBER(0,0,1)
+#   define BOOST_ARCH_AMD64 BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
+#if BOOST_ARCH_AMD64
+#   define BOOST_ARCH_AMD64_AVAILABLE
 #endif
 
 #define BOOST_ARCH_AMD64_NAME "Advanced Micro Devices AMD 64"

@@ -26,15 +26,19 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_VMS BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_VMS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(VMS) || defined(__VMS)
 #   undef BOOST_OS_VMS
 #   if defined(__VMS_VER)
 #       define BOOST_OS_VMS BOOST_PREDEF_MAKE_10_VVRR00PP00(__VMS_VER)
 #   else
-#       define BOOST_OS_VMS BOOST_VERSION_NUMBER(0,0,1)
+#       define BOOST_OS_VMS BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
+#endif
+
+#if BOOST_OS_VMS
+#   define BOOST_OS_VMS_AVAILABLE
 #endif
 
 #define BOOST_OS_VMS_NAME "VMS"

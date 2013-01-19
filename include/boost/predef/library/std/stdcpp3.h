@@ -28,7 +28,7 @@ Version number available as year (from 1970), month, and day.
     ]
  */
 
-#define BOOST_LIB_STD_GNU BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_STD_GNU BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__GLIBCPP__) || defined(__GLIBCXX__)
 #   undef BOOST_LIB_STD_GNU
@@ -37,6 +37,10 @@ Version number available as year (from 1970), month, and day.
 #   else
 #       define BOOST_LIB_STD_GNU BOOST_PREDEF_MAKE_YYYYMMDD(__GLIBCPP__)
 #   endif
+#endif
+
+#if BOOST_LIB_STD_GNU
+#   define BOOST_LIB_STD_GNU_AVAILABLE
 #endif
 
 #define BOOST_LIB_STD_GNU_NAME "GNU"

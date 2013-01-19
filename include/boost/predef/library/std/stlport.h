@@ -29,18 +29,24 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_LIB_STD_STLPORT BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_STD_STLPORT BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__SGI_STL_PORT) || defined(_STLPORT_VERSION)
 #   undef BOOST_LIB_STD_STLPORT
-#   if defined(_STLPORT_MAJOR)
+#   if !defined(BOOST_LIB_STD_STLPORT) && defined(_STLPORT_MAJOR)
 #       define BOOST_LIB_STD_STLPORT \
             BOOST_VERSION_NUMBER(_STLPORT_MAJOR,_STLPORT_MINOR,_STLPORT_PATCHLEVEL)
-#   elif defined(_STLPORT_VERSION)
+#   endif
+#   if !defined(BOOST_LIB_STD_STLPORT) && defined(_STLPORT_VERSION)
 #       define BOOST_LIB_STD_STLPORT BOOST_PREDEF_MAKE_0X_VRP(_STLPORT_VERSION)
-#   else
+#   endif
+#   if !defined(BOOST_LIB_STD_STLPORT)
 #       define BOOST_LIB_STD_STLPORT BOOST_PREDEF_MAKE_0X_VRP(__SGI_STL_PORT)
 #   endif
+#endif
+
+#if BOOST_LIB_STD_STLPORT
+#   define BOOST_LIB_STD_STLPORT_AVAILABLE
 #endif
 
 #define BOOST_LIB_STD_STLPORT_NAME "STLport"

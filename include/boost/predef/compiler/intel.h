@@ -29,16 +29,21 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_INTEL BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_INTEL BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__INTEL_COMPILER) || defined(__ICL) || defined(__ICC) || \
     defined(__ECC)
 #   undef BOOST_COMP_INTEL
-#   if defined(__INTEL_COMPILER)
+#   if !defined(BOOST_COMP_INTEL) && defined(__INTEL_COMPILER)
 #       define BOOST_COMP_INTEL BOOST_PREDEF_MAKE_10_VRP(__INTEL_COMPILER)
-#   else
-#       define BOOST_COMP_INTEL BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_COMP_INTEL)
+#       define BOOST_COMP_INTEL BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_COMP_INTEL
+#   define BOOST_COMP_INTEL_AVAILABLE
 #endif
 
 #define BOOST_COMP_INTEL_NAME "Intel C/C++"

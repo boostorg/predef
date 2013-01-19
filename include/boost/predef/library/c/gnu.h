@@ -34,7 +34,7 @@ Version number available as major, and minor.
     ]
  */
 
-#define BOOST_LIB_C_GNU BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_C_GNU BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__GLIBC__) || defined(__GNU_LIBRARY__)
 #   undef BOOST_LIB_C_GNU
@@ -45,6 +45,10 @@ Version number available as major, and minor.
 #       define BOOST_LIB_C_GNU \
             BOOST_VERSION_NUMBER(__GNU_LIBRARY__,__GNU_LIBRARY_MINOR__,0)
 #   endif
+#endif
+
+#if BOOST_LIB_C_GNU
+#   define BOOST_LIB_C_GNU_AVAILABLE
 #endif
 
 #define BOOST_LIB_C_GNU_NAME "GNU"

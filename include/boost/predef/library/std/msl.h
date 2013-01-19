@@ -28,7 +28,7 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_LIB_STD_MSL BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_STD_MSL BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__MSL_CPP__) || defined(__MSL__)
 #   undef BOOST_LIB_STD_MSL
@@ -37,6 +37,10 @@ Version number available as major, minor, and patch.
 #   else
 #       define BOOST_LIB_STD_MSL BOOST_PREDEF_MAKE_0X_VRPP(__MSL__)
 #   endif
+#endif
+
+#if BOOST_LIB_STD_MSL
+#   define BOOST_LIB_STD_MSL_AVAILABLE
 #endif
 
 #define BOOST_LIB_STD_MSL_NAME "Metrowerks"

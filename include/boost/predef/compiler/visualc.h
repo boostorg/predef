@@ -27,7 +27,7 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_MSVC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_MSVC BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(_MSC_VER)
 #   undef BOOST_COMP_MSVC
@@ -49,6 +49,10 @@ Version number available as major, minor, and patch.
         _MSC_VER/100-6,\
         _MSC_VER%100,\
         BOOST_COMP_MSVC_BUILD)
+#endif
+
+#if BOOST_COMP_MSVC
+#   define BOOST_COMP_MSVC_AVAILABLE
 #endif
 
 #define BOOST_COMP_MSVC_NAME "Microsoft Visual C/C++"

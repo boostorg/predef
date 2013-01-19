@@ -27,13 +27,17 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_WINDOWS BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_WINDOWS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(_WIN32) || defined(_WIN64) || \
     defined(__WIN32__) || defined(__TOS_WIN__) || \
     defined(__WINDOWS__)
 #   undef BOOST_OS_WINDOWS
-#   define BOOST_OS_WINDOWS BOOST_VERSION_NUMBER(0,0,1)
+#   define BOOST_OS_WINDOWS BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
+#if BOOST_OS_WINDOWS
+#   define BOOST_OS_WINDOWS_AVAILABLE
 #endif
 
 #define BOOST_OS_WINDOWS_NAME "Microsoft Windows"

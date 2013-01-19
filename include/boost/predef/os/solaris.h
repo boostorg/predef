@@ -24,11 +24,15 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_SOLARIS BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_SOLARIS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(sun) || defined(__sun)
 #   undef BOOST_OS_SOLARIS
-#   define BOOST_OS_SOLARIS BOOST_VERSION_NUMBER(0,0,1)
+#   define BOOST_OS_SOLARIS BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
+#if BOOST_OS_SOLARIS
+#   define BOOST_OS_SOLARIS_AVAILABLE
 #endif
 
 #define BOOST_OS_SOLARIS_NAME "Solaris"

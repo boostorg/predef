@@ -28,17 +28,23 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_DEC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_DEC BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__DECC) || defined(__DECCXX)
 #   undef BOOST_COMP_DEC
-#   if defined(__DECCXX_VER)
+#   if !defined(BOOST_COMP_DEC) && defined(__DECCXX_VER)
 #       define BOOST_COMP_DEC BOOST_PREDEF_MAKE_10_VVRR0PP00(__DECCXX_VER)
-#   elif defined(__DECC_VER)
-#       define BOOST_COMP_DEC BOOST_PREDEF_MAKE_10_VVRR0PP00(__DECC_VER)
-#   else
-#       define BOOST_COM_DEV BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_COMP_DEC) && defined(__DECC_VER)
+#       define BOOST_COMP_DEC BOOST_PREDEF_MAKE_10_VVRR0PP00(__DECC_VER)
+#   endif
+#   if !defined(BOOST_COMP_DEC)
+#       define BOOST_COM_DEV BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_COMP_DEC
+#   define BOOST_COMP_DEC_AVAILABLE
 #endif
 
 #define BOOST_COMP_DEC_NAME "Compaq C/C++"

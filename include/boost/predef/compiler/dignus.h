@@ -26,11 +26,15 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_SYSC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_SYSC BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__SYSC__)
 #   undef BOOST_COMP_SYSC
 #   define BOOST_COMP_SYSC BOOST_PREDEF_MAKE_10_VRRPP(__SYSC_VER__)
+#endif
+
+#if BOOST_COMP_SYSC
+#   define BOOST_COMP_SYSC_AVAILABLE
 #endif
 
 #define BOOST_COMP_SYSC_NAME "Dignus Systems/C++"

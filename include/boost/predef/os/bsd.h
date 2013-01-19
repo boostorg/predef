@@ -42,23 +42,31 @@ of BSD. If the above variants is detected the corresponding macro is also set.]
     ]
  */
 
-#define BOOST_OS_BSD BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_BSD BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(BSD) || \
     defined(_SYSTYPE_BSD)
 #   undef BOOST_OS_BSD
 #   include <sys/param.h>
-#   if defined(BSD4_2)
+#   if !defined(BOOST_OS_BSD) && defined(BSD4_2)
 #       define BOOST_OS_BSD BOOST_VERSION_NUMBER(4,2,0)
-#   elif defined(BSD4_3)
-#       define BOOST_OS_BSD BOOST_VERSION_NUMBER(4,3,0)
-#   elif defined(BSD4_4)
-#       define BOOST_OS_BSD BOOST_VERSION_NUMBER(4,4,0)
-#   elif defined(BSD)
-#       define BOOST_OS_BSD BOOST_PREDEF_MAKE_10_VVRR(BSD)
-#   else
-#       define BOOST_OS_BSD BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_OS_BSD) && defined(BSD4_3)
+#       define BOOST_OS_BSD BOOST_VERSION_NUMBER(4,3,0)
+#   endif
+#   if !defined(BOOST_OS_BSD) && defined(BSD4_4)
+#       define BOOST_OS_BSD BOOST_VERSION_NUMBER(4,4,0)
+#   endif
+#   if !defined(BOOST_OS_BSD) && defined(BSD)
+#       define BOOST_OS_BSD BOOST_PREDEF_MAKE_10_VVRR(BSD)
+#   endif
+#   if !defined(BOOST_OS_BSD)
+#       define BOOST_OS_BSD BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_OS_BSD
+#   define BOOST_OS_BSD_AVAILABLE
 #endif
 
 #define BOOST_OS_BSD_NAME "BSD"

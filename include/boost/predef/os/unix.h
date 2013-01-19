@@ -26,12 +26,16 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_UNIX BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_UNIX BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(unix) || defined(__unix) || \
     defined(_XOPEN_SOURCE) || defined(_POSIX_SOURCE)
 #   undef BOOST_OS_UNIX
-#   define BOOST_OS_UNIX BOOST_VERSION_NUMBER(0,0,1)
+#   define BOOST_OS_UNIX BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
+#if BOOST_OS_UNIX
+#   define BOOST_OS_UNIX_AVAILABLE
 #endif
 
 #define BOOST_OS_UNIX_NAME "Unix Environment"
@@ -51,12 +55,16 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_SVR4 BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_SVR4 BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__sysv__) || defined(__SVR4) || \
     defined(__svr4__) || defined(_SYSTYPE_SVR4)
 #   undef BOOST_OS_SVR4
-#   define BOOST_OS_SVR4 BOOST_VERSION_NUMBER(0,0,1)
+#   define BOOST_OS_SVR4 BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
+#if BOOST_ARCH_ALPHA
+#   define _AVAILABLE
 #endif
 
 #define BOOST_OS_SVR4_NAME "SVR4 Environment"

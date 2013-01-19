@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -26,7 +26,7 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_ARCH_ALPHA BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_ARCH_ALPHA BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__alpha__) || defined(__alpha) || \
     defined(_M_ALPHA)
@@ -41,8 +41,12 @@ http://www.boost.org/LICENSE_1_0.txt)
 #       define BOOST_ARCH_ALPHA BOOST_VERSION_NUMBER(6,0,0)
 #   endif
 #   if !defined(BOOST_ARCH_ALPHA)
-#       define BOOST_ARCH_ALPHA BOOST_VERSION_NUMBER(0,0,1)
+#       define BOOST_ARCH_ALPHA BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
+#endif
+
+#if BOOST_ARCH_ALPHA
+#   define BOOST_ARCH_ALPHA_AVAILABLE
 #endif
 
 #define BOOST_ARCH_ALPHA_NAME "DEC Alpha"

@@ -25,19 +25,20 @@ http://www.boost.org/LICENSE_1_0.txt)
     [[`__ia64`] [__predef_detection__]]
     [[`_M_IA64`] [__predef_detection__]]
     [[`__itanium__`] [__predef_detection__]]
-    [[`__x86_64`] [__predef_detection__]]
-    [[`__x86_64__`] [__predef_detection__]]
     ]
  */
 
-#define BOOST_ARCH_IA64 BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_ARCH_IA64 BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__ia64__) || defined(_IA64) || \
     defined(__IA64__) || defined(__ia64) || \
-    defined(_M_IA64) || defined(__itanium__) || \
-    defined(__x86_64) ||  defined(__x86_64__)
+    defined(_M_IA64) || defined(__itanium__)
 #   undef BOOST_ARCH_IA64
-#   define BOOST_ARCH_IA64 BOOST_VERSION_NUMBER(0,0,1)
+#   define BOOST_ARCH_IA64 BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
+#if BOOST_ARCH_IA64
+#   define BOOST_ARCH_IA64_AVAILABLE
 #endif
 
 #define BOOST_ARCH_IA64_NAME "Intel IA-64"

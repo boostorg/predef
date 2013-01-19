@@ -24,11 +24,15 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_LINUX BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_LINUX BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(linux) || defined(__linux)
 #   undef BOOST_OS_LINUX
-#   define BOOST_OS_LINUX BOOST_VERSION_NUMBER(0,0,1)
+#   define BOOST_OS_LINUX BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
+#if BOOST_OS_LINUX
+#   define BOOST_OS_LINUX_AVAILABLE
 #endif
 
 #define BOOST_OS_LINUX_NAME "Linux"

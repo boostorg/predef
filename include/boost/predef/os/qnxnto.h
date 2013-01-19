@@ -29,17 +29,23 @@ version 4 is specifically detected.
     ]
  */
 
-#define BOOST_OS_QNX BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_QNX BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__QNX__) || defined(__QNXNTO__)
 #   undef BOOST_OS_QNX
-#   if defined(_NTO_VERSION)
+#   if !defined(BOOST_OS_QNX) && defined(_NTO_VERSION)
 #       define BOOST_OS_QNX BOOST_PREDEF_MAKE_10_VVRR(_NTO_VERSION)
-#   elif defined(__QNX__)
-#       define BOOST_OS_QNX BOOST_VERSION_NUMBER(4,0,0)
-#   else
-#       define BOOST_OS_QNX BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_OS_QNX) && defined(__QNX__)
+#       define BOOST_OS_QNX BOOST_VERSION_NUMBER(4,0,0)
+#   endif
+#   if !defined(BOOST_OS_QNX)
+#       define BOOST_OS_QNX BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_OS_QNX
+#   define BOOST_OS_QNX_AVAILABLE
 #endif
 
 #define BOOST_OS_QNX_NAME "QNX"

@@ -26,11 +26,15 @@ Version number available as major.
     ]
  */
 
-#define BOOST_LIB_STD_COMO BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_STD_COMO BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__LIBCOMO__)
 #   undef BOOST_LIB_STD_COMO
 #   define BOOST_LIB_STD_COMO BOOST_VERSION_NUMBER(__LIBCOMO_VERSION__,0,0)
+#endif
+
+#if BOOST_LIB_STD_COMO
+#   define BOOST_LIB_STD_COMO_AVAILABLE
 #endif
 
 #define BOOST_LIB_STD_COMO_NAME "Comeau Computing"

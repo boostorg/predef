@@ -26,15 +26,20 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_HPACC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_HPACC BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__HP_aCC)
 #   undef BOOST_COMP_HPACC
-#   if (__HP_aCC > 1)
+#   if !defined(BOOST_COMP_HPACC) && (__HP_aCC > 1)
 #       define BOOST_COMP_HPACC BOOST_PREDEF_MAKE_10_VVRRPP(__HP_aCC)
-#   else
-#       define BOOST_COMP_HPACC BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_COMP_HPACC)
+#       define BOOST_COMP_HPACC BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_COMP_HPACC
+#   define BOOST_COMP_HPACC_AVAILABLE
 #endif
 
 #define BOOST_COMP_HPACC_NAME "HP aC++"

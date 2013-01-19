@@ -26,11 +26,15 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_DIAB BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_DIAB BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__DCC__)
 #   undef BOOST_COMP_DIAB
 #   define BOOST_COMP_DIAB BOOST_PREDEF_MAKE_10_VRPP(__VERSION_NUMBER__)
+#endif
+
+#if BOOST_COMP_DIAB
+#   define BOOST_COMP_DIAB_AVAILABLE
 #endif
 
 #define BOOST_COMP_DIAB_NAME "Diab C/C++"

@@ -28,17 +28,23 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_SUNPRO BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_SUNPRO BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__SUNPRO_CC) || defined(__SUNPRO_C)
 #   undef BOOST_COMP_SUNPRO
-#   if defined(__SUNPRO_CC)
+#   if !defined(BOOST_COMP_SUNPRO) && defined(__SUNPRO_CC)
 #       define BOOST_COMP_SUNPRO BOOST_PREDEF_MAKE_0X_VRP(__SUNPRO_CC)
-#   elif defined(__SUNPRO_C)
-#       define BOOST_COMP_SUNPRO BOOST_PREDEF_MAKE_0X_VRP(__SUNPRO_C)
-#   else
-#       define BOOST_COMP_SUNPRO BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_COMP_SUNPRO) && defined(__SUNPRO_C)
+#       define BOOST_COMP_SUNPRO BOOST_PREDEF_MAKE_0X_VRP(__SUNPRO_C)
+#   endif
+#   if !defined(BOOST_COMP_SUNPRO)
+#       define BOOST_COMP_SUNPRO BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_COMP_SUNPRO
+#   define BOOST_COMP_SUNPRO_AVAILABLE
 #endif
 
 #define BOOST_COMP_SUNPRO_NAME "Sun Studio"

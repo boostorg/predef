@@ -28,20 +28,26 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_MINGW BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_MINGW BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__MINGW32__) || defined(__MINGW64__)
 #   include <_mingw.h>
 #   undef BOOST_COMP_MINGW
-#   if defined(__MINGW64_VERSION_MAJOR) && defined(__MINGW64_VERSION_MINOR)
+#   if !defined(BOOST_COMP_MINGW) && (defined(__MINGW64_VERSION_MAJOR) && defined(__MINGW64_VERSION_MINOR))
 #       define BOOST_COMP_MINGW \
             BOOST_VERSION_NUMBER(__MINGW64_VERSION_MAJOR,__MINGW64_VERSION_MINOR,0)
-#   elif defined(__MINGW32_VERSION_MAJOR) && defined(__MINGW32_VERSION_MINOR)
+#   endif
+#   if !defined(BOOST_COMP_MINGW) && (defined(__MINGW32_VERSION_MAJOR) && defined(__MINGW32_VERSION_MINOR))
 #       define BOOST_COMP_MINGW \
             BOOST_VERSION_NUMBER(__MINGW32_MAJOR_VERSION,__MINGW32_MINOR_VERSION,0)
-#   else
-#       define BOOST_COMP_MINGW BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_COMP_MINGW)
+#       define BOOST_COMP_MINGW BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_COMP_MINGW
+#   define BOOST_COMP_MINGW_AVAILABLE
 #endif
 
 #define BOOST_COMP_MINGW_NAME "MinGW"

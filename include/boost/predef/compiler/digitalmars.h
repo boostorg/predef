@@ -26,11 +26,15 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_DMC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_DMC BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__DMC__)
 #   undef BOOST_COMP_DMC
 #   define BOOST_COMP_DMC BOOST_PREDEF_MAKE_0X_VRP(__DMC__)
+#endif
+
+#if BOOST_COMP_DMC
+#   define BOOST_COMP_DMC_AVAILABLE
 #endif
 
 #define BOOST_COMP_DMC_NAME "Digital Mars"

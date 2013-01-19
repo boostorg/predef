@@ -26,11 +26,15 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_CLANG BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_CLANG BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__clang__)
 #   undef BOOST_COMP_CLANG
 #   define BOOST_COMP_CLANG BOOST_VERSION_NUMBER(__clang_major__,__clang_minor__,__clang_patchlevel__)
+#endif
+
+#if BOOST_COMP_CLANG
+#   define BOOST_COMP_CLANG_AVAILABLE
 #endif
 
 #define BOOST_COMP_CLANG_NAME "Clang"

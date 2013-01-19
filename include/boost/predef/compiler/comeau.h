@@ -11,7 +11,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 
-#define BOOST_COMP_COMO BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_COMO BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 /*`
 [heading `BOOST_COMP_COMO`]
@@ -30,11 +30,16 @@ Version number available as major, minor, and patch.
 
 #if defined(__COMO__)
 #   undef BOOST_COMP_COMO
-#   if defined(__CONO_VERSION__)
+#   if !defined(BOOST_COMP_COMO) && defined(__CONO_VERSION__)
 #       define BOOST_COMP_COMO BOOST_PREDEF_MAKE_0X_VRP(__COMO_VERSION__)
-#   else
-#       define BOOST_COMP_COMO BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_COMP_COMO)
+#       define BOOST_COMP_COMO BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_COMP_COMO
+#   define BOOST_COMP_COMO_AVAILABLE
 #endif
 
 #define BOOST_COMP_COMO_NAME "Comeau C++"

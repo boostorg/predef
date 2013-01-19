@@ -28,17 +28,23 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_SGI BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_SGI BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__sgi) || defined(sgi)
 #   undef BOOST_COMP_SGI
-#   if defined(_SGI_COMPILER_VERSION)
+#   if !defined(BOOST_COMP_SGI) && defined(_SGI_COMPILER_VERSION)
 #       define BOOST_COMP_SGI BOOST_PREDEF_MAKE_10_VRP(_SGI_COMPILER_VERSION)
-#   elif defined(_COMPILER_VERSION)
-#       define BOOST_COMP_SGI BOOST_PREDEF_MAKE_10_VRP(_COMPILER_VERSION)
-#   else
-#       define BOOST_COMP_SGI BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_COMP_SGI) && defined(_COMPILER_VERSION)
+#       define BOOST_COMP_SGI BOOST_PREDEF_MAKE_10_VRP(_COMPILER_VERSION)
+#   endif
+#   if !defined(BOOST_COMP_SGI)
+#       define BOOST_COMP_SGI BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_COMP_SGI
+#   define BOOST_COMP_SGI_AVAILABLE
 #endif
 
 #define BOOST_COMP_SGI_NAME "SGI MIPSpro"

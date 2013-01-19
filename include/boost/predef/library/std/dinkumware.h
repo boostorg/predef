@@ -27,15 +27,19 @@ If available version number as major, minor, and patch.
     ]
  */
 
-#define BOOST_LIB_STD_DINKUMWARE BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_STD_DINKUMWARE BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if (defined(_YVALS) && !defined(__IBMCPP__)) || defined(_CPPLIB_VER)
 #   undef BOOST_LIB_STD_DINKUMWARE
 #   if defined(_CPPLIB_VER)
 #       define BOOST_LIB_STD_DINKUMWARE BOOST_PREDEF_MAKE_10_VVRR(_CPPLIB_VER)
 #   else
-#       define BOOST_LIB_STD_DINKUMWARE BOOST_VERSION_NUMBER(0,0,1)
+#       define BOOST_LIB_STD_DINKUMWARE BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
+#endif
+
+#if BOOST_LIB_STD_DINKUMWARE
+#   define BOOST_LIB_STD_DINKUMWARE_AVAILABLE
 #endif
 
 #define BOOST_LIB_STD_DINKUMWARE_NAME "Dinkumware"

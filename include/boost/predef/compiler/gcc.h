@@ -27,17 +27,22 @@ Version number available as major, minor, and patch (if available).
     ]
  */
 
-#define BOOST_COMP_GNUC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_GNUC BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__GNUC__)
 #   undef BOOST_COMP_GNUC
-#   if defined(__GNUC_PATCHLEVEL__)
+#   if !defined(BOOST_COMP_GNUC) && defined(__GNUC_PATCHLEVEL__)
 #       define BOOST_COMP_GNUC \
             BOOST_VERSION_NUMBER(__GNUC__,__GNUC_MINOR__,__GNUC_PATCHLEVEL__)
-#   else
+#   endif
+#   if !defined(BOOST_COMP_GNUC)
 #       define BOOST_COMP_GNUC \
             BOOST_VERSION_NUMBER(__GNUC__,__GNUC_MINOR__,0)
 #   endif
+#endif
+
+#if BOOST_COMP_GNUC
+#   define BOOST_COMP_GNUC_AVAILABLE
 #endif
 
 #define BOOST_COMP_GNUC_NAME "Gnu GCC C/C++"

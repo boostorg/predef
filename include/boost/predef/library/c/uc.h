@@ -25,12 +25,16 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_LIB_C_UC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_LIB_C_UC BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__UCLIBC__)
 #   undef BOOST_LIB_C_UC
 #   define BOOST_LIB_C_UC BOOST_VERSION_NUMBER(\
         __UCLIBC_MAJOR__,__UCLIBC_MINOR__,__UCLIBC_SUBLEVEL__)
+#endif
+
+#if BOOST_LIB_C_UC
+#   define BOOST_LIB_C_UC_AVAILABLE
 #endif
 
 #define BOOST_LIB_C_UC_NAME "uClibc"

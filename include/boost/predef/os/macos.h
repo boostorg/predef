@@ -29,7 +29,7 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_MACOS BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_MACOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(macintosh) || defined(Macintosh) || \
     (defined(__APPLE__) && defined(__MACH__))
@@ -40,6 +40,10 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   if !defined(BOOST_OS_MACOS)
 #       define BOOST_OS_MACOS BOOST_VERSION_NUMBER(9,0,0)
 #   endif
+#endif
+
+#if BOOST_OS_MACOS
+#   define BOOST_OS_MACOS_AVAILABLE
 #endif
 
 #define BOOST_OS_MACOS_NAME "Mac OS"

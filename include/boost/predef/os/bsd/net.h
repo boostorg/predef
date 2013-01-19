@@ -29,11 +29,11 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_BSD_NET BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_BSD_NET BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__NETBSD__) || defined(__NetBSD__)
 #   ifndef BOOST_OS_BSD
-#       define BOOST_OS_BSD BOOST_VERSION_NUMBER(0,0,1)
+#       define BOOST_OS_BSD BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
 #   undef BOOST_OS_BSD_NET
 #   if defined(__NETBSD__)
@@ -46,22 +46,30 @@ http://www.boost.org/LICENSE_1_0.txt)
                     BOOST_PREDEF_MAKE_10_VRR000(__NETBSD_version)
 #           endif
 #       else
-#           define BOOST_OS_BSD_NET BOOST_VERSION_NUMBER(0,0,1)
+#           define BOOST_OS_BSD_NET BOOST_VERSION_NUMBER_AVAILABLE
 #       endif
 #   elif defined(__NetBSD__)
-#       if defined(NetBSD0_8)
+#       if !defined(BOOST_OS_BSD_NET) && defined(NetBSD0_8)
 #           define BOOST_OS_BSD_NET BOOST_VERSION_NUMBER(0,8,0)
-#       elif defined(NetBSD0_9)
+#       endif
+#       if !defined(BOOST_OS_BSD_NET) && defined(NetBSD0_9)
 #           define BOOST_OS_BSD_NET BOOST_VERSION_NUMBER(0,9,0)
-#       elif defined(NetBSD1_0)
+#       endif
+#       if !defined(BOOST_OS_BSD_NET) && defined(NetBSD1_0)
 #           define BOOST_OS_BSD_NET BOOST_VERSION_NUMBER(1,0,0)
-#       elif defined(__NetBSD_Version)
+#       endif
+#       if !defined(BOOST_OS_BSD_NET) && defined(__NetBSD_Version)
 #           define BOOST_OS_BSD_NET \
                 BOOST_PREDEF_MAKE_10_VVRR00PP00(__NetBSD_Version)
-#       else
-#           define BOOST_OS_BSD_NET BOOST_VERSION_NUMBER(0,0,1)
+#       endif
+#       if !defined(BOOST_OS_BSD_NET)
+#           define BOOST_OS_BSD_NET BOOST_VERSION_NUMBER_AVAILABLE
 #       endif
 #   endif
+#endif
+
+#if BOOST_OS_BSD_NET
+#   define BOOST_OS_BSD_NET_AVAILABLE
 #endif
 
 #define BOOST_OS_BSD_NET_NAME "DragonFly BSD"

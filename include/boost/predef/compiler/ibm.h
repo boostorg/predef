@@ -31,19 +31,26 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_IBM BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_IBM BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__IBMCPP__) || defined(__xlC__) || defined(__xlc__)
 #   undef BOOST_COMP_IBM
-#   if defined(__COMPILER_VER__)
+#   if !defined(BOOST_COMP_IBM) && defined(__COMPILER_VER__)
 #       define BOOST_COMP_IBM BOOST_PREDEF_MAKE_0X_VRRPPPP(__COMPILER_VER__)
-#   elif defined(__xlC__)
+#   endif
+#   if !defined(BOOST_COMP_IBM) && defined(__xlC__)
 #       define BOOST_COMP_IBM BOOST_PREDEF_MAKE_0X_VVRR(__xlC__)
-#   elif defined(__xlc__)
+#   endif
+#   if !defined(BOOST_COMP_IBM) && defined(__xlc__)
 #       define BOOST_COMP_IBM BOOST_PREDEF_MAKE_0X_VVRR(__xlc__)
-#   else
+#   endif
+#   if !defined(BOOST_COMP_IBM)
 #       define BOOST_COMP_IBM BOOST_PREDEF_MAKE_10_VRP(__IBMCPP__)
 #   endif
+#endif
+
+#if BOOST_COMP_IBM
+#   define BOOST_COMP_IBM_AVAILABLE
 #endif
 
 #define BOOST_COMP_IBM_NAME "IBM XL C/C++"

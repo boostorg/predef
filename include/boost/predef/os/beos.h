@@ -23,11 +23,15 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_BEOS BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_BEOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__BEOS__)
 #   undef BOOST_OS_BEOS
-#   define BOOST_OS_BEOS BOOST_VERSION_NUMBER(0,0,1)
+#   define BOOST_OS_BEOS BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
+#if BOOST_OS_BEOS
+#   define BOOST_OS_BEOS_AVAILABLE
 #endif
 
 #define BOOST_OS_BEOS_NAME "BeOS"

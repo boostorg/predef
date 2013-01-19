@@ -25,15 +25,20 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_COMP_PGI BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_PGI BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__PGI)
 #   undef BOOST_COMP_PGI
-#   if defined(__PGIC__) && defined(__PGIC_MINOR__) && defined(__PGIC_PATCHLEVEL__)
+#   if !defined(BOOST_COMP_PGI) && (defined(__PGIC__) && defined(__PGIC_MINOR__) && defined(__PGIC_PATCHLEVEL__))
 #       define BOOST_COMP_PGI BOOST_VERSION_NUMBER(__PGIC__,__PGIC_MINOR__,__PGIC_PATCHLEVEL__)
-#   else
-#       define BOOST_COMP_PGI BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_COMP_PGI)
+#       define BOOST_COMP_PGI BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_COMP_PGI
+#   define BOOST_COMP_PGI_AVAILABLE
 #endif
 
 #define BOOST_COMP_PGI_NAME "Portland Group C/C++"

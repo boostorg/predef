@@ -22,16 +22,20 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_BSD_DRAGONFLY BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_BSD_DRAGONFLY BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__DragonFly__)
 #   ifndef BOOST_OS_BSD
-#       define BOOST_OS_BSD BOOST_VERSION_NUMBER(0,0,1)
+#       define BOOST_OS_BSD BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
 #   undef BOOST_OS_BSD_DRAGONFLY
 #   if defined(__DragonFly__)
-#       define BOOST_OS_DRAGONFLY_BSD BOOST_VERSION_NUMBER(0,0,1)
+#       define BOOST_OS_DRAGONFLY_BSD BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
+#endif
+
+#if BOOST_OS_BSD_DRAGONFLY
+#   define BOOST_OS_BSD_DRAGONFLY_AVAILABLE
 #endif
 
 #define BOOST_OS_BSD_DRAGONFLY_NAME "DragonFly BSD"

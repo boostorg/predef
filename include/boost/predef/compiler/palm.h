@@ -26,11 +26,15 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_PALM BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_PALM BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(_PACC_VER)
 #   undef BOOST_COMP_PALM
 #   define BOOST_COMP_PALM BOOST_PREDEF_MAKE_0X_VRRPP000(_PACC_VER)
+#endif
+
+#if BOOST_COMP_PALM
+#   define BOOST_COMP_PALM_AVAILABLE
 #endif
 
 #define BOOST_COMP_PALM_NAME "Palm C/C++"

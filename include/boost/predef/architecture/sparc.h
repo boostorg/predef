@@ -27,17 +27,23 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__sparc__) || defined(__sparc)
 #   undef BOOST_ARCH_SPARC
-#   if defined(__sparcv9)
+#   if !defined(BOOST_ARCH_SPARC) && defined(__sparcv9)
 #       define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER(9,0,0)
-#   elif defined(__sparcv8)
-#       define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER(8,0,0)
-#   else
-#       define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_ARCH_SPARC) &&  defined(__sparcv8)
+#       define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER(8,0,0)
+#   endif
+#   if !defined(BOOST_ARCH_SPARC) &&
+#       define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_ARCH_SPARC
+#   define BOOST_ARCH_SPARC_AVAILABLE
 #endif
 
 #define BOOST_ARCH_SPARC_NAME "SPARC"

@@ -11,7 +11,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 
-#define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_ARCH_X86 BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 /*`
 [heading `BOOST_ARCH_X86`]
@@ -50,21 +50,31 @@ If available versions \[3-6\] are specifically detected.
     defined(__THW_INTEL__) || defined(__I86__) || \
     defined(__INTEL__)
 #   undef BOOST_ARCH_X86
-#   if defined(__I86__)
+#   if !defined(BOOST_ARCH_X86) && defined(__I86__)
 #       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(__I86__,0,0)
-#   elif defined(_M_IX86)
-#       define BOOST_ARCH_X86 BOOST_PREDEF_MAKE_10_VV00(_M_IX86)
-#   elif defined(__i686__)
-#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(6,0,0)
-#   elif defined(__i586__)
-#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(5,0,0)
-#   elif defined(__i486__)
-#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(4,0,0)
-#   elif defined(__i386__)
-#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(3,0,0)
-#   else
-#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_ARCH_X86) && defined(_M_IX86)
+#       define BOOST_ARCH_X86 BOOST_PREDEF_MAKE_10_VV00(_M_IX86)
+#   endif
+#   if !defined(BOOST_ARCH_X86) && defined(__i686__)
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(6,0,0)
+#   endif
+#   if !defined(BOOST_ARCH_X86) && defined(__i586__)
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(5,0,0)
+#   endif
+#   if !defined(BOOST_ARCH_X86) && defined(__i486__)
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(4,0,0)
+#   endif
+#   if !defined(BOOST_ARCH_X86) && defined(__i386__)
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER(3,0,0)
+#   endif
+#   if !defined(BOOST_ARCH_X86)
+#       define BOOST_ARCH_X86 BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_ARCH_X86
+#   define BOOST_ARCH_X86_AVAILABLE
 #endif
 
 #define BOOST_ARCH_X86_NAME "Intel x86"

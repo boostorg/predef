@@ -26,11 +26,15 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_EDG BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_EDG BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__EDG__)
 #   undef BOOST_COMP_EDG
 #   define BOOST_COMP_EDG BOOST_PREDEF_MAKE_10_VRR(__EDG_VERSION__)
+#endif
+
+#if BOOST_COMP_EDG
+#   define BOOST_COMP_EDG_AVAILABLE
 #endif
 
 #define BOOST_COMP_EDG_NAME "EDG C++ Frontend"

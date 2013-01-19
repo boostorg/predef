@@ -28,15 +28,20 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_BORLAND BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_BORLAND BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__BORLANDC__) || defined(__CODEGEARC__)
 #   undef BOOST_COMP_BORLAND
-#   if defined(__CODEGEARC__)
+#   if !defined(BOOST_COMP_BORLAND) && (defined(__CODEGEARC__))
 #       define BOOST_COMP_BORLAND BOOST_PREDEF_MAKE_0X_VVRP(__CODEGEARC__)
-#   else
+#   endif
+#   if !defined(BOOST_COMP_BORLAND)
 #       define BOOST_COMP_BORLAND BOOST_PREDEF_MAKE_0X_VVRP(__BORLANDC__)
 #   endif
+#endif
+
+#if BOOST_COMP_BORLAND
+#   define BOOST_COMP_BORLAND_AVAILABLE
 #endif
 
 #define BOOST_COMP_BORLAND_NAME "Borland C++"

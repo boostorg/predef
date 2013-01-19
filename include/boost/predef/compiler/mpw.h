@@ -28,15 +28,20 @@ Version number available as major, and minor.
     ]
  */
 
-#define BOOST_COMP_MPW BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_MPW BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__MRC__) || defined(MPW_C) || defined(MPW_CPLUS)
 #   undef BOOST_COMP_MPW
-#   if defined(__MRC__)
+#   if !defined(BOOST_COMP_MPW) && defined(__MRC__)
 #       define BOOST_COMP_MPW BOOST_PREDEF_MAKE_0X_VVRR(__MRC__)
-#   else
-#       define BOOST_COMP_MPW BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_COMP_MPW)
+#       define BOOST_COMP_MPW BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_COMP_MPW
+#   define BOOST_COMP_MPW_AVAILABLE
 #endif
 
 #define BOOST_COMP_MPW_NAME "MPW C++"

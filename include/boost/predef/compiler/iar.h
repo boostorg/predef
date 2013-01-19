@@ -26,11 +26,15 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_IAR BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_IAR BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__IAR_SYSTEMS_ICC__)
 #   undef BOOST_COMP_IAR
 #   define BOOST_COMP_IAR BOOST_PREDEF_MAKE_10_VVRR(__VER__)
+#endif
+
+#if BOOST_COMP_IAR
+#   define BOOST_COMP_IAR_AVAILABLE
 #endif
 
 #define BOOST_COMP_IAR_NAME "IAR C/C++"

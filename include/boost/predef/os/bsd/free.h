@@ -24,11 +24,11 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_BSD_FREE BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_OS_BSD_FREE BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__FreeBSD__)
 #   ifndef BOOST_OS_BSD
-#       define BOOST_OS_BSD BOOST_VERSION_NUMBER(0,0,1)
+#       define BOOST_OS_BSD BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
 #   undef BOOST_OS_BSD_FREE
 #   if defined(__FreeBSD_version)
@@ -40,8 +40,12 @@ http://www.boost.org/LICENSE_1_0.txt)
                 BOOST_PREDEF_MAKE_10_VRR000(__FreeBSD_version)
 #       endif
 #   else
-#       define BOOST_OS_BSD_FREE BOOST_VERSION_NUMBER(0,0,1)
+#       define BOOST_OS_BSD_FREE BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
+#endif
+
+#if BOOST_OS_BSD_FREE
+#   define BOOST_OS_BSD_FREE_AVAILABLE
 #endif
 
 #define BOOST_OS_BSD_FREE_NAME "Free BSD"

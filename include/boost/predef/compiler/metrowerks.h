@@ -30,23 +30,32 @@ Version number available as major, minor, and patch.
     ]
  */
 
-#define BOOST_COMP_MWERKS BOOST_VERSION_NUMBER(0,0,0)
+#define BOOST_COMP_MWERKS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__MWERKS__) || defined(__CWCC__)
 #   undef BOOST_COMP_MWERKS
-#   if defined(__CWCC__)
+#   if !defined(BOOST_COMP_MWERKS) && defined(__CWCC__)
 #       define BOOST_COMP_MWERKS BOOST_PREDEF_MAKE_0X_VRPP(__CWCC__)
-#   elif (__MWERKS__ >= 0x4200)
-#       define BOOST_COMP_MWERKS BOOST_PREDEF_MAKE_0X_VRPP(__MWERKS__)
-#   elif (__MWERKS__ >= 0x3204) // note the "skip": 04->9.3
-#       define BOOST_COMP_MWERKS BOOST_VERSION_NUMBER(9,(__MWERKS__)%100-1,0)
-#   elif (__MWERKS__ >= 0x3200)
-#       define BOOST_COMP_MWERKS BOOST_VERSION_NUMBER(9,(__MWERKS__)%100,0)
-#   elif (__MWERKS__ >= 0x3000)
-#       define BOOST_COMP_MWERKS BOOST_VERSION_NUMBER(8,(__MWERKS__)%100,0)
-#   else
-#       define BOOST_COMP_MWERKS BOOST_VERSION_NUMBER(0,0,1)
 #   endif
+#   if !defined(BOOST_COMP_MWERKS) && (__MWERKS__ >= 0x4200)
+#       define BOOST_COMP_MWERKS BOOST_PREDEF_MAKE_0X_VRPP(__MWERKS__)
+#   endif
+#   if !defined(BOOST_COMP_MWERKS) && (__MWERKS__ >= 0x3204) // note the "skip": 04->9.3
+#       define BOOST_COMP_MWERKS BOOST_VERSION_NUMBER(9,(__MWERKS__)%100-1,0)
+#   endif
+#   if !defined(BOOST_COMP_MWERKS) && (__MWERKS__ >= 0x3200)
+#       define BOOST_COMP_MWERKS BOOST_VERSION_NUMBER(9,(__MWERKS__)%100,0)
+#   endif
+#   if !defined(BOOST_COMP_MWERKS) && (__MWERKS__ >= 0x3000)
+#       define BOOST_COMP_MWERKS BOOST_VERSION_NUMBER(8,(__MWERKS__)%100,0)
+#   endif
+#   if !defined(BOOST_COMP_MWERKS)
+#       define BOOST_COMP_MWERKS BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+#if BOOST_COMP_MWERKS
+#   define BOOST_COMP_MWERKS_AVAILABLE
 #endif
 
 #define BOOST_COMP_MWERKS_NAME "Metrowerks CodeWarrior"
