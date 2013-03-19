@@ -13,5 +13,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/compiler.h>
 #include <boost/predef/library.h>
 #include <boost/predef/os.h>
+#include <boost/predef/endian.h>
 
 #endif

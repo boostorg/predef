@@ -8,6 +8,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 #ifndef BOOST_PREDEF_LIBRARY_C_UC_H
 #define BOOST_PREDEF_LIBRARY_C_UC_H
 
+#include <boost/predef/library/c/_prefix.h>
+
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 
