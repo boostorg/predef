@@ -10,12 +10,35 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
-#include <boost/predef/library/c.h>
+#include <boost/predef/library/c/gnu.h>
 
 /*`
-[heading `BOOST_ENDIAN_BIG_BYTE`, `BOOST_ENDIAN_LITTLE_BYTE`, `BOOST_ENDIAN_BIG_WORD`, `BOOST_ENDIAN_LITTLE_WORD`]
+[heading `BOOST_ENDIAN_*`]
 
-Detection of endian memory ordering.
+Detection of endian memory ordering. There are four defined macros
+in this header that define the various generally possible endian
+memory orderings:
+
+* `BOOST_ENDIAN_BIG_BYTE`, byte-swapped big-endian.
+* `BOOST_ENDIAN_BIG_WORD`, word-swapped big-endian.
+* `BOOST_ENDIAN_LITTLE_BYTE`, byte-swapped little-endian.
+* `BOOST_ENDIAN_LITTLE_WORD`, word-swapped little-endian.
+
+The detection is conservative in that it only identifies endianness
+that it knows for certain. In particular bi-endianness is not
+indicated as is it not practically possible to determine the
+endianness from anything but an operating system provided
+header. And the currently known headers do not define that
+programatic bi-endianness is available.
+
+This implementation is a compilation of various publicly available
+information and acquired knowledge:
+
+# The indispensable documentation of "Pre-defined Compiler Macros"
+  [@http://sourceforge.net/p/predef/wiki/Endianness Endianness].
+# The various endian specifications available in the
+  [@http://wikipedia.org/ Wikipedia] computer architecture pages.
+# Generally available searches for headers that define endianness.
  */
 
 #define BOOST_ENDIAN_BIG_BYTE BOOST_VERSION_NUMBER_NOT_AVAILABLE
@@ -23,62 +46,70 @@ Detection of endian memory ordering.
 #define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_NOT_AVAILABLE
 #define BOOST_ENDIAN_LITTLE_WORD BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-/* GNU libc provides a header defining __BYT_ORDER. */
-#if BOOST_LIB_C_GNU
-#   include <endian.h>
-#endif
-
-/* GNU libc style __BYTE_ORDER macros. */
-#if defined(__BYTE_ORDER)
-#   if (__BYTE_ORDER == __BIG_ENDIAN)
-#       undef BOOST_ENDIAN_BIG_BYTE
-#       define BOOST_ENDIAN_BIG_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+/* GNU libc provides a header defining __BYTE_ORDER, or _BYTE_ORDER.
+ */
+#if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
+    !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
+#   if BOOST_LIB_C_GNU
+#       include <endian.h>
 #   endif
-#   if (__BYTE_ORDER == __LITTLE_ENDIAN)
-#       undef BOOST_ENDIAN_LITTLE_BYTE
-#       define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#   if (__BYTE_ORDER == __PDP_ENDIAN)
-#       undef BOOST_ENDIAN_LITTLE_WORD
-#       define BOOST_ENDIAN_LITTLE_WORD BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-/* Built-in byte-swpped big-endian macros. */
-#if !BOOST_ENDIAN_BIG_BYTE
-#   if defined(__BIG_ENDIAN__) || \
-        defined(__ARMEB__) || \
-        defined(__THUMBEB__) || \
-        defined(__AARCH64EB__) || \
-        defined(_MIPSEB) || \
-        defined(__MIPSEB) || \
-        defined(__MIPSEB__)
-#       undef BOOST_ENDIAN_BIG_BYTE
-#       define BOOST_ENDIAN_BIG_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+#   if defined(__BYTE_ORDER)
+#       if (__BYTE_ORDER == __BIG_ENDIAN)
+#           undef BOOST_ENDIAN_BIG_BYTE
+#           define BOOST_ENDIAN_BIG_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+#       endif
+#       if (__BYTE_ORDER == __LITTLE_ENDIAN)
+#           undef BOOST_ENDIAN_LITTLE_BYTE
+#           define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+#       endif
+#       if (__BYTE_ORDER == __PDP_ENDIAN)
+#           undef BOOST_ENDIAN_LITTLE_WORD
+#           define BOOST_ENDIAN_LITTLE_WORD BOOST_VERSION_NUMBER_AVAILABLE
+#       endif
 #   endif
 #endif
 
-/* Built-in byte-swapped little-endian macros. */
-#if !BOOST_ENDIAN_LITTLE_BYTE
-#   if defined(__LITTLE_ENDIAN__) || \
-        defined(__ARMEL__) || \
-        defined(__THUMBEL__) || \
-        defined(__AARCH64EL__) || \
-        defined(_MIPSEL) || \
-        defined(__MIPSEL) || \
-        defined(__MIPSEL__)
-#       undef BOOST_ENDIAN_LITTLE_BYTE
-#       define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+/* Built-in byte-swpped big-endian macros.
+ */
+#if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
+    !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
+#   if !BOOST_ENDIAN_BIG_BYTE
+#       if defined(__BIG_ENDIAN__) || \
+            defined(__ARMEB__) || \
+            defined(__THUMBEB__) || \
+            defined(__AARCH64EB__) || \
+            defined(_MIPSEB) || \
+            defined(__MIPSEB) || \
+            defined(__MIPSEB__)
+#           undef BOOST_ENDIAN_BIG_BYTE
+#           define BOOST_ENDIAN_BIG_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+#       endif
+#   endif
+#endif
+
+/* Built-in byte-swpped little-endian macros.
+ */
+#if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
+    !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
+#   if !BOOST_ENDIAN_LITTLE_BYTE
+#       if defined(__LITTLE_ENDIAN__) || \
+            defined(__ARMEL__) || \
+            defined(__THUMBEL__) || \
+            defined(__AARCH64EL__) || \
+            defined(_MIPSEL) || \
+            defined(__MIPSEL) || \
+            defined(__MIPSEL__)
+#           undef BOOST_ENDIAN_LITTLE_BYTE
+#           define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+#       endif
 #   endif
 #endif
 
 /* Some architectures are strictly one endianess (as opposed
  * the current common bi-endianess).
  */
-#if !BOOST_ENDIAN_BIG_BYTE && \
-    !BOOST_ENDIAN_BIG_WORD && \
-    !BOOST_ENDIAN_LITTLE_BYTE && \
-    !BOOST_ENDIAN_LITTLE_WORD
+#if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
+    !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
 #   include <boost/predef/architecture.h>
 #   if BOOST_ARCH_M68K || \
         BOOST_ARCH_PARISK || \
@@ -99,13 +130,13 @@ Detection of endian memory ordering.
 #if BOOST_ENDIAN_BIG_BYTE
 #   define BOOST_ENDIAN_BIG_BYTE_AVAILABLE
 #endif
-#if BOOST_ENDIAN_BIG_WORD_BYTE
+#if BOOST_ENDIAN_BIG_WORD
 #   define BOOST_ENDIAN_BIG_WORD_BYTE_AVAILABLE
 #endif
 #if BOOST_ENDIAN_LITTLE_BYTE
 #   define BOOST_ENDIAN_LITTLE_BYTE_AVAILABLE
 #endif
-#if BOOST_ENDIAN_LITTLE_WORD_BYTE
+#if BOOST_ENDIAN_LITTLE_WORD
 #   define BOOST_ENDIAN_LITTLE_WORD_BYTE_AVAILABLE
 #endif
 
