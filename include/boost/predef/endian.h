@@ -11,6 +11,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 #include <boost/predef/library/c/gnu.h>
+#include <boost/predef/os/bsd.h>
 
 /*`
 [heading `BOOST_ENDIAN_*`]
@@ -52,6 +53,14 @@ information and acquired knowledge:
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
 #   if BOOST_LIB_C_GNU
 #       include <endian.h>
+#   else
+#       if BOOST_OS_BSD
+#           if BOOST_OS_BSD_OPEN
+#               include <machine/endian.h>
+#           else
+#               include <sys/endian.h>
+#           endif
+#       endif
 #   endif
 #   if defined(__BYTE_ORDER)
 #       if (__BYTE_ORDER == __BIG_ENDIAN)
@@ -67,6 +76,20 @@ information and acquired knowledge:
 #           define BOOST_ENDIAN_LITTLE_WORD BOOST_VERSION_NUMBER_AVAILABLE
 #       endif
 #   endif
+#   if !defined(__BYTE_ORDER) && defined(_BYTE_ORDER)
+#       if (_BYTE_ORDER == _BIG_ENDIAN)
+#           undef BOOST_ENDIAN_BIG_BYTE
+#           define BOOST_ENDIAN_BIG_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+#       endif
+#       if (_BYTE_ORDER == _LITTLE_ENDIAN)
+#           undef BOOST_ENDIAN_LITTLE_BYTE
+#           define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+#       endif
+#       if (_BYTE_ORDER == _PDP_ENDIAN)
+#           undef BOOST_ENDIAN_LITTLE_WORD
+#           define BOOST_ENDIAN_LITTLE_WORD BOOST_VERSION_NUMBER_AVAILABLE
+#       endif
+#   endif
 #endif
 
 /* Built-in byte-swpped big-endian macros.
@@ -74,7 +97,7 @@ information and acquired knowledge:
 #if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
 #   if !BOOST_ENDIAN_BIG_BYTE
-#       if defined(__BIG_ENDIAN__) || \
+#       if (defined(__BIG_ENDIAN__) && !defined(__LITTLE_ENDIAN__)) || \
             defined(__ARMEB__) || \
             defined(__THUMBEB__) || \
             defined(__AARCH64EB__) || \
@@ -92,7 +115,7 @@ information and acquired knowledge:
 #if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
 #   if !BOOST_ENDIAN_LITTLE_BYTE
-#       if defined(__LITTLE_ENDIAN__) || \
+#       if (defined(__LITTLE_ENDIAN__) && !defined(__BIG_ENDIAN__)) || \
             defined(__ARMEL__) || \
             defined(__THUMBEL__) || \
             defined(__AARCH64EL__) || \
@@ -124,6 +147,20 @@ information and acquired knowledge:
         BOOST_ARCH_X86
 #       undef BOOST_ENDIAN_LITTLE_BYTE
 #       define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
+/* Windows on ARM, if not otherwise detected/specified, is always
+ * byte-swaped little-endian.
+ */
+#if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
+    !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
+#   if BOOST_ARCH_ARM
+#       include <boost/predef/os/windows.h>
+#       if BOOST_OS_WINDOWS
+#           undef BOOST_ENDIAN_LITTLE_BYTE
+#           define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_AVAILABLE
+#       endif
 #   endif
 #endif
 
