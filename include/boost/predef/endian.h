@@ -144,7 +144,8 @@ information and acquired knowledge:
 #   endif
 #   if BOOST_ARCH_AMD64 || \
         BOOST_ARCH_IA64 || \
-        BOOST_ARCH_X86
+        BOOST_ARCH_X86 || \
+        BOOST_ARCH_BLACKFIN
 #       undef BOOST_ENDIAN_LITTLE_BYTE
 #       define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
