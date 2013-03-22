@@ -18,5 +18,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_LITTLE_ENDIAN
 #   define BOOST_BYTE_ORDER 1234
 #endif
+#if BOOST_ENDIAN_LITTLE_WORD
+#   define BOOST_PDP_ENDIAN
+#   define BOOST_BYTE_ORDER 2134
+#endif
 
 #endif
