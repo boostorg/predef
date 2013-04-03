@@ -18,12 +18,12 @@
 <a name="predef.introduction"></a><a class="link" href="introduction.html" title="Introduction">Introduction</a>
 </h2></div></div></div>
 <p>
-      This library defines a set of compiler, architecture, operating system, and
-      library version numbers from the information it can gather of C++ predefined
-      macros or those defined in generally available headers. The idea for this library
-      grew out of a proposal to extend the Boost Config library to provide more,
-      and consistent, information than the feature definitions it supports. What
-      follows is an edited version of that brief proposal.
+      This library defines a set of compiler, architecture, operating system, library,
+      and other version numbers from the information it can gather of C, C++, Objective
+      C, and Objective C++ predefined macros or those defined in generally available
+      headers. The idea for this library grew out of a proposal to extend the Boost
+      Config library to provide more, and consistent, information than the feature
+      definitions it supports. What follows is an edited version of that brief proposal.
     </p>
 <h4>
 <a name="predef.introduction.h0"></a>
@@ -63,7 +63,7 @@
 <p>
       The current Predef library is now, both an independent library, and expanded
       in scope. It includes detection and definition of architectures, compilers,
-      languages, libraries, and operating systems. The key benefits are:
+      languages, libraries, operating systems, and endianness. The key benefits are:
     </p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">
@@ -71,9 +71,18 @@
           with <code class="computeroutput"><span class="preprocessor">#ifdef</span></code>.
         </li>
 <li class="listitem">
+          Guard macros that can be used for <code class="computeroutput"><span class="preprocessor">#ifdef</span></code>
+          checks.
+        </li>
+<li class="listitem">
           All possible definitions are included with the single <code class="computeroutput"><span class="preprocessor">#include</span>
           <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span></code>
           so that it's friendly to precompiled header usage.
+        </li>
+<li class="listitem">
+          Specific definitions can be included, ex. <code class="computeroutput"><span class="preprocessor">#include</span>
+          <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">/</span><span class="identifier">os</span><span class="special">/</span><span class="identifier">windows</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span></code>
+          for single checks.
         </li>
 <li class="listitem">
           Predefs can be directly used in both preprocessor and compiler expressions
@@ -155,7 +164,9 @@
         </li>
 <li class="listitem">
           Along with the above, it might be good to add some user control as to which
-          headers are included with the top-level header.
+          headers are included with the top-level header. Although in the current
+          form of the library this is less of an issue as one can include the specific
+          headers one needs.
         </li>
 <li class="listitem">
           Additionally, even if there is no auto-configure style option.. It would

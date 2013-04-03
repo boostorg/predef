@@ -18,12 +18,12 @@ Boost C++ Libraries.]
 [section Introduction]
 
 This library defines a set of compiler, architecture, operating system,
-and library version numbers from the information it can gather of C++
-predefined macros or those defined in generally available headers. The
-idea for this library grew out of a proposal to extend the Boost Config
-library to provide more, and consistent, information than the feature
-definitions it supports. What follows is an edited version of that brief
-proposal.
+library, and other version numbers from the information it can gather of
+C, C++, Objective C, and Objective C++ predefined macros or those defined
+in generally available headers. The idea for this library grew out of a
+proposal to extend the Boost Config library to provide more, and consistent,
+information than the feature definitions it supports. What follows is
+an edited version of that brief proposal.
 
 [heading Proposal]
 
@@ -51,12 +51,15 @@ consistently represent their version. This includes:
 
 The current Predef library is now, both an independent library, and expanded
 in scope. It includes detection and definition of architectures, compilers,
-languages, libraries, and operating systems. The key benefits are:
+languages, libraries, operating systems, and endianness. The key benefits are:
 
 * Version numbers that are always defined so that one doesn't have to guard
   with `#ifdef`.
+* Guard macros that can be used for `#ifdef` checks.
 * All possible definitions are included with the single `#include <boost/predef.h>`
   so that it's friendly to precompiled header usage.
+* Specific definitions can be included, ex. `#include <boost/predef/os/windows.h>`
+  for single checks.
 * Predefs can be directly used in both preprocessor and compiler expressions
   for comparison to other similarly defined values.
 * The headers are usable from multiple languages, that support the C preprocessor.
@@ -103,7 +106,9 @@ done:
   interesting to add something like auto-configuration predefs. This way we can
   add definitions for user specific libraries and features.
 * Along with the above, it might be good to add some user control as to which
-  headers are included with the top-level header.
+  headers are included with the top-level header. Although in the current
+  form of the library this is less of an issue as one can include the
+  specific headers one needs.
 * Additionally, even if there is no auto-configure style option.. It would be
   good to add optionally included headers so that user can get consistent
   version number definitions for libraries they use.
@@ -133,12 +138,13 @@ the particular item is not detected, and to a /positive/ value if it
 is detected. The predef macros fall onto five categories each with
 macros of a particular prefix:
 
-* `BOOST_ARCHITECTURE_`for system/CPU architecture one is compiling for.
-* `BOOST_CXX_` for the compiler one is using.
-* `BOOST_LANGUAGE_` for language standards one is compiling against.
-* `BOOST_LIBC_` and `BOOST_LIBSTD_` for the C and C++ standard library
+* `BOOST_ARCH_`for system/CPU architecture one is compiling for.
+* `BOOST_COMP_` for the compiler one is using.
+* `BOOST_LANG_` for language standards one is compiling against.
+* `BOOST_LIB_C_` and `BOOST_LIB_STD_` for the C and C++ standard library
   in use.
 * `BOOST_OS_` for the operating system we are compiling to.
+* `BOOST_ENDIAN_` for endianness of the os and architecture combination.
 
 [note The detected definitions are for the configuration one is targeting
 during the compile. In particular in a cross-compile this means the target
@@ -154,7 +160,7 @@ a choice based on the version of the GCC C++ compiler one would:
 
   int main()
   {
-    if (BOOST_CXX_GNUC >= BOOST_VERSION_NUMBER(4,0,0))
+    if (BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(4,0,0))
       std::cout << "GCC compiler is at least version 4.0.0" << std::endl;
     else
       std::cout << "GCC compiler is at older than version 4.0.0, or not a GCC compiler" << std::endl;
@@ -164,7 +170,7 @@ a choice based on the version of the GCC C++ compiler one would:
 
 As you might notice above the `else` clause also covers the case where
 the particular compiler is not detected. But one can make the test
-specifically test for the detection. All predef definitions are defined
+also test for the detection. All predef definitions are defined
 as a zero (0) expression when not detected. Hence one could use the
 detection with a natural single condition. For example:
 
@@ -174,7 +180,7 @@ detection with a natural single condition. For example:
 
   int main()
   {
-    if (BOOST_CXX_GNUC)
+    if (BOOST_COMP_GNUC)
       std::cout << "This is GNU GCC!" << std::endl;
     else
       std::cout << "Not GNU GCC." << std::endl;
@@ -189,8 +195,8 @@ from the preprocessor:
   #include <boost/predef.h>
   #include <iostream>
 
-  #if BOOST_CXX_GNUC
-    #if BOOST_CXX_GNUC >= BOOST_VERSION_NUMBER(4,0,0)
+  #if BOOST_COMP_GNUC
+    #if BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(4,0,0)
       const char * the_compiler = "GNU GCC, of at least version 4."
     #else
       const char * the_compiler = "GNU GCC, less than version 4."
@@ -205,6 +211,19 @@ from the preprocessor:
     return 0;
   }
 ``
+
+In addition, for each version macro defined there is a
+`*_AVAILABLE` macro defined only when the particular aspect is
+detected. I.e. a definition equivalent to:
+
+``
+  #if BOOST_PREDEF_ABC
+    #define BOOST_PREDEF_ABC_AVAILABLE
+  #endif
+``
+
+Also for each aspect there is a macro defined with a descriptive
+name of what the detection is.
 
 [heading Using the `BOOST_VERSION_NUMBER` macro]
 
@@ -264,6 +283,8 @@ All predefs need to follow a set of requirements:
 * The predef must, by default, be defined to `BOOST_VERSION_NUMBER(0,0,1)`
   when the predef is detected.
 * If possible, the predef will be defined as the version number detected.
+* The predef must define `*_AVAILABLE` macros.
+* The predef must define a symbolic constant string name macro.
 * The predef must declare itself, after being defined, for the testing
   system.
 
@@ -335,13 +356,24 @@ to minimally indicate that the predef was detected:
 
 ``
 #if (condition_a)
-    #undef BOOST_category_tag
-    #if (condition_b)
-        #define BOOST_category_tag BOOST_VERSION_NUMBER(major,minor,patch)
-    #else
-        #define BOOST_category_tag BOOST_VERSION_NUMBER(0,0,1)
-    #endif
+#   undef BOOST_category_tag
+#   if (condition_b)
+#        define BOOST_category_tag BOOST_VERSION_NUMBER(major,minor,patch)
+#    else
+#        define BOOST_category_tag BOOST_VERSION_NUMBER(0,0,1)
+#    endif
 #endif
+``
+
+We also need to provide the `*_AVAILABLE` versions of the predef. And
+for convenience we also want to provide a `*_NAME` macro:
+
+``
+#if BOOST_category_tag
+#   define BOOST_category_tag_AVAILABLE
+#endif
+
+#define BOOST_catagory_tag_NAME "Name"
 ``
 
 The testing of the predef macros is automated to generate checks for all
@@ -352,7 +384,7 @@ to create informational output:
 
 ``
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_category_tag,"Name")
+BOOST_PREDEF_DECLARE_TEST(BOOST_category_tag,BOOST_category_tag_NAME)
 ``
 
 And, of course, we last need to close out the include guard:
@@ -375,7 +407,7 @@ uses a simple 3-digit version macro (M,N,P). It can be decomesed
 and defined as:
 
 ``
-#define BOOST_CXX_EDG BOOST_PREDEF_MAKE_N_N_N(__EDG_VERSION__)
+#define BOOST_CCOMP_EDG BOOST_PREDEF_MAKE_N_N_N(__EDG_VERSION__)
 ``
 
 The decomposition macros are split into three types: decimal
@@ -393,6 +425,7 @@ and "Y", "M", "D" for dates.
 
 [section `BOOST_ARCH` architecture macros]
 [include ../include/boost/predef/architecture/*.h]
+[include ../include/boost/predef/architecture/x86/*.h]
 [endsect]
 
 [section `BOOST_COMP` compiler macros]
@@ -404,17 +437,41 @@ and "Y", "M", "D" for dates.
 [endsect]
 
 [section `BOOST_LIB` library macros]
-[include ../include/boost/predef/library/*/*.h]
+[include ../include/boost/predef/library/c/*.h]
+[include ../include/boost/predef/library/std/*.h]
 [endsect]
 
-[section `BOOST_OS_` operating system macros]
+[section `BOOST_OS` operating system macros]
 [include ../include/boost/predef/os/*.h]
-[include ../include/boost/predef/os/*/*.h]
+[include ../include/boost/predef/os/bsd/*.h]
+[endsect]
+
+[section Other macros]
+[include ../include/boost/predef/other/*.h]
 [endsect]
 
 [section Version definition macros]
 [include ../include/boost/predef/version_number.h]
 [include ../include/boost/predef/make.h]
 [endsect]
+
+[endsect]
+
+[section Acknoledgements]
+
+The comprehensiveness of this library would not be
+possible without the existance of the indispensible
+resource that is the
+[@http://sourceforge.net/p/predef/ Pre-defined C/C++ Compiler Macros]
+Project. It was, and continues to be, the primary source
+of the definitions that make up this library. Thanks
+to Bjorn Reese and all the volunteers that make that
+resource possible.
+
+This library would be an incoherent mess if it weren't for
+Boost community that provided invaluable feedback for the
+eight years that it took to polish into a useable form.
+In particular I would like to thank: ...
+
 
 [endsect]

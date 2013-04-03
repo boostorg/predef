@@ -1,5 +1,5 @@
 /*
-Copyright Redshift Software, Inc. 2008-2012
+Copyright Redshift Software, Inc. 2008-2013
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -29,7 +29,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/compiler/metaware.h>
 #include <boost/predef/compiler/metrowerks.h>
 #include <boost/predef/compiler/microtec.h>
-#include <boost/predef/compiler/mingw.h>
 #include <boost/predef/compiler/mpw.h>
 #include <boost/predef/compiler/palm.h>
 #include <boost/predef/compiler/pgi.h>

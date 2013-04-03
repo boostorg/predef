@@ -32,24 +32,28 @@
     </p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">
-          <code class="computeroutput"><span class="identifier">BOOST_ARCHITECTURE_</span></code>for
-          system/CPU architecture one is compiling for.
+          <code class="computeroutput"><span class="identifier">BOOST_ARCH_</span></code>for system/CPU
+          architecture one is compiling for.
         </li>
 <li class="listitem">
-          <code class="computeroutput"><span class="identifier">BOOST_CXX_</span></code> for the compiler
+          <code class="computeroutput"><span class="identifier">BOOST_COMP_</span></code> for the compiler
           one is using.
         </li>
 <li class="listitem">
-          <code class="computeroutput"><span class="identifier">BOOST_LANGUAGE_</span></code> for language
+          <code class="computeroutput"><span class="identifier">BOOST_LANG_</span></code> for language
           standards one is compiling against.
         </li>
 <li class="listitem">
-          <code class="computeroutput"><span class="identifier">BOOST_LIBC_</span></code> and <code class="computeroutput"><span class="identifier">BOOST_LIBSTD_</span></code> for the C and C++ standard
+          <code class="computeroutput"><span class="identifier">BOOST_LIB_C_</span></code> and <code class="computeroutput"><span class="identifier">BOOST_LIB_STD_</span></code> for the C and C++ standard
           library in use.
         </li>
 <li class="listitem">
           <code class="computeroutput"><span class="identifier">BOOST_OS_</span></code> for the operating
           system we are compiling to.
+        </li>
+<li class="listitem">
+          <code class="computeroutput"><span class="identifier">BOOST_ENDIAN_</span></code> for endianness
+          of the os and architecture combination.
         </li>
 </ul></div>
 <div class="note"><table border="0" summary="Note">
@@ -74,7 +78,7 @@
 
 <span class="keyword">int</span> <span class="identifier">main</span><span class="special">()</span>
 <span class="special">{</span>
-  <span class="keyword">if</span> <span class="special">(</span><span class="identifier">BOOST_CXX_GNUC</span> <span class="special">&gt;=</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="number">4</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">))</span>
+  <span class="keyword">if</span> <span class="special">(</span><span class="identifier">BOOST_COMP_GNUC</span> <span class="special">&gt;=</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="number">4</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">))</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"GCC compiler is at least version 4.0.0"</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
   <span class="keyword">else</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"GCC compiler is at older than version 4.0.0, or not a GCC compiler"</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
@@ -84,7 +88,7 @@
 <p>
       As you might notice above the <code class="computeroutput"><span class="keyword">else</span></code>
       clause also covers the case where the particular compiler is not detected.
-      But one can make the test specifically test for the detection. All predef definitions
+      But one can make the test also test for the detection. All predef definitions
       are defined as a zero (0) expression when not detected. Hence one could use
       the detection with a natural single condition. For example:
     </p>
@@ -93,7 +97,7 @@
 
 <span class="keyword">int</span> <span class="identifier">main</span><span class="special">()</span>
 <span class="special">{</span>
-  <span class="keyword">if</span> <span class="special">(</span><span class="identifier">BOOST_CXX_GNUC</span><span class="special">)</span>
+  <span class="keyword">if</span> <span class="special">(</span><span class="identifier">BOOST_COMP_GNUC</span><span class="special">)</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"This is GNU GCC!"</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
   <span class="keyword">else</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Not GNU GCC."</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
@@ -107,8 +111,8 @@
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
 
-<span class="preprocessor">#if</span> <span class="identifier">BOOST_CXX_GNUC</span>
-  <span class="preprocessor">#if</span> <span class="identifier">BOOST_CXX_GNUC</span> <span class="special">&gt;=</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="number">4</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">)</span>
+<span class="preprocessor">#if</span> <span class="identifier">BOOST_COMP_GNUC</span>
+  <span class="preprocessor">#if</span> <span class="identifier">BOOST_COMP_GNUC</span> <span class="special">&gt;=</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="number">4</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">)</span>
     <span class="keyword">const</span> <span class="keyword">char</span> <span class="special">*</span> <span class="identifier">the_compiler</span> <span class="special">=</span> <span class="string">"GNU GCC, of at least version 4."</span>
   <span class="preprocessor">#else</span>
     <span class="keyword">const</span> <span class="keyword">char</span> <span class="special">*</span> <span class="identifier">the_compiler</span> <span class="special">=</span> <span class="string">"GNU GCC, less than version 4."</span>
@@ -123,6 +127,18 @@
   <span class="keyword">return</span> <span class="number">0</span><span class="special">;</span>
 <span class="special">}</span>
 </pre>
+<p>
+      In addition, for each version macro defined there is a <code class="computeroutput"><span class="special">*</span><span class="identifier">_AVAILABLE</span></code> macro defined only when the particular
+      aspect is detected. I.e. a definition equivalent to:
+    </p>
+<pre class="programlisting"><span class="preprocessor">#if</span> <span class="identifier">BOOST_PREDEF_ABC</span>
+  <span class="preprocessor">#define</span> <span class="identifier">BOOST_PREDEF_ABC_AVAILABLE</span>
+<span class="preprocessor">#endif</span>
+</pre>
+<p>
+      Also for each aspect there is a macro defined with a descriptive name of what
+      the detection is.
+    </p>
 <h4>
 <a name="predef.using_the_predefs.h0"></a>
       <span class="phrase"><a name="predef.using_the_predefs.using_the_boost_version_number_m"></a></span><a class="link" href="using_the_predefs.html#predef.using_the_predefs.using_the_boost_version_number_m">Using the

@@ -12,7 +12,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_ARCH_ALPHA`, [@http://en.wikipedia.org/wiki/DEC_Alpha DEC Alpha]]
+[heading `BOOST_ARCH_ALPHA`]
+
+[@http://en.wikipedia.org/wiki/DEC_Alpha DEC Alpha] architecture.
 
 [table
     [[__predef_symbol__] [__predef_version__]]

@@ -14,7 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_COMP_GCCXML`]
 
-[@http://en.wikipedia.org/wiki/XXX GCC XML] compiler.
+[@http://www.gccxml.org/ GCC XML] compiler.
 
 [table
     [[__predef_symbol__] [__predef_version__]]
@@ -38,6 +38,5 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_GCCXML,BOOST_COMP_GCCXML_NAME)
-
 
 #endif

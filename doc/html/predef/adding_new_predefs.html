@@ -49,6 +49,13 @@
           If possible, the predef will be defined as the version number detected.
         </li>
 <li class="listitem">
+          The predef must define <code class="computeroutput"><span class="special">*</span><span class="identifier">_AVAILABLE</span></code>
+          macros.
+        </li>
+<li class="listitem">
+          The predef must define a symbolic constant string name macro.
+        </li>
+<li class="listitem">
           The predef must declare itself, after being defined, for the testing system.
         </li>
 </ul></div>
@@ -127,13 +134,23 @@ Documentation about what is detected.
       that the predef was detected:
     </p>
 <pre class="programlisting"><span class="preprocessor">#if</span> <span class="special">(</span><span class="identifier">condition_a</span><span class="special">)</span>
-    <span class="preprocessor">#undef</span> <span class="identifier">BOOST_category_tag</span>
-    <span class="preprocessor">#if</span> <span class="special">(</span><span class="identifier">condition_b</span><span class="special">)</span>
-        <span class="preprocessor">#define</span> <span class="identifier">BOOST_category_tag</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="identifier">major</span><span class="special">,</span><span class="identifier">minor</span><span class="special">,</span><span class="identifier">patch</span><span class="special">)</span>
-    <span class="preprocessor">#else</span>
-        <span class="preprocessor">#define</span> <span class="identifier">BOOST_category_tag</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">1</span><span class="special">)</span>
-    <span class="preprocessor">#endif</span>
+<span class="preprocessor">#   undef</span> <span class="identifier">BOOST_category_tag</span>
+<span class="preprocessor">#   if</span> <span class="special">(</span><span class="identifier">condition_b</span><span class="special">)</span>
+<span class="preprocessor">#        define</span> <span class="identifier">BOOST_category_tag</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="identifier">major</span><span class="special">,</span><span class="identifier">minor</span><span class="special">,</span><span class="identifier">patch</span><span class="special">)</span>
+<span class="preprocessor">#    else</span>
+<span class="preprocessor">#        define</span> <span class="identifier">BOOST_category_tag</span> <span class="identifier">BOOST_VERSION_NUMBER</span><span class="special">(</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">1</span><span class="special">)</span>
+<span class="preprocessor">#    endif</span>
 <span class="preprocessor">#endif</span>
+</pre>
+<p>
+      We also need to provide the <code class="computeroutput"><span class="special">*</span><span class="identifier">_AVAILABLE</span></code> versions of the predef. And for
+      convenience we also want to provide a <code class="computeroutput"><span class="special">*</span><span class="identifier">_NAME</span></code> macro:
+    </p>
+<pre class="programlisting"><span class="preprocessor">#if</span> <span class="identifier">BOOST_category_tag</span>
+<span class="preprocessor">#   define</span> <span class="identifier">BOOST_category_tag_AVAILABLE</span>
+<span class="preprocessor">#endif</span>
+
+<span class="preprocessor">#define</span> <span class="identifier">BOOST_catagory_tag_NAME</span> <span class="string">"Name"</span>
 </pre>
 <p>
       The testing of the predef macros is automated to generate checks for all the
@@ -142,7 +159,7 @@ Documentation about what is detected.
       the test programs they expand out specially to create informational output:
     </p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">predef</span><span class="special">/</span><span class="identifier">detail</span><span class="special">/</span><span class="identifier">test</span><span class="special">.</span><span class="identifier">h</span><span class="special">&gt;</span>
-<span class="identifier">BOOST_PREDEF_DECLARE_TEST</span><span class="special">(</span><span class="identifier">BOOST_category_tag</span><span class="special">,</span><span class="string">"Name"</span><span class="special">)</span>
+<span class="identifier">BOOST_PREDEF_DECLARE_TEST</span><span class="special">(</span><span class="identifier">BOOST_category_tag</span><span class="special">,</span><span class="identifier">BOOST_category_tag_NAME</span><span class="special">)</span>
 </pre>
 <p>
       And, of course, we last need to close out the include guard:
@@ -164,7 +181,7 @@ Documentation about what is detected.
       by compilers. For example the EDG compiler uses a simple 3-digit version macro
       (M,N,P). It can be decomesed and defined as:
     </p>
-<pre class="programlisting"><span class="preprocessor">#define</span> <span class="identifier">BOOST_CXX_EDG</span> <span class="identifier">BOOST_PREDEF_MAKE_N_N_N</span><span class="special">(</span><span class="identifier">__EDG_VERSION__</span><span class="special">)</span>
+<pre class="programlisting"><span class="preprocessor">#define</span> <span class="identifier">BOOST_CCOMP_EDG</span> <span class="identifier">BOOST_PREDEF_MAKE_N_N_N</span><span class="special">(</span><span class="identifier">__EDG_VERSION__</span><span class="special">)</span>
 </pre>
 <p>
       The decomposition macros are split into three types: decimal decomposition,
