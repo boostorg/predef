@@ -21,12 +21,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
     [[`__x86_64`] [__predef_detection__]]
     [[`__x86_64__`] [__predef_detection__]]
-    [[`__ia64__`] [__predef_detection__]]
-    [[`_IA64`] [__predef_detection__]]
-    [[`__IA64__`] [__predef_detection__]]
-    [[`__ia64`] [__predef_detection__]]
-    [[`_M_IA64`] [__predef_detection__]]
-    [[`__itanium__`] [__predef_detection__]]
     [[`__amd64__`] [__predef_detection__]]
     [[`__amd64`] [__predef_detection__]]
     [[`_M_X64`] [__predef_detection__]]
@@ -36,9 +30,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_ARCH_X86_64 BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__x86_64) || defined(__x86_64__) || \
-    defined(__ia64__) || defined(_IA64) || \
-    defined(__IA64__) || defined(__ia64) || \
-    defined(_M_IA64) || defined(__itanium__) || \
     defined(__amd64__) || defined(__amd64) || \
     defined(_M_X64)
 #   undef BOOST_ARCH_X86_64
