@@ -9,7 +9,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_OTHER_H
 
 #include <boost/predef/other/endian.h>
-#include <boost/predef/other/mingw.h>
 /*#include <boost/predef/other/.h>*/
 
 #endif
