@@ -12,9 +12,6 @@
     [source-mode c++]
 ]
 
-[warning This is a *proposed* Boost Library and *is not* part of the
-Boost C++ Libraries.]
-
 [section Introduction]
 
 This library defines a set of compiler, architecture, operating system,
