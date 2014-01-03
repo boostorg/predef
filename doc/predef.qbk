@@ -1,8 +1,8 @@
 [article Predef
     [quickbook 1.7]
-    [version 1.0]
+    [version 1.1]
     [authors [Rivera, Rene]]
-    [copyright 2005 Rene Rivera, 2008-2013 Redshift Software Inc]
+    [copyright 2005, 2008-2014 Rene Rivera]
     [purpose Identification and specification of predefined macros.]
     [license
         Distributed under the Boost Software License, Version 1.0.
