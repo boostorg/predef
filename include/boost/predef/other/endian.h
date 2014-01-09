@@ -102,17 +102,15 @@ information and acquired knowledge:
  */
 #if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
-#   if !BOOST_ENDIAN_BIG_BYTE
-#       if (defined(__BIG_ENDIAN__) && !defined(__LITTLE_ENDIAN__)) || \
-            defined(__ARMEB__) || \
-            defined(__THUMBEB__) || \
-            defined(__AARCH64EB__) || \
-            defined(_MIPSEB) || \
-            defined(__MIPSEB) || \
-            defined(__MIPSEB__)
-#           undef BOOST_ENDIAN_BIG_BYTE
-#           define BOOST_ENDIAN_BIG_BYTE BOOST_VERSION_NUMBER_AVAILABLE
-#       endif
+#   if (defined(__BIG_ENDIAN__) && !defined(__LITTLE_ENDIAN__)) || \
+        defined(__ARMEB__) || \
+        defined(__THUMBEB__) || \
+        defined(__AARCH64EB__) || \
+        defined(_MIPSEB) || \
+        defined(__MIPSEB) || \
+        defined(__MIPSEB__)
+#       undef BOOST_ENDIAN_BIG_BYTE
+#       define BOOST_ENDIAN_BIG_BYTE BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
 #endif
 
@@ -120,17 +118,15 @@ information and acquired knowledge:
  */
 #if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
-#   if !BOOST_ENDIAN_LITTLE_BYTE
-#       if (defined(__LITTLE_ENDIAN__) && !defined(__BIG_ENDIAN__)) || \
-            defined(__ARMEL__) || \
-            defined(__THUMBEL__) || \
-            defined(__AARCH64EL__) || \
-            defined(_MIPSEL) || \
-            defined(__MIPSEL) || \
-            defined(__MIPSEL__)
-#           undef BOOST_ENDIAN_LITTLE_BYTE
-#           define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_AVAILABLE
-#       endif
+#   if (defined(__LITTLE_ENDIAN__) && !defined(__BIG_ENDIAN__)) || \
+        defined(__ARMEL__) || \
+        defined(__THUMBEL__) || \
+        defined(__AARCH64EL__) || \
+        defined(_MIPSEL) || \
+        defined(__MIPSEL) || \
+        defined(__MIPSEL__)
+#       undef BOOST_ENDIAN_LITTLE_BYTE
+#       define BOOST_ENDIAN_LITTLE_BYTE BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
 #endif
 
