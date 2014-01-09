@@ -8,7 +8,10 @@ http://www.boost.org/LICENSE_1_0.txt)
 [section To Do]
 
 * Provide "exclusive" defs for compilers, OS, and others, that are exclusively
-  defined for the detected component.
+  defined for the detected component. Or do we follow what we do with OS detection
+  and keep the various category defs exclusive within the category (i.e. only
+  define one compiler, language, etc). Or is this something specific to the category?
+  Possible exclusive categories: architecture, compiler, platform.
 * Improve reference documentation.
 * Integrate Quickbook multi-include changes to main line Quickbook so that
   Predef can be included in the global documentation.
