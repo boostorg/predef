@@ -103,6 +103,7 @@ information and acquired knowledge:
 #if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
 #   if (defined(__BIG_ENDIAN__) && !defined(__LITTLE_ENDIAN__)) || \
+       (defined(_BIG_ENDIAN) && !defined(_LITTLE_ENDIAN)) || \
         defined(__ARMEB__) || \
         defined(__THUMBEB__) || \
         defined(__AARCH64EB__) || \
@@ -119,6 +120,7 @@ information and acquired knowledge:
 #if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
 #   if (defined(__LITTLE_ENDIAN__) && !defined(__BIG_ENDIAN__)) || \
+       (defined(_LITTLE_ENDIAN) && !defined(_BIG_ENDIAN)) || \
         defined(__ARMEL__) || \
         defined(__THUMBEL__) || \
         defined(__AARCH64EL__) || \
@@ -138,6 +140,7 @@ information and acquired knowledge:
 #   include <boost/predef/architecture.h>
 #   if BOOST_ARCH_M68K || \
         BOOST_ARCH_PARISK || \
+        BOOST_ARCH_SPARC || \
         BOOST_ARCH_SYS370 || \
         BOOST_ARCH_SYS390 || \
         BOOST_ARCH_Z
