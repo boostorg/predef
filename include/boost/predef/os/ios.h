@@ -5,54 +5,47 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
-#ifndef BOOST_PREDEF_OS_MACOS_H
-#define BOOST_PREDEF_OS_MACOS_H
+#ifndef BOOST_PREDEF_OS_IOS_H
+#define BOOST_PREDEF_OS_IOS_H
 
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 
 /*`
-[heading `BOOST_OS_MACOS`]
+[heading `BOOST_OS_IOS`]
 
-[@http://en.wikipedia.org/wiki/Mac_OS Mac OS] operating system.
+[@http://en.wikipedia.org/wiki/iOS iOS] operating system.
 
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`macintosh`] [__predef_detection__]]
-    [[`Macintosh`] [__predef_detection__]]
     [[`__APPLE__`] [__predef_detection__]]
     [[`__MACH__`] [__predef_detection__]]
+    [[`__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__`] [__predef_detection__]]
 
-    [[`__APPLE__`, `__MACH__`] [10.0.0]]
-    [[ /otherwise/ ] [9.0.0]]
+    [[`__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__`] [__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000]]
     ]
  */
 
-#define BOOST_OS_MACOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
+#define BOOST_OS_IOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if !BOOST_PREDEF_DETAIL_OS_DETECTED && ( \
-    defined(macintosh) || defined(Macintosh) || \
-    (defined(__APPLE__) && defined(__MACH__)) \
+    defined(__APPLE__) && defined(__MACH__) && \
+    defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__) \
     )
-#   undef BOOST_OS_MACOS
-#   if !defined(BOOST_OS_MACOS) && defined(__APPLE__) && defined(__MACH__)
-#       define BOOST_OS_MACOS BOOST_VERSION_NUMBER(10,0,0)
-#   endif
-#   if !defined(BOOST_OS_MACOS)
-#       define BOOST_OS_MACOS BOOST_VERSION_NUMBER(9,0,0)
-#   endif
+#   undef BOOST_OS_IOS
+#   define BOOST_OS_IOS (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
 #endif
 
-#if BOOST_OS_MACOS
-#   define BOOST_OS_MACOS_AVAILABLE
+#if BOOST_OS_IOS
+#   define BOOST_OS_IOS_AVAILABLE
 #   include <boost/predef/detail/os_detected.h>
 #endif
 
-#define BOOST_OS_MACOS_NAME "Mac OS"
+#define BOOST_OS_IOS_NAME "iOS"
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_MACOS,BOOST_OS_MACOS_NAME)
+BOOST_PREDEF_DECLARE_TEST(BOOST_OS_IOS,BOOST_OS_IOS_NAME)
 
 
 #endif

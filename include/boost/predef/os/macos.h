@@ -23,6 +23,7 @@ http://www.boost.org/LICENSE_1_0.txt)
     [[`Macintosh`] [__predef_detection__]]
     [[`__APPLE__`] [__predef_detection__]]
     [[`__MACH__`] [__predef_detection__]]
+    [[`!__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__`] [__predef_detection__]]
 
     [[`__APPLE__`, `__MACH__`] [10.0.0]]
     [[ /otherwise/ ] [9.0.0]]
@@ -31,7 +32,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_MACOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if !BOOST_PREDEF_DETAIL_OS_DETECTED && ( \
+#if !BOOST_PREDEF_DETAIL_OS_DETECTED && \
+    !defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__) && ( \
     defined(macintosh) || defined(Macintosh) || \
     (defined(__APPLE__) && defined(__MACH__)) \
     )
