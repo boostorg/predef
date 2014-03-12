@@ -9,6 +9,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 #ifndef BOOST_PREDEF_OS_MACOS_H
 #define BOOST_PREDEF_OS_MACOS_H
 
+/* Special case: iOS will define the same predefs as MacOS, and additionally
+ '__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__'. We can guard against that,
+ but only if we detect iOS first. Hence we will force include iOS detection
+ * before doing any MacOS detection.
+ */
+#include <boost/predef/os/ios.h>
+
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
 
@@ -24,7 +31,6 @@ http://www.boost.org/LICENSE_1_0.txt)
     [[`Macintosh`] [__predef_detection__]]
     [[`__APPLE__`] [__predef_detection__]]
     [[`__MACH__`] [__predef_detection__]]
-    [[`!__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__`] [__predef_detection__]]
 
     [[`__APPLE__`, `__MACH__`] [10.0.0]]
     [[ /otherwise/ ] [9.0.0]]
@@ -33,8 +39,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_MACOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if !BOOST_PREDEF_DETAIL_OS_DETECTED && \
-    !defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__) && ( \
+#if !BOOST_PREDEF_DETAIL_OS_DETECTED && ( \
     defined(macintosh) || defined(Macintosh) || \
     (defined(__APPLE__) && defined(__MACH__)) \
     )
