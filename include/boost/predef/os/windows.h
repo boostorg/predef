@@ -36,6 +36,19 @@ http://www.boost.org/LICENSE_1_0.txt)
     )
 #   undef BOOST_OS_WINDOWS
 #   define BOOST_OS_WINDOWS BOOST_VERSION_NUMBER_AVAILABLE
+
+// BOOST_WINDOWS_RUNTIME is only defined for store and phone, but not desktop.
+// This allows libraries to easily just check for banned Win32 APIs.
+// Any APIs specific to only phone or store should be under a 
+// WINAPI_FAMILY_PARITION check.
+#if defined(WINAPI_FAMILY) && WINAPI_FAMILY==WINAPI_FAMILY_APP
+#  define BOOST_WINDOWS_RUNTIME WINAPI_FAMILY_APP
+#  define BOOST_NO_ANSI_APIS
+#elif defined(WINAPI_FAMILY) && WINAPI_FAMILY==WINAPI_FAMILY_PHONE_APP
+#  define BOOST_WINDOWS_RUNTIME WINAPI_FAMILY_PHONE_APP
+#  define BOOST_NO_ANSI_APIS 
+#endif
+
 #endif
 
 #if BOOST_OS_WINDOWS
