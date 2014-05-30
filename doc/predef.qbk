@@ -443,6 +443,10 @@ and "Y", "M", "D" for dates.
 [include ../include/boost/predef/os/bsd/*.h]
 [endsect]
 
+[section `BOOST_PLAT` platform macros]
+[include ../include/boost/predef/platform/*.h]
+[endsect]
+
 [section Other macros]
 [include ../include/boost/predef/other/*.h]
 [endsect]
