@@ -10,6 +10,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
+#include <boost/predef/os/windows.h>
 
 /*`
 [heading `BOOST_PLAT_WINDOWS_DESKTOP`]
@@ -24,7 +25,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_PLAT_WINDOWS_DESKTOP BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if !defined(WINAPI_FAMILY) || (WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP)
+#if BOOST_OS_WINDOWS && \
+    ( !defined(WINAPI_FAMILY) || (WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP) )
 #   undef BOOST_PLAT_WINDOWS_DESKTOP
 #   define BOOST_PLAT_WINDOWS_DESKTOP BOOST_VERSION_NUMBER_AVAILABLE
 #endif

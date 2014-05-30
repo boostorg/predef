@@ -10,6 +10,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/predef/version_number.h>
 #include <boost/predef/make.h>
+#include <boost/predef/os/windows.h>
 
 /*`
 [heading `BOOST_PLAT_WINDOWS_RUNTIME`]
@@ -24,7 +25,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_PLAT_WINDOWS_RUNTIME BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if WINAPI_FAMILY == WINAPI_FAMILY_APP || WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP
+#if BOOST_OS_WINDOWS && \
+    ( WINAPI_FAMILY == WINAPI_FAMILY_APP || WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP )
 #   undef BOOST_PLAT_WINDOWS_RUNTIME
 #   define BOOST_PLAT_WINDOWS_RUNTIME BOOST_VERSION_NUMBER_AVAILABLE
 #endif
