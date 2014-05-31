@@ -4,6 +4,7 @@
 # http://www.boost.org/LICENSE_1_0.txt)
 
 using quickbook ;
+using boostbook ;
 import path ;
 
 if ! $(BOOST_ROOT)
