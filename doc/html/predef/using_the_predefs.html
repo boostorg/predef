@@ -52,6 +52,10 @@
           system we are compiling to.
         </li>
 <li class="listitem">
+          <code class="computeroutput"><span class="identifier">BOOST_PLAT_</span></code> for platforms
+          on top of operating system or compilers.
+        </li>
+<li class="listitem">
           <code class="computeroutput"><span class="identifier">BOOST_ENDIAN_</span></code> for endianness
           of the os and architecture combination.
         </li>
@@ -128,7 +132,7 @@
 <span class="special">}</span>
 </pre>
 <p>
-      In addition, for each version macro defined there is a <code class="computeroutput"><span class="special">*</span><span class="identifier">_AVAILABLE</span></code> macro defined only when the particular
+      In addition, for each version macro defined there is an <code class="computeroutput"><span class="special">*</span><span class="identifier">_AVAILABLE</span></code> macro defined only when the particular
       aspect is detected. I.e. a definition equivalent to:
     </p>
 <pre class="programlisting"><span class="preprocessor">#if</span> <span class="identifier">BOOST_PREDEF_ABC</span>

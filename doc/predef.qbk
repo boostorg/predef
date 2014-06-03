@@ -141,6 +141,7 @@ macros of a particular prefix:
 * `BOOST_LIB_C_` and `BOOST_LIB_STD_` for the C and C++ standard library
   in use.
 * `BOOST_OS_` for the operating system we are compiling to.
+* `BOOST_PLAT_` for platforms on top of operating system or compilers.
 * `BOOST_ENDIAN_` for endianness of the os and architecture combination.
 
 [note The detected definitions are for the configuration one is targeting
@@ -209,7 +210,7 @@ from the preprocessor:
   }
 ``
 
-In addition, for each version macro defined there is a
+In addition, for each version macro defined there is an
 `*_AVAILABLE` macro defined only when the particular aspect is
 detected. I.e. a definition equivalent to:
 
@@ -457,6 +458,9 @@ and "Y", "M", "D" for dates.
 [endsect]
 
 [endsect]
+
+[include history.qbk]
+[include todo.qbk]
 
 [section Acknoledgements]
 
