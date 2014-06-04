@@ -19,6 +19,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 * Addition of exclusive plus emulated definitions for platform
   and compiler detection.
 
-[warning The big change for this version is the restructuring of the definitions to avoid duplicate definitions in one category. That is, only one `BOOST_OS_*` variant will be detected (except for sub-categories).]
+[warning The big change for this version is the restructuring of the
+definitions to avoid duplicate definitions in one category. That is, only one
+`BOOST_OS_*`, `BOOST_COMP_*`, and `BOOST_PLAT_*` variant will be detected
+(except for sub-categories).]
 
 [endsect]

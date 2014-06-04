@@ -26,7 +26,7 @@ http://www.boost.org/LICENSE_1_0.txt)
     [[`__thumb__`] [__predef_detection__]]
     [[`__TARGET_ARCH_ARM`] [__predef_detection__]]
     [[`__TARGET_ARCH_THUMB`] [__predef_detection__]]
-    [[`_M_ARM'] [__predef_detection__]]
+    [[`_M_ARM`] [__predef_detection__]]
 
     [[`__arm64`] [8.0.0]]
     [[`__TARGET_ARCH_ARM`] [V.0.0]]
