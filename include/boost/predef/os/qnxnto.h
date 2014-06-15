@@ -31,7 +31,7 @@ version 4 is specifically detected.
 
 #define BOOST_OS_QNX BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if !BOOST_PREDEF_DETAIL_OS_DETECTED && ( \
+#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
     defined(__QNX__) || defined(__QNXNTO__) \
     )
 #   undef BOOST_OS_QNX
