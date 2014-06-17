@@ -29,7 +29,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_PLAT_WINDOWS_STORE BOOST_VERSION_NUMBER_AVAILABLE
 #endif
  
-#ifdef BOOST_PLAT_WINDOWS_STORE
+#if BOOST_PLAT_WINDOWS_STORE
 #   define BOOST_PLAT_WINDOWS_STORE_AVALIABLE
 #   include <boost/predef/detail/platform_detected.h>
 #endif
