@@ -32,7 +32,7 @@ Version number available as major, minor, and patch.
 
 #define BOOST_OS_AIX BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if !BOOST_PREDEF_DETAIL_OS_DETECTED && ( \
+#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
     defined(_AIX) || defined(__TOS_AIX__) \
     )
 #   undef BOOST_OS_AIX
