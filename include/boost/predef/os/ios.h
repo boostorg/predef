@@ -29,7 +29,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_IOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if !BOOST_PREDEF_DETAIL_OS_DETECTED && ( \
+#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
     defined(__APPLE__) && defined(__MACH__) && \
     defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__) \
     )
