@@ -36,7 +36,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #if BOOST_OS_UNIX
 #   define BOOST_OS_UNIX_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
 #endif
 
 #define BOOST_OS_UNIX_NAME "Unix Environment"
@@ -64,8 +63,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_OS_SVR4 BOOST_VERSION_NUMBER_AVAILABLE
 #endif
 
-#if BOOST_ARCH_ALPHA
-#   define _AVAILABLE
+#if BOOST_OS_SVR4
+#   define BOOST_OS_SVR4_AVAILABLE
 #endif
 
 #define BOOST_OS_SVR4_NAME "SVR4 Environment"
