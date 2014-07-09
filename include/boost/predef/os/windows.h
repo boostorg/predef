@@ -29,7 +29,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_WINDOWS BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if !BOOST_PREDEF_DETAIL_OS_DETECTED && ( \
+#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
     defined(_WIN32) || defined(_WIN64) || \
     defined(__WIN32__) || defined(__TOS_WIN__) || \
     defined(__WINDOWS__) \

@@ -25,7 +25,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_CYGWIN BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if !BOOST_PREDEF_DETAIL_OS_DETECTED && ( \
+#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
     defined(__CYGWIN__) \
     )
 #   undef BOOST_OS_CYGWIN

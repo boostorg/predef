@@ -26,7 +26,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_IRIX BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if !BOOST_PREDEF_DETAIL_OS_DETECTED && ( \
+#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
     defined(sgi) || defined(__sgi) \
     )
 #   undef BOOST_OS_IRIX
