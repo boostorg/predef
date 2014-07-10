@@ -7,23 +7,33 @@
 local predef-include-root ;
 local predef-dependency ;
 
+local modular-predef-h = [ glob $(BOOST_PREDEF_ROOT)/include/boost/predef.h ] ;
+local BOOST_RELEASE_LAYOUT ;
+if ! $(modular-predef-h)
+{
+    BOOST_RELEASE_LAYOUT = yes ;
+}
+
 # When using modular layout, header files are not present in $root/boost
 # unlink links are created, therefore instead of direct dependency on
 # a header, we need to use dependency on metatarget.
-if $(BOOST_PREDEF_ROOT)
+if $(BOOST_RELEASE_LAYOUT)
+{
+   predef-dependency = $(predef-include-root)/boost/predef.h ;
+}
+else if $(BOOST_PREDEF_ROOT)
 {
     predef-include-root = $(BOOST_PREDEF_ROOT)/include ;
     predef-dependency = $(predef-include-root)/boost/predef.h ;
 }
 else if $(BOOST_MODULARLAYOUT)
 {
-    predef-include-root = $(BOOST_ROOT)/include ;
+    predef-include-root = $(BOOST_ROOT) ;
     predef-dependency = /boost//predef-headers ;
 }
 else
 {
-   predef-include-root = $(BOOST_ROOT) ;
-   predef-dependency = $(predef-include-root)/boost/predef.h ;         
+   predef-dependency = $(predef-include-root)/boost/predef.h ;
 }
 
 project test
