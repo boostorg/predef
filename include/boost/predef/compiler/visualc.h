@@ -54,7 +54,7 @@ Version number available as major, minor, and patch.
     in sync. Hence we need to use different formulas for
     mapping from MSC version to VS product version.
     */
-#   if (_MSC_VER >= 19)
+#   if (_MSC_VER >= 1900)
 #       define BOOST_COMP_MSVC_DETECTION BOOST_VERSION_NUMBER(\
             _MSC_VER/100-5,\
             _MSC_VER%100,\
