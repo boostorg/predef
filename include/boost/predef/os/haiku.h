@@ -1,5 +1,6 @@
 /*
 Copyright Jessica Hamilton 2014
+Copyright Rene Rivera 2014
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -23,7 +24,7 @@ http://www.boost.org/LICENSE_1_0.txt)
     ]
  */
 
-#define BOOST_OS_BEOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
+#define BOOST_OS_HAIKU BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
     defined(__HAIKU__) \

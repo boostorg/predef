@@ -7,12 +7,18 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 [section History]
 
+[heading 1.2]
+
+* Account for skip in Visual Studio product version vs. compiler version.
+  This supports version of VS 2015 an onward.
+* Add detection of Haiku OS (from Jessica Hamilton).
+
 [heading 1.1]
 
 * Addition of `BOOST_PLAT_*` platform definitions for MinGW and
   Windows platform variants.
 * Detection of ARM architecture for Windows compilers to target
-  mobile devices of WIndows 8.
+  mobile devices of Windows 8.
 * Improved ARM detection for 64 bit ARM.
 * Added detection of iOS an an operating system.
 * Improved detection of endianess on some platforms.
