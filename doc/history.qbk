@@ -13,6 +13,7 @@ http://www.boost.org/LICENSE_1_0.txt)
   This supports version of VS 2015 an onward.
 * Add detection of Haiku OS (from Jessica Hamilton).
 * Some fixes to endian detection for Android (from mstahl-at-redhat.com).
+* Add missing `BOOST_PREDEF_MAKE_0X_VVRRPP` macro (from Erik Lindahl).
 
 [heading 1.1]
 
