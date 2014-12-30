@@ -12,6 +12,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 * Account for skip in Visual Studio product version vs. compiler version.
   This supports version of VS 2015 an onward.
 * Add detection of Haiku OS (from Jessica Hamilton).
+* Some fixes to endian detection for Android (from mstahl-at-redhat.com).
 
 [heading 1.1]
 
