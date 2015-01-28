@@ -64,7 +64,7 @@ const char * dot = ".";
 int main(int argc, const char ** argv)
 {
     unsigned x = 0;
-    unsigned argi = 1;
+    int argi = 1;
     predef_info ** predefs = 0;
     unsigned predef_count = 0;
     unsigned * i = &first_predef_info.tag;
