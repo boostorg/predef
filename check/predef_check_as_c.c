@@ -35,27 +35,27 @@ int predef_info_compare(const void * a, const void * b)
 
 const char * str_token(const char ** str, const char * space)
 {
-	unsigned span;
-	char * token;
-	for (; **str != 0; *str += 1)
-	{
-		if (0 == strchr(space, **str))
-		{
-			break;
-		}
-	}
-	span = strcspn(*str, space);
-	token = (char *)malloc(span+1);
-	strncpy(token, *str, span);
-	token[span] = 0;
-	for (*str += span; **str != 0; *str += 1)
-	{
-		if (0 == strchr(space, **str))
-		{
-			break;
-		}
-	}
-	return token;
+    unsigned span;
+    char * token;
+    for (; **str != 0; *str += 1)
+    {
+        if (0 == strchr(space, **str))
+        {
+            break;
+        }
+    }
+    span = strcspn(*str, space);
+    token = (char *)malloc(span+1);
+    strncpy(token, *str, span);
+    token[span] = 0;
+    for (*str += span; **str != 0; *str += 1)
+    {
+        if (0 == strchr(space, **str))
+        {
+            break;
+        }
+    }
+    return token;
 }
 
 const char * whitespace = " ";
@@ -82,38 +82,38 @@ int main(int argc, const char ** argv)
     qsort(predefs,predef_count,sizeof(predef_info*),predef_info_compare);
     for (argi = 1; argi < argc; ++argi)
     {
-    	const char * exp = argv[argi];
-    	const char * exp_name = str_token(&exp, whitespace);
-    	const char * exp_op = str_token(&exp, whitespace);
-    	const char * exp_val = str_token(&exp, whitespace);
-    	unsigned exp_version = 0;
-    	if (*exp_val != 0)
-    	{
-    		exp = exp_val;
-    		const char * exp_val_a = str_token(&exp, dot);
-    		const char * exp_val_b = str_token(&exp, dot);
-    		const char * exp_val_c = str_token(&exp, dot);
-    		exp_version = BOOST_VERSION_NUMBER(atoi(exp_val_a), atoi(exp_val_b),atoi(exp_val_c));
-    	}
-		for (x = 0; x < predef_count; ++x)
-		{
-			if (*exp_op == 0 &&
-				predefs[x]->value == 0 &&
-				strcmp(exp_name, predefs[x]->name) == 0)
-			{
-				return argi;
-			}
-			else if (*exp_op != 0 && *exp_val != 0 &&
-				strcmp(exp_name, predefs[x]->name) == 0)
-			{
-				if (0 == strcmp(">",exp_op) && !(predefs[x]->value > exp_version)) return argi;
-				if (0 == strcmp("<",exp_op) && !(predefs[x]->value < exp_version)) return argi;
-				if (0 == strcmp(">=",exp_op) && !(predefs[x]->value >= exp_version)) return argi;
-				if (0 == strcmp("<=",exp_op) && !(predefs[x]->value <= exp_version)) return argi;
-				if (0 == strcmp("==",exp_op) && !(predefs[x]->value == exp_version)) return argi;
-				if (0 == strcmp("!=",exp_op) && !(predefs[x]->value != exp_version)) return argi;
-			}
-		}
+        const char * exp = argv[argi];
+        const char * exp_name = str_token(&exp, whitespace);
+        const char * exp_op = str_token(&exp, whitespace);
+        const char * exp_val = str_token(&exp, whitespace);
+        unsigned exp_version = 0;
+        if (*exp_val != 0)
+        {
+            exp = exp_val;
+            const char * exp_val_a = str_token(&exp, dot);
+            const char * exp_val_b = str_token(&exp, dot);
+            const char * exp_val_c = str_token(&exp, dot);
+            exp_version = BOOST_VERSION_NUMBER(atoi(exp_val_a), atoi(exp_val_b),atoi(exp_val_c));
+        }
+        for (x = 0; x < predef_count; ++x)
+        {
+            if (*exp_op == 0 &&
+                predefs[x]->value == 0 &&
+                strcmp(exp_name, predefs[x]->name) == 0)
+            {
+                return argi;
+            }
+            else if (*exp_op != 0 && *exp_val != 0 &&
+                     strcmp(exp_name, predefs[x]->name) == 0)
+            {
+                if (0 == strcmp(">",exp_op) && !(predefs[x]->value > exp_version)) return argi;
+                if (0 == strcmp("<",exp_op) && !(predefs[x]->value < exp_version)) return argi;
+                if (0 == strcmp(">=",exp_op) && !(predefs[x]->value >= exp_version)) return argi;
+                if (0 == strcmp("<=",exp_op) && !(predefs[x]->value <= exp_version)) return argi;
+                if (0 == strcmp("==",exp_op) && !(predefs[x]->value == exp_version)) return argi;
+                if (0 == strcmp("!=",exp_op) && !(predefs[x]->value != exp_version)) return argi;
+            }
+        }
     }
     return 0;
 }
