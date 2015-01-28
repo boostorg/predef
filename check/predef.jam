@@ -13,7 +13,7 @@ import string ;
 import toolset ;
 import modules ;
 import path ;
-    
+
 # Create a project for our targets.
 project.extension predef check ;
 
@@ -28,16 +28,16 @@ local rule check_target ( language : ext )
     # context of the invocation which affects where the paths
     # originate from.
     local predef_jam
-    	= [ modules.binding $(__name__) ] ;
-	local source_path
-		= $(predef_jam:D)/predef_check_as_$(language).$(ext) ;
-	local include_path
-		= $(predef_jam:D)/../include ;
-	_check_exe_($(language)) = [
-		exe predef_check_as_$(language)
-			: $(source_path)
-			: <include>$(include_path) ] ;
-	explicit predef_check_as_$(language) ;
+        = [ modules.binding $(__name__) ] ;
+        local source_path
+            = $(predef_jam:D)/predef_check_as_$(language).$(ext) ;
+        local include_path
+            = $(predef_jam:D)/../include ;
+        _check_exe_($(language)) = [
+            exe predef_check_as_$(language)
+                : $(source_path)
+                : <include>$(include_path) ] ;
+    explicit predef_check_as_$(language) ;
 }
 check_target c : c ;
 check_target cpp : cpp ;
@@ -65,20 +65,20 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
         local key = [ MD5 $(language)::$(expression) ] ;
         if ! ( $(key) in $(_checks_) )
         {
-        	_checks_ += $(key) ;
-        	make
-	            $(key).txt :
-	            $(exe_target) :
-	            @$(__name__).predef_check_action :
-	            <predef-expression>$(expression) ;
-			explicit
-				$(key).txt ;
-		}
+            _checks_ += $(key) ;
+            make
+                $(key).txt :
+                $(exe_target) :
+                @$(__name__).predef_check_action :
+                <predef-expression>$(expression) ;
+            explicit
+                $(key).txt ;
+        }
         
         local check_target = [ check-target-builds
-        	/check/predef//$(key).txt $(expression)
-        	: $(true-properties)
-        	: $(false-properties) ] ;
+            /check/predef//$(key).txt $(expression)
+            : $(true-properties)
+            : $(false-properties) ] ;
         
         result += $(check_target) ;
     }
@@ -91,7 +91,7 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
 # nothing.
 rule require ( expressions + : language ? )
 {
-	return [ check $(expressions) : $(language) : : <build>no ] ;
+    return [ check $(expressions) : $(language) : : <build>no ] ;
 }
 
 actions predef_check_action bind PREDEF_CHECK_EXPRESSION
