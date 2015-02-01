@@ -94,6 +94,12 @@ rule require ( expressions + : language ? )
     return [ check $(expressions) : $(language) : : <build>no ] ;
 }
 
+rule predef_check_action ( targets + : sources + : props * )
+{
+    PREDEF_CHECK_EXPRESSION on $(targets)
+        = [ feature.get-values <predef-expression> : $(props) ] ;
+}
+
 actions predef_check_action bind PREDEF_CHECK_EXPRESSION
 {
     $(>) "$(PREDEF_CHECK_EXPRESSION)" > $(<)
