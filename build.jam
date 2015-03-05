@@ -4,9 +4,3 @@
 # http://www.boost.org/LICENSE_1_0.txt)
 
 path-constant BOOST_PREDEF_ROOT : . ;
-
-project
-    : usage-requirements <include>include
-    ;
-
-alias library ;
