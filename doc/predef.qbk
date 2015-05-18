@@ -673,7 +673,7 @@ import path-to-predef-src/check/predef
 
 exe my_special_exe : source.cpp
     : [ predef-check "BOOST_OS_WINDOWS == 0"
-        : <define>ENABLE_WMF=0
+        : : <define>ENABLE_WMF=0
         : <define>ENABLE_WMF=1 ] ;
 ``
 [c++]
