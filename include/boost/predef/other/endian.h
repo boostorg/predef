@@ -140,7 +140,7 @@ information and acquired knowledge:
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
 #   include <boost/predef/architecture.h>
 #   if BOOST_ARCH_M68K || \
-        BOOST_ARCH_PARISK || \
+        BOOST_ARCH_PARISC || \
         BOOST_ARCH_SPARC || \
         BOOST_ARCH_SYS370 || \
         BOOST_ARCH_SYS390 || \
