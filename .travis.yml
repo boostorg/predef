@@ -10,7 +10,7 @@ install:
   - cd build-develop && ./bootstrap && sudo ./b2 install --prefix=/usr
 
 before_script:
-  - echo 'project ROOT : : : build-dir bin ;' > jamroot.jam
+  - 'echo "project ROOT : : : build-dir bin ;" > jamroot.jam'
 
 script:
   - cd test && b2 -a --verbose-test
@@ -27,6 +27,8 @@ notifications:
       - "chat.freenode.net#boost"
     template:
       - "%{repository}/%{branch} (%{commit} - %{author}): %{build_url}: %{message}"
+    on_success: never
+    on_failure: always
 
 os:
   - linux
