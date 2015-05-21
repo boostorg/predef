@@ -18,7 +18,6 @@ script:
 branches:
   only:
     - develop
-    - master
 
 notifications:
   email: false
