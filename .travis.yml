@@ -5,20 +5,23 @@ compiler:
   - clang
 
 install:
+  - cd $TRAVIS_BUILD_DIR
   - wget "https://github.com/boostorg/build/archive/develop.tar.gz"
   - tar -xzvf develop.tar.gz
   - cd build-develop
   - ./bootstrap.sh
   - sudo ./b2 install --prefix=/usr
+  - if [ "$CC" = "gcc" ]; then export B2_TOOLSET="gcc"; fi
+  - if [ "$CC" = "clang" ]; then export B2_TOOLSET="clang"; fi
   - cd $TRAVIS_BUILD_DIR
 
 before_script:
   - cd $TRAVIS_BUILD_DIR
   - 'echo "project ROOT : : : build-dir bin ;" > jamroot.jam'
+  - cd $TRAVIS_BUILD_DIR
 
 script:
-  - cd $TRAVIS_BUILD_DIR
-  - cd test && b2 -a --verbose-test
+  - cd test && b2 -a --verbose-test toolset=$B2_TOOLSET
 
 branches:
   only:
