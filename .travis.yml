@@ -1,0 +1,32 @@
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+install:
+  - wget "https://github.com/boostorg/build/archive/develop.tar.gz"
+  - tar -xzvf develop.tar.gz
+  - cd build-develop && ./bootstrap && sudo ./b2 install --prefix=/usr
+
+before_script:
+  - echo 'project ROOT : : : build-dir bin ;' > jamroot.jam
+
+script:
+  - cd test && b2 -a --verbose-test
+
+branches:
+  only:
+    - develop
+    - master
+
+notifications:
+  email: false
+  irc:
+    channels:
+      - "chat.freenode.net#boost"
+    template:
+      - "%{repository}/%{branch} (%{commit} - %{author}): %{build_url}: %{message}"
+
+os:
+  - linux
