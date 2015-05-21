@@ -7,13 +7,18 @@ compiler:
 install:
   - wget "https://github.com/boostorg/build/archive/develop.tar.gz"
   - tar -xzvf develop.tar.gz
-  - cd build-develop && ./bootstrap.sh && sudo ./b2 install --prefix=/usr
+  - cd build-develop
+  - ./bootstrap.sh
+  - sudo ./b2 install --prefix=/usr
+  - cd $TRAVIS_BUILD_DIR
 
 before_script:
+  - cd $TRAVIS_BUILD_DIR
   - 'echo "project ROOT : : : build-dir bin ;" > jamroot.jam'
 
 script:
-  - ls -laF && cd test && ls -laF && b2 -a --verbose-test
+  - cd $TRAVIS_BUILD_DIR
+  - cd test && b2 -a --verbose-test
 
 branches:
   only:
