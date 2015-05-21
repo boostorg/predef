@@ -29,7 +29,10 @@ branches:
 
 notifications:
   email:
-    - grafikrobot@gmail.com
+    recipients:
+      - grafikrobot@gmail.com
+    on_success: change
+    on_failure: change
   irc:
     channels:
       - "chat.freenode.net#boost"
