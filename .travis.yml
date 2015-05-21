@@ -20,7 +20,8 @@ branches:
     - develop
 
 notifications:
-  email: false
+  email:
+    - grafikrobot@gmail.com
   irc:
     channels:
       - "chat.freenode.net#boost"
