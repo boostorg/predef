@@ -13,7 +13,7 @@ before_script:
   - 'echo "project ROOT : : : build-dir bin ;" > jamroot.jam'
 
 script:
-  - cd test && b2 -a --verbose-test
+  - ls -laF && cd test && ls -laF && b2 -a --verbose-test
 
 branches:
   only:
@@ -27,8 +27,8 @@ notifications:
       - "chat.freenode.net#boost"
     template:
       - "%{repository}/%{branch} (%{commit} - %{author}): %{build_url}: %{message}"
-    on_success: never
-    on_failure: always
+    on_success: change
+    on_failure: change
 
 os:
   - linux
