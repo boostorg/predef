@@ -24,7 +24,9 @@ os:
 matrix:
   include:
     - compiler: clang
-      env: TOOLSET=clang-3.4
+      env: TOOLSET=clang-3.3
+    #- compiler: clang
+    #  env: TOOLSET=clang-3.4
     #- compiler: gcc
     #  env: TOOLSET=gcc-4.7
 
