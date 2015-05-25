@@ -27,10 +27,10 @@ matrix:
     #  env: TOOLSET=clang-3.4
     #- compiler: clang
     #  env: TOOLSET=clang-3.5
-    - compiler: gcc
-      env: TOOLSET=gcc-4.7
     #- compiler: gcc
-    #  env: TOOLSET=gcc-4.8
+    #  env: TOOLSET=gcc-4.7
+    - compiler: gcc
+      env: TOOLSET=gcc-4.8
     #- compiler: gcc
     #  env: TOOLSET=gcc-4.9
 
