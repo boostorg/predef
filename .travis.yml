@@ -29,10 +29,10 @@ matrix:
     #  env: TOOLSET=clang-3.5
     #- compiler: gcc
     #  env: TOOLSET=gcc-4.7
-    - compiler: gcc
-      env: TOOLSET=gcc-4.8
     #- compiler: gcc
-    #  env: TOOLSET=gcc-4.9
+    #  env: TOOLSET=gcc-4.8
+    - compiler: gcc
+      env: TOOLSET=gcc-4.9
 
 before_install: wget "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py"
 install: python script.py travis_install
