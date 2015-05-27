@@ -60,3 +60,8 @@ test-suite predef :
     [ run check_value.cpp : : : <test-info>always_show_run_output
         [ predef-check "BOOST_COMP_GNUC >= 4.3" "BOOST_OS_QNX == 0" : : <cxxflags>-DCHECK_VALUE=true : <cxxflags>-DCHECK_VALUE=false ] ]
     ;
+
+# Minimal testing done for predef for CI. Since
+# we don't have many we can just do all of them.
+alias minimal : predef ;
+explicit minimal ;
