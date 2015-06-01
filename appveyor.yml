@@ -1,5 +1,3 @@
-version: {build}-{branch}
-
 branches:
   only:
     - develop
