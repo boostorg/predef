@@ -1,4 +1,4 @@
-version: 1.0.{build}-{branch}
+version: {build}-{branch}
 
 branches:
   only:
@@ -21,6 +21,7 @@ environment:
 
 init:
   - appveyor DownloadFile "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py"
+  - dir
 install: python script.py install
 before_build: python script.py before_build
 build_script: python script.py build_script
