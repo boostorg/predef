@@ -18,9 +18,10 @@ environment:
   - TOOLSET: vs-2013
 
 init:
-  - cd ..
+  - cd %APPVEYOR_BUILD_FOLDER%/..
   - appveyor DownloadFile "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py"
   - dir
+  - cd %APPVEYOR_BUILD_FOLDER%
 install: python ../script.py install
 before_build: python ../script.py before_build
 build_script: python ../script.py build_script
