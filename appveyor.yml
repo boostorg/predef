@@ -1,0 +1,40 @@
+version: 1.0.{build}-{branch}
+
+branches:
+  only:
+    - develop
+
+skip_tags: true
+
+notifications:
+  - provider: Email
+    to:
+      - grafikrobot@gmail.com
+    on_build_status_changed: true
+
+matrix:
+  - environment:
+      TOOLSET: vs-2008
+  - environment:
+      TOOLSET: vs-2010
+  - environment:
+      TOOLSET: vs-2012
+  - environment:
+      TOOLSET: vs-2013
+  - environment:
+      TOOLSET: vs-2015
+    os: Visual Studio 2015 RC
+
+init:
+  - choco install wget
+  - wget "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py"
+install: python script.py install
+before_build: python script.py before_build
+build_script: python script.py build_script
+after_build: python script.py after_build
+before_test: python script.py before_test
+test_script: python script.py test_script
+after_test: python script.py after_test
+on_success: python script.py on_success
+on_failure: python script.py on_failure
+on_finish: python script.py on_finish
