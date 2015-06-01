@@ -18,15 +18,16 @@ environment:
   - TOOLSET: vs-2013
 
 init:
-  - appveyor DownloadFile "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py" -FileName /script.py
+  - cd ..
+  - appveyor DownloadFile "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py"
   - dir
-install: python /script.py install
-before_build: python /script.py before_build
-build_script: python /script.py build_script
-after_build: python /script.py after_build
-before_test: python /script.py before_test
-test_script: python /script.py test_script
-after_test: python /script.py after_test
-on_success: python /script.py on_success
-on_failure: python /script.py on_failure
-on_finish: python /script.py on_finish
+install: python ../script.py install
+before_build: python ../script.py before_build
+build_script: python ../script.py build_script
+after_build: python ../script.py after_build
+before_test: python ../script.py before_test
+test_script: python ../script.py test_script
+after_test: python ../script.py after_test
+on_success: python ../script.py on_success
+on_failure: python ../script.py on_failure
+on_finish: python ../script.py on_finish
