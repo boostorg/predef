@@ -39,8 +39,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_BEOS_NAME "BeOS"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_BEOS,BOOST_OS_BEOS_NAME)
-
-
-#endif

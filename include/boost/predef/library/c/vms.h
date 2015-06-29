@@ -41,8 +41,7 @@ Version number available as major, minor, and patch.
 
 #define BOOST_LIB_C_VMS_NAME "VMS"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_C_VMS,BOOST_LIB_C_VMS_NAME)
-
-
-#endif

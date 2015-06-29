@@ -52,13 +52,12 @@ Version number available as major, minor, and patch.
 
 #define BOOST_COMP_BORLAND_NAME "Borland C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_BORLAND,BOOST_COMP_BORLAND_NAME)
 
 #ifdef BOOST_COMP_BORLAND_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_BORLAND_EMULATED,BOOST_COMP_BORLAND_NAME)
-#endif
-
-
 #endif

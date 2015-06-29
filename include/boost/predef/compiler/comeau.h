@@ -50,13 +50,12 @@ Version number available as major, minor, and patch.
 
 #define BOOST_COMP_COMO_NAME "Comeau C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_COMO,BOOST_COMP_COMO_NAME)
 
 #ifdef BOOST_COMP_COMO_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_COMO_EMULATED,BOOST_COMP_COMO_NAME)
-#endif
-
-
 #endif

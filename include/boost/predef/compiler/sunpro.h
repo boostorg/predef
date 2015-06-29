@@ -65,13 +65,12 @@ Version number available as major, minor, and patch.
 
 #define BOOST_COMP_SUNPRO_NAME "Oracle Solaris Studio"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SUNPRO,BOOST_COMP_SUNPRO_NAME)
 
 #ifdef BOOST_COMP_SUNPRO_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SUNPRO_EMULATED,BOOST_COMP_SUNPRO_NAME)
-#endif
-
-
 #endif

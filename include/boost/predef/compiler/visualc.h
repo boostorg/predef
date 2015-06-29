@@ -80,13 +80,12 @@ Version number available as major, minor, and patch.
 
 #define BOOST_COMP_MSVC_NAME "Microsoft Visual C/C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_MSVC,BOOST_COMP_MSVC_NAME)
 
 #ifdef BOOST_COMP_MSVC_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_MSVC_EMULATED,BOOST_COMP_MSVC_NAME)
-#endif
-
-
 #endif

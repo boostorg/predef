@@ -43,7 +43,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_ARCH_IA64_NAME "Intel Itanium 64"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_IA64,BOOST_ARCH_IA64_NAME)
-
-#endif

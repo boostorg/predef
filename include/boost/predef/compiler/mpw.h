@@ -52,13 +52,12 @@ Version number available as major, and minor.
 
 #define BOOST_COMP_MPW_NAME "MPW C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_MPW,BOOST_COMP_MPW_NAME)
 
 #ifdef BOOST_COMP_MPW_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_MPW_EMULATED,BOOST_COMP_MPW_NAME)
-#endif
-
-
 #endif

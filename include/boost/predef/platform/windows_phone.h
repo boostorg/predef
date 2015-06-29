@@ -36,7 +36,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_PLAT_WINDOWS_PHONE_NAME "Windows Phone"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_WINDOWS_PHONE,BOOST_PLAT_WINDOWS_PHONE_NAME)
-
-#endif

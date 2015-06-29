@@ -45,13 +45,12 @@ Version number available as major, minor, and patch.
 
 #define BOOST_COMP_KCC_NAME "Kai C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_KCC,BOOST_COMP_KCC_NAME)
 
 #ifdef BOOST_COMP_KCC_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_KCC_EMULATED,BOOST_COMP_KCC_NAME)
-#endif
-
-
 #endif

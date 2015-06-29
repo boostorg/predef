@@ -60,8 +60,7 @@ Version number available as major, minor, and patch.
 
 #define BOOST_OS_AIX_NAME "IBM AIX"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_AIX,BOOST_OS_AIX_NAME)
-
-
-#endif

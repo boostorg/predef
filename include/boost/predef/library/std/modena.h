@@ -39,8 +39,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_LIB_STD_MSIPL_NAME "Modena Software Lib++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_MSIPL,BOOST_LIB_STD_MSIPL_NAME)
-
-
-#endif

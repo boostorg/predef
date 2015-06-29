@@ -36,7 +36,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_PLAT_WINDOWS_STORE_NAME "Windows Store"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_WINDOWS_STORE,BOOST_PLAT_WINDOWS_STORE_NAME)
-
-#endif

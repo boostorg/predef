@@ -53,8 +53,7 @@ version 4 is specifically detected.
 
 #define BOOST_OS_QNX_NAME "QNX"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_QNX,BOOST_OS_QNX_NAME)
-
-
-#endif

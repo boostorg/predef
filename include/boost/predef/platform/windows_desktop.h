@@ -38,7 +38,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_PLAT_WINDOWS_DESKTOP_NAME "Windows Desktop"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_WINDOWS_DESKTOP,BOOST_PLAT_WINDOWS_DESKTOP_NAME)
-
-#endif

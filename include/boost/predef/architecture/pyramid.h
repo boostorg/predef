@@ -36,8 +36,7 @@ Pyramid 9810 architecture.
 
 #define BOOST_ARCH_PYRAMID_NAME "Pyramid 9810"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_PYRAMID,BOOST_ARCH_PYRAMID_NAME)
-
-
-#endif

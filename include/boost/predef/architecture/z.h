@@ -36,8 +36,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_ARCH_Z_NAME "z/Architecture"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_Z,BOOST_ARCH_Z_NAME)
-
-
-#endif

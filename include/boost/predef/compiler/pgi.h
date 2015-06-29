@@ -49,13 +49,12 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_COMP_PGI_NAME "Portland Group C/C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_PGI,BOOST_COMP_PGI_NAME)
 
 #ifdef BOOST_COMP_PGI_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_PGI_EMULATED,BOOST_COMP_PGI_NAME)
-#endif
-
-
 #endif

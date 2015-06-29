@@ -5,11 +5,11 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
-#ifndef BOOST_PREDEF_ARCHITECTURE_X86_H
-#define BOOST_PREDEF_ARCHITECTURE_X86_H
-
 #include <boost/predef/architecture/x86/32.h>
 #include <boost/predef/architecture/x86/64.h>
+
+#ifndef BOOST_PREDEF_ARCHITECTURE_X86_H
+#define BOOST_PREDEF_ARCHITECTURE_X86_H
 
 /*`
 [heading `BOOST_ARCH_X86`]
@@ -32,7 +32,7 @@ a category to indicate that either `BOOST_ARCH_X86_32` or
 
 #define BOOST_ARCH_X86_NAME "Intel x86"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_X86,BOOST_ARCH_X86_NAME)
-
-#endif

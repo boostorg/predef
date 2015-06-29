@@ -55,13 +55,12 @@ Version number available as major, minor, and patch.
 
 #define BOOST_COMP_DEC_NAME "Compaq C/C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_DEC,BOOST_COMP_DEC_NAME)
 
 #ifdef BOOST_COMP_DEC_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_DEC_EMULATED,BOOST_COMP_DEC_NAME)
-#endif
-
-
 #endif

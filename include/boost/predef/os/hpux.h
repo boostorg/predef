@@ -41,8 +41,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_HPUX_NAME "HP-UX"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_HPUX,BOOST_OS_HPUX_NAME)
-
-
-#endif

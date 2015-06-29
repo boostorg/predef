@@ -54,13 +54,12 @@ Version number available as major, minor, and patch.
 
 #define BOOST_COMP_INTEL_NAME "Intel C/C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_INTEL,BOOST_COMP_INTEL_NAME)
 
 #ifdef BOOST_COMP_INTEL_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_INTEL_EMULATED,BOOST_COMP_INTEL_NAME)
-#endif
-
-
 #endif

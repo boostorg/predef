@@ -55,8 +55,7 @@ Version number available as major, and minor.
 
 #define BOOST_LIB_C_GNU_NAME "GNU"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_C_GNU,BOOST_LIB_C_GNU_NAME)
-
-
-#endif

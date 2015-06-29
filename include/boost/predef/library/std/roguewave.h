@@ -50,8 +50,7 @@ If available version number as major, minor, and patch.
 
 #define BOOST_LIB_STD_RW_NAME "Roguewave"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_RW,BOOST_LIB_STD_RW_NAME)
-
-
-#endif

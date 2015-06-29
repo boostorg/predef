@@ -36,8 +36,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_LANG_OBJC_NAME "Objective-C"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_LANG_OBJC,BOOST_LANG_OBJC_NAME)
-
-
-#endif

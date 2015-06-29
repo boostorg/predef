@@ -38,8 +38,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_LIB_STD_IBM_NAME "IBM VACPP"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_IBM,BOOST_LIB_STD_IBM_NAME)
-
-
-#endif

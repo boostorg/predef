@@ -46,13 +46,12 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_COMP_LLVM_NAME "LLVM"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_LLVM,BOOST_COMP_LLVM_NAME)
 
 #ifdef BOOST_COMP_LLVM_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_LLVM_EMULATED,BOOST_COMP_LLVM_NAME)
-#endif
-
-
 #endif

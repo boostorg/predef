@@ -79,9 +79,9 @@ If available versions \[3-6\] are specifically detected.
 
 #define BOOST_ARCH_X86_32_NAME "Intel x86-32"
 
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_X86_32,BOOST_ARCH_X86_32_NAME)
-
 #include <boost/predef/architecture/x86.h>
 
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_X86_32,BOOST_ARCH_X86_32_NAME)

@@ -59,8 +59,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_MACOS_NAME "Mac OS"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_MACOS,BOOST_OS_MACOS_NAME)
-
-
-#endif

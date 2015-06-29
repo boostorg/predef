@@ -61,13 +61,12 @@ Version number available as major, minor, and patch.
 
 #define BOOST_COMP_IBM_NAME "IBM XL C/C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_IBM,BOOST_COMP_IBM_NAME)
 
 #ifdef BOOST_COMP_IBM_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_IBM_EMULATED,BOOST_COMP_IBM_NAME)
-#endif
-
-
 #endif

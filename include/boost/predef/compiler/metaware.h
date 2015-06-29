@@ -42,13 +42,12 @@ MetaWare High C/C++ compiler.
 
 #define BOOST_COMP_HIGHC_NAME "MetaWare High C/C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_HIGHC,BOOST_COMP_HIGHC_NAME)
 
 #ifdef BOOST_COMP_HIGHC_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_HIGHC_EMULATED,BOOST_COMP_HIGHC_NAME)
-#endif
-
-
 #endif

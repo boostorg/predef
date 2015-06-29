@@ -40,8 +40,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_IRIX_NAME "IRIX"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_IRIX,BOOST_OS_IRIX_NAME)
-
-
-#endif

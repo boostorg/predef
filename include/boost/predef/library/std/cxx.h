@@ -40,8 +40,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_LIB_STD_CXX_NAME "libc++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_CXX,BOOST_LIB_STD_CXX_NAME)
-
-
-#endif

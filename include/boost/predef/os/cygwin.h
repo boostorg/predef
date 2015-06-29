@@ -39,8 +39,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_CYGWIN_NAME "Cygwin"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_CYGWIN,BOOST_OS_CYGWIN_NAME)
-
-
-#endif

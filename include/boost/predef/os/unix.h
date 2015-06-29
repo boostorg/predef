@@ -69,8 +69,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_SVR4_NAME "SVR4 Environment"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_UNIX,BOOST_OS_UNIX_NAME)
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_SVR4,BOOST_OS_SVR4_NAME)
-
-#endif

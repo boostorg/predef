@@ -42,9 +42,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_ARCH_X86_64_NAME "Intel x86-64"
 
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_X86_64,BOOST_ARCH_X86_64_NAME)
-
 #include <boost/predef/architecture/x86.h>
 
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_X86_64,BOOST_ARCH_X86_64_NAME)

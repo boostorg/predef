@@ -45,13 +45,12 @@ Version number available as major, minor, and patch.
 
 #define BOOST_COMP_CLANG_NAME "Clang"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_CLANG,BOOST_COMP_CLANG_NAME)
 
 #ifdef BOOST_COMP_CLANG_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_CLANG_EMULATED,BOOST_COMP_CLANG_NAME)
-#endif
-
-
 #endif

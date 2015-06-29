@@ -189,6 +189,8 @@ information and acquired knowledge:
 #define BOOST_ENDIAN_LITTLE_BYTE_NAME "Byte-Swapped Little-Endian"
 #define BOOST_ENDIAN_LITTLE_WORD_NAME "Word-Swapped Little-Endian"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_ENDIAN_BIG_BYTE,BOOST_ENDIAN_BIG_BYTE_NAME)
 
@@ -200,6 +202,3 @@ BOOST_PREDEF_DECLARE_TEST(BOOST_ENDIAN_LITTLE_BYTE,BOOST_ENDIAN_LITTLE_BYTE_NAME
 
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_ENDIAN_LITTLE_WORD,BOOST_ENDIAN_LITTLE_WORD_NAME)
-
-
-#endif

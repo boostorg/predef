@@ -41,8 +41,7 @@ Version number available as major.
 
 #define BOOST_LIB_STD_COMO_NAME "Comeau Computing"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_COMO,BOOST_LIB_STD_COMO_NAME)
-
-
-#endif

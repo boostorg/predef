@@ -57,13 +57,12 @@ Version number available as major, minor, and patch (if available).
 
 #define BOOST_COMP_GNUC_NAME "Gnu GCC C/C++"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_GNUC,BOOST_COMP_GNUC_NAME)
 
 #ifdef BOOST_COMP_GNUC_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_GNUC_EMULATED,BOOST_COMP_GNUC_NAME)
-#endif
-
-
 #endif

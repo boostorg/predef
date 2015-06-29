@@ -39,8 +39,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_OS_ANDROID_NAME "Android"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_OS_ANDROID,BOOST_OS_ANDROID_NAME)
-
-
-#endif

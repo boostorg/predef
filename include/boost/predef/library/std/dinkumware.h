@@ -46,8 +46,7 @@ If available version number as major, minor, and patch.
 
 #define BOOST_LIB_STD_DINKUMWARE_NAME "Dinkumware"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_DINKUMWARE,BOOST_LIB_STD_DINKUMWARE_NAME)
-
-
-#endif

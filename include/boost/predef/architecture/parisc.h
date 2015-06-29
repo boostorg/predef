@@ -58,8 +58,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_ARCH_PARISC_NAME "HP/PA RISC"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_PARISC,BOOST_ARCH_PARISC_NAME)
-
-
-#endif

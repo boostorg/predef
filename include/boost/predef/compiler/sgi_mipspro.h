@@ -55,13 +55,12 @@ Version number available as major, minor, and patch.
 
 #define BOOST_COMP_SGI_NAME "SGI MIPSpro"
 
+#endif
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SGI,BOOST_COMP_SGI_NAME)
 
 #ifdef BOOST_COMP_SGI_EMULATED
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SGI_EMULATED,BOOST_COMP_SGI_NAME)
-#endif
-
-
 #endif
