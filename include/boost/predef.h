@@ -18,4 +18,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/other.h>
 #include <boost/predef/platform.h>
 
+#include <boost/predef/version.h>
+
 #endif
