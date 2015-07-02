@@ -13,13 +13,17 @@ notifications:
 environment:
   matrix:
   - TOOLSET: vs-2008
+    platform: 32
   - TOOLSET: vs-2010
+    platform: 32
   - TOOLSET: vs-2012
+    platform: 32
+  - TOOLSET: vs-2012
+    platform: 64
   - TOOLSET: vs-2013
-
-platform:
-  - 32
-  - 64
+    platform: 32
+  - TOOLSET: vs-2013
+    platform: 64
 
 configuration:
   - debug
