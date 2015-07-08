@@ -13,6 +13,7 @@ import string ;
 import toolset ;
 import modules ;
 import path ;
+import "class" : new ;
 
 # Create a project for our targets.
 project.extension predef check ;
@@ -54,35 +55,42 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
     
     local project_target = [ project.target $(__name__) ] ;
 	project.push-current $(project_target) ;
+    local terms ;
     local result ;
     for expression in $(expressions)
     {
-        # The check program to use.
-        local exe_target = [ $(_check_exe_($(language))).name ] ;
-        exe_target = /check/predef//$(exe_target) ;
-        
-        # Create the check run if we don't have one yet.
-        local key = [ MD5 $(language)::$(expression) ] ;
-        if ! ( $(key) in $(_checks_) )
+        if $(expression:L) in "and" "or"
         {
-            _checks_ += $(key) ;
-            make
-                $(key).txt :
-                $(exe_target) :
-                @$(__name__).predef_check_action :
-                <predef-expression>$(expression) ;
-            explicit
-                $(key).txt ;
+            terms += $(expression:L) ;
         }
-        
-        local check_target = [ check-target-builds
-            /check/predef//$(key).txt $(expression)
-            : $(true-properties)
-            : $(false-properties) ] ;
-        
-        result += $(check_target) ;
+        else
+        {
+            # The check program to use.
+            local exe_target = [ $(_check_exe_($(language))).name ] ;
+            exe_target = /check/predef//$(exe_target) ;
+            
+            # Create the check run if we don't have one yet.
+            local key = [ MD5 $(language)::$(expression) ] ;
+            if ! ( $(key) in $(_checks_) )
+            {
+                _checks_ += $(key) ;
+                _message_(/check/predef//$(key).txt) = $(expression) ;
+                make
+                    $(key).txt :
+                    $(exe_target) :
+                    @$(__name__).predef_check_action :
+                    <predef-expression>$(expression) ;
+                explicit
+                    $(key).txt ;
+            }
+            
+            terms += /check/predef//$(key).txt ;
+        }
     }
-	project.pop-current ;
+    local instance = [ new check-expression-evaluator
+        $(terms) : $(true-properties) : $(false-properties) ] ;
+    result = <conditional>@$(instance).check ;
+    project.pop-current ;
     return $(result) ;
 }
 
@@ -103,4 +111,96 @@ rule predef_check_action ( targets + : sources + : props * )
 actions predef_check_action bind PREDEF_CHECK_EXPRESSION
 {
     $(>) "$(PREDEF_CHECK_EXPRESSION)" > $(<)
+}
+
+class check-expression-evaluator
+{
+    import configure ;
+    
+    rule __init__ ( expression + : true-properties * : false-properties * )
+    {
+        self.expression = $(expression) ;
+        self.true-properties = $(true-properties) ;
+        self.false-properties = $(false-properties) ;
+    }
+    
+    rule check ( properties * )
+    {
+        local to-eval ;
+        local tokens = "and" "or" ;
+        # Go through the expression and: eval the target values,
+        # and normalize to a full expression.
+        for local term in $(self.expression)
+        {
+            if ! ( $(term:L) in $(tokens) )
+            {
+                # A value is a target reference that will evan to "true"
+                # or "false".
+                if $(to-eval[-1]:L) && ! ( $(to-eval[-1]:L) in $(tokens) )
+                {
+                    # Default to "and" operation.
+                    to-eval += "and" ;
+                }
+                local message = [ modules.peek predef : _message_($(term)) ] ;
+                if [ configure.builds $(term) : $(properties) : $(message) ]
+                {
+                    to-eval += "true" ;
+                }
+                else
+                {
+                    to-eval += "false" ;
+                }
+            }
+            else
+            {
+                to-eval += $(term) ;
+            }
+        }
+        # Eval full the expression.
+        local eval-result = [ eval $(to-eval) ] ;
+        # And resolve true/false properties.
+        if $(eval-result) = "true"
+        {
+            return $(self.true-properties) ;
+        }
+        else
+        {
+            return $(self.false-properties) ;
+        }
+    }
+    
+    rule eval ( e * )
+    {
+        local r ;
+        if $(e[1]) && $(e[2]) && $(e[3])
+        {
+            if $(e[2]) = "and"
+            {
+                if $(e[1]) = "true" && $(e[3]) = "true"
+                {
+                    r = [ eval "true" $(e[4-]) ] ;
+                }
+                else
+                {
+                    r = [ eval "false" $(e[4-]) ] ;
+                }
+            }
+            else if $(e[2]) = "or"
+            {
+                if $(e[1]) = "true" || $(e[3]) = "true"
+                {
+                    r = [ eval "true" $(e[4-]) ] ;
+                }
+                else
+                {
+                    r = [ eval "false" $(e[4-]) ] ;
+                }
+            }
+        }
+        else
+        {
+            r = $(e[1]) ;
+        }
+        return $(r) ;
+    }
 }
