@@ -29,7 +29,7 @@ Version number available as major, minor, and patch.
  */
 
 #if defined(__COMO__)
-#   if !defined(BOOST_COMP_COMO_DETECTION) && defined(__CONO_VERSION__)
+#   if !defined(BOOST_COMP_COMO_DETECTION) && defined(__COMO_VERSION__)
 #       define BOOST_COMP_COMO_DETECTION BOOST_PREDEF_MAKE_0X_VRP(__COMO_VERSION__)
 #   endif
 #   if !defined(BOOST_COMP_COMO_DETECTION)
