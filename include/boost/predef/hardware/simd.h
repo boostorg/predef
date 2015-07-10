@@ -9,6 +9,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 #ifndef BOOST_PREDEF_HARDWARE_SIMD_H
 #define BOOST_PREDEF_HARDWARE_SIMD_H
 
+#include <boost/predef/version_number.h>
+
 /*`
  [heading `BOOST_HW_SIMD`]
 
@@ -54,6 +56,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #if defined(BOOST_HW_SIMD)
 #   define BOOST_HW_SIMD_AVAILABLE
+#else
+#   define BOOST_HW_SIMD BOOST_VERSION_NUMBER_NOT_AVAILABLE
+#   define BOOST_HW_SIMD_NAME "(not found)"
 #endif
 
 #endif
