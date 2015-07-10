@@ -41,10 +41,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_X86_NAME BOOST_HW_SIMD_X86_SSE_NAME
 #endif
 
-#if defined(BOOST_HW_SIMD_X86_SSE_AVAILABLE)
-#   include <xmmintrin.h>
-#endif
-
 #endif
 
 #include <boost/predef/detail/test.h>

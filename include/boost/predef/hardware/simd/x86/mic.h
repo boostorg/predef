@@ -39,10 +39,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_X86_NAME BOOST_HW_SIMD_X86_MIC_NAME
 #endif
 
-#if defined(BOOST_HW_SIMD_X86_MIC_AVAILABLE)
-#   include <immintrin.h>
-#endif
-
 #endif
 
 #include <boost/predef/detail/test.h>

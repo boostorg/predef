@@ -40,10 +40,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_HW_SIMD_X86_FMA4_NAME "FMA4"
 
-#if defined(BOOST_HW_SIMD_X86_FMA4_AVAILABLE)
-#   include <immintrin.h>
-#endif
-
 #endif
 
 #include <boost/predef/detail/test.h>

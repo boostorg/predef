@@ -44,10 +44,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_HW_SIMD_X86_FMA3_NAME "FMA3"
 
-#if defined(BOOST_HW_SIMD_X86_FMA3_AVAILABLE)
-#   include <immintrin.h>
-#endif
-
 #endif
 
 #include <boost/predef/detail/test.h>

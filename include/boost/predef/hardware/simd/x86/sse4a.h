@@ -40,10 +40,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #define BOOST_HW_SIMD_X86_SSE4A_NAME "SSE4a"
 
-#if defined(BOOST_HW_SIMD_X86_SSE4A_AVAILABLE)
-#   include <ammintrin.h>
-#endif
-
 #endif
 
 #include <boost/predef/detail/test.h>
