@@ -32,10 +32,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 // We check if SIMD extension of multiples architectures have been detected,
 // if yes, then this is an error!
-#if \
-    BOOST_HW_SIMD_ARM && BOOST_HW_SIMD_PPC ||\
-    BOOST_HW_SIMD_ARM && BOOST_HW_SIMD_X86 ||\
-    BOOST_HW_SIMD_PPC && BOOST_HW_SIMD_X86
+#if defined(BOOST_HW_SIMD_ARM_AVAILABLE) && defined(BOOST_HW_SIMD_PPC_AVAILABLE) ||\
+    defined(BOOST_HW_SIMD_ARM_AVAILABLE) && defined(BOOST_HW_SIMD_X86_AVAILABLE) ||\
+    defined(BOOST_HW_SIMD_PPC_AVAILABLE) && defined(BOOST_HW_SIMD_X86_AVAILABLE)
 #   error "Multiple SIMD architectures detected, this cannot happen!"
 #endif
 
