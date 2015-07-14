@@ -1,9 +1,3 @@
-branches:
-  only:
-    - develop
-
-skip_tags: true
-
 notifications:
   - provider: Email
     to:
