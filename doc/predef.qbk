@@ -256,7 +256,7 @@ When writing SIMD specific code, you may want to check if a particular extension
 has been detected. To do so you have to use the right architecture predef and
 compare it. Those predef are of the form `BOOST_HW_SIMD_"ARCH"` (where `"ARCH"`
 is either `ARM`, `PPC`, or `X86`). For example, if you compile code for x86
-architecture, you will have to use `BOOST_HW_SIMD_x86`. Its value will be the
+architecture, you will have to use `BOOST_HW_SIMD_X86`. Its value will be the
 version number of the most recent SIMD extension detected for the architecture.
 
 To check if an extension has been enabled:
