@@ -34,7 +34,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_ARM_AVAILABLE
 #else
 #   define BOOST_HW_SIMD_ARM BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#   define BOOST_HW_SIMD_PPC_NAME "ARM SIMD"
+#   define BOOST_HW_SIMD_ARM_NAME "ARM SIMD"
 #endif
 
 #endif
