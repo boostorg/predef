@@ -23,5 +23,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/hardware/simd/x86/sse3.h>
 #include <boost/predef/hardware/simd/x86/sse2.h>
 #include <boost/predef/hardware/simd/x86/sse.h>
+#include <boost/predef/hardware/simd/x86/mmx.h>
 
 #endif
