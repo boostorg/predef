@@ -32,7 +32,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_X86_SSE_AVAILABLE
 #endif
 
-#define BOOST_HW_SIMD_X86_SSE_NAME "SSE(1)"
+#define BOOST_HW_SIMD_X86_SSE_NAME "x86 SIMD SSE(1)"
 
 #if !defined(BOOST_HW_SIMD_X86) && defined(BOOST_HW_SIMD_X86_SSE_AVAILABLE)
 #   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_SSE

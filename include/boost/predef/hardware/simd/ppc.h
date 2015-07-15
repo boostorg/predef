@@ -37,7 +37,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_PPC_AVAILABLE
 #else
 #   define BOOST_HW_SIMD_PPC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#   define BOOST_HW_SIMD_PPC_NAME "(not found)"
+#   define BOOST_HW_SIMD_PPC_NAME "PowerPC SIMD"
 #endif
 
 #endif

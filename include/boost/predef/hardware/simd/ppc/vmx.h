@@ -31,7 +31,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_PPC_VMX_AVAILABLE
 #endif
 
-#define BOOST_HW_SIMD_PPC_VMX_NAME "VMX"
+#define BOOST_HW_SIMD_PPC_VMX_NAME "PowerPC SIMD VMX"
 
 #if !defined(BOOST_HW_SIMD_PPC) && defined(BOOST_HW_SIMD_PPC_VMX_AVAILABLE)
 #   define BOOST_HW_SIMD_PPC BOOST_HW_SIMD_PPC_VMX

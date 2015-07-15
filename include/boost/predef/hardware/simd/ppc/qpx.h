@@ -30,7 +30,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_PPC_QPX_AVAILABLE
 #endif
 
-#define BOOST_HW_SIMD_PPC_QPX_NAME "QPX"
+#define BOOST_HW_SIMD_PPC_QPX_NAME "PowerPC SIMD QPX"
 
 #if !defined(BOOST_HW_SIMD_PPC) && defined(BOOST_HW_SIMD_PPC_QPX_AVAILABLE)
 #   define BOOST_HW_SIMD_PPC BOOST_HW_SIMD_PPC_QPX

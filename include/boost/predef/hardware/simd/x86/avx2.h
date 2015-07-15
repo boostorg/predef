@@ -34,7 +34,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   endif
 #endif
 
-#define BOOST_HW_SIMD_X86_AVX2_NAME "AVX2"
+#define BOOST_HW_SIMD_X86_AVX2_NAME "x86 SIMD AVX2"
 
 #if !defined(BOOST_HW_SIMD_X86) && defined(BOOST_HW_SIMD_X86_AVX2_AVAILABLE)
 #   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_AVX2

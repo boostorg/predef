@@ -48,7 +48,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_X86_AVAILABLE
 #else
 #   define BOOST_HW_SIMD_X86 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#   define BOOST_HW_SIMD_X86_NAME "(not found)"
+#   define BOOST_HW_SIMD_X86_NAME "x86 SIMD"
 #endif
 
 #endif

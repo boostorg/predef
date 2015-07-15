@@ -34,7 +34,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   endif
 #endif
 
-#define BOOST_HW_SIMD_X86_FMA3_NAME "FMA3"
+#define BOOST_HW_SIMD_X86_FMA3_NAME "x86 SIMD FMA3"
 
 #endif
 

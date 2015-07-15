@@ -30,7 +30,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_X86_FMA4_AVAILABLE
 #endif
 
-#define BOOST_HW_SIMD_X86_FMA4_NAME "FMA4"
+#define BOOST_HW_SIMD_X86_FMA4_NAME "x86 (AMD) SIMD FMA4"
 
 #endif
 

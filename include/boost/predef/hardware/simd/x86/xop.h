@@ -30,7 +30,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_X86_XOP_AVAILABLE
 #endif
 
-#define BOOST_HW_SIMD_X86_XOP_NAME "XOP"
+#define BOOST_HW_SIMD_X86_XOP_NAME "x86 (AMD) SIMD XOP"
 
 #endif
 

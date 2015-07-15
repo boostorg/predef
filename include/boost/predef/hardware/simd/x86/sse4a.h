@@ -30,7 +30,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_X86_SSE4A_AVAILABLE
 #endif
 
-#define BOOST_HW_SIMD_X86_SSE4A_NAME "SSE4a"
+#define BOOST_HW_SIMD_X86_SSE4A_NAME "x86 (AMD) SIMD SSE4a"
 
 #endif
 
