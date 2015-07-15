@@ -61,3 +61,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #endif
 
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_HW_SIMD, BOOST_HW_SIMD_NAME)
