@@ -6,6 +6,11 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
+// From the newest to the oldest
+#include <boost/predef/hardware/simd/ppc/qpx.h>
+#include <boost/predef/hardware/simd/ppc/vsx.h>
+#include <boost/predef/hardware/simd/ppc/vmx.h>
+
 #ifndef BOOST_PREDEF_HARDWARE_SIMD_PPC_H
 #define BOOST_PREDEF_HARDWARE_SIMD_PPC_H
 
@@ -27,11 +32,6 @@ http://www.boost.org/LICENSE_1_0.txt)
      [[`BOOST_HW_SIMD_PPC`] [V.R.P]]
      ]
  */
-
-// From the newest to the oldest
-#include <boost/predef/hardware/simd/ppc/qpx.h>
-#include <boost/predef/hardware/simd/ppc/vsx.h>
-#include <boost/predef/hardware/simd/ppc/vmx.h>
 
 #if defined(BOOST_HW_SIMD_PPC)
 #   define BOOST_HW_SIMD_PPC_AVAILABLE

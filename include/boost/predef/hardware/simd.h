@@ -6,6 +6,10 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
+#include <boost/predef/hardware/simd/x86.h>
+#include <boost/predef/hardware/simd/arm.h>
+#include <boost/predef/hardware/simd/ppc.h>
+
 #ifndef BOOST_PREDEF_HARDWARE_SIMD_H
 #define BOOST_PREDEF_HARDWARE_SIMD_H
 
@@ -25,10 +29,6 @@ http://www.boost.org/LICENSE_1_0.txt)
      [[`BOOST_HW_SIMD_X86_AVAILABLE`] [__predef_detection__]]
      ]
  */
-
-#include <boost/predef/hardware/simd/x86.h>
-#include <boost/predef/hardware/simd/arm.h>
-#include <boost/predef/hardware/simd/ppc.h>
 
 // We check if SIMD extension of multiples architectures have been detected,
 // if yes, then this is an error!

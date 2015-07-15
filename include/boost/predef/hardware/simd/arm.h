@@ -6,6 +6,9 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
+// From the newest to the oldest
+#include <boost/predef/hardware/simd/arm/neon.h>
+
 #ifndef BOOST_PREDEF_HARDWARE_SIMD_ARM_H
 #define BOOST_PREDEF_HARDWARE_SIMD_ARM_H
 
@@ -26,8 +29,6 @@ http://www.boost.org/LICENSE_1_0.txt)
      [[`BOOST_HW_SIMD_ARM`] [V.R.P]]
      ]
  */
-
-#include <boost/predef/hardware/simd/arm/neon.h>
 
 #if defined(BOOST_HW_SIMD_ARM)
 #   define BOOST_HW_SIMD_ARM_AVAILABLE

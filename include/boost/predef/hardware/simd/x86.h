@@ -6,6 +6,22 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
+// From the newest to the oldest
+#include <boost/predef/hardware/simd/x86/mic.h>   // XEON Phi specific
+#include <boost/predef/hardware/simd/x86/avx2.h>
+#include <boost/predef/hardware/simd/x86/fma3.h>
+#include <boost/predef/hardware/simd/x86/xop.h>   // AMD specific
+#include <boost/predef/hardware/simd/x86/fma4.h>  // AMD specific
+#include <boost/predef/hardware/simd/x86/avx.h>
+#include <boost/predef/hardware/simd/x86/sse4_2.h>
+#include <boost/predef/hardware/simd/x86/sse4_1.h>
+#include <boost/predef/hardware/simd/x86/sse4a.h> // AMD specific
+#include <boost/predef/hardware/simd/x86/ssse3.h>
+#include <boost/predef/hardware/simd/x86/sse3.h>
+#include <boost/predef/hardware/simd/x86/sse2.h>
+#include <boost/predef/hardware/simd/x86/sse.h>
+#include <boost/predef/hardware/simd/x86/mmx.h>
+
 #ifndef BOOST_PREDEF_HARDWARE_SIMD_X86_H
 #define BOOST_PREDEF_HARDWARE_SIMD_X86_H
 
@@ -27,22 +43,6 @@ http://www.boost.org/LICENSE_1_0.txt)
      [[`BOOST_HW_SIMD_X86`] [V.R.P]]
      ]
  */
-
-// From the newest to the oldest
-#include <boost/predef/hardware/simd/x86/mic.h>   // XEON Phi specific
-#include <boost/predef/hardware/simd/x86/avx2.h>
-#include <boost/predef/hardware/simd/x86/fma3.h>
-#include <boost/predef/hardware/simd/x86/xop.h>   // AMD specific
-#include <boost/predef/hardware/simd/x86/fma4.h>  // AMD specific
-#include <boost/predef/hardware/simd/x86/avx.h>
-#include <boost/predef/hardware/simd/x86/sse4_2.h>
-#include <boost/predef/hardware/simd/x86/sse4_1.h>
-#include <boost/predef/hardware/simd/x86/sse4a.h> // AMD specific
-#include <boost/predef/hardware/simd/x86/ssse3.h>
-#include <boost/predef/hardware/simd/x86/sse3.h>
-#include <boost/predef/hardware/simd/x86/sse2.h>
-#include <boost/predef/hardware/simd/x86/sse.h>
-#include <boost/predef/hardware/simd/x86/mmx.h>
 
 #if defined(BOOST_HW_SIMD_X86)
 #   define BOOST_HW_SIMD_X86_AVAILABLE
