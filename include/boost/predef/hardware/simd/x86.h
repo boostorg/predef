@@ -29,22 +29,20 @@ http://www.boost.org/LICENSE_1_0.txt)
  */
 
 // From the newest to the oldest
-#include <boost/predef/hardware/simd/x86/mic.h>
+#include <boost/predef/hardware/simd/x86/mic.h>   // XEON Phi specific
 #include <boost/predef/hardware/simd/x86/avx2.h>
+#include <boost/predef/hardware/simd/x86/fma3.h>
+#include <boost/predef/hardware/simd/x86/xop.h>   // AMD specific
+#include <boost/predef/hardware/simd/x86/fma4.h>  // AMD specific
 #include <boost/predef/hardware/simd/x86/avx.h>
 #include <boost/predef/hardware/simd/x86/sse4_2.h>
 #include <boost/predef/hardware/simd/x86/sse4_1.h>
+#include <boost/predef/hardware/simd/x86/sse4a.h> // AMD specific
 #include <boost/predef/hardware/simd/x86/ssse3.h>
 #include <boost/predef/hardware/simd/x86/sse3.h>
 #include <boost/predef/hardware/simd/x86/sse2.h>
 #include <boost/predef/hardware/simd/x86/sse.h>
 #include <boost/predef/hardware/simd/x86/mmx.h>
-
-// Those ones are more like options than real extensions
-#include <boost/predef/hardware/simd/x86/sse4a.h>
-#include <boost/predef/hardware/simd/x86/fma3.h>
-#include <boost/predef/hardware/simd/x86/fma4.h>
-#include <boost/predef/hardware/simd/x86/xop.h>
 
 #if defined(BOOST_HW_SIMD_X86)
 #   define BOOST_HW_SIMD_X86_AVAILABLE

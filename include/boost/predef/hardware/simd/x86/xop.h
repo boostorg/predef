@@ -14,11 +14,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
  [heading `BOOST_HW_SIMD_X86_XOP`]
 
- [@https://en.wikipedia.org/wiki/XOP_instruction_set XOP] x86 extension.
- Version number is the default BOOST_VERSION_NUMBER_AVAILABLE.
-
- This extension is only available on particular CPUs. It does imply
- FMA4, please see its documentation to see what else is implied.
+ [@https://en.wikipedia.org/wiki/XOP_instruction_set XOP] x86 extension (AMD specific).
+ Version number is: 5.1.1.
 
  [table
      [[__predef_symbol__] [__predef_version__]]
@@ -31,9 +28,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #if defined(__XOP__)
 #   undef BOOST_HW_SIMD_X86_XOP
-/* We do not give a valid version for this one, since it not always
- * available if newer extension than AVX (FMA4 implies AVX) are enabled. */
-#   define BOOST_HW_SIMD_X86_XOP BOOST_VERSION_NUMBER_AVAILABLE
+#   define BOOST_HW_SIMD_X86_XOP BOOST_VERSION_NUMBER(5, 1, 1)
 #   define BOOST_HW_SIMD_X86_XOP_AVAILABLE
 #endif
 

@@ -14,12 +14,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
  [heading `BOOST_HW_SIMD_X86_SSE4A`]
 
- [@https://en.wikipedia.org/wiki/SSE4##SSE4A SSE4A] x86 extension.
- Version number is the default BOOST_VERSION_NUMBER_AVAILABLE.
-
- This extension is only available on particular CPUs. It does imply
- SSE3, but it is not implied by extensions newer than SSE3. For example,
- SSE4.1 does not imply it.
+ [@https://en.wikipedia.org/wiki/SSE4##SSE4A SSE4A] x86 extension (AMD specific).
+ Version number is: 4.0.0.
 
  [table
      [[__predef_symbol__] [__predef_version__]]
@@ -32,9 +28,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #if defined(__SSE4A__)
 #   undef BOOST_HW_SIMD_X86_SSE4A
-/* We do not give a valid version for this one, since it not always
- * available if newer extension than SSE3 are enabled. */
-#   define BOOST_HW_SIMD_X86_SSE4A BOOST_VERSION_NUMBER_AVAILABLE
+#   define BOOST_HW_SIMD_X86_SSE4A BOOST_VERSION_NUMBER(4, 0, 0)
 #   define BOOST_HW_SIMD_X86_SSE4A_AVAILABLE
 #endif
 

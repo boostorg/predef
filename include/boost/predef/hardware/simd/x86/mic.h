@@ -15,7 +15,7 @@ http://www.boost.org/LICENSE_1_0.txt)
  [heading `BOOST_HW_SIMD_X86_MIC`]
 
  [@https://en.wikipedia.org/wiki/Xeon_Phi MIC] (Xeon Phi) x86 extension.
- Version number is: 4.1.0.
+ Version number is: 6.0.0.
 
  [table
      [[__predef_symbol__] [__predef_version__]]

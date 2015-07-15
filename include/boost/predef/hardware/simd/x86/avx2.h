@@ -16,7 +16,7 @@ http://www.boost.org/LICENSE_1_0.txt)
  [heading `BOOST_HW_SIMD_X86_AVX2`]
 
  [@https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#Advanced_Vector_Extensions_2 AVX2] x86 extension.
- Version number is: 5.2.0. Not available for version of MSVC below 17.00.
+ Version number is: 5.3.0. Not available for version of MSVC below 17.00.
 
  [table
      [[__predef_symbol__] [__predef_version__]]
@@ -31,7 +31,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   undef BOOST_HW_SIMD_X86_AVX2
 #   if defined(BOOST_COMP_MSVC_AVAILABLE) && BOOST_COMP_MSVC > BOOST_VERSION_NUMBER(17, 0, 0)\
        || !defined(BOOST_COMP_MSVC_AVAILABLE)
-#      define BOOST_HW_SIMD_X86_AVX2 BOOST_VERSION_NUMBER(5, 2, 0)
+#      define BOOST_HW_SIMD_X86_AVX2 BOOST_VERSION_NUMBER(5, 3, 0)
 #      define BOOST_HW_SIMD_X86_AVX2_AVAILABLE
 #   endif
 #endif

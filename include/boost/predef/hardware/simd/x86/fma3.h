@@ -16,11 +16,7 @@ http://www.boost.org/LICENSE_1_0.txt)
  [heading `BOOST_HW_SIMD_X86_FMA3`]
 
  [@https://en.wikipedia.org/wiki/FMA_instruction_set FMA3] x86 extension.
- Version number is the default BOOST_VERSION_NUMBER_AVAILABLE.
-
- This extension is only available on particular CPUs. It does imply
- AVX, but it is not implied by extensions newer than SSE3. For example,
- AVX2 does not imply it.
+ Version number is: 5.2.0. Not available for version of MSVC below 17.00.
 
  [table
      [[__predef_symbol__] [__predef_version__]]
@@ -33,11 +29,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #if defined(__FMA__)
 #   undef BOOST_HW_SIMD_X86_FMA3
-/* We do not give a valid version for this one, since it not always
- * available if newer extension than AVX are enabled. */
 #   if defined(BOOST_COMP_MSVC_AVAILABLE) && BOOST_COMP_MSVC < BOOST_VERSION_NUMBER(17, 0, 0)\
        || !defined(BOOST_COMP_MSVC_AVAILABLE)
-#      define BOOST_HW_SIMD_X86_FMA3 BOOST_VERSION_NUMBER_AVAILABLE
+#      define BOOST_HW_SIMD_X86_FMA3 BOOST_VERSION_NUMBER(5, 2, 0)
 #      define BOOST_HW_SIMD_X86_FMA3_AVAILABLE
 #   endif
 #endif
