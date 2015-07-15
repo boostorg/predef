@@ -24,11 +24,9 @@ http://www.boost.org/LICENSE_1_0.txt)
      ]
  */
 
-#define BOOST_HW_SIMD_PPC_VSX BOOST_VERSION_NUMBER_NOT_AVAILABLE
+#define BOOST_HW_SIMD_PPC_VSX BOOST_VERSION_NUMBER(1, 1, 0)
 
 #if defined(__VSX__)
-#   undef BOOST_HW_SIMD_PPC_VSX
-#   define BOOST_HW_SIMD_PPC_VSX BOOST_VERSION_NUMBER(1, 1, 0)
 #   define BOOST_HW_SIMD_PPC_VSX_AVAILABLE
 #endif
 
