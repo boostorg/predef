@@ -26,9 +26,11 @@ http://www.boost.org/LICENSE_1_0.txt)
      ]
  */
 
-#define BOOST_HW_SIMD_X86_SSE BOOST_VERSION_NUMBER(1, 0, 0)
+#define BOOST_HW_SIMD_X86_SSE BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__SSE__) || defined(_M_X64) || _M_IX86_FP >= 1
+#   undef BOOST_HW_SIMD_X86_SSE
+#   define BOOST_HW_SIMD_X86_SSE BOOST_VERSION_NUMBER(1, 0, 0)
 #   define BOOST_HW_SIMD_X86_SSE_AVAILABLE
 #endif
 

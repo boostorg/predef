@@ -25,11 +25,13 @@ http://www.boost.org/LICENSE_1_0.txt)
      ]
  */
 
-#define BOOST_HW_SIMD_X86_FMA3 BOOST_VERSION_NUMBER(5, 2, 0)
+#define BOOST_HW_SIMD_X86_FMA3 BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__FMA__)
 #   if defined(BOOST_COMP_MSVC_AVAILABLE) && BOOST_COMP_MSVC < BOOST_VERSION_NUMBER(17, 0, 0)\
        || !defined(BOOST_COMP_MSVC_AVAILABLE)
+#      undef BOOST_HW_SIMD_X86_FMA3
+#      define BOOST_HW_SIMD_X86_FMA3 BOOST_VERSION_NUMBER(5, 2, 0)
 #      define BOOST_HW_SIMD_X86_FMA3_AVAILABLE
 #   endif
 #endif

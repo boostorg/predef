@@ -24,9 +24,11 @@ http://www.boost.org/LICENSE_1_0.txt)
      ]
  */
 
-#define BOOST_HW_SIMD_X86_MIC BOOST_VERSION_NUMBER(6, 0, 0)
+#define BOOST_HW_SIMD_X86_MIC BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__MIC__)
+#   undef BOOST_HW_SIMD_X86_MIC
+#   define BOOST_HW_SIMD_X86_MIC BOOST_VERSION_NUMBER(6, 0, 0)
 #   define BOOST_HW_SIMD_X86_MIC_AVAILABLE
 #endif
 

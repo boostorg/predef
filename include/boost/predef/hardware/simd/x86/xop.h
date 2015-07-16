@@ -24,9 +24,11 @@ http://www.boost.org/LICENSE_1_0.txt)
      ]
  */
 
-#define BOOST_HW_SIMD_X86_XOP BOOST_VERSION_NUMBER(5, 1, 1)
+#define BOOST_HW_SIMD_X86_XOP BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if defined(__XOP__)
+#   undef BOOST_HW_SIMD_X86_XOP
+#   define BOOST_HW_SIMD_X86_XOP BOOST_VERSION_NUMBER(5, 1, 1)
 #   define BOOST_HW_SIMD_X86_XOP_AVAILABLE
 #endif
 
