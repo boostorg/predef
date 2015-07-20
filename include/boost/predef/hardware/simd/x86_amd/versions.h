@@ -1,0 +1,48 @@
+/*
+Copyright Charly Chevalier 2015
+Copyright Joel Falcou 2015
+Distributed under the Boost Software License, Version 1.0.
+(See accompanying file LICENSE_1_0.txt or copy at
+http://www.boost.org/LICENSE_1_0.txt)
+*/
+
+#ifndef BOOST_PREDEF_HARDWARE_SIMD_X86_AMD_VERSIONS_H
+#define BOOST_PREDEF_HARDWARE_SIMD_X86_AMD_VERSIONS_H
+
+#include <boost/predef/version_number.h>
+
+/*`
+ [heading `BOOST_HW_SIMD_X86_AMD_*_VERSION`]
+
+ [note Those defines represent x86 (AMD specific) SIMD extensions versions. You
+ can compare them with the predef BOOST_HW_SIMD_X86_AMD.]
+ */
+
+// ---------------------------------
+
+/*`
+ [heading `BOOST_HW_SIMD_X86_SSE4A`]
+
+ [@https://en.wikipedia.org/wiki/SSE4##SSE4A SSE4A] x86 extension (AMD specific).
+ Version number is: 4.0.0.
+ */
+#define BOOST_HW_SIMD_x86_AMD_SSE4A_VERSION BOOST_VERSION_NUMBER(4, 0, 0)
+
+/*`
+ [heading `BOOST_HW_SIMD_X86_XOP`]
+
+ [@https://en.wikipedia.org/wiki/XOP_instruction_set XOP] x86 extension (AMD specific).
+ Version number is: 5.1.1.
+ */
+#define BOOST_HW_SIMD_x86_AMD_FMA4_VERSION BOOST_VERSION_NUMBER(5, 1, 0)
+
+/*`
+ [heading `BOOST_HW_SIMD_X86_XOP`]
+
+ [@https://en.wikipedia.org/wiki/XOP_instruction_set XOP] x86 extension (AMD specific).
+ Version number is: 5.1.1.
+ */
+#define BOOST_HW_SIMD_x86_AMD_XOP_VERSION BOOST_VERSION_NUMBER(5, 1, 1)
+
+
+#endif
