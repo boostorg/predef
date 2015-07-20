@@ -6,11 +6,6 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
-// From the newest to the oldest
-#include <boost/predef/hardware/simd/ppc/qpx.h>
-#include <boost/predef/hardware/simd/ppc/vsx.h>
-#include <boost/predef/hardware/simd/ppc/vmx.h>
-
 #ifndef BOOST_PREDEF_HARDWARE_SIMD_PPC_H
 #define BOOST_PREDEF_HARDWARE_SIMD_PPC_H
 
@@ -19,26 +14,50 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
  [heading `BOOST_HW_SIMD_PPC`]
 
- The SIMD extension for x86 (if detected).
- Version number depends on the detected extension.
-
- BOOST_HW_SIMD_PPC is defined by the first detected extension. They are
- checked from the newest to the oldest. (QPX -> VSX -> VMX)
+ The SIMD extension for PowerPC (if detected).
+ Version number depends on the most recent detected extension.
 
  [table
      [[__predef_symbol__] [__predef_version__]]
 
-     [[`BOOST_HW_SIMD_PPC`] [__predef_detection__]]
-     [[`BOOST_HW_SIMD_PPC`] [V.R.P]]
+
+     [[`__VECTOR4DOUBLE__`] [__predef_detection__]]
+
+     [[`__ALTIVEC__`] [__predef_detection__]]
+     [[`__VEC__`] [__predef_detection__]]
+
+     [[`__VSX__`] [__predef_detection__]]
+
+
+     [[`__VECTOR4DOUBLE__`] [BOOST_HW_SIMD_PPC_QPX_VERSION]]
+
+     [[`__ALTIVEC__`] [BOOST_HW_SIMD_PPC_VMX_VERSION]]
+     [[`__VEC__`] [BOOST_HW_SIMD_PPC_VMX_VERSION]]
+
+     [[`__VSX__`] [BOOST_HW_SIMD_PPC_VSX_VERSION]]
      ]
  */
 
-#if defined(BOOST_HW_SIMD_PPC)
-#   define BOOST_HW_SIMD_PPC_AVAILABLE
-#else
-#   define BOOST_HW_SIMD_PPC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#   define BOOST_HW_SIMD_PPC_NAME "PowerPC SIMD"
+#define BOOST_HW_SIMD_PPC BOOST_VERSION_NUMBER_NOT_AVAILABLE
+
+#undef BOOST_HW_SIMD_PPC
+#if !defined(BOOST_HW_SIMD_PPC) && defined(__VECTOR4DOUBLE__)
+#   define BOOST_HW_SIMD_PPC BOOST_HW_SIMD_PPC_QPX_VERSION
 #endif
+#if !defined(BOOST_HW_SIMD_PPC) && defined(__VSX__)
+#   define BOOST_HW_SIMD_PPC BOOST_HW_SIMD_PPC_VSX_VERSION
+#endif
+#if !defined(BOOST_HW_SIMD_PPC) && (defined(__ALTIVEC__) || defined(__VEC__))
+#   define BOOST_HW_SIMD_PPC BOOST_HW_SIMD_PPC_VMX_VERSION
+#endif
+
+#if !defined(BOOST_HW_SIMD_PPC)
+#   define BOOST_HW_SIMD_PPC BOOST_VERSION_NUMBER_NOT_AVAILABLE
+#else
+#   define BOOST_HW_SIMD_PPC_AVAILABLE
+#endif
+
+#define BOOST_HW_SIMD_PPC_NAME "PPC SIMD"
 
 #endif
 
