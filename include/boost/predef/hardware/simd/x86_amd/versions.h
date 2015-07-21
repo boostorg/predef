@@ -34,7 +34,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
  [@https://en.wikipedia.org/wiki/XOP_instruction_set XOP] x86 extension (AMD specific).
 
- Version number is: *5.1.1*.
+ Version number is: *5.1.0*.
  */
 #define BOOST_HW_SIMD_X86_AMD_FMA4_VERSION BOOST_VERSION_NUMBER(5, 1, 0)
 

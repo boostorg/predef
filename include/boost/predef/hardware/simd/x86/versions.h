@@ -82,7 +82,7 @@ http://www.boost.org/LICENSE_1_0.txt)
  The [@https://en.wikipedia.org/wiki/SSE4##SSE4.2 SSE4_2] x86 extension version
  number.
 
- Version number is: *4.1.0*.
+ Version number is: *4.2.0*.
  */
 #define BOOST_HW_SIMD_X86_SSE4_2_VERSION BOOST_VERSION_NUMBER(4, 2, 0)
 
@@ -128,8 +128,8 @@ http://www.boost.org/LICENSE_1_0.txt)
  The [@https://en.wikipedia.org/wiki/Xeon_Phi MIC] (Xeon Phi) x86 extension
  version number.
 
- Version number is: *99.999.999*.
+ Version number is: *99.99.99999*.
  */
-#define BOOST_HW_SIMD_X86_MIC_VERSION BOOST_VERSION_NUMBER(99, 999, 999)
+#define BOOST_HW_SIMD_X86_MIC_VERSION BOOST_VERSION_NUMBER_MAX
 
 #endif
