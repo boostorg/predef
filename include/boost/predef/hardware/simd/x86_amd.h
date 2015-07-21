@@ -57,14 +57,14 @@ http://www.boost.org/LICENSE_1_0.txt)
 // common extensions.
 
 #undef BOOST_HW_SIMD_X86_AMD
-#if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__SSE4A__)
-#   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION
+#if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__XOP__)
+#   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_XOP_VERSION
 #endif
 #if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__FMA4__)
 #   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_FMA4_VERSION
 #endif
-#if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__XOP__)
-#   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_XOP_VERSION
+#if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__SSE4A__)
+#   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION
 #endif
 
 #if !defined(BOOST_HW_SIMD_X86_AMD)
