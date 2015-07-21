@@ -11,7 +11,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/predef/version_number.h>
 #include <boost/predef/hardware/simd/x86_amd/versions.h>
-#include <boost/predef/compiler.h>
 
 /*`
  [heading `BOOST_HW_SIMD_X86_AMD`]
