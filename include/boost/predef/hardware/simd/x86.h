@@ -71,7 +71,6 @@ http://www.boost.org/LICENSE_1_0.txt)
      [[`__AVX2__`] [BOOST_HW_SIMD_x86_AVX2_VERSION]]
      ]
 
- [include x86/versions.h]
  */
 
 #define BOOST_HW_SIMD_X86 BOOST_VERSION_NUMBER_NOT_AVAILABLE

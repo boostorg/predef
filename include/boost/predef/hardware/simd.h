@@ -16,6 +16,14 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/version_number.h>
 
 /*`
+ [section Using the `BOOST_HW_SIMD_*` predefs]
+ [include ../doc/hardware_simd.qbk]
+ [endsect]
+
+ [/ --------------------------- ]
+
+ [section `BOOST_HW_SIMD_*`]
+
  [heading `BOOST_HW_SIMD`]
 
  The SIMD extension detected for a specific architectures.
@@ -29,6 +37,32 @@ http://www.boost.org/LICENSE_1_0.txt)
      [[`BOOST_HW_SIMD_ARM_AVAILABLE`] [__predef_detection__]]
      [[`BOOST_HW_SIMD_PPC_AVAILABLE`] [__predef_detection__]]
      ]
+
+ [include ../include/boost/predef/hardware/simd/x86.h]
+ [include ../include/boost/predef/hardware/simd/x86_amd.h]
+ [include ../include/boost/predef/hardware/simd/arm.h]
+ [include ../include/boost/predef/hardware/simd/ppc.h]
+
+ [endsect]
+
+ [/ --------------------------- ]
+
+ [section `BOOST_HW_SIMD_X86_*_VERSION`]
+ [include ../include/boost/predef/hardware/simd/x86/versions.h]
+ [endsect]
+
+ [section `BOOST_HW_SIMD_X86_AMD_*_VERSION`]
+ [include ../include/boost/predef/hardware/simd/x86_amd/versions.h]
+ [endsect]
+
+ [section `BOOST_HW_SIMD_ARM_*_VERSION`]
+ [include ../include/boost/predef/hardware/simd/arm/versions.h]
+ [endsect]
+
+ [section `BOOST_HW_SIMD_PPC_*_VERSION`]
+ [include ../include/boost/predef/hardware/simd/ppc/versions.h]
+ [endsect]
+
  */
 
 // We check if SIMD extension of multiples architectures have been detected,
