@@ -551,8 +551,8 @@ and "Y", "M", "D" for dates.
 [include ../include/boost/predef/platform/*.h]
 [endsect]
 
-[section `BOOST_HW_SIMD` hardware SIMD macros]
-[include ../include/boost/predef/hardware/simd.h]
+[section `BOOST_HW` hardware macros]
+[include ../include/boost/predef/hardware/*.h]
 [endsect]
 
 [section Other macros]
