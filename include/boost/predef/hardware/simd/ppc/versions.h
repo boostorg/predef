@@ -21,26 +21,31 @@ http://www.boost.org/LICENSE_1_0.txt)
 // ---------------------------------
 
 /*`
- [heading `BOOST_HW_SIMD_PPC_VMX`]
+ [heading `BOOST_HW_SIMD_PPC_VMX_VERSION`]
 
- [@https://en.wikipedia.org/wiki/AltiVec#VMX128 VMX] powerpc extension.
- Version number is: 1.0.0.
+ The [@https://en.wikipedia.org/wiki/AltiVec#VMX128 VMX] powerpc extension
+ version number.
+
+ Version number is: *1.0.0*.
  */
 #define BOOST_HW_SIMD_PPC_VMX_VERSION BOOST_VERSION_NUMBER(1, 0, 0)
 
 /*`
- [heading `BOOST_HW_SIMD_PPC_VSX`]
+ [heading `BOOST_HW_SIMD_PPC_VSX_VERSION`]
 
- [@https://en.wikipedia.org/wiki/AltiVec#VSX VSX] powerpc extension.
- Version number is: 1.1.0.
+ The [@https://en.wikipedia.org/wiki/AltiVec#VSX VSX] powerpc extension version
+ number.
+
+ Version number is: *1.1.0*.
  */
 #define BOOST_HW_SIMD_PPC_VSX_VERSION BOOST_VERSION_NUMBER(1, 1, 0)
 
 /*`
- [heading `BOOST_HW_SIMD_PPC_QPX`]
+ [heading `BOOST_HW_SIMD_PPC_QPX_VERSION`]
 
- QPX powerpc extension.
- Version number is: 2.0.0.
+ The QPX powerpc extension version number.
+
+ Version number is: *2.0.0*.
  */
 #define BOOST_HW_SIMD_PPC_QPX_VERSION BOOST_VERSION_NUMBER(2, 0, 0)
 

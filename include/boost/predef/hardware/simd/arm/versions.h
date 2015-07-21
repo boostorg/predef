@@ -21,10 +21,12 @@ http://www.boost.org/LICENSE_1_0.txt)
 // ---------------------------------
 
 /*`
- [heading `BOOST_HW_SIMD_ARM_NEON`]
+ [heading `BOOST_HW_SIMD_ARM_NEON_VERSION`]
 
- [@https://en.wikipedia.org/wiki/ARM_architecture#Advanced_SIMD_.28NEON.29 NEON] ARM extension.
- Version number is: 1.0.0.
+ The [@https://en.wikipedia.org/wiki/ARM_architecture#Advanced_SIMD_.28NEON.29 NEON]
+ ARM extension version number.
+
+ Version number is: *1.0.0*.
  */
 #define BOOST_HW_SIMD_ARM_NEON_VERSION BOOST_VERSION_NUMBER(1, 0, 0)
 
