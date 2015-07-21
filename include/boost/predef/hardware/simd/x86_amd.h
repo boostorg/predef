@@ -16,13 +16,20 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
  [heading `BOOST_HW_SIMD_X86_AMD`]
 
- The SIMD extension for x86 (AMD) (if detected).
+ The SIMD extension for x86 (AMD) (*if detected*).
  Version number depends on the most recent detected extension.
 
- [note This predef includes every other x86 SIMD extensions and also has other
- more specific extensions (FMA4, XOP, SSE4a). You should use this predef
- instead of `BOOST_HW_SIMD_X86` to test if those specific extensions have
- been detected.]
+ [table
+     [[__predef_symbol__] [__predef_version__]]
+
+     [[`__SSE4A__`] [__predef_detection__]]
+
+     [[`__FMA4__`] [__predef_detection__]]
+
+     [[`__XOP__`] [__predef_detection__]]
+
+     [[`BOOST_HW_SIMD_X86`] [__predef_detection__]]
+     ]
 
  [table
      [[__predef_symbol__] [__predef_version__]]
@@ -36,7 +43,11 @@ http://www.boost.org/LICENSE_1_0.txt)
      [[`BOOST_HW_SIMD_X86`] [BOOST_HW_SIMD_x86]]
      ]
 
- [include x86_amd/versions.h]
+ [note This predef includes every other x86 SIMD extensions and also has other
+ more specific extensions (FMA4, XOP, SSE4a). You should use this predef
+ instead of `BOOST_HW_SIMD_X86` to test if those specific extensions have
+ been detected.]
+
  */
 
 #define BOOST_HW_SIMD_X86_AMD BOOST_VERSION_NUMBER_NOT_AVAILABLE

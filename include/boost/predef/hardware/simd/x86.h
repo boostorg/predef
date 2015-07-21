@@ -16,12 +16,11 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
  [heading `BOOST_HW_SIMD_X86`]
 
- The SIMD extension for x86 (if detected).
+ The SIMD extension for x86 (*if detected*).
  Version number depends on the most recent detected extension.
 
  [table
      [[__predef_symbol__] [__predef_version__]]
-
 
      [[`__SSE__`] [__predef_detection__]]
      [[`_M_X64`] [__predef_detection__]]
@@ -44,7 +43,10 @@ http://www.boost.org/LICENSE_1_0.txt)
      [[`__FMA__`] [__predef_detection__]]
 
      [[`__AVX2__`] [__predef_detection__]]
+     ]
 
+ [table
+     [[__predef_symbol__] [__predef_version__]]
 
      [[`__SSE__`] [BOOST_HW_SIMD_X86_SSE_VERSION]]
      [[`_M_X64`] [BOOST_HW_SIMD_X86_SSE_VERSION]]

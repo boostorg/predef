@@ -12,10 +12,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/version_number.h>
 
 /*`
- [heading `BOOST_HW_SIMD_ARM_*_VERSION`]
+ Those defines represent ARM SIMD extensions versions.
 
- [note Those defines represent ARM SIMD extensions versions. You can
- compare them with the predef BOOST_HW_SIMD_ARM.]
+ [note You *MUST* compare them with the predef `BOOST_HW_SIMD_ARM`.]
  */
 
 // ---------------------------------

@@ -24,9 +24,10 @@ http://www.boost.org/LICENSE_1_0.txt)
  [table
      [[__predef_symbol__] [__predef_version__]]
 
+     [[`BOOST_HW_SIMD_X86_AVAILABLE`] [__predef_detection__]]
+     [[`BOOST_HW_SIMD_X86_AMD_AVAILABLE`] [__predef_detection__]]
      [[`BOOST_HW_SIMD_ARM_AVAILABLE`] [__predef_detection__]]
      [[`BOOST_HW_SIMD_PPC_AVAILABLE`] [__predef_detection__]]
-     [[`BOOST_HW_SIMD_X86_AVAILABLE`] [__predef_detection__]]
      ]
  */
 

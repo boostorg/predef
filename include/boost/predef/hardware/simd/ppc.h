@@ -14,12 +14,11 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
  [heading `BOOST_HW_SIMD_PPC`]
 
- The SIMD extension for PowerPC (if detected).
+ The SIMD extension for PowerPC (*if detected*).
  Version number depends on the most recent detected extension.
 
  [table
      [[__predef_symbol__] [__predef_version__]]
-
 
      [[`__VECTOR4DOUBLE__`] [__predef_detection__]]
 
@@ -27,7 +26,10 @@ http://www.boost.org/LICENSE_1_0.txt)
      [[`__VEC__`] [__predef_detection__]]
 
      [[`__VSX__`] [__predef_detection__]]
+     ]
 
+ [table
+     [[__predef_symbol__] [__predef_version__]]
 
      [[`__VECTOR4DOUBLE__`] [BOOST_HW_SIMD_PPC_QPX_VERSION]]
 
@@ -36,6 +38,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
      [[`__VSX__`] [BOOST_HW_SIMD_PPC_VSX_VERSION]]
      ]
+
  */
 
 #define BOOST_HW_SIMD_PPC BOOST_VERSION_NUMBER_NOT_AVAILABLE
