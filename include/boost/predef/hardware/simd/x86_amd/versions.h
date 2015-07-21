@@ -27,7 +27,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
  Version number is: *4.0.0*.
  */
-#define BOOST_HW_SIMD_x86_AMD_SSE4A_VERSION BOOST_VERSION_NUMBER(4, 0, 0)
+#define BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION BOOST_VERSION_NUMBER(4, 0, 0)
 
 /*`
  [heading `BOOST_HW_SIMD_X86_XOP_VERSION`]
@@ -36,7 +36,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
  Version number is: *5.1.1*.
  */
-#define BOOST_HW_SIMD_x86_AMD_FMA4_VERSION BOOST_VERSION_NUMBER(5, 1, 0)
+#define BOOST_HW_SIMD_X86_AMD_FMA4_VERSION BOOST_VERSION_NUMBER(5, 1, 0)
 
 /*`
  [heading `BOOST_HW_SIMD_X86_XOP_VERSION`]
@@ -45,7 +45,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
  Version number is: *5.1.1*.
  */
-#define BOOST_HW_SIMD_x86_AMD_XOP_VERSION BOOST_VERSION_NUMBER(5, 1, 1)
+#define BOOST_HW_SIMD_X86_AMD_XOP_VERSION BOOST_VERSION_NUMBER(5, 1, 1)
 
 
 #endif

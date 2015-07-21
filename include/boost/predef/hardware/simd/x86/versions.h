@@ -120,7 +120,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
  [note Not available for versions of MSVC below 17.00.]
  */
-#define BOOST_HW_SIMD_x86_AVX2_VERSION BOOST_VERSION_NUMBER(5, 3, 0)
+#define BOOST_HW_SIMD_X86_AVX2_VERSION BOOST_VERSION_NUMBER(5, 3, 0)
 
 /*`
  [heading `BOOST_HW_SIMD_X86_MIC_VERSION`]
@@ -130,6 +130,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
  Version number is: *99.999.999*.
  */
-#define BOOST_HW_SIMD_x86_MIC_VERSION BOOST_VERSION_NUMBER(99, 999, 999)
+#define BOOST_HW_SIMD_X86_MIC_VERSION BOOST_VERSION_NUMBER(99, 999, 999)
 
 #endif
