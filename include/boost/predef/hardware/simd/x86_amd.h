@@ -76,6 +76,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #      undef BOOST_HW_SIMD_X86_AMD
 #      define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86
 #   endif
+#   define BOOST_HW_SIMD_X86_AMD_AVAILABLE
 #endif
 
 #define BOOST_HW_SIMD_X86_AMD_NAME "x86 (AMD) SIMD"
