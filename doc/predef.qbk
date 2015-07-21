@@ -227,8 +227,6 @@ detected. I.e. a definition equivalent to:
 Also for each aspect there is a macro defined with a descriptive
 name of what the detection is.
 
-[heading The `BOOST_HW_SIMD_*` predefs]
-
 [heading The `*_EMULATED` macros]
 
 Predef definitions are guaranteed to be uniquely detected within one category.
