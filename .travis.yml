@@ -14,25 +14,29 @@ notifications:
     on_success: change
     on_failure: change
 
-os:
-  - linux
-
 matrix:
   include:
     - compiler: clang
       env: TOOLSET=clang-3.4
+      os: linux
     - compiler: clang
       env: TOOLSET=clang-3.5
+      os: linux
     - compiler: clang
       env: TOOLSET=clang-3.6
+      os: linux
     - compiler: gcc
       env: TOOLSET=gcc-4.7
+      os: linux
     - compiler: gcc
       env: TOOLSET=gcc-4.8
+      os: linux
     - compiler: gcc
       env: TOOLSET=gcc-4.9
+      os: linux
     - compiler: gcc
       env: TOOLSET=gcc-5.1
+      os: linux
 
 before_install: wget "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py"
 install: python script.py install
