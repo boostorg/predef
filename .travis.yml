@@ -16,36 +16,16 @@ notifications:
 
 os:
   - linux
-  - osx
-
-env:
-  - env: TOOLSET=clang-3.4
-  - env: TOOLSET=clang-3.5
-  - env: TOOLSET=clang-3.6
-  - env: TOOLSET=gcc-4.7
-  - env: TOOLSET=gcc-4.8
-  - env: TOOLSET=gcc-4.9
-  - env: TOOLSET=gcc-5.1
-  - env: TOOLSET=xcode-6.1
 
 matrix:
-  exclude:
+  include:
     - env: TOOLSET=clang-3.4
-      os: osx
     - env: TOOLSET=clang-3.5
-      os: osx
     - env: TOOLSET=clang-3.6
-      os: osx
     - env: TOOLSET=gcc-4.7
-      os: osx
     - env: TOOLSET=gcc-4.8
-      os: osx
     - env: TOOLSET=gcc-4.9
-      os: osx
     - env: TOOLSET=gcc-5.1
-      os: osx
-    - env: TOOLSET=xcode-6.1
-      os: linux
 
 before_install: wget "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py"
 install: python script.py install
