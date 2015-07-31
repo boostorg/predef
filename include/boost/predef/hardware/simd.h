@@ -68,6 +68,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 // We check if SIMD extension of multiples architectures have been detected,
 // if yes, then this is an error!
+//
+// NOTE: _X86_AMD implies _X86, so there is no need to check for it here!
+//
 #if defined(BOOST_HW_SIMD_ARM_AVAILABLE) && defined(BOOST_HW_SIMD_PPC_AVAILABLE) ||\
     defined(BOOST_HW_SIMD_ARM_AVAILABLE) && defined(BOOST_HW_SIMD_X86_AVAILABLE) ||\
     defined(BOOST_HW_SIMD_PPC_AVAILABLE) && defined(BOOST_HW_SIMD_X86_AVAILABLE)
@@ -76,25 +79,27 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #if defined(BOOST_HW_SIMD_X86_AVAILABLE)
 #   define BOOST_HW_SIMD BOOST_HW_SIMD_X86
-#   define BOOST_HW_SIMD_NAME BOOST_HW_SIMD_X86_NAME
+#endif
+
+#if defined(BOOST_HW_SIMD_X86_AMD_AVAILABLE)
+#   define BOOST_HW_SIMD BOOST_HW_SIMD_X86_AMD
 #endif
 
 #if defined(BOOST_HW_SIMD_ARM_AVAILABLE)
 #   define BOOST_HW_SIMD BOOST_HW_SIMD_ARM
-#   define BOOST_HW_SIMD_NAME BOOST_HW_SIMD_ARM_NAME
 #endif
 
 #if defined(BOOST_HW_SIMD_PPC_AVAILABLE)
 #   define BOOST_HW_SIMD BOOST_HW_SIMD_PPC
-#   define BOOST_HW_SIMD_NAME BOOST_HW_SIMD_PPC_NAME
 #endif
 
 #if defined(BOOST_HW_SIMD)
 #   define BOOST_HW_SIMD_AVAILABLE
 #else
 #   define BOOST_HW_SIMD BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#   define BOOST_HW_SIMD_NAME "Hardware SIMD"
 #endif
+
+#define BOOST_HW_SIMD_NAME "Hardware SIMD"
 
 #endif
 
