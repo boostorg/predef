@@ -93,8 +93,6 @@ http://www.boost.org/LICENSE_1_0.txt)
  extension version number.
 
  Version number is: *5.0.0*.
-
- [note Not available for versions of MSVC below 16.00.40219.]
  */
 #define BOOST_HW_SIMD_X86_AVX_VERSION BOOST_VERSION_NUMBER(5, 0, 0)
 
@@ -105,8 +103,6 @@ http://www.boost.org/LICENSE_1_0.txt)
  version number.
 
  Version number is: *5.2.0*.
-
- [note Not available for versions of MSVC below 17.00.]
  */
 #define BOOST_HW_SIMD_X86_FMA3_VERSION BOOST_VERSION_NUMBER(5, 2, 0)
 
@@ -117,8 +113,6 @@ http://www.boost.org/LICENSE_1_0.txt)
  x86 extension version number.
 
  Version number is: *5.3.0*.
-
- [note Not available for versions of MSVC below 17.00.]
  */
 #define BOOST_HW_SIMD_X86_AVX2_VERSION BOOST_VERSION_NUMBER(5, 3, 0)
 

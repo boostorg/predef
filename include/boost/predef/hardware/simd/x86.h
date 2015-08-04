@@ -11,7 +11,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/predef/version_number.h>
 #include <boost/predef/hardware/simd/x86/versions.h>
-#include <boost/predef/compiler.h>
 
 /*`
  [heading `BOOST_HW_SIMD_X86`]
@@ -80,22 +79,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_MIC_VERSION
 #endif
 #if !defined(BOOST_HW_SIMD_X86) && defined(__AVX2__)
-#   if defined(BOOST_COMP_MSVC_AVAILABLE) && BOOST_COMP_MSVC > BOOST_VERSION_NUMBER(17, 0, 0) ||\
-      !defined(BOOST_COMP_MSVC_AVAILABLE)
-#      define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_AVX2_VERSION
-#   endif
+#   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_AVX2_VERSION
 #endif
 #if !defined(BOOST_HW_SIMD_X86) && defined(__AVX__)
-#   if defined(BOOST_COMP_MSVC_AVAILABLE) && BOOST_COMP_MSVC > BOOST_VERSION_NUMBER(16, 0, 40219) ||\
-      !defined(BOOST_COMP_MSVC_AVAILABLE)
-#      define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_AVX_VERSION
-#   endif
+#   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_AVX_VERSION
 #endif
 #if !defined(BOOST_HW_SIMD_X86) && defined(__FMA__)
-#   if defined(BOOST_COMP_MSVC_AVAILABLE) && BOOST_COMP_MSVC > BOOST_VERSION_NUMBER(17, 0, 0) ||\
-      !defined(BOOST_COMP_MSVC_AVAILABLE)
-#      define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_FMA_VERSION
-#   endif
+#   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_FMA_VERSION
 #endif
 #if !defined(BOOST_HW_SIMD_X86) && defined(__SSE4_2__)
 #   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_SSE4_2_VERSION
