@@ -72,7 +72,7 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
             {
                 _checks_ += $(key) ;
                 _message_(/check/predef//predef_check_cc_$(key)) = $(expression) ;
-                check_target $(language) $(key) : <flags>"\"-DCHECK=$(expression)\"" ;
+                check_target $(language) $(key) : <define>\"CHECK=$(expression)\" ;
             }
             
             terms += /check/predef//predef_check_cc_$(key) ;
