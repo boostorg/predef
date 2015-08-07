@@ -14,37 +14,13 @@ import toolset ;
 import modules ;
 import path ;
 import "class" : new ;
+import regex ;
 
 # Create a project for our targets.
 project.extension predef check ;
 
 # Feature to pass check expressions to check programs.
 feature.feature predef-expression : : free ;
-
-.c.ext = c ;
-.cpp.ext = cpp ;
-.objc.ext = m ;
-.objcpp.ext = mm ;
-
-# Check targets. Each needs to be compiled for different languages
-# even though they are all the same source code.
-local rule check_target ( language key : requirements * )
-{
-    # Need to use absolute paths because we don't know the
-    # context of the invocation which affects where the paths
-    # originate from.
-    local predef_jam
-        = [ modules.binding $(__name__) ] ;
-    local source_path
-        = $(predef_jam:D)/predef_check_cc_as_$(language).$(.$(language).ext) ;
-    local include_path
-        = $(predef_jam:D)/../include ;
-    obj predef_check_cc_$(key)
-        : $(source_path)
-        : <include>$(include_path) $(requirements) ;
-    explicit predef_check_cc_$(key) ;
-    return predef_check_cc_$(key) ;
-}
 
 # Checks the expressions and when used evaluates to the true-properties
 # if the expressions are all true. Otherwise evaluates to the
@@ -72,7 +48,7 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
             {
                 _checks_ += $(key) ;
                 _message_(/check/predef//predef_check_cc_$(key)) = $(expression) ;
-                check_target $(language) $(key) : <define>\"CHECK=$(expression)\" ;
+                check_target $(language) $(key) : [ change_term_to_def $(expression) ] ;
             }
             
             terms += /check/predef//predef_check_cc_$(key) ;
@@ -91,6 +67,46 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
 rule require ( expressions + : language ? )
 {
     return [ check $(expressions) : $(language) : : <build>no ] ;
+}
+
+#############################################################################
+
+.c.ext = c ;
+.cpp.ext = cpp ;
+.objc.ext = m ;
+.objcpp.ext = mm ;
+
+# Check targets. Each needs to be compiled for different languages
+# even though they are all the same source code.
+local rule check_target ( language key : requirements * )
+{
+    # Need to use absolute paths because we don't know the
+    # context of the invocation which affects where the paths
+    # originate from.
+    local predef_jam
+        = [ modules.binding $(__name__) ] ;
+    local source_path
+        = $(predef_jam:D)/predef_check_cc_as_$(language).$(.$(language).ext) ;
+    local include_path
+        = $(predef_jam:D)/../include ;
+    obj predef_check_cc_$(key)
+        : $(source_path)
+        : <include>$(include_path) $(requirements) ;
+    explicit predef_check_cc_$(key) ;
+    return predef_check_cc_$(key) ;
+}
+
+local rule change_term_to_def ( term )
+{
+    local parts = [ regex.split $(term) " " ] ;
+    if $(parts[3])
+    {
+        local version_number = [ regex.split $(parts[3]) "[.]" ] ;
+        if ! $(version_number[3]) { version_number += "0" ; }
+        if ! $(version_number[3]) { version_number += "0" ; }
+        parts = $(parts[1-2]) BOOST_VERSION_NUMBER($(version_number:J=",")) ;
+    }
+    return <define>CHECK=\"$(parts:J=" ")\" ;
 }
 
 class check-expression-evaluator
