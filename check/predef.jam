@@ -21,29 +21,30 @@ project.extension predef check ;
 # Feature to pass check expressions to check programs.
 feature.feature predef-expression : : free ;
 
-# Check programs. Each needs to be compiled for different languages
+.c.ext = c ;
+.cpp.ext = cpp ;
+.objc.ext = m ;
+.objcpp.ext = mm ;
+
+# Check targets. Each needs to be compiled for different languages
 # even though they are all the same source code.
-local rule check_target ( language : ext )
+local rule check_target ( language key : requirements * )
 {
     # Need to use absolute paths because we don't know the
     # context of the invocation which affects where the paths
     # originate from.
     local predef_jam
         = [ modules.binding $(__name__) ] ;
-        local source_path
-            = $(predef_jam:D)/predef_check_as_$(language).$(ext) ;
-        local include_path
-            = $(predef_jam:D)/../include ;
-        _check_exe_($(language)) = [
-            exe predef_check_as_$(language)
-                : $(source_path)
-                : <include>$(include_path) ] ;
-    explicit predef_check_as_$(language) ;
+    local source_path
+        = $(predef_jam:D)/predef_check_cc_as_$(language).$(.$(language).ext) ;
+    local include_path
+        = $(predef_jam:D)/../include ;
+    obj predef_check_cc_$(key)
+        : $(source_path)
+        : <include>$(include_path) $(requirements) ;
+    explicit predef_check_cc_$(key) ;
+    return predef_check_cc_$(key) ;
 }
-check_target c : c ;
-check_target cpp : cpp ;
-check_target objc : m ;
-check_target objcpp : mm ;
 
 # Checks the expressions and when used evaluates to the true-properties
 # if the expressions are all true. Otherwise evaluates to the
@@ -65,26 +66,16 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
         }
         else
         {
-            # The check program to use.
-            local exe_target = [ $(_check_exe_($(language))).name ] ;
-            exe_target = /check/predef//$(exe_target) ;
-            
             # Create the check run if we don't have one yet.
             local key = [ MD5 $(language)::$(expression) ] ;
             if ! ( $(key) in $(_checks_) )
             {
                 _checks_ += $(key) ;
-                _message_(/check/predef//$(key).txt) = $(expression) ;
-                make
-                    $(key).txt :
-                    $(exe_target) :
-                    @$(__name__).predef_check_action :
-                    <predef-expression>$(expression) ;
-                explicit
-                    $(key).txt ;
+                _message_(/check/predef//predef_check_cc_$(key)) = $(expression) ;
+                check_target $(language) $(key) : <flags>"\"-DCHECK=$(expression)\"" ;
             }
             
-            terms += /check/predef//$(key).txt ;
+            terms += /check/predef//predef_check_cc_$(key) ;
         }
     }
     local instance = [ new check-expression-evaluator
@@ -100,17 +91,6 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
 rule require ( expressions + : language ? )
 {
     return [ check $(expressions) : $(language) : : <build>no ] ;
-}
-
-rule predef_check_action ( targets + : sources + : props * )
-{
-    PREDEF_CHECK_EXPRESSION on $(targets)
-        = [ feature.get-values <predef-expression> : $(props) ] ;
-}
-
-actions predef_check_action bind PREDEF_CHECK_EXPRESSION
-{
-    $(>) "$(PREDEF_CHECK_EXPRESSION)" > $(<)
 }
 
 class check-expression-evaluator
