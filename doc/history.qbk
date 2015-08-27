@@ -13,6 +13,7 @@ http://www.boost.org/LICENSE_1_0.txt)
   category (from Charly Chevalier).
 * Add compile only version of check utilities to address cross-compile
   use cases. And changed the BBv2 check support to use compile only checks.
+* Fix test warnings.
 
 [heading 1.3]
 
