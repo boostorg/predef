@@ -12,11 +12,13 @@ environment:
     platform: 32
   - TOOLSET: vs-2012
     platform: 32
-  - TOOLSET: vs-2012
-    platform: 64
   - TOOLSET: vs-2013
     platform: 32
   - TOOLSET: vs-2013
+    platform: 64
+  - TOOLSET: vs-2015
+    platform: 32
+  - TOOLSET: vs-2015
     platform: 64
 
 configuration:

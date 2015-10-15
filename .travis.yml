@@ -19,20 +19,13 @@ os:
 
 matrix:
   include:
-    - compiler: clang
-      env: TOOLSET=clang-3.4
-    - compiler: clang
-      env: TOOLSET=clang-3.5
-    - compiler: clang
-      env: TOOLSET=clang-3.6
-    - compiler: gcc
-      env: TOOLSET=gcc-4.7
-    - compiler: gcc
-      env: TOOLSET=gcc-4.8
-    - compiler: gcc
-      env: TOOLSET=gcc-4.9
-    - compiler: gcc
-      env: TOOLSET=gcc-5.1
+    - env: TOOLSET=clang-3.4
+    - env: TOOLSET=clang-3.5
+    - env: TOOLSET=clang-3.6
+    - env: TOOLSET=gcc-4.7
+    - env: TOOLSET=gcc-4.8
+    - env: TOOLSET=gcc-4.9
+    - env: TOOLSET=gcc-5.1
 
 before_install: wget "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py"
 install: python script.py install

@@ -58,7 +58,7 @@ test-suite predef :
     [ compile macos_endian.c : [ predef-require "BOOST_OS_MACOS" : cpp ] ]
     [ compile macos_vs_bsd.c : [ predef-require "BOOST_OS_MACOS" : cpp ] ]
     [ run check_value.cpp : : : <test-info>always_show_run_output
-        [ predef-check "BOOST_COMP_CLANG > 0" "BOOST_OS_LINUX == 0" : : <cxxflags>-DCHECK_VALUE=true ] ]
+        [ predef-check "BOOST_COMP_CLANG > 0.0.0" "BOOST_OS_LINUX == 0" : : <cxxflags>-DCHECK_VALUE=true ] ]
     ;
 
 # Minimal testing done for predef for CI. Since
