@@ -14,6 +14,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 * Add compile only version of check utilities to address cross-compile
   use cases. And changed the BBv2 check support to use compile only checks.
 * Fix test warnings.
+* Fix typos on `AVAILABLE` macros for Windows Platform. (from Vemund Handeland)
 
 [heading 1.3]
 
