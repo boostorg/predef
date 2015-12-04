@@ -4,20 +4,21 @@ notifications:
   email:
     recipients:
       - grafikrobot@gmail.com
-    on_success: change
-    on_failure: change
   irc:
     channels:
       - "chat.freenode.net#boost"
     template:
       - "%{repository}/%{branch} (%{commit} - %{author}): %{build_url}: %{message}"
-    on_success: change
-    on_failure: change
 
-os:
-  - linux
+env:
+  matrix:
+    - TRAVIS_EMPTY_JOB_WORKAROUND=true
+
+os: linux
 
 matrix:
+  exclude:
+    - env: TRAVIS_EMPTY_JOB_WORKAROUND=true
   include:
     - env: TOOLSET=clang-3.4
     - env: TOOLSET=clang-3.5
@@ -26,6 +27,8 @@ matrix:
     - env: TOOLSET=gcc-4.8
     - env: TOOLSET=gcc-4.9
     - env: TOOLSET=gcc-5.1
+    - os: osx
+      env: TOOLSET=xcode-6.1
 
 before_install: wget "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py"
 install: python script.py install
