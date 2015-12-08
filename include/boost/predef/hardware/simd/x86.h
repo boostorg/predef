@@ -67,7 +67,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
      [[`__FMA__`] [BOOST_HW_SIMD_X86_FMA3_VERSION]]
 
-     [[`__AVX2__`] [BOOST_HW_SIMD_x86_AVX2_VERSION]]
+     [[`__AVX2__`] [BOOST_HW_SIMD_X86_AVX2_VERSION]]
      ]
 
  */
