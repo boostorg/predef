@@ -1,15 +1,5 @@
 language: cpp
 
-notifications:
-  email:
-    recipients:
-      - grafikrobot@gmail.com
-  irc:
-    channels:
-      - "chat.freenode.net#boost"
-    template:
-      - "%{repository}/%{branch} (%{commit} - %{author}): %{build_url}: %{message}"
-
 env:
   matrix:
     - TRAVIS_EMPTY_JOB_WORKAROUND=true
@@ -21,12 +11,26 @@ matrix:
     - env: TRAVIS_EMPTY_JOB_WORKAROUND=true
   include:
     - env: TOOLSET=clang-3.4
+      sudo: required
+      dist: precise
     - env: TOOLSET=clang-3.5
+      sudo: required
+      dist: precise
     - env: TOOLSET=clang-3.6
+      sudo: required
+      dist: precise
     - env: TOOLSET=gcc-4.7
+      sudo: required
+      dist: precise
     - env: TOOLSET=gcc-4.8
+      sudo: required
+      dist: precise
     - env: TOOLSET=gcc-4.9
+      sudo: required
+      dist: precise
     - env: TOOLSET=gcc-5.1
+      sudo: required
+      dist: precise
     - os: osx
       env: TOOLSET=xcode-6.1
     - os: osx
