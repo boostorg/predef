@@ -11,6 +11,8 @@ matrix:
     - env: TRAVIS_EMPTY_JOB_WORKAROUND=true
   include:
     - env: TOOLSET=clang-3.4
+      sudo: required
+      dist: precise
     - os: osx
       env: TOOLSET=xcode-7.1
       osx_image: xcode7.1
