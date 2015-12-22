@@ -10,7 +10,7 @@ matrix:
   exclude:
     - env: TRAVIS_EMPTY_JOB_WORKAROUND=true
   include:
-- env: TOOLSET=clang-3.4
+    - env: TOOLSET=clang-3.4
       sudo: required
       dist: precise
     - env: TOOLSET=clang-3.5
