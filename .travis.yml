@@ -44,6 +44,9 @@ matrix:
     - os: osx
       env: TOOLSET=xcode-7.1
       osx_image: xcode7.1
+    - os: osx
+      env: TOOLSET=xcode-7.2
+      osx_image: xcode7.2
 
 before_install: wget "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/script.py"
 install: python script.py install
