@@ -73,7 +73,7 @@
       gets built as part of your project based on the detailed version information
       available in Predef. The basic use is simple:
     </p>
-<pre class="programlisting">import path-to-predef-src/check/predef
+<pre class="programlisting">import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
@@ -85,7 +85,7 @@ exe my_windows_program : windows_source.cpp
       unless one is building for Windows. Like the direct <code class="literal">predef_check</code>
       you can pass mutiple expressions using relational comparisons. For example:
     </p>
-<pre class="programlisting">import path-to-predef-src/check/predef
+<pre class="programlisting">import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
@@ -106,7 +106,7 @@ lib my_special_lib : source.cpp
       The expression can also use explicit "and", "or" logical
       operators to for more complex checks:
     </p>
-<pre class="programlisting">import path-to-predef-src/check/predef
+<pre class="programlisting">import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
@@ -127,7 +127,7 @@ lib my_special_lib : source.cpp
       as requirements. For example you could use it to enable or disable features
       in your programs:
     </p>
-<pre class="programlisting">import path-to-predef-src/check/predef
+<pre class="programlisting">import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 

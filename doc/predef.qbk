@@ -619,7 +619,7 @@ version information available in Predef. The basic use is simple:
 
 [teletype]
 ``
-import path-to-predef-src/check/predef
+import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
@@ -635,7 +635,7 @@ For example:
 
 [teletype]
 ``
-import path-to-predef-src/check/predef
+import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
@@ -663,7 +663,7 @@ to for more complex checks:
 
 [teletype]
 ``
-import path-to-predef-src/check/predef
+import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
@@ -690,7 +690,7 @@ features in your programs:
 
 [teletype]
 ``
-import path-to-predef-src/check/predef
+import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
