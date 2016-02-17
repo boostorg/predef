@@ -4,8 +4,8 @@
 <title>Check Utilities</title>
 <link rel="stylesheet" href="../boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
-<link rel="home" href="../index.html" title="Predef 1.4">
-<link rel="up" href="../index.html" title="Predef 1.4">
+<link rel="home" href="../index.html" title="Predef 1.4.1">
+<link rel="up" href="../index.html" title="Predef 1.4.1">
 <link rel="prev" href="reference/version_definition_macros.html" title="Version definition macros">
 <link rel="next" href="history.html" title="History">
 </head>
@@ -73,7 +73,7 @@
       gets built as part of your project based on the detailed version information
       available in Predef. The basic use is simple:
     </p>
-<pre class="programlisting">import path-to-predef-src/check/predef
+<pre class="programlisting">import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
@@ -85,7 +85,7 @@ exe my_windows_program : windows_source.cpp
       unless one is building for Windows. Like the direct <code class="literal">predef_check</code>
       you can pass mutiple expressions using relational comparisons. For example:
     </p>
-<pre class="programlisting">import path-to-predef-src/check/predef
+<pre class="programlisting">import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
@@ -106,7 +106,7 @@ lib my_special_lib : source.cpp
       The expression can also use explicit "and", "or" logical
       operators to for more complex checks:
     </p>
-<pre class="programlisting">import path-to-predef-src/check/predef
+<pre class="programlisting">import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
@@ -127,7 +127,7 @@ lib my_special_lib : source.cpp
       as requirements. For example you could use it to enable or disable features
       in your programs:
     </p>
-<pre class="programlisting">import path-to-predef-src/check/predef
+<pre class="programlisting">import path-to-predef-src/tools/check/predef
     : check require
     : predef-check predef-require ;
 
@@ -145,8 +145,7 @@ exe my_special_exe : source.cpp
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2005, 2008-2015 Rene
-      Rivera<br>Copyright &#169; 2015 Charly Chevalier<br>Copyright &#169; 2015 Joel Falcou<p>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2005, 2008-2016 Rene Rivera<br>Copyright &#169; 2015 Charly Chevalier<br>Copyright &#169; 2015 Joel Falcou<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
