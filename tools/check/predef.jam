@@ -103,7 +103,7 @@ local rule change_term_to_def ( term )
     {
         local version_number = [ regex.split $(parts[3]) "[.]" ] ;
         if ! $(version_number[3]) { version_number += "0" ; }
-        if ! $(version_number[3]) { version_number += "0" ; }
+        if ! $(version_number[2]) { version_number += "0" ; }
         parts = $(parts[1-2]) BOOST_VERSION_NUMBER($(version_number:J=",")) ;
     }
     return <define>CHECK=\"$(parts:J=" ")\" ;
