@@ -1,4 +1,4 @@
-[article Predef
+[article Boost.Predef
     [quickbook 1.7]
     [version 1.4.1]
     [authors [Rivera, Rene]]
@@ -12,6 +12,9 @@
         [@http://www.boost.org/LICENSE_1_0.txt])
     ]
     [source-mode c++]
+    [category miscellaneous]
+    [id predef]
+    [dirname predef]
 ]
 
 [section Introduction]
