@@ -12,6 +12,9 @@
         [@http://www.boost.org/LICENSE_1_0.txt])
     ]
     [source-mode c++]
+    [category miscellaneous]
+    [id predef]
+    [dirname predef]
 ]
 
 [section Introduction]
