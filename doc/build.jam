@@ -76,7 +76,7 @@ boostbook standalone
 #   alias boostdoc ;
 #   explicit boostdoc ;
 #
-alias boostdoc : predef : : : <implicit-dependency>predef ;
+alias boostdoc : predef ;
 explicit boostdoc ;
 
 # Target for Boost standalone release documentation building.
