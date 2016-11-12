@@ -69,6 +69,12 @@ matrix:
     - env: TOOLSET=xcode-7.2
       os: osx
       osx_image: xcode7.2
+    - env: TOOLSET=xcode-7.3
+      os: osx
+      osx_image: xcode7.3
+    - env: TOOLSET=xcode-8.0
+      os: osx
+      osx_image: xcode8
 
 before_install:
   # Fetch the scripts to do the actual building/testing.
