@@ -30,28 +30,26 @@ matrix:
   include:
     - env: TOOLSET=clang-3.4
       os: linux
-      dist: precise
     - env: TOOLSET=clang-3.5
       os: linux
-      dist: precise
     - env: TOOLSET=clang-3.6
       os: linux
-      dist: precise
+    - env: TOOLSET=clang-3.7
+      os: linux
+    - env: TOOLSET=clang-3.8
+      os: linux
+    - env: TOOLSET=clang-3.9
+      os: linux
     - env: TOOLSET=gcc-4.7
       os: linux
-      dist: precise
     - env: TOOLSET=gcc-4.8
       os: linux
-      dist: precise
     - env: TOOLSET=gcc-4.9
       os: linux
-      dist: precise
     - env: TOOLSET=gcc-5
       os: linux
-      dist: precise
     - env: TOOLSET=gcc-6
       os: linux
-      dist: precise
     - env: TOOLSET=xcode-6.1
       os: osx
     - env: TOOLSET=xcode-6.2
