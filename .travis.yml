@@ -49,6 +49,9 @@ matrix:
     - env: TOOLSET=gcc-5
       os: linux
       dist: precise
+    - env: TOOLSET=gcc-6
+      os: linux
+      dist: precise
     - env: TOOLSET=xcode-6.1
       os: osx
     - env: TOOLSET=xcode-6.2
