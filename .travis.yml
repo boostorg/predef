@@ -68,24 +68,9 @@ matrix:
     - env: TOOLSET=gcc-6
     - env: TOOLSET=xcode-6.1
       os: osx
-    - env: TOOLSET=xcode-6.2
-      os: osx
-      osx_image: beta-xcode6.2
-    - env: TOOLSET=xcode-6.3
-      os: osx
-      osx_image: beta-xcode6.3
     - env: TOOLSET=xcode-6.4
       os: osx
       osx_image: xcode6.4
-    - env: TOOLSET=xcode-7.0
-      os: osx
-      osx_image: xcode7
-    - env: TOOLSET=xcode-7.1
-      os: osx
-      osx_image: xcode7.1
-    - env: TOOLSET=xcode-7.2
-      os: osx
-      osx_image: xcode7.2
     - env: TOOLSET=xcode-7.3
       os: osx
       osx_image: xcode7.3
