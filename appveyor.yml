@@ -5,6 +5,7 @@ notifications:
     on_build_status_changed: true
 
 environment:
+  APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=1
   matrix:
   - TOOLSET: vs-2008
     platform: 32
