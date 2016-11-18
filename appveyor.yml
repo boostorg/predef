@@ -41,3 +41,5 @@ after_test: python ../ci_boost_library_test.py after_test
 on_success: python ../ci_boost_library_test.py on_success
 on_failure: python ../ci_boost_library_test.py on_failure
 on_finish: python ../ci_boost_library_test.py on_finish
+cache:
+  - C:\projects\boostorg\boost -> appveyor.yml
