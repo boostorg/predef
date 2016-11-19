@@ -89,6 +89,10 @@ before_install:
 install: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" install
 before_script: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" before_script
 script: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" script
+before_cache: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" before_cache
 after_success: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" after_success
 after_failure: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" after_failure
 after_script: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" after_script
+cache:
+  directories:
+    - $HOME/boostorg/boost
