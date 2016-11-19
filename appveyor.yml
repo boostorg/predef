@@ -4,12 +4,24 @@
 #
 # Copyright Rene Rivera 2015-2016.
 
+# Set up notifications so that the maintainers of the library get
+# build status messages.
 notifications:
   - provider: Email
     to:
       - grafikrobot@gmail.com
     on_build_status_changed: true
 
+# This lists all the toolsets we will test with the Boost CI
+# scripts. Predef needs to check all of them as its job is to
+# distiguish between all of them. For other libraries you would
+# want to limit the list to the toolsets that are important
+# for that.
+#
+# This also includes setting up how to create the cache. We
+# opt for slightly better compression and solid archives.
+# As we have a lot of files in the boost tree which is what
+# we are putting in the cache.
 environment:
   APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma2 -mx=3
   matrix:
@@ -28,15 +40,19 @@ environment:
   - TOOLSET: vs-2015
     platform: 64
 
+# We can also set up configurations for testing which map to
+# the b2 build variants.
 configuration:
   - debug
   - release
 
+# These are the standard steps to bootstrap the Boost CI scripts
+# and to forward the actions to the scripts.
 init:
+  # Fetch the scripts to do the actual building/testing.
   - cd %APPVEYOR_BUILD_FOLDER%/..
   - appveyor DownloadFile "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/ci_boost_common.py"
   - appveyor DownloadFile "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/ci_boost_library_test.py"
-  - dir
   - cd %APPVEYOR_BUILD_FOLDER%
 install: python ../ci_boost_library_test.py install
 before_build: python ../ci_boost_library_test.py before_build
@@ -48,5 +64,9 @@ after_test: python ../ci_boost_library_test.py after_test
 on_success: python ../ci_boost_library_test.py on_success
 on_failure: python ../ci_boost_library_test.py on_failure
 on_finish: python ../ci_boost_library_test.py on_finish
+
+# We cache the boost repo, which is cleaned before caching.
+# This saves some time as cloning the git submodules fresh
+# takes a few minutes on Windows.
 cache:
   - C:\projects\boostorg\boost -> appveyor.yml
