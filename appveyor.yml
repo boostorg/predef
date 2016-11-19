@@ -1,3 +1,9 @@
+# Use, modification, and distribution are
+# subject to the Boost Software License, Version 1.0. (See accompanying
+# file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+#
+# Copyright Rene Rivera 2015-2016.
+
 notifications:
   - provider: Email
     to:
@@ -44,4 +50,3 @@ on_failure: python ../ci_boost_library_test.py on_failure
 on_finish: python ../ci_boost_library_test.py on_finish
 cache:
   - C:\projects\boostorg\boost -> appveyor.yml
-  - C:\projects\boostorg\boost\.git -> appveyor.yml
