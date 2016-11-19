@@ -5,7 +5,7 @@ notifications:
     on_build_status_changed: true
 
 environment:
-  APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=1
+  APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma2 -mx=3
   matrix:
   - TOOLSET: vs-2008
     platform: 32
@@ -44,3 +44,4 @@ on_failure: python ../ci_boost_library_test.py on_failure
 on_finish: python ../ci_boost_library_test.py on_finish
 cache:
   - C:\projects\boostorg\boost -> appveyor.yml
+  - C:\projects\boostorg\boost\.git -> appveyor.yml
