@@ -7,6 +7,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 [section History]
 
+[heading 1.5]
+
+* Fix Intel C/C++ compiler version specification.
+* Add `BOOST_VERSION_NUMBER_MAJOR`, `BOOST_VERSION_NUMBER_MINOR`,
+  `BOOST_VERSION_NUMBER_PATCH` macros to extract components from valid version
+  numbers.
+
 [heading 1.4.1]
 
 * Small fixes for some redefinition errors, and mispelled macros.
