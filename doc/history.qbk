@@ -13,6 +13,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 * Add `BOOST_VERSION_NUMBER_MAJOR`, `BOOST_VERSION_NUMBER_MINOR`,
   `BOOST_VERSION_NUMBER_PATCH` macros to extract components from valid version
   numbers.
+* Change VS version numbering. Version after VS2015 will use the compiler
+  version instead of the varied product versions.
 
 [heading 1.4.1]
 
