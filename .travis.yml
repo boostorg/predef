@@ -61,11 +61,13 @@ matrix:
     - env: TOOLSET=clang-3.7
     - env: TOOLSET=clang-3.8
     - env: TOOLSET=clang-3.9
+    - env: TOOLSET=clang-4.0
     - env: TOOLSET=gcc-4.7
     - env: TOOLSET=gcc-4.8
     - env: TOOLSET=gcc-4.9
     - env: TOOLSET=gcc-5
     - env: TOOLSET=gcc-6
+    - env: TOOLSET=gcc-7
     - env: TOOLSET=xcode-6.1
       os: osx
     - env: TOOLSET=xcode-6.4
@@ -74,9 +76,9 @@ matrix:
     - env: TOOLSET=xcode-7.3
       os: osx
       osx_image: xcode7.3
-    - env: TOOLSET=xcode-8.0
+    - env: TOOLSET=xcode-8.3
       os: osx
-      osx_image: xcode8
+      osx_image: xcode8.3
 
 # These are the standard steps to bootstrap the Boost CI scripts
 # and to forward the actions to the scripts.

@@ -27,18 +27,31 @@ environment:
   matrix:
   - TOOLSET: vs-2008
     platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2010
     platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2012
     platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2013
     platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2013
     platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2015
     platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2015
     platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+  - TOOLSET: vs-2017
+    platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+  - TOOLSET: vs-2017
+    platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
 # We can also set up configurations for testing which map to
 # the b2 build variants.
