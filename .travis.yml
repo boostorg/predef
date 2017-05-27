@@ -37,23 +37,12 @@ os: linux
 # to run the sudo support.
 sudo: required
 
-# Travis has a long standing bug with their rather complicated
-# build matrix evaluation that causes empty jobs to be created.
-# This global matrix entry in combination with the exclusion
-# below works around that bug. This is the suggested fix from
-# the Travis support people.
-env:
-  matrix:
-    - TRAVIS_EMPTY_JOB_WORKAROUND=true
-
 # This lists all the toolsets we will test with the Boost CI
 # scripts. Predef needs to check all of them as its job is to
 # distiguish between all of them. For other libraries you would
 # want to limit the list to the toolsets that are important
 # for that.
 matrix:
-  exclude:
-    - env: TRAVIS_EMPTY_JOB_WORKAROUND=true
   include:
     - env: TOOLSET=clang-3.4
     - env: TOOLSET=clang-3.5
