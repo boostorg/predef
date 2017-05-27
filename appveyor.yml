@@ -52,6 +52,15 @@ environment:
   - TOOLSET: vs-2017
     platform: 64
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+  - TOOLSET: mingw-5
+    platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+  - TOOLSET: mingw64-5
+    platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+  - TOOLSET: mingw64-6
+    platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 # We can also set up configurations for testing which map to
 # the b2 build variants.
