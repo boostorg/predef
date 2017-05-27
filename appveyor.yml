@@ -55,9 +55,6 @@ environment:
   - TOOLSET: mingw-5
     platform: 32
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-  - TOOLSET: mingw64-5
-    platform: 64
-    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: mingw64-6
     platform: 64
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
