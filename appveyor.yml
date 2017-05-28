@@ -52,6 +52,14 @@ environment:
   - TOOLSET: vs-2017
     platform: 64
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+  - TOOLSET: vs-2017
+    CXXFLAGS: /std:c++14
+    platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+  - TOOLSET: vs-2017
+    CXXFLAGS: /std:c++latest
+    platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 #  - TOOLSET: mingw-5
 #    platform: 32
 #    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
