@@ -1,5 +1,6 @@
 /*
 Copyright Ruslan Baratov 2017
+Copyright Rene Rivera 2017
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -50,8 +51,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PLAT_IOS_SIMULATOR_NAME "iOS Simulator"
 #define BOOST_PLAT_IOS_DEVICE_NAME "iOS Device"
 
+#endif // BOOST_PREDEF_PLAT_IOS_H
+
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_IOS_SIMULATOR,BOOST_PLAT_IOS_SIMULATOR_NAME)
 BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_IOS_DEVICE,BOOST_PLAT_IOS_DEVICE_NAME)
-
-#endif // BOOST_PREDEF_PLAT_IOS_H
