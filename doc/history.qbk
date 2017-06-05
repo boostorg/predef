@@ -7,6 +7,16 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 [section History]
 
+[heading 1.6]
+
+* Fix Intel C/C++ version 9999 detection to be 12.1.0.
+* Addition of `BOOST_PREDEF_WORKAROUND` and `BOOST_PREDEF_TESTED_AT` macros
+  for defect workarounds and detection.
+* Add ARM64 MSVC SIMD detection. (from Minmin Gong)
+* Add detection of iOS simulator vs device as a platform choice. (from Ruslan
+  Baratov)
+* Fix MinGW incorrect header guard. (from Ruslan Baratov)
+
 [heading 1.5]
 
 * Fix Intel C/C++ compiler version specification.
