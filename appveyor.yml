@@ -27,18 +27,45 @@ environment:
   matrix:
   - TOOLSET: vs-2008
     platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2010
     platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2012
     platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2013
     platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2013
     platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2015
     platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - TOOLSET: vs-2015
     platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+  - TOOLSET: vs-2017
+    platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+  - TOOLSET: vs-2017
+    platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+  - TOOLSET: vs-2017
+    CXXFLAGS: /std:c++14
+    platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+  - TOOLSET: vs-2017
+    CXXFLAGS: /std:c++latest
+    platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+  - TOOLSET: mingw-5
+    platform: 32
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+  - TOOLSET: mingw64-6
+    platform: 64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 # We can also set up configurations for testing which map to
 # the b2 build variants.
@@ -64,9 +91,3 @@ after_test: python ../ci_boost_library_test.py after_test
 on_success: python ../ci_boost_library_test.py on_success
 on_failure: python ../ci_boost_library_test.py on_failure
 on_finish: python ../ci_boost_library_test.py on_finish
-
-# We cache the boost repo, which is cleaned before caching.
-# This saves some time as cloning the git submodules fresh
-# takes a few minutes on Windows.
-cache:
-  - C:\projects\boostorg\boost -> appveyor.yml
