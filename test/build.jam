@@ -38,7 +38,7 @@ else
    predef-dependency = $(predef-include-root)/boost/predef.h ;
 }
 
-project test
+project /boost/predef/test
     :   requirements
         <include>$(predef-include-root)
         # Add explicit dependency since we don't have header scanner for
