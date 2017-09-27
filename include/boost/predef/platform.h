@@ -12,10 +12,13 @@ http://www.boost.org/LICENSE_1_0.txt)
 #endif
 
 #include <boost/predef/platform/mingw.h>
+#include <boost/predef/platform/windows_uwp.h>
 #include <boost/predef/platform/windows_desktop.h>
-#include <boost/predef/platform/windows_store.h>
 #include <boost/predef/platform/windows_phone.h>
-#include <boost/predef/platform/windows_runtime.h>
+#include <boost/predef/platform/windows_server.h>
+#include <boost/predef/platform/windows_store.h>
+#include <boost/predef/platform/windows_system.h>
+#include <boost/predef/platform/windows_runtime.h> // deprecated
 #include <boost/predef/platform/ios.h>
 /*#include <boost/predef/platform/.h>*/
 
