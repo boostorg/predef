@@ -46,37 +46,9 @@ project predef-test
         <dependency>$(predef-dependency)
     ;
 
-import path ;
-import regex ;
 using testing ;
 
-# this rule enumerates through all the headers and ensures
-# that inclusion of the header by itself is sufficient to
-# compile successfully, proving the header does not depend
-# on any other headers to be included first - adapted from
-# logic in the winapi test bjam script
-rule test_all_headers_isolated
-{
-    local all_rules = ;
-    local file ;
-    local headers_path = [ path.make $(BOOST_ROOT)/libs/predef/include/boost/predef ] ;
-    for file in [ path.glob-tree $(headers_path) : *.h* : predef ]
-    {
-        local rel_file = [ path.relative-to $(headers_path) $(file) ] ;
-        # Note: The test name starts with '~' in order to group these tests in the test report table, preferably at the end.
-        #       All '/' are replaced with '-' because apparently test scripts have a problem with test names containing slashes.
-        local test_name = [ regex.replace $(rel_file) "/" "-" ] ;
-        local decl_test_name = ~hdr-decl-$(test_name) ;
-        # ECHO $(rel_file) ;
-        all_rules += [ compile compile/decl_header.cpp : <define>"BOOST_PREDEF_TEST_HEADER=$(rel_file)" <dependency>$(file) : $(decl_test_name) ] ;
-    }
-
-    # ECHO All rules: $(all_rules) ;
-    return $(all_rules) ;
-}
-
 test-suite predef :
-    [ test_all_headers_isolated ]
     [ run info_as_cpp.cpp : : : <test-info>always_show_run_output ]
     [ run info_as_c.c : : : <test-info>always_show_run_output ]
     [ run info_as_objcpp.mm : : : <test-info>always_show_run_output ]
