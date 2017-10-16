@@ -16,13 +16,12 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_PLAT_WINDOWS_SYSTEM`]
 
-BOOST_PLAT_WINDOWS_SYSTEM is available if the Platform SDK supports UWP development
-with the SYSTEM family, and WINAPI_FAMILY is set to WINAPI_FAMILY_SYSTEM_APP.
+[@https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide UWP]
+for Windows System development.
 
 [table
     [[__predef_symbol__] [__predef_version__]]
 
-    [[`WINAPI_FAMILY_SYSTEM`] [__predef_detection__]]
     [[`WINAPI_FAMILY == WINAPI_FAMILY_SYSTEM`] [__predef_detection__]]
     ]
  */

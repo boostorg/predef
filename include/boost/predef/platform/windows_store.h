@@ -17,6 +17,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_PLAT_WINDOWS_STORE`]
 
+[@https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide UWP]
+for Windows Store development.
+
 [table
     [[__predef_symbol__] [__predef_version__]]
 

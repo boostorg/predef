@@ -18,11 +18,11 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_PLAT_WINDOWS_RUNTIME`]
 
-This is deprecated.  Consumers should switch to use:
+Deprecated.
 
-    `BOOST_PLAT_WINDOWS_PHONE || BOOST_PLAT_WINDOWS_STORE`
-
-to detect a non-desktop UWP target.
+[@https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide UWP]
+for Windows Phone or Store development.  This does not align to the existing development model for
+UWP and is deprecated.  Use one of the other `BOOST_PLAT_WINDOWS_*`definitions instead.
 
 [table
     [[__predef_symbol__] [__predef_version__]]

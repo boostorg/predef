@@ -31,11 +31,12 @@ http://www.boost.org/LICENSE_1_0.txt)
 #if !BOOST_PLAT_WINDOWS_UWP
 
 //
-// If BOOST_PLAT_WINDOWS_UWP not available, none of the other BOOST_PLAT_WINDOWS_* are either
+// If BOOST_PLAT_WINDOWS_UWP is not available, none of the other BOOST_PLAT_WINDOWS_* are either
+// except for BOOST_PLAT_WINDOWS_DESKTOP which is available for backwards compatibility.
 //
 
-#if BOOST_PLAT_WINDOWS_DESKTOP
-#error "BOOST_PLAT_WINDOWS_DESKTOP should not be available"
+#if BOOST_OS_WINDOWS && !BOOST_PLAT_WINDOWS_DESKTOP
+#error "BOOST_PLAT_WINDOWS_DESKTOP should be available"
 #endif
 #if BOOST_PLAT_WINDOWS_PHONE
 #error "BOOST_PLAT_WINDOWS_PHONE should not be available"
