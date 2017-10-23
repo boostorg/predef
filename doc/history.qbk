@@ -11,6 +11,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 * Fix BOOST_ARCH_PARISK/BOOST_ARCH_PARISC typo.
 * Improved Windows Universal Platform detection. (from James E. King, III)
+* Add detection for CloudABI with cloudlibc. (from James E. King, III)
 
 [heading 1.6]
 
