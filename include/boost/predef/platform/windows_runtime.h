@@ -18,11 +18,10 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_PLAT_WINDOWS_RUNTIME`]
 
-This is deprecated.  Consumers should switch to use:
-
-    `BOOST_PLAT_WINDOWS_PHONE || BOOST_PLAT_WINDOWS_STORE`
-
-to detect a non-desktop UWP target.
+To detect a non-desktop UWP target It is preferable to use the more specific:
+```
+    BOOST_PLAT_WINDOWS_PHONE || BOOST_PLAT_WINDOWS_STORE
+```
 
 [table
     [[__predef_symbol__] [__predef_version__]]
