@@ -18,10 +18,11 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_PLAT_WINDOWS_RUNTIME`]
 
-To detect a non-desktop UWP target It is preferable to use the more specific:
-```
-    BOOST_PLAT_WINDOWS_PHONE || BOOST_PLAT_WINDOWS_STORE
-```
+Deprecated.
+
+[@https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide UWP]
+for Windows Phone or Store development.  This does not align to the existing development model for
+UWP and is deprecated.  Use one of the other `BOOST_PLAT_WINDOWS_*`definitions instead.
 
 [table
     [[__predef_symbol__] [__predef_version__]]

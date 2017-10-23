@@ -15,26 +15,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 /*`
 [heading `BOOST_PLAT_WINDOWS_UWP`]
 
-[@http://docs.microsoft.com/windows/uwp/ Universal Windows Platform].
-BOOST_PLAT_WINDOWS_UWP is available if the current development environment
-is capable of targeting Universal Windows Platform development.  To target
-a specific family one would define WINAPI_FAMILY, and in a UWP-capable
-environment this may limit the Win32 APIs available to achieve portability.
-
-To detect Windows API availability that is backwards compatible to pre-UWP SDKs, use:
-```
-    #if !BOOST_PLAT_WINDOWS_UWP || BOOST_PLAT_WINDOWS_DESKTOP
-```
-
-To detect Windows API availability in a specific UWP family, for example SYSTEM:
-```
-    #if BOOST_PLAT_WINDOWS_SYSTEM
-```
-
-UWP development is available on:
-
-* Microsoft Windows SDK 8.0 or later
-* MinGW-w64 version 3.0 or later
+[@http://docs.microsoft.com/windows/uwp/ Universal Windows Platform]
+is available if the current development environment is capable of targeting 
+UWP development.
 
 [table
     [[__predef_symbol__] [__predef_version__]]
