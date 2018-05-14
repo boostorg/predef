@@ -132,21 +132,15 @@ configuration:
   - debug
   - release
 
-# These are the standard steps to bootstrap the Boost CI scripts
-# and to forward the actions to the scripts.
 init:
-  # Fetch the scripts to do the actual building/testing.
-  - cd %APPVEYOR_BUILD_FOLDER%/..
-  - appveyor DownloadFile "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/ci_boost_common.py"
-  - appveyor DownloadFile "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/ci_boost_library_test.py"
   - cd %APPVEYOR_BUILD_FOLDER%
-install: python ../ci_boost_library_test.py install
-before_build: python ../ci_boost_library_test.py before_build
-build_script: python ../ci_boost_library_test.py build_script
-after_build: python ../ci_boost_library_test.py after_build
-before_test: python ../ci_boost_library_test.py before_test
-test_script: python ../ci_boost_library_test.py test_script
-after_test: python ../ci_boost_library_test.py after_test
-on_success: python ../ci_boost_library_test.py on_success
-on_failure: python ../ci_boost_library_test.py on_failure
-on_finish: python ../ci_boost_library_test.py on_finish
+install: python tools/ci/clibrary_test.py install
+before_build: python tools/ci/library_test.py before_build
+build_script: python tools/ci/library_test.py build_script
+after_build: python tools/ci/library_test.py after_build
+before_test: python tools/ci/library_test.py before_test
+test_script: python tools/ci/library_test.py test_script
+after_test: python tools/ci/library_test.py after_test
+on_success: python tools/ci/library_test.py on_success
+on_failure: python tools/ci/library_test.py on_failure
+on_finish: python tools/ci/library_test.py on_finish
