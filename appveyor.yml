@@ -134,7 +134,7 @@ configuration:
 
 init:
   - cd %APPVEYOR_BUILD_FOLDER%
-install: python tools/ci/clibrary_test.py install
+install: python tools/ci/library_test.py install
 before_build: python tools/ci/library_test.py before_build
 build_script: python tools/ci/library_test.py build_script
 after_build: python tools/ci/library_test.py after_build
