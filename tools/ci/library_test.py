@@ -94,14 +94,9 @@ class script(script_common):
         if self.repo != 'boost':
             utils.check_call("git","submodule","update","--quiet","--init",self.repo_path)
             if self.commit:
-                # Checkout the library commit we are testing.
-                os.chdir(self.repo_dir)
-                if not self.pull_request:
-                    utils.check_call("git","checkout","-qf",self.commit)
-                else:
-                    utils.check_call("git","fetch","origin","-q",
-                        "+refs/pull/{}/merge".format(self.pull_request))
-                    utils.check_call("git","checkout","-qf","FETCH_HEAD")
+                # Copy in the existing library tree checkout.
+                os.rmdir(self.repo_path)
+                shutil.copytree(self.root_dir, self.repo_path)
         
         # Fetch the dependencies for the library we are testing.
         if self.repo != 'boost':

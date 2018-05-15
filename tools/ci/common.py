@@ -71,6 +71,22 @@ toolset_info = {
         'toolset' : 'clang',
         'version' : ''
         },
+    'clang-5.0' : {
+        'deb' : ["http://apt.llvm.org/trusty/","llvm-toolchain-trusty-5.0","main"],
+        'apt-key' : ['http://apt.llvm.org/llvm-snapshot.gpg.key'],
+        'package' : 'clang-5.0',
+        'command' : 'clang++-5.0',
+        'toolset' : 'clang',
+        'version' : ''
+        },
+    'clang-6.0' : {
+        'deb' : ["http://apt.llvm.org/trusty/","llvm-toolchain-trusty-6.0","main"],
+        'apt-key' : ['http://apt.llvm.org/llvm-snapshot.gpg.key'],
+        'package' : 'clang-6.0',
+        'command' : 'clang++-6.0',
+        'toolset' : 'clang',
+        'version' : ''
+        },
     'gcc-4.7' : {
         'ppa' : ["ppa:ubuntu-toolchain-r/test"],
         'package' : 'g++-4.7',
@@ -118,6 +134,13 @@ toolset_info = {
         'ppa' : ["ppa:ubuntu-toolchain-r/test"],
         'package' : 'g++-7',
         'command' : 'g++-7',
+        'toolset' : 'gcc',
+        'version' : ''
+        },
+    'gcc-8' : {
+        'ppa' : ["ppa:ubuntu-toolchain-r/test"],
+        'package' : 'g++-8',
+        'command' : 'g++-8',
         'toolset' : 'gcc',
         'version' : ''
         },
@@ -217,6 +240,16 @@ toolset_info = {
         'version' : ''
         },
     'xcode-8.3' : {
+        'command' : 'clang++',
+        'toolset' : 'clang',
+        'version' : ''
+        },
+    'xcode-9.0' : {
+        'command' : 'clang++',
+        'toolset' : 'clang',
+        'version' : ''
+        },
+    'xcode-9.1' : {
         'command' : 'clang++',
         'toolset' : 'clang',
         'version' : ''
