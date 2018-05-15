@@ -132,6 +132,9 @@ configuration:
   - debug
   - release
 
+# No need to test PR branch as the PR itself is already tested.
+skip_branch_with_pr: true
+
 init:
   - cd %APPVEYOR_BUILD_FOLDER%
 install: python tools/ci/library_test.py install
