@@ -93,7 +93,7 @@ class script(script_common):
             
         if self.repo != 'boost':
             # Copy in the existing library tree checkout.
-            os.rmdir(self.repo_path)
+            shutil.rmtree(self.repo_path)
             shutil.copytree(self.root_dir, self.repo_path)
         
         # Fetch the dependencies for the library we are testing.
