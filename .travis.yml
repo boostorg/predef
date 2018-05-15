@@ -61,10 +61,13 @@ matrix:
     - env: TOOLSET=clang-3.7
     - env: TOOLSET=clang-3.8
     - env: TOOLSET=clang-3.9
-    - env: TOOLSET=clang-4.0 CXXFLAGS=-std=c++03
-    - env: TOOLSET=clang-4.0 CXXFLAGS=-std=c++11
-    - env: TOOLSET=clang-4.0 CXXFLAGS=-std=c++14
-    - env: TOOLSET=clang-4.0 CXXFLAGS=-std=c++1z
+    - env: TOOLSET=clang-4.0
+    - env: TOOLSET=clang-5.0
+    - env: TOOLSET=clang-6.0 CXXFLAGS=-std=c++03
+    - env: TOOLSET=clang-6.0 CXXFLAGS=-std=c++11
+    - env: TOOLSET=clang-6.0 CXXFLAGS=-std=c++14
+    - env: TOOLSET=clang-6.0 CXXFLAGS=-std=c++17
+    - env: TOOLSET=clang-6.0 CXXFLAGS=-std=c++2a
     - env: TOOLSET=gcc-4.7
     - env: TOOLSET=gcc-4.8
     - env: TOOLSET=gcc-4.9

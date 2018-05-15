@@ -92,11 +92,9 @@ class script(script_common):
             self.repo_dir = os.path.join(self.boost_root,self.repo_path)
             
         if self.repo != 'boost':
-            utils.check_call("git","submodule","update","--quiet","--init",self.repo_path)
-            if self.commit:
-                # Copy in the existing library tree checkout.
-                os.rmdir(self.repo_path)
-                shutil.copytree(self.root_dir, self.repo_path)
+            # Copy in the existing library tree checkout.
+            os.rmdir(self.repo_path)
+            shutil.copytree(self.root_dir, self.repo_path)
         
         # Fetch the dependencies for the library we are testing.
         if self.repo != 'boost':
