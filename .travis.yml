@@ -61,10 +61,8 @@ matrix:
     - env: TOOLSET=clang-3.7
     - env: TOOLSET=clang-3.8
     - env: TOOLSET=clang-3.9
-    - env: TOOLSET=clang-4.0 CXXFLAGS=-std=c++03
-    - env: TOOLSET=clang-4.0 CXXFLAGS=-std=c++11
-    - env: TOOLSET=clang-4.0 CXXFLAGS=-std=c++14
-    - env: TOOLSET=clang-4.0 CXXFLAGS=-std=c++1z
+    - env: TOOLSET=clang-4.0
+    - env: TOOLSET=clang-5.0
     - env: TOOLSET=gcc-4.7
     - env: TOOLSET=gcc-4.8
     - env: TOOLSET=gcc-4.9
@@ -99,21 +97,13 @@ matrix:
       os: osx
       osx_image: xcode8.3
 
-# These are the standard steps to bootstrap the Boost CI scripts
-# and to forward the actions to the scripts.
-before_install:
-  # Fetch the scripts to do the actual building/testing.
-  - |
-    wget "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/ci_boost_common.py" -P ..
-    wget "https://raw.githubusercontent.com/boostorg/regression/develop/ci/src/ci_boost_library_test.py" -P ..
-
-install: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" install
-before_script: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" before_script
-script: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" script
-before_cache: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" before_cache
-after_success: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" after_success
-after_failure: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" after_failure
-after_script: python "${TRAVIS_BUILD_DIR}/../ci_boost_library_test.py" after_script
+install: python "${TRAVIS_BUILD_DIR}/tools/ci/library_test.py" install
+before_script: python "${TRAVIS_BUILD_DIR}/tools/ci/library_test.py" before_script
+script: python "${TRAVIS_BUILD_DIR}/tools/ci/library_test.py" script
+before_cache: python "${TRAVIS_BUILD_DIR}/tools/ci/library_test.py" before_cache
+after_success: python "${TRAVIS_BUILD_DIR}/tools/ci/library_test.py" after_success
+after_failure: python "${TRAVIS_BUILD_DIR}/tools/ci/library_test.py" after_failure
+after_script: python "${TRAVIS_BUILD_DIR}/tools/ci/library_test.py" after_script
 cache:
   directories:
     - $HOME/boostorg/boost
