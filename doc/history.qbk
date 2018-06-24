@@ -7,6 +7,14 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 [section History]
 
+[heading 1.8]
+
+* Add support for __ARM_ARCH macro. (from Tim Blechmann)
+* Add detection for PTX architecture. (from Benjamin Worpitz)
+* Add nvcc compiler detection. (from Benjamin Worpitz)
+* Add support for detecting CUDA. (from Benjamin Worpitz)
+* Remove reference to obsolete BOOST_ARCH_AMD64. (from Peter Kolbus)
+
 [heading 1.7]
 
 * Fix BOOST_ARCH_PARISK/BOOST_ARCH_PARISC typo.
