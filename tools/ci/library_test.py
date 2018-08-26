@@ -73,6 +73,10 @@ using python : %(pyversion)s : "%(python)s" ;
                 'pyversion':"%s.%s"%(sys.version_info[0],sys.version_info[1]),
                 'python':sys.executable.replace("\\","\\\\")
                 })
+        
+        # "Convert" boostorg-predef into standalone b2 project.
+        if os.path.exists(os.path.join(self.repo_dir,'build.jam')) and not os.path.exists(os.path.join(self.repo_dir,'project-root.jam')):
+            os.rename(os.path.join(self.repo_dir,'build.jam'), os.path.join(self.repo_dir,'project-root.jam'))
 
     def command_build(self):
         script_common.command_build(self)
