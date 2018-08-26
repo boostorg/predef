@@ -254,6 +254,26 @@ toolset_info = {
         'toolset' : 'clang',
         'version' : ''
         },
+    'xcode-9.2' : {
+        'command' : 'clang++',
+        'toolset' : 'clang',
+        'version' : ''
+        },
+    'xcode-9.3' : {
+        'command' : 'clang++',
+        'toolset' : 'clang',
+        'version' : ''
+        },
+    'xcode-9.4' : {
+        'command' : 'clang++',
+        'toolset' : 'clang',
+        'version' : ''
+        },
+    'xcode-10.0' : {
+        'command' : 'clang++',
+        'toolset' : 'clang',
+        'version' : ''
+        },
     }
 
 class SystemCallError(Exception):
@@ -435,24 +455,24 @@ class utils:
         return boost_version
     
     @staticmethod
-    def git_clone(sub_repo, branch, commit = None, cwd = None, no_submodules = False):
+    def git_clone(owner, repo, branch, commit = None, repo_dir = None, submodules = False, url_format = "https://github.com/%(owner)s/%(repo)s.git"):
         '''
         This clone mimicks the way Travis-CI clones a project's repo. So far
         Travis-CI is the most limiting in the sense of only fetching partial
         history of the repo.
         '''
-        if not cwd:
-            cwd = cwd = os.getcwd()
-        root_dir = os.path.join(cwd,'boostorg',sub_repo)
-        if not os.path.exists(os.path.join(root_dir,'.git')):
+        if not repo_dir:
+            repo_dir = os.path.join(os.getcwd(), owner+','+repo)
+        utils.makedirs(os.path.dirname(repo_dir))
+        if not os.path.exists(os.path.join(repo_dir,'.git')):
             utils.check_call("git","clone",
                 "--depth=1",
                 "--branch=%s"%(branch),
-                "https://github.com/boostorg/%s.git"%(sub_repo),
-                root_dir)
-            os.chdir(root_dir)
+                url_format%{'owner':owner,'repo':repo},
+                repo_dir)
+            os.chdir(repo_dir)
         else:
-            os.chdir(root_dir)
+            os.chdir(repo_dir)
             utils.check_call("git","pull",
                 # "--depth=1", # Can't do depth as we get merge errors.
                 "--quiet","--no-recurse-submodules")
@@ -463,12 +483,12 @@ class utils:
                 utils.check_call('dir',os.path.join('.git','modules'))
             else:
                 utils.check_call('ls','-la',os.path.join('.git','modules'))
-        if not no_submodules:
+        if submodules:
             utils.check_call("git","submodule","--quiet","update",
                 "--quiet","--init","--recursive",
                 )
             utils.check_call("git","submodule","--quiet","foreach","git","fetch")
-        return root_dir
+        return repo_dir
 
 class parallel_call(threading.Thread):
     '''
@@ -496,7 +516,7 @@ def set_arg(args, k, v = None):
 
 class script_common(object):
     '''
-    Main script to run Boost C++ Libraries continuous integration.
+    Main script to run continuous integration.
     '''
 
     def __init__(self, ci_klass, **kargs):
@@ -521,7 +541,7 @@ class script_common(object):
         set_arg(kargs,'branch',None)
         set_arg(kargs,'commit',None)
         set_arg(kargs,'repo',None)
-        set_arg(kargs,'root_dir',None)
+        set_arg(kargs,'repo_dir',None)
         set_arg(kargs,'actions',None)
         set_arg(kargs,'pull_request', None)
 
@@ -533,9 +553,9 @@ class script_common(object):
             self.actions = kargs.get('actions',None)
         if not self.actions or self.actions == []:
             self.actions = [ 'info' ]
-        if not self.root_dir:
-            self.root_dir = os.getcwd()
-        self.build_dir = os.path.join(os.path.dirname(self.root_dir), "build")
+        if not self.repo_dir:
+            self.repo_dir = os.getcwd()
+        self.build_dir = os.path.join(os.path.dirname(self.repo_dir), "build")
         
         # API keys.
         self.bintray_key = os.getenv('BINTRAY_KEY')
@@ -562,8 +582,8 @@ class script_common(object):
             ci_script = getattr(self, action_m, None)
             if ci_command or ci_script:
                 utils.log( "### %s.."%(action) )
-                if os.path.exists(self.root_dir):
-                    os.chdir(self.root_dir)
+                if os.path.exists(self.repo_dir):
+                    os.chdir(self.repo_dir)
                 if ci_command:
                     ci_command()
                 elif ci_script:
@@ -614,9 +634,9 @@ class ci_cli(object):
     
     The common way to use this variant is to invoke something like:
     
-        mkdir boost-ci
-        cd boost-ci
-        python path-to/ci_boost_<script>.py --branch=develop [--repo=mylib] ...
+        mkdir ci
+        cd ci
+        python path-to/library_test.py --branch=develop [--repo=mylib] ...
     
     Status: In working order.
     '''
@@ -630,30 +650,22 @@ class ci_cli(object):
             if os.path.isdir(doxygen_path):
                 os.environ["PATH"] = doxygen_path+':'+os.environ['PATH']
         self.script = script
-        self.work_dir = os.getcwd()
+        self.repo_dir = os.getcwd()
         self.exit_result = 0
     
     def init(self, opt, kargs):
         kargs['actions'] = [
-            'clone',
+            # 'clone',
             'install',
             'before_build',
             'build',
             'before_cache',
             'finish'
             ]
-        opt.add_option( '--repo',
-            help="Boost repo short name we are testing with, and hence the repo we clone.")
-        set_arg(kargs,'repo','boost')
         return kargs
     
     def finish(self, result):
         self.exit_result = result
-    
-    def command_clone(self):
-        self.script.root_dir = os.path.join(self.work_dir,'boostorg',self.script.repo)
-        self.script.build_dir = os.path.join(os.path.dirname(self.script.root_dir), "build")
-        utils.git_clone(self.script.repo, self.script.branch, self.script.commit, self.work_dir)
     
     def command_finish(self):
         exit(self.exit_result)
@@ -665,10 +677,9 @@ class ci_travis(object):
     
     def __init__(self,script):
         self.script = script
-        self.work_dir = os.getenv("HOME")
     
     def init(self, opt, kargs):
-        set_arg(kargs,'root_dir', os.getenv("TRAVIS_BUILD_DIR"))
+        set_arg(kargs,'repo_dir', os.getenv("TRAVIS_BUILD_DIR"))
         set_arg(kargs,'branch', os.getenv("TRAVIS_BRANCH"))
         set_arg(kargs,'commit', os.getenv("TRAVIS_COMMIT"))
         set_arg(kargs,'repo', os.getenv("TRAVIS_REPO_SLUG").split("/")[1])
@@ -686,7 +697,7 @@ class ci_travis(object):
         '''
         info = toolset_info[toolset]
         if sys.platform.startswith('linux'):
-            os.chdir(self.work_dir)
+            os.chdir(self.script.build_dir)
             if 'ppa' in info:
                 for ppa in info['ppa']:
                     utils.check_call(
@@ -748,10 +759,9 @@ class ci_circleci(object):
     
     def __init__(self,script):
         self.script = script
-        self.work_dir = os.getenv("HOME")
     
     def init(self, opt, kargs):
-        set_arg(kargs,'root_dir', os.path.join(os.getenv("HOME"),os.getenv("CIRCLE_PROJECT_REPONAME")))
+        set_arg(kargs,'repo_dir', os.path.join(os.getenv("HOME"),os.getenv("CIRCLE_PROJECT_REPONAME")))
         set_arg(kargs,'branch', os.getenv("CIRCLE_BRANCH"))
         set_arg(kargs,'commit', os.getenv("CIRCLE_SHA1"))
         set_arg(kargs,'repo', os.getenv("CIRCLE_PROJECT_REPONAME").split("/")[1])
@@ -768,7 +778,7 @@ class ci_circleci(object):
         utils.check_call("pip","install","--user","PyYAML")
     
     def command_checkout_post(self):
-        os.chdir(self.script.root_dir)
+        os.chdir(self.script.repo_dir)
         utils.check_call("git","submodule","update","--quiet","--init","--recursive")
     
     def command_dependencies_pre(self):
@@ -777,7 +787,7 @@ class ci_circleci(object):
         import yaml
         utils.check_call('sudo','-E','apt-get','-yqq','update')
         utils.check_call('sudo','apt-get','-yqq','purge','texlive*')
-        with open(os.path.join(self.script.root_dir,'.travis.yml')) as yml:
+        with open(os.path.join(self.script.repo_dir,'.travis.yml')) as yml:
             travis_yml = yaml.load(yml)
             utils.check_call('sudo','apt-get','-yqq',
                 '--no-install-suggests','--no-install-recommends','--force-yes','install',
@@ -817,10 +827,9 @@ class ci_appveyor(object):
     
     def __init__(self,script):
         self.script = script
-        self.work_dir = os.path.dirname(os.getenv("APPVEYOR_BUILD_FOLDER"))
     
     def init(self, opt, kargs):
-        set_arg(kargs,'root_dir',os.getenv("APPVEYOR_BUILD_FOLDER"))
+        set_arg(kargs,'repo_dir',os.getenv("APPVEYOR_BUILD_FOLDER"))
         set_arg(kargs,'branch',os.getenv("APPVEYOR_REPO_BRANCH"))
         set_arg(kargs,'commit',os.getenv("APPVEYOR_REPO_COMMIT"))
         set_arg(kargs,'repo',os.getenv("APPVEYOR_REPO_NAME").split("/")[1])
@@ -839,7 +848,7 @@ class ci_appveyor(object):
         self.script.command_install()
     
     def command_before_build(self):
-        os.chdir(self.script.root_dir)
+        os.chdir(self.script.repo_dir)
         utils.check_call("git","submodule","update","--quiet","--init","--recursive")
         self.script.command_before_build()
     

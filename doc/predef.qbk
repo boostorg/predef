@@ -235,7 +235,7 @@ commonly emulated by other compilers by defining the same base macros. To
 account for this detection headers are allowed to define `*_EMULATED` predefs
 when this situation is detected. The emulated predefs will be set to the
 version number of the detection instead of the regular predef macro for that
-detection. For example MSVC will set `BOOST_COMP_MSVC_EMULATED` but not set `BOOST_COM_MSVC`, and it will also set `BOOST_COMP_MSVC_AVAILABLE`.
+detection. For example MSVC will set `BOOST_COMP_MSVC_EMULATED` but not set `BOOST_COMP_MSVC`, and it will also set `BOOST_COMP_MSVC_AVAILABLE`.
 
 [heading Using the `BOOST_VERSION_NUMBER` macro]
 
@@ -401,7 +401,7 @@ We also need to provide the `*_AVAILABLE` versions of the predef.
 And for convenience we also want to provide a `*_NAME` macro:
 
 ``
-#define BOOST_catagory_tag_NAME "Name"
+#define BOOST_category_tag_NAME "Name"
 ``
 
 The testing of the predef macros is automated to generate checks for all
@@ -507,7 +507,7 @@ uses a simple 3-digit version macro (M,N,P). It can be decomposed
 and defined as:
 
 ``
-#define BOOST_CCOMP_EDG BOOST_PREDEF_MAKE_N_N_N(__EDG_VERSION__)
+#define BOOST_COMP_EDG BOOST_PREDEF_MAKE_N_N_N(__EDG_VERSION__)
 ``
 
 The decomposition macros are split into three types: decimal
