@@ -3,10 +3,10 @@
 # See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
 #
 # NOTE: This does NOT run the unit tests for Boost.Predef.
-#       It only tests, if the CMakeLists.txt file in predef'See
+#       It only tests, if the CMakeLists.txt file in predef's
 #       root directory works as expected (i.e. it provides the
 #       target Boost::predef which in turn provides the
-#       correct include directory information )
+#       correct include directory )
 
 cmake_minimum_required( VERSION 3.5 )
 
