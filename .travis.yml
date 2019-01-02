@@ -48,6 +48,24 @@ matrix:
   exclude:
     - env: TRAVIS_EMPTY_JOB_WORKAROUND=true
   include:
+    # cmake self-test
+    - env: TEST_CMAKE=TRUE #Only for easier identification in travis web gui
+      os: linux
+
+      # skip all the unneeded steps from the normal unit test jobs
+      install: true
+      before_script: true
+      before_cache: true
+      before_cache: true
+      after_success: true
+      after_failure: true
+      after_script: true
+      script:
+        - mkdir __build__ && cd __build__
+        - cmake ../test/test_cmake
+        - cmake --build .
+
+
     - env: TOOLSET=clang-3.4
     - env: TOOLSET=clang-3.5
     - env: TOOLSET=clang-3.6
