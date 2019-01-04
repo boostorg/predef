@@ -48,11 +48,9 @@ matrix:
   exclude:
     - env: TRAVIS_EMPTY_JOB_WORKAROUND=true
   include:
-    # cmake self-test
-    - env: TEST_CMAKE=TRUE #Only for easier identification in travis web gui
-      os: linux
-
-      # skip all the unneeded steps from the normal unit test jobs
+    # Check CMake project use support.
+    - env: TEST_CMAKE
+      # Skip all the unneeded steps from the normal unit test jobs
       install: true
       before_script: true
       before_cache: true
@@ -60,6 +58,7 @@ matrix:
       after_success: true
       after_failure: true
       after_script: true
+      # Build CMake simple test project that uses Predef.
       script:
         - mkdir __build__ && cd __build__
         - cmake ../test/test_cmake
