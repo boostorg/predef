@@ -1,8 +1,8 @@
 [article Boost.Predef
     [quickbook 1.7]
-    [version 1.9]
+    [version 1.10]
     [authors [Rivera, Rene]]
-    [copyright 2005-2018 Rene Rivera]
+    [copyright 2005-2019 Rene Rivera]
     [copyright 2015 Charly Chevalier]
     [copyright 2015 Joel Falcou]
     [purpose Identification and specification of predefined macros.]

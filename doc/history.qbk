@@ -7,6 +7,10 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 [section History]
 
+[heading 1.10]
+
+* Add support for consuming Predef as a CMake project.
+
 [heading 1.9]
 
 * Fixes for `BOOST_COMP_NVCC*` predefs. (from Benjamin Worpitz)

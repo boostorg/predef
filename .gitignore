@@ -2,3 +2,4 @@ bin
 boost-build.jam
 project-config.jam
 *.pyc
+.vscode/settings.json
