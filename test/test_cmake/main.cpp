@@ -7,7 +7,7 @@ http://www.boost.org/LICENSE_1_0.txt
 */
 
 /*
-Dummy executable, just to make sure that we can find the Boost.predef header
+Dummy executable, just to make sure that we can find the Boost Predef header
 files.
 */
 

@@ -15,15 +15,15 @@
 # declarative targets.
 cmake_minimum_required( VERSION 3.0 )
 
-project( BoostPredefCMakeSelfTest )
+project( PredefCMakeSelfTest )
 
 # Process cmake file at root of library and use
-# ${CMAKE_CURRENT_BINARY_DIR}/libs/boost_predef as workspace
-add_subdirectory( ../.. ${CMAKE_CURRENT_BINARY_DIR}/libs/boost_predef )
+# ${CMAKE_CURRENT_BINARY_DIR}/libs/predef as workspace
+add_subdirectory( ../.. ${CMAKE_CURRENT_BINARY_DIR}/libs/predef )
 
 # The executable just includes a predef header to verify that it's used.
-add_executable( boost_predef_cmake_test_prj main.cpp )
+add_executable( predef_cmake_test_prj main.cpp )
 
 # The executable needs to "use" the Predef "library" to get the usage
 # requirements added to the executable build.
-target_link_libraries( boost_predef_cmake_test_prj Boost::predef )
+target_link_libraries( predef_cmake_test_prj Boost::predef )
