@@ -1,0 +1,24 @@
+# Copyright Boris Kolpackov 2019
+# Distributed under the Boost Software License, Version 1.0.
+# See accompanying file LICENSE_1_0.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt
+
+using c
+
+h{*}: extension = h
+c{*}: extension = c
+
+cxx.std = latest
+
+using cxx
+
+hxx{*}: extension = hpp
+cxx{*}: extension = cpp
+
+# Every exe{} in this subproject is by default a test.
+#
+exe{*}: test = true
+
+# The test target for cross-testing (running tests under Wine, etc).
+#
+test.target = $cxx.target

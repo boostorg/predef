@@ -1,0 +1,44 @@
+# Copyright Boris Kolpackov 2019
+# Distributed under the Boost Software License, Version 1.0.
+# See accompanying file LICENSE_1_0.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt
+
+import libs = libboost-predef%lib{boost_predef}
+
+# Run tests.
+#
+for t: info_as_c info_as_cpp check_value make tested_at version workaround
+{
+  # Note that some of them are C and some C++. Rather than using separate
+  # loops, let's use the wildcard pattern machinery (without the wildcard) to
+  # pick the right prerequisite type.
+  #
+  ./: exe{$t}: {c cxx}{+$t} $libs
+}
+
+# Test-specific tweaks.
+#
+obj{check_value}: cxx.poptions += -DCHECK_VALUE=true
+
+exe{info_as_c info_as_cpp}: h{predef_info}
+
+# Compile tests.
+#
+# Note: the expected-to-fail tested_at_outdated is currently not handled; we
+# could probably do something ad hoc with a testscript but perhaps there
+# should be a better way.
+#
+./: obje{workaround_strict_config}: cxx{workaround_strict_config} $libs
+
+# Windows-specific tests.
+#
+./: obje{platform_windows}: include = ($cxx.target.class == 'windows')
+
+obje{platform_windows}: cxx{platform_windows} $libs
+
+# Mac OS-specific tests.
+#
+./: obje{macos_endian macos_vs_bsd}: include = ($c.target.class == 'macos')
+
+obje{macos_endian}: c{macos_endian} $libs
+obje{macos_vs_bsd}: c{macos_vs_bsd} $libs
