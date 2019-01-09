@@ -1,49 +1,16 @@
-#!/usr/bin/env b2 -a --verbose-test
-# Copyright Rene Rivera 2011-2016
+# Copyright Rene Rivera 2011-2019
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
 
-import ../check/predef : require check : predef-require predef-check ;
+import ../tools/check/predef : require check : predef-require predef-check ;
 
-local predef-include-root ;
-local predef-dependency ;
-
-local modular-predef-h = [ glob $(BOOST_PREDEF_ROOT)/include/boost/predef.h ] ;
-local BOOST_RELEASE_LAYOUT ;
-if ! $(modular-predef-h)
-{
-    BOOST_RELEASE_LAYOUT = yes ;
-}
-
-# When using modular layout, header files are not present in $root/boost
-# unlink links are created, therefore instead of direct dependency on
-# a header, we need to use dependency on metatarget.
-if $(BOOST_RELEASE_LAYOUT)
-{
-   predef-dependency = $(predef-include-root)/boost/predef.h ;
-}
-else if $(BOOST_PREDEF_ROOT)
-{
-    predef-include-root = $(BOOST_PREDEF_ROOT)/include ;
-    predef-dependency = $(predef-include-root)/boost/predef.h ;
-}
-else if $(BOOST_MODULARLAYOUT)
-{
-    predef-include-root = $(BOOST_ROOT) ;
-    predef-dependency = /boost//predef-headers ;
-}
-else
-{
-   predef-dependency = $(predef-include-root)/boost/predef.h ;
-}
-
-project predef-test
+project
     :   requirements
-        <include>$(predef-include-root)
+        <include>$(BOOST_PREDEF_INCLUDE)
         # Add explicit dependency since we don't have header scanner for
         # .m and .mm files.
-        <dependency>$(predef-dependency)
+        <dependency>$(BOOST_PREDEF_INCLUDE)/boost/predef.h
     ;
 
 using testing ;

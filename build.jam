@@ -1,6 +1,24 @@
-# Copyright Rene Rivera 2014
+# Copyright Rene Rivera 2014-2019
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
 
+import project ;
+
 path-constant BOOST_PREDEF_ROOT : . ;
+path-constant BOOST_PREDEF_INCLUDE : include ;
+constant PREDEF_DIST : boost ;
+
+project /boost/predef ;
+
+local attributes = [ project.attributes $(__name__) ] ;
+local is-jamroot = [ project.is-jamroot-module $(__name__) ] ;
+if ( $(PREDEF_DIST) = hash ) || ( ( $(PREDEF_DIST) = boost ) && $(is-jamroot) )
+{
+    $(attributes).set "requirements" :
+        <include>$(BOOST_PREDEF_INCLUDE) ;
+}
+if $(is-jamroot)
+{
+    $(attributes).set "build-dir" : bin ;
+}
