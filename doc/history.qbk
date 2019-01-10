@@ -9,6 +9,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 [heading 1.10]
 
+* Add `BOOST_PLAT_ANDROID` to resolve conflict between Linux and Android
+  OS predefs. The `BOOST_OS_ANDROID` predef is now deprecated and will be
+  removed in a future release.
 * Add support for consuming Predef as a CMake project.
 
 [heading 1.9]
