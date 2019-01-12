@@ -8,7 +8,7 @@
 #   CMake support for Boost.Predef is currently experimental at best and the
 #   interface is likely to change in the future
 #
-# This file provides mininmal cmake support (no unit-tests,
+# This file provides minimal cmake support (no unit-tests,
 # no installation) for integration into a "host" cmake project
 # via the "add_subdirectory( <path-to-boost-predef> )" command.
 #
