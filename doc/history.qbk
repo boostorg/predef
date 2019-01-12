@@ -13,6 +13,7 @@ http://www.boost.org/LICENSE_1_0.txt)
   OS predefs. The `BOOST_OS_ANDROID` predef is now deprecated and will be
   removed in a future release.
 * Add support for consuming Predef as a CMake project.
+* Add support for consuming Predef as a standalone B2 project.
 
 [heading 1.9]
 
