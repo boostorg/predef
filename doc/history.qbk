@@ -9,6 +9,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 [heading 1.10]
 
+* Fix use of deprecated `TARGET_IPHONE_SIMULATOR` instead of newer
+  `TARGET_OS_SIMULATOR`.
 * Add `BOOST_PLAT_ANDROID` to resolve conflict between Linux and Android
   OS predefs. The `BOOST_OS_ANDROID` predef is now deprecated and will be
   removed in a future release.
