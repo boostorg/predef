@@ -9,6 +9,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 [heading 1.10]
 
+* Fix bad include of sub-BSD os headers from main BSD header.
 * Fix use of deprecated `TARGET_IPHONE_SIMULATOR` instead of newer
   `TARGET_OS_SIMULATOR`.
 * Add `BOOST_PLAT_ANDROID` to resolve conflict between Linux and Android
