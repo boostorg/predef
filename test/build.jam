@@ -4,13 +4,23 @@
 # http://www.boost.org/LICENSE_1_0.txt)
 
 import ../tools/check/predef : require check : predef-require predef-check ;
+import path ;
+
+# This deals with the unfortunate aspect of a Boost monolithic release
+# not having the modular include dirs. This is a kludge that just removes
+# the direct depdndency to the header if it can't find it.
+local PREDEF_H = $(BOOST_PREDEF_INCLUDE)/boost/predef.h ;
+if ! [ path.exists $(PREDEF_H) ]
+{
+    PREDEF_H = ;
+}
 
 project
     :   requirements
         <include>$(BOOST_PREDEF_INCLUDE)
         # Add explicit dependency since we don't have header scanner for
         # .m and .mm files.
-        <dependency>$(BOOST_PREDEF_INCLUDE)/boost/predef.h
+        <dependency>$(PREDEF_H)
     ;
 
 using testing ;
