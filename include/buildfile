@@ -1,0 +1,21 @@
+# Copyright Boris Kolpackov 2019
+# Distributed under the Boost Software License, Version 1.0.
+# See accompanying file LICENSE_1_0.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt
+
+# For a library with source code this will normally be in src/. For a header-
+# only library, include/ feels like a natural alternative.
+#
+lib{boost_predef}: {h hxx}{**}
+
+# Build options.
+#
+cxx.poptions =+ "-I$src_base"
+
+# Export options.
+#
+lib{boost_predef}: cxx.export.poptions = "-I$src_base"
+
+# Install headers recreating subdirectories.
+#
+{h hxx}{*}: install.subdirs = true

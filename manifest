@@ -1,0 +1,17 @@
+: 1
+name: libboost-predef
+project: libboost
+version: 1.9.0
+summary: Boost Predef C++ library
+license: Boost Software License v1.0
+url: https://github.com/boostorg/predef/
+email: grafikrobot@gmail.com
+description: \
+This library defines a set of compiler, architecture, operating system,
+library, and other version numbers from the information it can gather of C,
+C++, Objective C, and Objective C++ predefined macros or those defined in
+generally available headers.
+\
+builds: all
+depends: * build2 >= 0.9.0-
+depends: * bpkg >= 0.9.0-

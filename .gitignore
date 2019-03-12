@@ -3,3 +3,7 @@ boost-build.jam
 project-config.jam
 *.pyc
 .vscode/settings.json
+
+# build2 entries.
+#
+.bdep/
