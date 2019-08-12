@@ -88,7 +88,7 @@ local rule check_target ( language key : requirements * )
     local source_path
         = $(predef_jam:D)/predef_check_cc_as_$(language).$(.$(language).ext) ;
     local include_path
-        = $(predef_jam:D)/../../include ;
+        = $(predef_jam:D)/../../include $(BOOST_ROOT) ;
     obj predef_check_cc_$(key)
         : $(source_path)
         : <include>$(include_path) $(requirements) ;
