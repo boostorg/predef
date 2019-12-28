@@ -20,12 +20,13 @@
 
 # Only need the basic minimum of project, add_library, and
 # target_include_directories commands.
-cmake_minimum_required( VERSION 3.0 )
+# We support 3.0, but prefer 3.16 policies and behavior
+cmake_minimum_required( VERSION 3.0...3.16 )
 
-# Don't set VERSION, as that's a pita to keep up to date with the version
-# header. And don't set LANGUAGES as we are multi-language and header
-# only, so it's irrelevant.
-project( BoostPredef )
+# Keep VERSION empty when outside the superproject, as that's a pita to
+# keep up to date with the version header. And don't set LANGUAGES as we
+# are multi-language and header only, so it's irrelevant.
+project( BoostPredef VERSION "${BOOST_SUPERPROJECT_VERSION}" )
 
 # Simple INTERFACE, and header only, library target.
 add_library( boost_predef INTERFACE )
@@ -36,3 +37,10 @@ target_include_directories( boost_predef INTERFACE include )
 # Add an alias to be compatible with consumers that may have used the
 # FindBoost script.
 add_library( Boost::predef ALIAS boost_predef )
+
+if(BOOST_SUPERPROJECT_VERSION)
+
+  include(BoostInstall)
+  boost_install(TARGETS boost_predef HEADER_DIRECTORY include/)
+
+endif()
