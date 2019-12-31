@@ -15,8 +15,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/os/bsd.h>
 #include <boost/predef/os/android.h>
 
-/*`
-[heading `BOOST_ENDIAN_*`]
+/* tag::reference[]
+= `BOOST_ENDIAN_*`
 
 Detection of endian memory ordering. There are four defined macros
 in this header that define the various generally possible endian
@@ -37,12 +37,12 @@ programatic bi-endianness is available.
 This implementation is a compilation of various publicly available
 information and acquired knowledge:
 
-# The indispensable documentation of "Pre-defined Compiler Macros"
-  [@http://sourceforge.net/p/predef/wiki/Endianness Endianness].
-# The various endian specifications available in the
-  [@http://wikipedia.org/ Wikipedia] computer architecture pages.
-# Generally available searches for headers that define endianness.
- */
+. The indispensable documentation of "Pre-defined Compiler Macros"
+  http://sourceforge.net/p/predef/wiki/Endianness[Endianness].
+. The various endian specifications available in the
+  http://wikipedia.org/[Wikipedia] computer architecture pages.
+. Generally available searches for headers that define endianness.
+*/ // end::reference[]
 
 #define BOOST_ENDIAN_BIG_BYTE BOOST_VERSION_NUMBER_NOT_AVAILABLE
 #define BOOST_ENDIAN_BIG_WORD BOOST_VERSION_NUMBER_NOT_AVAILABLE
