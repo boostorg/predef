@@ -12,6 +12,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 * Add `BOOST_ARCH_RISCV`. (from Andreas Schwab)
 * Add RISC-V endian detection. (from Thomas Petazzoni)
 * Convert documentation to AsciiDoctor format.
+* Document correct versions for C++ standard.
+* Fix compile error from not available header when building in WinCE.
 
 == 1.10
 

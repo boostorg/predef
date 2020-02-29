@@ -32,8 +32,8 @@ UWP development.
 #define BOOST_PLAT_WINDOWS_SDK_VERSION BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #if BOOST_OS_WINDOWS
-//  MinGW (32-bit) has no ntverp.h header
-#if !defined(__MINGW32__)
+//  MinGW (32-bit), and WinCE, don't have a ntverp.h header
+#if !defined(__MINGW32__) && !defined(_WIN32_WCE)
 #   include <ntverp.h>
 #   undef BOOST_PLAT_WINDOWS_SDK_VERSION
 #   define BOOST_PLAT_WINDOWS_SDK_VERSION BOOST_VERSION_NUMBER(0, 0, VER_PRODUCTBUILD)
