@@ -724,8 +724,6 @@ include::../include/boost/predef/os/aix.h[tag=reference]
 
 include::../include/boost/predef/os/amigaos.h[tag=reference]
 
-include::../include/boost/predef/os/android.h[tag=reference]
-
 include::../include/boost/predef/os/beos.h[tag=reference]
 
 include::../include/boost/predef/os/bsd.h[tag=reference]

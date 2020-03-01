@@ -25,7 +25,9 @@ Specifically the defined versions are:
 |===
 | Detected Version Number | Standard Year | {CPP} Standard
 | 27.11.1 | 1998 | ISO/IEC 14882:1998
-| 41.12.1 | 2011 | ISO/IEC 14882:2011
+| 41.3.1 | 2011 | ISO/IEC 14882:2011
+| 44.2.1 | 2014 | ISO/IEC 14882:2014
+| 47.3.1 | 2017 | ISO/IEC 14882:2017
 |===
 
 [options="header"]
