@@ -1,5 +1,5 @@
 ////
-Copyright 2014-2019 Rene Rivera
+Copyright 2014-2020 Rene Rivera
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -15,6 +15,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 * Document correct versions for C++ standard.
 * Fix compile error from not available header when building in WinCE.
 * Remove deprecated `BOOST_OS_ANDROID`.
+* Fix compile for Wine. (Kevin Puetz)
 
 == 1.10
 
