@@ -38,6 +38,7 @@ https://en.wikipedia.org/wiki/Parallel_Thread_Execution[PTX] architecture.
 #endif
 
 #define BOOST_ARCH_PTX_NAME "PTX"
+#define BOOST_ARCH_PTX_WORD_BITS 64
 
 #endif
 

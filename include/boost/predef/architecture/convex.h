@@ -60,6 +60,8 @@ http://en.wikipedia.org/wiki/Convex_Computer[Convex Computer] architecture.
 
 #define BOOST_ARCH_CONVEX_NAME "Convex Computer"
 
+#define BOOST_ARCH_CONVEX_WORD_BITS 32
+
 #endif
 
 #include <boost/predef/detail/test.h>

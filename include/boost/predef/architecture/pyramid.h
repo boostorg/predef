@@ -36,6 +36,7 @@ Pyramid 9810 architecture.
 #endif
 
 #define BOOST_ARCH_PYRAMID_NAME "Pyramid 9810"
+#define BOOST_ARCH_PYRAMID_WORD_BITS 32
 
 #endif
 

@@ -36,6 +36,7 @@ http://en.wikipedia.org/wiki/Z/Architecture[z/Architecture] architecture.
 #endif
 
 #define BOOST_ARCH_Z_NAME "z/Architecture"
+#define BOOST_ARCH_Z_WORD_BITS 64
 
 #endif
 

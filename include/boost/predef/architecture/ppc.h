@@ -49,12 +49,15 @@ http://en.wikipedia.org/wiki/PowerPC[PowerPC] architecture.
 #   undef BOOST_ARCH_PPC
 #   if !defined (BOOST_ARCH_PPC) && (defined(__ppc601__) || defined(_ARCH_601))
 #       define BOOST_ARCH_PPC BOOST_VERSION_NUMBER(6,1,0)
+#       define BOOST_ARCH_PPC_WORD_BITS 32
 #   endif
 #   if !defined (BOOST_ARCH_PPC) && (defined(__ppc603__) || defined(_ARCH_603))
 #       define BOOST_ARCH_PPC BOOST_VERSION_NUMBER(6,3,0)
+#       define BOOST_ARCH_PPC_WORD_BITS 32
 #   endif
 #   if !defined (BOOST_ARCH_PPC) && (defined(__ppc604__) || defined(__ppc604__))
 #       define BOOST_ARCH_PPC BOOST_VERSION_NUMBER(6,4,0)
+#       define BOOST_ARCH_PPC_WORD_BITS 32
 #   endif
 #   if !defined (BOOST_ARCH_PPC)
 #       define BOOST_ARCH_PPC BOOST_VERSION_NUMBER_AVAILABLE
