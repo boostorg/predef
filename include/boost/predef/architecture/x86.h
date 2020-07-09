@@ -26,6 +26,12 @@ a category to indicate that either `BOOST_ARCH_X86_32` or
 #   define BOOST_ARCH_X86 BOOST_VERSION_NUMBER_AVAILABLE
 #endif
 
+#if defined(BOOST_ARCH_x86_32)
+#   define BOOST_ARCH_X86_WORD_BITS BOOST_ARCH_X86_32_WORD_BITS
+#elif defined(BOOST_ARCH_X86_64)
+#   define BOOST_ARCH_X86_WORD_BITS BOOST_ARCH_X86_64_WORD_BITS
+#endif
+
 #if BOOST_ARCH_X86
 #   define BOOST_ARCH_X86_AVAILABLE
 #endif
