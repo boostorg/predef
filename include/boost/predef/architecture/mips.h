@@ -47,15 +47,19 @@ http://en.wikipedia.org/wiki/MIPS_architecture[MIPS] architecture.
 #   endif
 #   if !defined(BOOST_ARCH_MIPS) && (defined(_MIPS_ISA_MIPS1) || defined(_R3000))
 #       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER(1,0,0)
+#       define BOOST_ARCH_MIPS_WORD_BITS 32
 #   endif
 #   if !defined(BOOST_ARCH_MIPS) && (defined(_MIPS_ISA_MIPS2) || defined(__MIPS_ISA2__) || defined(_R4000))
 #       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER(2,0,0)
+#       define BOOST_ARCH_MIPS_WORD_BITS 32
 #   endif
 #   if !defined(BOOST_ARCH_MIPS) && (defined(_MIPS_ISA_MIPS3) || defined(__MIPS_ISA3__))
 #       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER(3,0,0)
+#       define BOOST_ARCH_MIPS_WORD_BITS 64
 #   endif
 #   if !defined(BOOST_ARCH_MIPS) && (defined(_MIPS_ISA_MIPS4) || defined(__MIPS_ISA4__))
 #       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER(4,0,0)
+#       define BOOST_ARCH_MIPS_WORD_BITS 64
 #   endif
 #   if !defined(BOOST_ARCH_MIPS)
 #       define BOOST_ARCH_MIPS BOOST_VERSION_NUMBER_AVAILABLE

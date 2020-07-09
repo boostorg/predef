@@ -98,24 +98,29 @@ http://en.wikipedia.org/wiki/ARM_architecture[ARM] architecture.
         defined(__arm64) || defined(_M_ARM64) || defined(__aarch64__) || \
         defined(__AARCH64EL__) )
 #       define BOOST_ARCH_ARM BOOST_VERSION_NUMBER(8,0,0)
+#       define BOOST_ARCH_ARM_WORD_BITS 64
 #   endif
 #   if !defined(BOOST_ARCH_ARM) && ( \
     defined(__ARM_ARCH_7__) || defined(__ARM_ARCH_7A__) || \
     defined(__ARM_ARCH_7R__) || defined(__ARM_ARCH_7M__) )
 #       define BOOST_ARCH_ARM BOOST_VERSION_NUMBER(7,0,0)
+#       define BOOST_ARCH_ARM_WORD_BITS 32
 #   endif
 #   if !defined(BOOST_ARCH_ARM) && ( \
     defined(__ARM_ARCH_6K__) || defined(__ARM_ARCH_6Z__) || \
     defined(__ARM_ARCH_6KZ__) || defined(__ARM_ARCH_6T2__) )
 #       define BOOST_ARCH_ARM BOOST_VERSION_NUMBER(6,0,0)
+#       define BOOST_ARCH_ARM_WORD_BITS 32
 #   endif
 #   if !defined(BOOST_ARCH_ARM) && ( \
     defined(__ARM_ARCH_5TE__) || defined(__ARM_ARCH_5TEJ__) )
 #       define BOOST_ARCH_ARM BOOST_VERSION_NUMBER(5,0,0)
+#       define BOOST_ARCH_ARM_WORD_BITS 32
 #   endif
 #   if !defined(BOOST_ARCH_ARM) && ( \
     defined(__ARM_ARCH_4T__) || defined(__ARM_ARCH_4__) )
 #       define BOOST_ARCH_ARM BOOST_VERSION_NUMBER(4,0,0)
+#       define BOOST_ARCH_ARM_WORD_BITS 32
 #   endif
 #   if !defined(BOOST_ARCH_ARM)
 #       define BOOST_ARCH_ARM BOOST_VERSION_NUMBER_AVAILABLE
