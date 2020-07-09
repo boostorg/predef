@@ -53,6 +53,7 @@ http://en.wikipedia.org/wiki/DEC_Alpha[DEC Alpha] architecture.
 #endif
 
 #define BOOST_ARCH_ALPHA_NAME "DEC Alpha"
+#define BOOST_ARCH_ALPHA_WORD_BITS 64
 
 #endif
 

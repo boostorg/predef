@@ -76,6 +76,7 @@ http://en.wikipedia.org/wiki/M68k[Motorola 68k] architecture.
 #endif
 
 #define BOOST_ARCH_M68K_NAME "Motorola 68k"
+#define BOOST_ARCH_M68K_WORD_BITS 32
 
 #endif
 
