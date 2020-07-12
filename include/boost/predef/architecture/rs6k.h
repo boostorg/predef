@@ -50,7 +50,7 @@ http://en.wikipedia.org/wiki/RS/6000[RS/6000] architecture.
 #endif
 
 #define BOOST_ARCH_PWR_NAME BOOST_ARCH_RS6000_NAME
-#definf BOOST_ARCH_PWR_WORD_BITS 32
+#define BOOST_ARCH_PWR_WORD_BITS 32
 
 #endif
 
