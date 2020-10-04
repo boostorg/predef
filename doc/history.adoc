@@ -16,6 +16,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 * Fix compile error from not available header when building in WinCE.
 * Remove deprecated `BOOST_OS_ANDROID`.
 * Fix compile for Wine. (Kevin Puetz)
+* Switch to using the endian.h header on OpenBSD. (Brad Smith)
 
 == 1.10
 

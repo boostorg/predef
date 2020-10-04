@@ -54,18 +54,14 @@ information and acquired knowledge:
  */
 #if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
-#   if BOOST_LIB_C_GNU || BOOST_PLAT_ANDROID
+#   if BOOST_LIB_C_GNU || BOOST_PLAT_ANDROID || BOOST_OS_BSD_OPEN
 #       include <endian.h>
 #   else
 #       if BOOST_OS_MACOS
 #           include <machine/endian.h>
 #       else
 #           if BOOST_OS_BSD
-#               if BOOST_OS_BSD_OPEN
-#                   include <machine/endian.h>
-#               else
-#                   include <sys/endian.h>
-#               endif
+#               include <sys/endian.h>
 #           endif
 #       endif
 #   endif
