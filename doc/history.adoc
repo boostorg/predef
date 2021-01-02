@@ -7,6 +7,10 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 = History
 
+== 1.12
+
+* 
+
 == 1.11
 
 * Add `BOOST_ARCH_RISCV`. (from Andreas Schwab)
