@@ -9,7 +9,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 == 1.12
 
-* 
+* Switch to using the endian.h header on OpenBSD. (Brad Smith)
 
 == 1.11
 
