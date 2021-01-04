@@ -79,7 +79,8 @@ stages:
         CXX_PATH=`which ${CXX}`
         echo "using ${TOOLSET} : : ${CXX_PATH} ;" > ${HOME}/user-config.jam
         pushd test
-        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS}
+        b2 --verbose-test -a toolset=${TOOLSET} ${B2_ARGS} predef-info
+        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS} predef predef-headers
         popd
       displayName: Test
 
@@ -146,7 +147,8 @@ stages:
         CXX_PATH=`which ${CXX}`
         echo "using ${TOOLSET} : : ${CXX_PATH} ;" > ${HOME}/user-config.jam
         pushd test
-        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS}
+        b2 --verbose-test -a toolset=${TOOLSET} ${B2_ARGS} predef-info
+        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS} predef predef-headers
         popd
       displayName: Test
 
@@ -219,5 +221,6 @@ stages:
     - script: |
         set BOOST_BUILD_PATH=%BUILD_SOURCESDIRECTORY%/../build-develop
         cd %BUILD_SOURCESDIRECTORY%/test
-        %BUILD_SOURCESDIRECTORY%/../build-develop/b2.exe --debug-configuration -a toolset=%TOOLSET% %B2_ARGS%
+        %BUILD_SOURCESDIRECTORY%/../build-develop/b2.exe --verbose-test -a toolset=%TOOLSET% %B2_ARGS% predef-info
+        %BUILD_SOURCESDIRECTORY%/../build-develop/b2.exe --debug-configuration -a toolset=%TOOLSET% %B2_ARGS% predef predef-headers
       displayName: Test
