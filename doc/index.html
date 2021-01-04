@@ -6808,6 +6808,18 @@ expressions. It defaults to "c++", but can be any of: "c", "cpp",
 <li>
 <p>Switch to using the endian.h header on OpenBSD. (Brad Smith)</p>
 </li>
+<li>
+<p>Fix not handling recent versions of stdcxx that go above version 9.</p>
+</li>
+<li>
+<p>Fix including sub-BSD OS headers directly causing redef warnings.</p>
+</li>
+<li>
+<p>Add CI testing of direct inclusion of all headers.</p>
+</li>
+<li>
+<p>Add CI testing on FreeBSD for clang and gcc.</p>
+</li>
 </ul>
 </div>
 </div>
