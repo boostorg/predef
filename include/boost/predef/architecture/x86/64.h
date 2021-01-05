@@ -41,6 +41,11 @@ http://en.wikipedia.org/wiki/Ia64[Intel IA-64] architecture.
 #   define BOOST_ARCH_X86_64_AVAILABLE
 #endif
 
+#if BOOST_ARCH_X86_64
+#   undef BOOST_ARCH_WORD_BITS_64
+#   define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_AVAILABLE
+#endif
+
 #define BOOST_ARCH_X86_64_NAME "Intel x86-64"
 
 #include <boost/predef/architecture/x86.h>

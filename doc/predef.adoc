@@ -828,6 +828,8 @@ include::../include/boost/predef/hardware/simd/x86_amd/versions.h[tag=reference]
 
 include::../include/boost/predef/other/endian.h[tag=reference]
 
+include::../include/boost/predef/other/wordsize.h[tag=reference]
+
 include::../include/boost/predef/other/workaround.h[tag=reference]
 
 :leveloffset: -3

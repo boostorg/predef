@@ -14,6 +14,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 * Fix including sub-BSD OS headers directly causing redef warnings.
 * Add CI testing of direct inclusion of all headers.
 * Add CI testing on FreeBSD for clang and gcc.
+* Add `WORD_BITS` set of predefs to detect the architecture word size.
+  Initial implementation inspired by submission from Mikhail Komarov.
 
 == 1.11
 

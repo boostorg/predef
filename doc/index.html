@@ -693,8 +693,9 @@ pre.pygments .tok-il { color: #666666 } /* Literal.Number.Integer.Long */
 <li><a href="#_other_macros">4.8. Other macros</a>
 <ul class="sectlevel3">
 <li><a href="#_boost_endian">4.8.1. <code>BOOST_ENDIAN_*</code></a></li>
-<li><a href="#_boost_predef_workaround">4.8.2. <code>BOOST_PREDEF_WORKAROUND</code></a></li>
-<li><a href="#_boost_predef_tested_at">4.8.3. <code>BOOST_PREDEF_TESTED_AT</code></a></li>
+<li><a href="#_boost_arch_word_bits">4.8.2. <code>BOOST_ARCH_WORD_BITS</code></a></li>
+<li><a href="#_boost_predef_workaround">4.8.3. <code>BOOST_PREDEF_WORKAROUND</code></a></li>
+<li><a href="#_boost_predef_tested_at">4.8.4. <code>BOOST_PREDEF_TESTED_AT</code></a></li>
 </ul>
 </li>
 <li><a href="#_version_definition_macros">4.9. Version definition macros</a>
@@ -6390,7 +6391,43 @@ information and acquired knowledge:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_boost_predef_workaround"><a class="anchor" href="#_boost_predef_workaround"></a>4.8.2. <code>BOOST_PREDEF_WORKAROUND</code></h4>
+<h4 id="_boost_arch_word_bits"><a class="anchor" href="#_boost_arch_word_bits"></a>4.8.2. <code>BOOST_ARCH_WORD_BITS</code></h4>
+<div class="paragraph">
+<p>Detects the native word size, in bits, for the current architecture. There are
+two types of macros for this detection:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BOOST_ARCH_WORD_BITS</code>, gives the number of word size bits
+(16, 32, 64).</p>
+</li>
+<li>
+<p><code>BOOST_ARCH_WORD_BITS_16</code>, <code>BOOST_ARCH_WORD_BITS_32</code>, and
+<code>BOOST_ARCH_WORD_BITS_64</code>, indicate when the given word size is
+detected.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>They allow for both single checks and direct use of the size in code.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">ℹ</div>
+</td>
+<td class="content">
+The word size is determined manually on each architecture. Hence use of
+the <code>wordsize.h</code> header will also include all the architecture headers.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_boost_predef_workaround"><a class="anchor" href="#_boost_predef_workaround"></a>4.8.3. <code>BOOST_PREDEF_WORKAROUND</code></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="cpp"><span></span><span class="tok-n">BOOST_PREDEF_WORKAROUND</span><span class="tok-p">(</span><span class="tok-n">symbol</span><span class="tok-p">,</span><span class="tok-n">comp</span><span class="tok-p">,</span><span class="tok-n">major</span><span class="tok-p">,</span><span class="tok-n">minor</span><span class="tok-p">,</span><span class="tok-n">patch</span><span class="tok-p">)</span></code></pre>
@@ -6416,7 +6453,7 @@ is undefine this expand to test the given <code>symbol</code> version value with
 </div>
 </div>
 <div class="sect3">
-<h4 id="_boost_predef_tested_at"><a class="anchor" href="#_boost_predef_tested_at"></a>4.8.3. <code>BOOST_PREDEF_TESTED_AT</code></h4>
+<h4 id="_boost_predef_tested_at"><a class="anchor" href="#_boost_predef_tested_at"></a>4.8.4. <code>BOOST_PREDEF_TESTED_AT</code></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="cpp"><span></span><span class="tok-n">BOOST_PREDEF_TESTED_AT</span><span class="tok-p">(</span><span class="tok-n">symbol</span><span class="tok-p">,</span><span class="tok-n">major</span><span class="tok-p">,</span><span class="tok-n">minor</span><span class="tok-p">,</span><span class="tok-n">patch</span><span class="tok-p">)</span></code></pre>
@@ -6819,6 +6856,10 @@ expressions. It defaults to "c++", but can be any of: "c", "cpp",
 </li>
 <li>
 <p>Add CI testing on FreeBSD for clang and gcc.</p>
+</li>
+<li>
+<p>Add <code>WORD_BITS</code> set of predefs to detect the architecture word size.
+Initial implementation inspired by submission from Mikhail Komarov.</p>
 </li>
 </ul>
 </div>

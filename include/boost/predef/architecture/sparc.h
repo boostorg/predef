@@ -47,6 +47,16 @@ http://en.wikipedia.org/wiki/SPARC[SPARC] architecture.
 #   define BOOST_ARCH_SPARC_AVAILABLE
 #endif
 
+#if BOOST_ARCH_SPARC
+#   if BOOST_ARCH_SPARC >= BOOST_VERSION_NUMBER(9,0,0)
+#       undef BOOST_ARCH_WORD_BITS_64
+#       define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_AVAILABLE
+#   else
+#       undef BOOST_ARCH_WORD_BITS_32
+#       define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_AVAILABLE
+#   endif
+#endif
+
 #define BOOST_ARCH_SPARC_NAME "SPARC"
 
 #endif

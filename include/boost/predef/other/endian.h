@@ -95,7 +95,7 @@ information and acquired knowledge:
 #   endif
 #endif
 
-/* Built-in byte-swpped big-endian macros.
+/* Built-in byte-swapped big-endian macros.
  */
 #if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
@@ -112,7 +112,7 @@ information and acquired knowledge:
 #   endif
 #endif
 
-/* Built-in byte-swpped little-endian macros.
+/* Built-in byte-swapped little-endian macros.
  */
 #if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
@@ -154,7 +154,7 @@ information and acquired knowledge:
 #endif
 
 /* Windows on ARM, if not otherwise detected/specified, is always
- * byte-swaped little-endian.
+ * byte-swapped little-endian.
  */
 #if !BOOST_ENDIAN_BIG_BYTE && !BOOST_ENDIAN_BIG_WORD && \
     !BOOST_ENDIAN_LITTLE_BYTE && !BOOST_ENDIAN_LITTLE_WORD
