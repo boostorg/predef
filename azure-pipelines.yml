@@ -32,139 +32,44 @@ stages:
   - job: 'Linux'
     strategy:
       matrix:
-        GCC 9 (GNU):
-          TOOLSET: gcc
-          CXX: g++-9
-          PACKAGES: g++-9
-          B2_ARGS: 'cxxstd=03,11,14,17,2a cxxstd-dialect=gnu'
-          VM_IMAGE: 'ubuntu-18.04'
-        GCC 9 (ISO):
-          TOOLSET: gcc
-          CXX: g++-9
-          PACKAGES: g++-9
-          B2_ARGS: 'cxxstd=03,11,14,17,2a cxxstd-dialect=iso'
-          VM_IMAGE: 'ubuntu-18.04'
-        GCC 9:
-          TOOLSET: gcc
-          CXX: g++-9
-          PACKAGES: g++-9
-          VM_IMAGE: 'ubuntu-18.04'
-        GCC 8:
-          TOOLSET: gcc
-          CXX: g++-8
-          PACKAGES: g++-8
-          VM_IMAGE: 'ubuntu-18.04'
-        GCC 7:
-          TOOLSET: gcc
-          CXX: g++-7
-          PACKAGES: g++-7
-          VM_IMAGE: 'ubuntu-18.04'
-        GCC 6:
-          TOOLSET: gcc
-          CXX: g++-6
-          PACKAGES: g++-6
-          VM_IMAGE: 'ubuntu-18.04'
-        GCC 5:
-          TOOLSET: gcc
-          CXX: g++-5
-          PACKAGES: g++-5
-          VM_IMAGE: 'ubuntu-18.04'
-        GCC 4.9:
-          TOOLSET: gcc
-          CXX: g++-4.9
-          PACKAGES: g++-4.9
-          VM_IMAGE: 'ubuntu-16.04'
-        GCC 4.8:
-          TOOLSET: gcc
-          CXX: g++-4.8
-          PACKAGES: g++-4.8
-          VM_IMAGE: 'ubuntu-16.04'
-        GCC 4.7:
-          TOOLSET: gcc
-          CXX: g++-4.7
-          PACKAGES: g++-4.7
-          VM_IMAGE: 'ubuntu-16.04'
-        Clang 9:
-          TOOLSET: clang
-          CXX: clang++-9
-          PACKAGES: clang-9
-          LLVM_REPO: llvm-toolchain-xenial-9
-          VM_IMAGE: 'ubuntu-18.04'
-        Clang 8:
-          TOOLSET: clang
-          CXX: clang++-8
-          PACKAGES: clang-8
-          LLVM_REPO: llvm-toolchain-xenial-8
-          VM_IMAGE: 'ubuntu-18.04'
-        Clang 7:
-          TOOLSET: clang
-          CXX: clang++-7
-          PACKAGES: clang-7
-          LLVM_REPO: llvm-toolchain-xenial-7
-          VM_IMAGE: 'ubuntu-18.04'
-        Clang 6:
-          TOOLSET: clang
-          CXX: clang++-6.0
-          PACKAGES: clang-6.0
-          LLVM_REPO: llvm-toolchain-xenial-6.0
-          VM_IMAGE: 'ubuntu-18.04'
-        Clang 5:
-          TOOLSET: clang
-          CXX: clang++-5.0
-          PACKAGES: clang-5.0
-          LLVM_REPO: llvm-toolchain-xenial-5.0
-          VM_IMAGE: 'ubuntu-18.04'
-        Clang 4:
-          TOOLSET: clang
-          CXX: clang++-4.0
-          PACKAGES: clang-4.0
-          LLVM_REPO: llvm-toolchain-xenial-4.0
-          VM_IMAGE: 'ubuntu-18.04'
-        Clang 3.9:
-          TOOLSET: clang
-          CXX: clang++-3.9
-          PACKAGES: clang-3.9
-          VM_IMAGE: 'ubuntu-18.04'
-        Clang 3.8:
-          TOOLSET: clang
-          CXX: clang++-3.8
-          PACKAGES: clang-3.8
-          VM_IMAGE: 'ubuntu-16.04'
-        Clang 3.7:
-          TOOLSET: clang
-          CXX: clang++-3.7
-          PACKAGES: clang-3.7
-          VM_IMAGE: 'ubuntu-16.04'
-        Clang 3.6:
-          TOOLSET: clang
-          CXX: clang++-3.6
-          PACKAGES: clang-3.6
-          VM_IMAGE: 'ubuntu-16.04'
-        Clang 3.5:
-          TOOLSET: clang
-          CXX: clang++-3.5
-          PACKAGES: clang-3.5
-          VM_IMAGE: 'ubuntu-16.04'
+        GCC 10 (GNU): { CXX: g++-10, PACKAGES: g++-10, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,2a cxxstd-dialect=gnu' }
+        GCC 10 (ISO): { CXX: g++-10, PACKAGES: g++-10, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,2a cxxstd-dialect=iso' }
+        GCC 10: { CXX: g++-10, PACKAGES: g++-10, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
+        GCC 9: { CXX: g++-9, PACKAGES: g++-9, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
+        GCC 8: { CXX: g++-8, PACKAGES: g++-8, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
+        GCC 7: { CXX: g++-7, PACKAGES: g++-7, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
+        GCC 6: { CXX: g++-6, PACKAGES: g++-6, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
+        GCC 5: { CXX: g++-5, PACKAGES: g++-5, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
+        GCC 4.9: { CXX: g++-4.9, PACKAGES: g++-4.9, VM_IMAGE: 'ubuntu-16.04', TOOLSET: gcc }
+        GCC 4.8: { CXX: g++-4.8, PACKAGES: g++-4.8, VM_IMAGE: 'ubuntu-16.04', TOOLSET: gcc }
+        GCC 4.7: { CXX: g++-4.7, PACKAGES: g++-4.7, VM_IMAGE: 'ubuntu-16.04', TOOLSET: gcc }
+        Clang 11: { CXX: clang++-11, PACKAGES: clang-11, LLVM_OS: bionic, LLVM_VER: 11, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        Clang 10: { CXX: clang++-10, PACKAGES: clang-10, LLVM_OS: bionic, LLVM_VER: 10, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        Clang 9: { CXX: clang++-9, PACKAGES: clang-9, LLVM_OS: bionic, LLVM_VER: 9, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        Clang 8: { CXX: clang++-8, PACKAGES: clang-8, LLVM_OS: bionic, LLVM_VER: 8, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        Clang 7: { CXX: clang++-7, PACKAGES: clang-7, LLVM_OS: bionic, LLVM_VER: 7, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        Clang 6.0: { CXX: clang++-6.0, PACKAGES: clang-6.0, LLVM_OS: bionic, LLVM_VER: 6.0, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        Clang 5.0: { CXX: clang++-5.0, PACKAGES: clang-5.0, LLVM_OS: bionic, LLVM_VER: 5.0, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        Clang 4.0: { CXX: clang++-4.0, PACKAGES: clang-4.0, LLVM_OS: xenial, LLVM_VER: 4.0, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        Clang 3.9: { CXX: clang++-3.9, PACKAGES: clang-3.9, LLVM_OS: xenial, LLVM_VER: 3.9, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        Clang 3.8: { CXX: clang++-3.8, PACKAGES: clang-3.8, LLVM_OS: xenial, LLVM_VER: 3.8, VM_IMAGE: 'ubuntu-16.04', TOOLSET: clang }
+        Clang 3.7: { CXX: clang++-3.7, PACKAGES: clang-3.7, LLVM_OS: xenial, VM_IMAGE: 'ubuntu-16.04', TOOLSET: clang }
+        Clang 3.6: { CXX: clang++-3.6, PACKAGES: clang-3.6, LLVM_OS: xenial, VM_IMAGE: 'ubuntu-16.04', TOOLSET: clang }
+        Clang 3.5: { CXX: clang++-3.5, PACKAGES: clang-3.5, LLVM_OS: xenial, VM_IMAGE: 'ubuntu-16.04', TOOLSET: clang }
     pool:
       vmImage: $(VM_IMAGE)
     steps:
     - bash: |
         set -e
         uname -a
-        sudo -E apt-add-repository -y "ppa:ubuntu-toolchain-r/test"
-        if test -n "${LLVM_REPO}" ; then
-          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-          sudo -E apt-add-repository "deb http://apt.llvm.org/xenial/ ${LLVM_REPO} main"
-        fi
-        sudo -E apt-get update
-        sudo -E apt-get -yq --no-install-suggests --no-install-recommends install ${PACKAGES}
+        ./tools/ci/linux-cxx-install.sh
       displayName: 'Install CXX'
     - bash: |
         set -e
         pushd ${HOME}
-        wget -nv https://github.com/boostorg/build/archive/master.tar.gz
-        tar -zxf master.tar.gz
-        cd build-master
+        wget -nv https://github.com/boostorg/build/archive/develop.tar.gz
+        tar -zxf develop.tar.gz
+        cd build-develop
         CXX= ./bootstrap.sh
         sudo ./b2 install
         popd
@@ -174,52 +79,38 @@ stages:
         CXX_PATH=`which ${CXX}`
         echo "using ${TOOLSET} : : ${CXX_PATH} ;" > ${HOME}/user-config.jam
         pushd test
-        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS}
+        b2 --verbose-test -a toolset=${TOOLSET} ${B2_ARGS} predef-info
+        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS} predef predef-headers
         popd
       displayName: Test
 
   - job: 'macOS'
     strategy:
       matrix:
-        Xcode 11.4:
+        Xcode 11.4.1:
           TOOLSET: clang
           CXX: clang++
-          XCODE_APP: /Applications/Xcode_11.4_beta.app
+          XCODE_APP: /Applications/Xcode_11.4.1.app
           VM_IMAGE: 'macOS-10.15'
         Xcode 11.3.1:
           TOOLSET: clang
           CXX: clang++
           XCODE_APP: /Applications/Xcode_11.3.1.app
           VM_IMAGE: 'macOS-10.15'
-        Xcode 11.3:
+        Xcode 11.2.1:
           TOOLSET: clang
           CXX: clang++
-          XCODE_APP: /Applications/Xcode_11.3.app
+          XCODE_APP: /Applications/Xcode_11.2.1.app
           VM_IMAGE: 'macOS-10.15'
-        Xcode 11.2:
+        Xcode 10.3:
           TOOLSET: clang
           CXX: clang++
-          XCODE_APP: /Applications/Xcode_11.2.app
-          VM_IMAGE: 'macOS-10.15'
-        Xcode 11.1:
-          TOOLSET: clang
-          CXX: clang++
-          XCODE_APP: /Applications/Xcode_11.1.app
-          VM_IMAGE: 'macOS-10.15'
-        Xcode 11.0:
-          TOOLSET: clang
-          CXX: clang++
-          XCODE_APP: /Applications/Xcode_11.app
-          VM_IMAGE: 'macOS-10.15'
+          XCODE_APP: /Applications/Xcode_10.3.app
+          VM_IMAGE: 'macOS-10.14'
         Xcode 10.2.1:
           TOOLSET: clang
           CXX: clang++
           XCODE_APP: /Applications/Xcode_10.2.1.app
-          VM_IMAGE: 'macOS-10.14'
-        Xcode 10.2:
-          TOOLSET: clang
-          CXX: clang++
-          XCODE_APP: /Applications/Xcode_10.2.app
           VM_IMAGE: 'macOS-10.14'
         Xcode 10.1:
           TOOLSET: clang
@@ -244,9 +135,9 @@ stages:
     - bash: |
         set -e
         pushd ${HOME}
-        wget -nv https://github.com/boostorg/build/archive/master.tar.gz
-        tar -zxf master.tar.gz
-        cd build-master
+        wget -nv https://github.com/boostorg/build/archive/develop.tar.gz
+        tar -zxf develop.tar.gz
+        cd build-develop
         CXX= ./bootstrap.sh
         sudo ./b2 install
         popd
@@ -256,7 +147,8 @@ stages:
         CXX_PATH=`which ${CXX}`
         echo "using ${TOOLSET} : : ${CXX_PATH} ;" > ${HOME}/user-config.jam
         pushd test
-        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS}
+        b2 --verbose-test -a toolset=${TOOLSET} ${B2_ARGS} predef-info
+        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS} predef predef-headers
         popd
       displayName: Test
 
@@ -313,7 +205,7 @@ stages:
     steps:
     - script: |
         cd %BUILD_SOURCESDIRECTORY%/..
-        curl "https://github.com/boostorg/build/archive/master.zip" -L -o b2.zip
+        curl "https://github.com/boostorg/build/archive/develop.zip" -L -o b2.zip
       displayName: Download B2
     - task: ExtractFiles@1
       inputs:
@@ -323,11 +215,12 @@ stages:
       displayName: Extract B2
     - script: |
         echo using %TOOLSET% ^: %TOOLSET_VERSION% ^; > %HOMEDRIVE%%HOMEPATH%/user-config.jam
-        cd %BUILD_SOURCESDIRECTORY%/../build-master
+        cd %BUILD_SOURCESDIRECTORY%/../build-develop
         cmd.exe /c bootstrap.bat
       displayName: Install B2
     - script: |
-        set BOOST_BUILD_PATH=%BUILD_SOURCESDIRECTORY%/../build-master
+        set BOOST_BUILD_PATH=%BUILD_SOURCESDIRECTORY%/../build-develop
         cd %BUILD_SOURCESDIRECTORY%/test
-        %BUILD_SOURCESDIRECTORY%/../build-master/b2.exe --debug-configuration -a toolset=%TOOLSET% %B2_ARGS%
+        %BUILD_SOURCESDIRECTORY%/../build-develop/b2.exe --verbose-test -a toolset=%TOOLSET% %B2_ARGS% predef-info
+        %BUILD_SOURCESDIRECTORY%/../build-develop/b2.exe --debug-configuration -a toolset=%TOOLSET% %B2_ARGS% predef predef-headers
       displayName: Test
