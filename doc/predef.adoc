@@ -564,6 +564,8 @@ include::../include/boost/predef/architecture/blackfin.h[tag=reference]
 
 include::../include/boost/predef/architecture/convex.h[tag=reference]
 
+include::../include/boost/predef/architecture/e2k.h[tag=reference]
+
 include::../include/boost/predef/architecture/ia64.h[tag=reference]
 
 include::../include/boost/predef/architecture/m68k.h[tag=reference]
