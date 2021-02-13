@@ -1,5 +1,5 @@
 /*
-Copyright Rene Ferdinand Rivera Morell 2020
+Copyright Rene Ferdinand Rivera Morell 2020-2021
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -31,33 +31,37 @@ the `wordsize.h` header will also include all the architecture headers.
 
 */ // end::reference[]
 
-#ifndef BOOST_ARCH_WORD_BITS_16
-#	define BOOST_ARCH_WORD_BITS_16 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#else
-#	define BOOST_ARCH_WORD_BITS 16
+#if !defined(BOOST_ARCH_WORD_BITS_64)
+#   define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_NOT_AVAILABLE
+#elif !defined(BOOST_ARCH_WORD_BITS)
+#   define BOOST_ARCH_WORD_BITS 64
 #endif
 
-#ifndef BOOST_ARCH_WORD_BITS_32
-#	define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#else
-#	define BOOST_ARCH_WORD_BITS 32
+#if !defined(BOOST_ARCH_WORD_BITS_32)
+#   define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_NOT_AVAILABLE
+#elif !defined(BOOST_ARCH_WORD_BITS)
+#	  define BOOST_ARCH_WORD_BITS 32
 #endif
 
-#ifndef BOOST_ARCH_WORD_BITS_64
-#	define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#else
-#	define BOOST_ARCH_WORD_BITS 64
+#if !defined(BOOST_ARCH_WORD_BITS_16)
+#   define BOOST_ARCH_WORD_BITS_16 BOOST_VERSION_NUMBER_NOT_AVAILABLE
+#elif !defined(BOOST_ARCH_WORD_BITS)
+#   define BOOST_ARCH_WORD_BITS 16
 #endif
 
-#ifndef BOOST_ARCH_WORD_BITS
-#	define BOOST_ARCH_WORD_BITS 0
+#if !defined(BOOST_ARCH_WORD_BITS)
+#   define BOOST_ARCH_WORD_BITS 0
 #endif
 
+#define BOOST_ARCH_WORD_BITS_NAME "Word Bits"
 #define BOOST_ARCH_WORD_BITS_16_NAME "16-bit Word Size"
 #define BOOST_ARCH_WORD_BITS_32_NAME "32-bit Word Size"
 #define BOOST_ARCH_WORD_BITS_64_NAME "64-bit Word Size"
 
 #endif
+
+#include <boost/predef/detail/test.h>
+BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_WORD_BITS,BOOST_ARCH_WORD_BITS_NAME)
 
 #include <boost/predef/detail/test.h>
 BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_WORD_BITS_16,BOOST_ARCH_WORD_BITS_16_NAME)
