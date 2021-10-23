@@ -25,7 +25,7 @@ cmake_minimum_required( VERSION 3.0 )
 # Don't set VERSION, as that's a pita to keep up to date with the version
 # header. And don't set LANGUAGES as we are multi-language and header
 # only, so it's irrelevant.
-project( BoostPredef )
+project( BoostPredef LANGUAGES NONE )
 
 # Simple INTERFACE, and header only, library target.
 add_library( boost_predef INTERFACE )
