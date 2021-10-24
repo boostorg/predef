@@ -216,7 +216,7 @@ stages:
 
 - stage: WebsiteUpdate
   displayName: 'Website Update'
-  condition: in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/develop')
+  condition: and(in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/develop'), eq(variables['Build.Repository.Name'], 'hash-predef')
   jobs:
 
   - job: Documentation
