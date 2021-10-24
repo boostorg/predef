@@ -30,9 +30,17 @@ using testing ;
 test-suite predef-info :
     [ run info_as_cpp.cpp : : : <test-info>always_show_run_output ]
     [ run info_as_c.c : : : <test-info>always_show_run_output ]
-    [ run info_as_objcpp.mm : : : <test-info>always_show_run_output ]
-    [ run info_as_objc.m : : : <test-info>always_show_run_output ]
+    [ run info_as_objcpp.mm : : : <test-info>always_show_run_output <conditional>@objc ]
+    [ run info_as_objc.m : : : <test-info>always_show_run_output <conditional>@objc ]
     ;
+
+rule objc ( props * )
+{
+    if ! ( <target-os>darwin in $(props) )
+    {
+        return <build>no ;
+    }
+}
 
 test-suite predef :
     [ run version.cpp ]

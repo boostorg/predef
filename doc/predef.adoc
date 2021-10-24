@@ -1,11 +1,11 @@
 = Boost.Predef
-:author: Rene Rivera
+:author: René Ferdinand Rivera Morell
 :toc: left
 :toclevels: 3
 :sectanchors:
 :sectnums:
 :nofooter:
-:source-highlighter: pygments
+:source-highlighter: rouge
 :source-language: cpp
 :caution-caption: ⚑
 :important-caption: ‼
@@ -16,14 +16,6 @@
 :predef_symbol: Symbol
 :predef_version: Version
 :predef_detection: pass:q[*detection*]
-
-ifdef::backend-html5[]
-++++
-<style>
-include::predef.css[]
-</style>
-++++
-endif::[]
 
 == Introduction
 
@@ -1015,4 +1007,4 @@ Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 https://www.boost.org/LICENSE_1_0.txt)
 
-Copyright 2005-2020 Rene Rivera; Copyright 2015 Charly Chevalier; Copyright 2015 Joel Falcou
+Copyright 2005-2021 René Ferdinand Rivera Morell; Copyright 2015 Charly Chevalier; Copyright 2015 Joel Falcou
