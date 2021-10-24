@@ -1,11 +1,17 @@
 ////
-Copyright 2014-2021 Rene Rivera
+Copyright 2014-2021 René Ferdinand Rivera Morell
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
 ////
 
 = History
+
+== 1.13.1
+
+* Fix spelling of "epoch".
+* Add missing parenthesis in `sparc.h` (from tkoecker).
+* Update documentation to use Rouge code styling and Amber general style.
 
 == 1.13
 
