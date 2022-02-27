@@ -41,8 +41,8 @@ stages:
   - job: 'Linux'
     strategy:
       matrix:
-        GCC 11 (GNU): { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,2a cxxstd-dialect=gnu' }
-        GCC 11 (ISO): { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,2a cxxstd-dialect=iso' }
+        GCC 11 (GNU): { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=gnu' }
+        GCC 11 (ISO): { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=iso' }
         GCC 11: { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc }
         GCC 10: { CXX: g++-10, PACKAGES: g++-10, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc }
         GCC 9: { CXX: g++-9, PACKAGES: g++-9, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
@@ -50,8 +50,8 @@ stages:
         GCC 7: { CXX: g++-7, PACKAGES: g++-7, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
         GCC 6: { CXX: g++-6, PACKAGES: g++-6, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
         GCC 5: { CXX: g++-5, PACKAGES: g++-5, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
-        # Clang 13: { CXX: clang++-13, PACKAGES: clang-13, LLVM_OS: focal, LLVM_VER: 11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
-        Clang 12: { CXX: clang++-12, PACKAGES: clang-12, LLVM_OS: focal, LLVM_VER: 11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
+        Clang 13: { CXX: clang++-13, PACKAGES: clang-13, LLVM_OS: focal, LLVM_VER: 13, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
+        Clang 12: { CXX: clang++-12, PACKAGES: clang-12, LLVM_OS: focal, LLVM_VER: 12, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
         Clang 11: { CXX: clang++-11, PACKAGES: clang-11, LLVM_OS: focal, LLVM_VER: 11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
         Clang 10: { CXX: clang++-10, PACKAGES: clang-10, LLVM_OS: bionic, LLVM_VER: 10, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
         Clang 9: { CXX: clang++-9, PACKAGES: clang-9, LLVM_OS: bionic, LLVM_VER: 9, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
@@ -91,6 +91,8 @@ stages:
   - job: 'macOS'
     strategy:
       matrix:
+        Xcode 13.2.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.2.1.app, VM_IMAGE: 'macOS-11'}
+        Xcode 13.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.1.app, VM_IMAGE: 'macOS-11'}
         Xcode 13.0: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.0.app, VM_IMAGE: 'macOS-11'}
         Xcode 12.4: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.4.app, VM_IMAGE: 'macOS-11'}
         Xcode 12.3: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.3.app, VM_IMAGE: 'macOS-10.15'}
@@ -103,10 +105,6 @@ stages:
         Xcode 11.4.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.4.1.app, VM_IMAGE: 'macOS-10.15'}
         Xcode 11.3.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.3.1.app, VM_IMAGE: 'macOS-10.15'}
         Xcode 11.2.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.2.1.app, VM_IMAGE: 'macOS-10.15'}
-        Xcode 10.3: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_10.3.app, VM_IMAGE: 'macOS-10.14'}
-        Xcode 10.2.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_10.2.1.app, VM_IMAGE: 'macOS-10.14'}
-        Xcode 10.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_10.1.app, VM_IMAGE: 'macOS-10.14'}
-        Xcode 10.0: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_10.app, VM_IMAGE: 'macOS-10.14'}
     pool:
       vmImage: $(VM_IMAGE)
     steps:
@@ -174,10 +172,6 @@ stages:
           TOOLSET: msvc
           TOOLSET_VERSION: 14.3
           VM_IMAGE: 'windows-2022'
-        VS 2017:
-          TOOLSET: msvc
-          TOOLSET_VERSION: 14.1
-          VM_IMAGE: 'vs2017-win2016'
         MinGW 8.1.0:
           TOOLSET: gcc
           VM_IMAGE: 'windows-2019'

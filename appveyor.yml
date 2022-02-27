@@ -24,7 +24,7 @@ environment:
   matrix:
   # All the Visual Studio installs available on Appveyor
   # - { job_name: 'VS 2019', TOOLSET: "msvc", TOOLSET_VERSION: '14.2', APPVEYOR_BUILD_WORKER_IMAGE: 'Visual Studio 2019' }
-  # - { job_name: 'VS 2017', TOOLSET: "msvc", TOOLSET_VERSION: '14.1', APPVEYOR_BUILD_WORKER_IMAGE: 'Visual Studio 2017' }
+  - { job_name: 'VS 2017', TOOLSET: "msvc", TOOLSET_VERSION: '14.1', APPVEYOR_BUILD_WORKER_IMAGE: 'Visual Studio 2017' }
   - { job_name: 'VS 2015', TOOLSET: "msvc", TOOLSET_VERSION: '14.0', APPVEYOR_BUILD_WORKER_IMAGE: 'Visual Studio 2015' }
   - { job_name: 'VS 2013', TOOLSET: "msvc", TOOLSET_VERSION: '12.0', APPVEYOR_BUILD_WORKER_IMAGE: 'Visual Studio 2015' }
   # - { job_name: 'VS 2012', TOOLSET: "msvc", TOOLSET_VERSION: '11.0', APPVEYOR_BUILD_WORKER_IMAGE: 'Visual Studio 2015' }
