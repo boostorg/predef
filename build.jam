@@ -9,7 +9,7 @@ a standalone project. To use externally you would need a `use-project`
 declaration and to use the project as a dependency where needed:
 
 ----
-use-project /boost/predef : /path/to/boost_predef/root ;
+use-project /boost/predef : /path/to/boost/predef/root ;
 
 exe my_thing : main.cpp : <dependency>/boost/predef ;
 ----
