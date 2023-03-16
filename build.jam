@@ -37,6 +37,14 @@ if [ project.is-jamroot-module $(__name__) ]
 explicit
     [ alias boost_predef ]
     [ alias all : boost_predef test//all tools/check ]
+    [ install install-global-headers
+        : [ glob-tree-ex include : *.h ]
+        : <install-source-root>include <location>(includedir) ]
+    [ install install-data
+        : build.jam [ glob-tree-ex tools/check : * ] [ glob-tree-ex include : *.h ]
+        : <install-source-root>. <location>(datadir)/boost_predef ]
+    [ alias install :
+        install-global-headers install-data ]
     ;
 
 call-if
