@@ -21,5 +21,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/library/std/stdcpp3.h>
 #include <boost/predef/library/std/stlport.h>
 #include <boost/predef/library/std/vacpp.h>
+#include <boost/predef/library/std/visualc.h>
 
 #endif
