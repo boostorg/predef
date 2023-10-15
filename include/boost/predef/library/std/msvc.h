@@ -5,8 +5,8 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
-#ifndef BOOST_PREDEF_LIBRARY_STD_VISUALC_H
-#define BOOST_PREDEF_LIBRARY_STD_VISUALC_H
+#ifndef BOOST_PREDEF_LIBRARY_STD_MSVC_H
+#define BOOST_PREDEF_LIBRARY_STD_MSVC_H
 
 #include <boost/predef/library/std/_prefix.h>
 

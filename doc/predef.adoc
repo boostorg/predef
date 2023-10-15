@@ -708,7 +708,7 @@ include::../include/boost/predef/library/std/stlport.h[tag=reference]
 
 include::../include/boost/predef/library/std/vacpp.h[tag=reference]
 
-include::../include/boost/predef/library/std/visualc.h[tag=reference]
+include::../include/boost/predef/library/std/msvc.h[tag=reference]
 
 :leveloffset: -3
 
