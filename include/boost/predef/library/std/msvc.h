@@ -18,6 +18,10 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 https://github.com/microsoft/STL[Microsoft's {CPP} Standard Library].
 If available version number as major, minor, and patch.
+The patch number is derived from `_MSVC_STL_UPDATE` by taking its five last
+digits (see below). This implies that pasting a `_MSVC_STL_UPDATE` value into
+`BOOST_VERSION_NUMBER` will produce a version number that is directly comparable
+to `BOOST_LIB_STD_MSVC`.
 
 [options="header"]
 |===
@@ -26,6 +30,7 @@ If available version number as major, minor, and patch.
 | `+_MSVC_STL_VERSION+` | {predef_detection}
 
 | `+_MSVC_STL_VERSION+` | VV.R.0
+| `+_MSVC_STL_UPDATE+` | 00.0.0YYYMM
 |===
 */ // end::reference[]
 
@@ -33,7 +38,7 @@ If available version number as major, minor, and patch.
 
 #if defined(_MSVC_STL_VERSION)
 #   undef BOOST_LIB_STD_MSVC
-#   define BOOST_LIB_STD_MSVC BOOST_PREDEF_MAKE_10_VVR(_MSVC_STL_VERSION)
+#   define BOOST_LIB_STD_MSVC BOOST_PREDEF_MAKE_10_VVR_0PPPPP(_MSVC_STL_VERSION, _MSVC_STL_UPDATE)
 #endif
 
 #if BOOST_LIB_STD_MSVC
