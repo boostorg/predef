@@ -708,6 +708,8 @@ include::../include/boost/predef/library/std/stlport.h[tag=reference]
 
 include::../include/boost/predef/library/std/vacpp.h[tag=reference]
 
+include::../include/boost/predef/library/std/msvc.h[tag=reference]
+
 :leveloffset: -3
 
 === `BOOST_OS` operating system macros
