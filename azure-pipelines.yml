@@ -41,25 +41,26 @@ stages:
   - job: 'Linux'
     strategy:
       matrix:
-        GCC 11 (GNU): { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=gnu' }
-        GCC 11 (ISO): { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=iso' }
-        GCC 11: { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc }
-        GCC 10: { CXX: g++-10, PACKAGES: g++-10, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc }
-        GCC 9: { CXX: g++-9, PACKAGES: g++-9, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
-        GCC 8: { CXX: g++-8, PACKAGES: g++-8, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
-        GCC 7: { CXX: g++-7, PACKAGES: g++-7, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
-        GCC 6: { CXX: g++-6, PACKAGES: g++-6, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
-        GCC 5: { CXX: g++-5, PACKAGES: g++-5, VM_IMAGE: 'ubuntu-18.04', TOOLSET: gcc }
-        Clang 13: { CXX: clang++-13, PACKAGES: clang-13, LLVM_OS: focal, LLVM_VER: 13, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
+        GCC 12 (GNU): { CXX: g++-12, PACKAGES: g++-12, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=gnu' }
+        GCC 12 (ISO): { CXX: g++-12, PACKAGES: g++-12, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=iso' }
+        GCC 12: { CXX: g++-12, PACKAGES: g++-12, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc }
+        GCC 11: { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc }
+        GCC 10: { CXX: g++-10, PACKAGES: g++-10, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc }
+        GCC 9: { CXX: g++-9, PACKAGES: g++-9, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc }
+        GCC 8: { CXX: g++-8, PACKAGES: g++-8, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc }
+        GCC 7: { CXX: g++-7, PACKAGES: g++-7, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc }
+        Clang 15: { CXX: clang++-15, PACKAGES: clang-15, LLVM_OS: jammy, LLVM_VER: 13, VM_IMAGE: 'ubuntu-22.04', TOOLSET: clang }
+        Clang 14: { CXX: clang++-14, PACKAGES: clang-14, LLVM_OS: jammy, LLVM_VER: 13, VM_IMAGE: 'ubuntu-22.04', TOOLSET: clang }
+        Clang 13: { CXX: clang++-13, PACKAGES: clang-13, LLVM_OS: jammy, LLVM_VER: 13, VM_IMAGE: 'ubuntu-22.04', TOOLSET: clang }
         Clang 12: { CXX: clang++-12, PACKAGES: clang-12, LLVM_OS: focal, LLVM_VER: 12, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
         Clang 11: { CXX: clang++-11, PACKAGES: clang-11, LLVM_OS: focal, LLVM_VER: 11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
-        Clang 10: { CXX: clang++-10, PACKAGES: clang-10, LLVM_OS: bionic, LLVM_VER: 10, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
-        Clang 9: { CXX: clang++-9, PACKAGES: clang-9, LLVM_OS: bionic, LLVM_VER: 9, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
-        Clang 8: { CXX: clang++-8, PACKAGES: clang-8, LLVM_OS: bionic, LLVM_VER: 8, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
-        Clang 7: { CXX: clang++-7, PACKAGES: clang-7, LLVM_OS: bionic, LLVM_VER: 7, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
-        Clang 6.0: { CXX: clang++-6.0, PACKAGES: clang-6.0, LLVM_OS: bionic, LLVM_VER: 6.0, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
-        Clang 5.0: { CXX: clang++-5.0, PACKAGES: clang-5.0, LLVM_OS: bionic, LLVM_VER: 5.0, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
-        Clang 4.0: { CXX: clang++-4.0, PACKAGES: clang-4.0, LLVM_OS: xenial, LLVM_VER: 4.0, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        Clang 10: { CXX: clang++-10, PACKAGES: clang-10, LLVM_OS: focal, LLVM_VER: 10, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
+        Clang 9: { CXX: clang++-9, PACKAGES: clang-9, LLVM_OS: focal, LLVM_VER: 9, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
+        # Ubuntu 18.04 is deprecated.
+        # Clang 8: { CXX: clang++-8, PACKAGES: clang-8, LLVM_OS: bionic, LLVM_VER: 8, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        # Clang 7: { CXX: clang++-7, PACKAGES: clang-7, LLVM_OS: bionic, LLVM_VER: 7, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        # Clang 6.0: { CXX: clang++-6.0, PACKAGES: clang-6.0, LLVM_OS: bionic, LLVM_VER: 6.0, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        # Clang 5.0: { CXX: clang++-5.0, PACKAGES: clang-5.0, LLVM_OS: bionic, LLVM_VER: 5.0, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
     pool:
       vmImage: $(VM_IMAGE)
     steps:
@@ -91,20 +92,24 @@ stages:
   - job: 'macOS'
     strategy:
       matrix:
+        Xcode 13.4.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.4.1.app, VM_IMAGE: 'macOS-12'}
+        Xcode 13.3.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.3.1.app, VM_IMAGE: 'macOS-12'}
         Xcode 13.2.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.2.1.app, VM_IMAGE: 'macOS-11'}
-        Xcode 13.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.1.app, VM_IMAGE: 'macOS-11'}
+        Xcode 13.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.1.app, VM_IMAGE: 'macOS-12'}
         Xcode 13.0: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.0.app, VM_IMAGE: 'macOS-11'}
+        Xcode 12.5.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.4.app, VM_IMAGE: 'macOS-11'}
         Xcode 12.4: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.4.app, VM_IMAGE: 'macOS-11'}
-        Xcode 12.3: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.3.app, VM_IMAGE: 'macOS-10.15'}
-        Xcode 12.2: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.2.app, VM_IMAGE: 'macOS-10.15'}
-        Xcode 12.1.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.1.1.app, VM_IMAGE: 'macOS-10.15'}
-        Xcode 12.0.1: {TOOLSET: clang,  CXX: clang++, XCODE_APP: /Applications/Xcode_12.0.1.app, VM_IMAGE: 'macOS-10.15'}
-        Xcode 11.7: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.7.app, VM_IMAGE: 'macOS-10.15'}
-        Xcode 11.6: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.6.app, VM_IMAGE: 'macOS-10.15'}
-        Xcode 11.5: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.5.app, VM_IMAGE: 'macOS-10.15'}
-        Xcode 11.4.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.4.1.app, VM_IMAGE: 'macOS-10.15'}
-        Xcode 11.3.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.3.1.app, VM_IMAGE: 'macOS-10.15'}
-        Xcode 11.2.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.2.1.app, VM_IMAGE: 'macOS-10.15'}
+        # macOS-10.15 is deprecated.
+        # Xcode 12.3: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.3.app, VM_IMAGE: 'macOS-10.15'}
+        # Xcode 12.2: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.2.app, VM_IMAGE: 'macOS-10.15'}
+        # Xcode 12.1.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.1.1.app, VM_IMAGE: 'macOS-10.15'}
+        # Xcode 12.0.1: {TOOLSET: clang,  CXX: clang++, XCODE_APP: /Applications/Xcode_12.0.1.app, VM_IMAGE: 'macOS-10.15'}
+        # Xcode 11.7: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.7.app, VM_IMAGE: 'macOS-10.15'}
+        # Xcode 11.6: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.6.app, VM_IMAGE: 'macOS-10.15'}
+        # Xcode 11.5: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.5.app, VM_IMAGE: 'macOS-10.15'}
+        # Xcode 11.4.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.4.1.app, VM_IMAGE: 'macOS-10.15'}
+        # Xcode 11.3.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.3.1.app, VM_IMAGE: 'macOS-10.15'}
+        # Xcode 11.2.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.2.1.app, VM_IMAGE: 'macOS-10.15'}
     pool:
       vmImage: $(VM_IMAGE)
     steps:
@@ -217,9 +222,6 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '2.x'
     - task: UseRubyVersion@0
     - bash: |
         gem install asciidoctor

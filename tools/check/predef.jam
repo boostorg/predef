@@ -1,4 +1,4 @@
-# Copyright Rene Rivera 2015
+# Copyright Rene Rivera 2015-2023
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -31,6 +31,7 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
     language ?= cpp ;
     
     local project_target = [ project.target $(__name__) ] ;
+    $(project_target).reset-alternatives ;
 	project.push-current $(project_target) ;
     local terms ;
     local result ;
@@ -69,6 +70,30 @@ rule require ( expressions + : language ? )
     return [ check $(expressions) : $(language) : : <build>no ] ;
 }
 
+# Set the address-model to the default/deduced value for the context.
+rule address-model ( )
+{
+    return
+        [ check "BOOST_ARCH_WORD_BITS == 0.0.16" : : <address-model>16 ]
+        [ check "BOOST_ARCH_WORD_BITS == 0.0.32" : : <address-model>32 ]
+        [ check "BOOST_ARCH_WORD_BITS == 0.0.64" : : <address-model>64 ]
+        ;
+}
+
+# Set the architecture to the default/deduced value to the context.
+rule architecture ( )
+{
+    local result = ;
+    local deducable-arch =
+        x86 ia64 sparc ppc loongarch mips parisc arm riscv ;
+    for arch in $(deducable-arch)
+    {
+        result += [ check BOOST_ARCH_$(arch:U) : : <architecture>$(arch) ] ;
+    }
+    result += [ check BOOST_ARCH_SYS390 : : <architecture>s390x ] ;
+    return $(result) ;
+}
+
 #############################################################################
 
 .c.ext = c ;
@@ -88,7 +113,7 @@ local rule check_target ( language key : requirements * )
     local source_path
         = $(predef_jam:D)/predef_check_cc_as_$(language).$(.$(language).ext) ;
     local include_path
-        = $(predef_jam:D)/../../include $(BOOST_ROOT) ;
+        = $(predef_jam:D)/../../include ;
     obj predef_check_cc_$(key)
         : $(source_path)
         : <include>$(include_path) $(requirements) ;
@@ -112,6 +137,7 @@ local rule change_term_to_def ( term )
 class check-expression-evaluator
 {
     import configure ;
+    import property ;
     
     rule __init__ ( expression + : true-properties * : false-properties * )
     {
@@ -155,14 +181,22 @@ class check-expression-evaluator
         # Eval full the expression.
         local eval-result = [ eval $(to-eval) ] ;
         # And resolve true/false properties.
+        local result = ;
         if $(eval-result) = "true"
         {
-            return $(self.true-properties) ;
+            result = $(self.true-properties) ;
         }
         else
         {
-            return $(self.false-properties) ;
+            result = $(self.false-properties) ;
         }
+        if $(result)
+        {
+            # Don't override anything that is explicitly specified.
+            local base = [ property.select $(result:G) : $(properties) ] ;
+            result = [ property.refine $(result) : $(base) ] ;
+        }
+        return $(result) ;
     }
     
     rule eval ( e * )

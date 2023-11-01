@@ -63,20 +63,20 @@ for:
         choco install vswhere
         echo ">>>>> INSTALL B2 .."
         cd %APPVEYOR_BUILD_FOLDER%/..
-        curl "https://github.com/boostorg/build/archive/develop.zip" -L -o b2.zip
+        curl "https://github.com/bfgroup/b2/archive/refs/heads/release.zip" -L -o b2.zip
         7z x b2.zip -r
         echo using %TOOLSET% ^: %TOOLSET_VERSION% ^: %CXXPATH% ^; > %HOMEDRIVE%%HOMEPATH%/user-config.jam
-        cd %APPVEYOR_BUILD_FOLDER%/../build-develop
+        cd %APPVEYOR_BUILD_FOLDER%/../b2-release
         cmd.exe /c bootstrap.bat
   build_script:
     - cmd: |
         echo ">>>>>"
         echo ">>>>> TEST .."
         echo ">>>>>"
-        set BOOST_BUILD_PATH=%APPVEYOR_BUILD_FOLDER%/../build-develop
+        set BOOST_BUILD_PATH=%APPVEYOR_BUILD_FOLDER%/../b2-release
         cd %APPVEYOR_BUILD_FOLDER%/test
-        %APPVEYOR_BUILD_FOLDER%/../build-develop/b2.exe --verbose-test -a toolset=%TOOLSET% %B2_ARGS% predef-info
-        %APPVEYOR_BUILD_FOLDER%/../build-develop/b2.exe --debug-configuration -a toolset=%TOOLSET% %B2_ARGS% predef predef-headers
+        %APPVEYOR_BUILD_FOLDER%/../b2-release/b2.exe --verbose-test -a toolset=%TOOLSET% %B2_ARGS% predef-info
+        %APPVEYOR_BUILD_FOLDER%/../b2-release/b2.exe --debug-configuration -a toolset=%TOOLSET% %B2_ARGS% predef predef-headers
 # Windows MinGW & Cygwin job steps.
 - matrix:
     only:
@@ -85,17 +85,17 @@ for:
     - cmd: |
         echo ">>>>> INSTALL B2 .."
         cd %APPVEYOR_BUILD_FOLDER%/..
-        curl "https://github.com/boostorg/build/archive/develop.zip" -L -o b2.zip
+        curl "https://github.com/bfgroup/b2/archive/refs/heads/release.zip" -L -o b2.zip
         7z x b2.zip -r
         echo using %TOOLSET% ^: %TOOLSET_VERSION% ^: %CXXPATH% ^; > %HOMEDRIVE%%HOMEPATH%/user-config.jam
-        cd %APPVEYOR_BUILD_FOLDER%/../build-develop
+        cd %APPVEYOR_BUILD_FOLDER%/../b2-release
         cmd.exe /c bootstrap.bat
   build_script:
     # The build itself just calls the compiler directly.
     - cmd: |
         echo ">>>>> TEST .."
         set PATH=%CXXPATH%\..\;%PATH%
-        set BOOST_BUILD_PATH=%APPVEYOR_BUILD_FOLDER%/../build-develop
+        set BOOST_BUILD_PATH=%APPVEYOR_BUILD_FOLDER%/../b2-release
         cd %APPVEYOR_BUILD_FOLDER%/test
-        %APPVEYOR_BUILD_FOLDER%/../build-develop/b2.exe --verbose-test -a toolset=%TOOLSET% %B2_ARGS% predef-info
-        %APPVEYOR_BUILD_FOLDER%/../build-develop/b2.exe --debug-configuration -a toolset=%TOOLSET% %B2_ARGS% predef predef-headers
+        %APPVEYOR_BUILD_FOLDER%/../b2-release/b2.exe --verbose-test -a toolset=%TOOLSET% %B2_ARGS% predef-info
+        %APPVEYOR_BUILD_FOLDER%/../b2-release/b2.exe --debug-configuration -a toolset=%TOOLSET% %B2_ARGS% predef predef-headers

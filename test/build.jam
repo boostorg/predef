@@ -1,28 +1,18 @@
-# Copyright Rene Rivera 2011-2019
+# Copyright Rene Rivera 2011-2023
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
 
-import ../tools/check/predef : require check : predef-require predef-check ;
+import predef : require check : predef-require predef-check ;
 import common ;
 import path ;
 import regex ;
 
-# This deals with the unfortunate aspect of a Boost monolithic release
-# not having the modular include dirs. This is a kludge that just removes
-# the direct dependency to the header if it can't find it.
-local PREDEF_H = $(BOOST_PREDEF_INCLUDE)/boost/predef.h ;
-if ! [ path.exists $(PREDEF_H) ]
-{
-    PREDEF_H = ;
-}
-
 project
     :   requirements
-        <include>$(BOOST_PREDEF_INCLUDE)
         # Add explicit dependency since we don't have header scanner for
         # .m and .mm files.
-        <dependency>$(PREDEF_H)
+        <dependency>../include/boost/predef.h
     ;
 
 using testing ;
@@ -53,34 +43,13 @@ test-suite predef :
     [ compile workaround_strict_config.cpp ]
     [ run tested_at.cpp ]
     [ compile-fail tested_at_outdated.cpp : <test-info>always_show_run_output ]
-	[ compile platform_windows.cpp ]
+    [ compile platform_windows.cpp ]
     ;
 
-local HEADERS = [ path.glob
-    $(BOOST_PREDEF_INCLUDE)/predef
-    $(BOOST_PREDEF_INCLUDE)/predef/architecture
-    $(BOOST_PREDEF_INCLUDE)/predef/architecture/x86
-    $(BOOST_PREDEF_INCLUDE)/predef/compiler
-    $(BOOST_PREDEF_INCLUDE)/predef/hardware
-    $(BOOST_PREDEF_INCLUDE)/predef/hardware/simd
-    $(BOOST_PREDEF_INCLUDE)/predef/hardware/simd/arm
-    $(BOOST_PREDEF_INCLUDE)/predef/hardware/simd/ppc
-    $(BOOST_PREDEF_INCLUDE)/predef/hardware/simd/x86
-    $(BOOST_PREDEF_INCLUDE)/predef/hardware/simd/x86_amd
-    $(BOOST_PREDEF_INCLUDE)/predef/language
-    $(BOOST_PREDEF_INCLUDE)/predef/library
-    $(BOOST_PREDEF_INCLUDE)/predef/library/c
-    $(BOOST_PREDEF_INCLUDE)/predef/library/std
-    $(BOOST_PREDEF_INCLUDE)/predef/os
-    $(BOOST_PREDEF_INCLUDE)/predef/os/bsd
-    $(BOOST_PREDEF_INCLUDE)/predef/other
-    $(BOOST_PREDEF_INCLUDE)/predef/platform
-    : *.h
-    ] ;
 local single_header_cpp ;
-for local h in $(HEADERS)
+for local h in [ glob-tree-ex ../include/boost/predef : *.h ]
 {
-    local header_include = [ path.relative $(h) [ path.make $(BOOST_PREDEF_INCLUDE) ] ] ;
+    local header_include = [ path.relative $(h) ../include ] ;
     local header_cpp = [ regex.replace $(header_include:S=.cpp) "/" "_" ] ;
     .HEADER($(header_cpp:B:S=)) = $(header_include) ;
     make $(header_cpp) : : @gen_single_header_cpp ;
@@ -113,5 +82,8 @@ alias full : predef predef-info ;
 # Extra's target.
 alias extra : predef-headers ;
 
+alias all : predef predef-info predef-headers ;
+
 explicit minimal ;
 explicit extra ;
+explicit all ;

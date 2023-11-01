@@ -14,7 +14,7 @@ project predefdoc ;
 doc-dir = [ MATCH "--doc-dir=(.*)" : [ modules.peek : ARGV ] ] ;
 doc-dir ?= . ;
 
-local headers = [ glob-tree-ex $(BOOST_PREDEF_INCLUDE) : *.h ] ;
+local headers = [ glob-tree-ex ../include/boost : *.h ] ;
 
 html index : predef.adoc :
     :
