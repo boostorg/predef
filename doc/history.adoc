@@ -7,6 +7,10 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 = History
 
+== 1.15.0
+
+* Add detection of Microsoft STL (from Henrik Gaßmann).
+
 == 1.14.0
 
 * Add detection of LoongArch (from Zhang Na).
