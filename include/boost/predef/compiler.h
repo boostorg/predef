@@ -37,6 +37,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/predef/compiler/pgi.h>
 #include <boost/predef/compiler/sgi_mipspro.h>
 #include <boost/predef/compiler/sunpro.h>
+#include <boost/predef/compiler/tcc.h>
 #include <boost/predef/compiler/tendra.h>
 #include <boost/predef/compiler/visualc.h>
 #include <boost/predef/compiler/watcom.h>
