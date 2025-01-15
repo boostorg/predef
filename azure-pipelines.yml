@@ -24,14 +24,13 @@ pr:
     include:
     - develop
 
-variables:
-  AZP: 1
-  AZP_REPO_DIR: $(Build.Repository.LocalPath)
-  AZP_BRANCH: $(Build.SourceBranch)
-  AZP_BRANCH_NAME: $(Build.SourceBranchName)
-  AZP_COMMIT: $(Build.SourceVersion)
-  AZP_REPO: $(Build.Repository.Name)
-  AZP_PULL_REQUEST: $(System.PullRequest.PullRequestNumber)
+resources:
+  containers:
+    - { container: ubuntu_2404, image: 'ubuntu:24.04', options: '--name container -v /usr/bin/docker:/tmp/docker:ro' }
+    - { container: ubuntu_2204, image: 'ubuntu:22.04', options: '--name container -v /usr/bin/docker:/tmp/docker:ro' }
+    # - { container: ubuntu_2004, image: 'ubuntu:20.04', options: '--name container -v /usr/bin/docker:/tmp/docker:ro' }
+    - { container: ubuntu_1804, image: 'ubuntu:18.04', options: '--name container -v /usr/bin/docker:/tmp/docker:ro' }
+    - { container: ubuntu_1604, image: 'ubuntu:16.04', options: '--name container -v /usr/bin/docker:/tmp/docker:ro' }
 
 stages:
 
@@ -41,26 +40,15 @@ stages:
   - job: 'Linux'
     strategy:
       matrix:
-        GCC 12 (GNU): { CXX: g++-12, PACKAGES: g++-12, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=gnu' }
-        GCC 12 (ISO): { CXX: g++-12, PACKAGES: g++-12, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=iso' }
-        GCC 12: { CXX: g++-12, PACKAGES: g++-12, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc }
-        GCC 11: { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc }
-        GCC 10: { CXX: g++-10, PACKAGES: g++-10, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc }
-        GCC 9: { CXX: g++-9, PACKAGES: g++-9, VM_IMAGE: 'ubuntu-22.04', TOOLSET: gcc }
-        GCC 8: { CXX: g++-8, PACKAGES: g++-8, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc }
-        GCC 7: { CXX: g++-7, PACKAGES: g++-7, VM_IMAGE: 'ubuntu-20.04', TOOLSET: gcc }
-        Clang 15: { CXX: clang++-15, PACKAGES: clang-15, LLVM_OS: jammy, LLVM_VER: 13, VM_IMAGE: 'ubuntu-22.04', TOOLSET: clang }
-        Clang 14: { CXX: clang++-14, PACKAGES: clang-14, LLVM_OS: jammy, LLVM_VER: 13, VM_IMAGE: 'ubuntu-22.04', TOOLSET: clang }
-        Clang 13: { CXX: clang++-13, PACKAGES: clang-13, LLVM_OS: jammy, LLVM_VER: 13, VM_IMAGE: 'ubuntu-22.04', TOOLSET: clang }
-        Clang 12: { CXX: clang++-12, PACKAGES: clang-12, LLVM_OS: focal, LLVM_VER: 12, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
-        Clang 11: { CXX: clang++-11, PACKAGES: clang-11, LLVM_OS: focal, LLVM_VER: 11, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
-        Clang 10: { CXX: clang++-10, PACKAGES: clang-10, LLVM_OS: focal, LLVM_VER: 10, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
-        Clang 9: { CXX: clang++-9, PACKAGES: clang-9, LLVM_OS: focal, LLVM_VER: 9, VM_IMAGE: 'ubuntu-20.04', TOOLSET: clang }
-        # Ubuntu 18.04 is deprecated.
-        # Clang 8: { CXX: clang++-8, PACKAGES: clang-8, LLVM_OS: bionic, LLVM_VER: 8, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
-        # Clang 7: { CXX: clang++-7, PACKAGES: clang-7, LLVM_OS: bionic, LLVM_VER: 7, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
-        # Clang 6.0: { CXX: clang++-6.0, PACKAGES: clang-6.0, LLVM_OS: bionic, LLVM_VER: 6.0, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
-        # Clang 5.0: { CXX: clang++-5.0, PACKAGES: clang-5.0, LLVM_OS: bionic, LLVM_VER: 5.0, VM_IMAGE: 'ubuntu-18.04', TOOLSET: clang }
+        GCC 14 (GNU): { CXX: g++-14, PACKAGES: g++-14, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=gnu' }
+        GCC 14 (ISO): { CXX: g++-14, PACKAGES: g++-14, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=iso' }
+        GCC 13: { CXX: g++-13, PACKAGES: g++-13, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc }
+        GCC 12: { CXX: g++-12, PACKAGES: g++-12, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc }
+        GCC 11: { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc }
+        GCC 10: { CXX: g++-10, PACKAGES: g++-10, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc }
+        GCC 9: { CXX: g++-9, PACKAGES: g++-9, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc }
+        Clang 18: { CXX: clang++-18, PACKAGES: clang-18, LLVM_OS: noble, LLVM_VER: 18, VM_IMAGE: 'ubuntu-24.04', TOOLSET: clang }
+        Clang 17: { CXX: clang++-17, PACKAGES: clang-17, LLVM_OS: noble, LLVM_VER: 17, VM_IMAGE: 'ubuntu-24.04', TOOLSET: clang }
     pool:
       vmImage: $(VM_IMAGE)
     steps:
@@ -92,24 +80,11 @@ stages:
   - job: 'macOS'
     strategy:
       matrix:
-        Xcode 13.4.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.4.1.app, VM_IMAGE: 'macOS-12'}
-        Xcode 13.3.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.3.1.app, VM_IMAGE: 'macOS-12'}
-        Xcode 13.2.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.2.1.app, VM_IMAGE: 'macOS-11'}
-        Xcode 13.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.1.app, VM_IMAGE: 'macOS-12'}
-        Xcode 13.0: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_13.0.app, VM_IMAGE: 'macOS-11'}
-        Xcode 12.5.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.4.app, VM_IMAGE: 'macOS-11'}
-        Xcode 12.4: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.4.app, VM_IMAGE: 'macOS-11'}
-        # macOS-10.15 is deprecated.
-        # Xcode 12.3: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.3.app, VM_IMAGE: 'macOS-10.15'}
-        # Xcode 12.2: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.2.app, VM_IMAGE: 'macOS-10.15'}
-        # Xcode 12.1.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_12.1.1.app, VM_IMAGE: 'macOS-10.15'}
-        # Xcode 12.0.1: {TOOLSET: clang,  CXX: clang++, XCODE_APP: /Applications/Xcode_12.0.1.app, VM_IMAGE: 'macOS-10.15'}
-        # Xcode 11.7: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.7.app, VM_IMAGE: 'macOS-10.15'}
-        # Xcode 11.6: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.6.app, VM_IMAGE: 'macOS-10.15'}
-        # Xcode 11.5: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.5.app, VM_IMAGE: 'macOS-10.15'}
-        # Xcode 11.4.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.4.1.app, VM_IMAGE: 'macOS-10.15'}
-        # Xcode 11.3.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.3.1.app, VM_IMAGE: 'macOS-10.15'}
-        # Xcode 11.2.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_11.2.1.app, VM_IMAGE: 'macOS-10.15'}
+        Xcode 16.0: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_16.0.app, VM_IMAGE: 'macOS-15'}
+        Xcode 15.4: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_15.4.app, VM_IMAGE: 'macOS-14'}
+        Xcode 14.3.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_14.3.1.app, VM_IMAGE: 'macOS-13'}
+        Xcode 14.2: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_14.2.app, VM_IMAGE: 'macOS-13'}
+        Xcode 14.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_14.1.app, VM_IMAGE: 'macOS-13'}
     pool:
       vmImage: $(VM_IMAGE)
     steps:
@@ -211,6 +186,68 @@ stages:
         cd %BUILD_SOURCESDIRECTORY%/test
         %BUILD_SOURCESDIRECTORY%/../b2-release/b2.exe --verbose-test -a toolset=%TOOLSET% %B2_ARGS% predef-info
         %BUILD_SOURCESDIRECTORY%/../b2-release/b2.exe --debug-configuration -a toolset=%TOOLSET% %B2_ARGS% predef predef-headers
+      displayName: Test
+
+  - job: 'Co_Linux'
+    strategy:
+      matrix:
+        GCC 8: {CXX: g++-8, TOOLSET: gcc, PACKAGES: g++-8, CONTAINER: "ubuntu_1804"}
+        GCC 7: {CXX: g++-7, TOOLSET: gcc, PACKAGES: g++-7, CONTAINER: "ubuntu_1804"}
+        GCC 6: {CXX: g++-6, TOOLSET: gcc, PACKAGES: g++-6, CONTAINER: "ubuntu_1804"}
+        GCC 5: {CXX: g++-5, TOOLSET: gcc, PACKAGES: g++-5, CONTAINER: "ubuntu_1804"}
+        GCC 4.9: {CXX: g++-4.9, TOOLSET: gcc, PACKAGES: g++-4.9, CONTAINER: "ubuntu_1604"}
+        GCC 4.8: {CXX: g++-4.8, TOOLSET: gcc, PACKAGES: g++-4.8, CONTAINER: "ubuntu_1804"}
+        Clang 16: {CXX: clang++-16, TOOLSET: clang, PACKAGES: clang-16, LLVM_VER: 16, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
+        Clang 15: {CXX: clang++-15, TOOLSET: clang, PACKAGES: clang-15, LLVM_VER: 15, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
+        Clang 14: {CXX: clang++-14, TOOLSET: clang, PACKAGES: clang-14, LLVM_VER: 14, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
+        Clang 13: {CXX: clang++-13, TOOLSET: clang, PACKAGES: clang-13, LLVM_VER: 13, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
+        Clang 12: {CXX: clang++-12, TOOLSET: clang, PACKAGES: clang-12, LLVM_VER: 12, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
+        Clang 11: {CXX: clang++-11, TOOLSET: clang, PACKAGES: clang-11, LLVM_VER: 11, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
+        Clang 10: {CXX: clang++-10, TOOLSET: clang, PACKAGES: clang-10, CONTAINER: "ubuntu_1804"}
+        Clang 9: {CXX: clang++-9, TOOLSET: clang, PACKAGES: clang-9, CONTAINER: "ubuntu_1804"}
+        Clang 8: {CXX: clang++-8, TOOLSET: clang, PACKAGES: clang-8, CONTAINER: "ubuntu_1804"}
+        Clang 7: {CXX: clang++-7, TOOLSET: clang, PACKAGES: clang-7, CONTAINER: "ubuntu_1804"}
+        Clang 6: {CXX: clang++-6.0, TOOLSET: clang, PACKAGES: clang-6.0, CONTAINER: "ubuntu_1804"}
+        Clang 5: {CXX: clang++-5.0, TOOLSET: clang, PACKAGES: clang-5.0, LLVM_VER: 5.0, LLVM_OS: 'bionic', CONTAINER: "ubuntu_1804"}
+        Clang 4: {CXX: clang++-4.0, TOOLSET: clang, PACKAGES: clang-4.0, LLVM_VER: 4.0, LLVM_OS: 'xenial', CONTAINER: "ubuntu_1604"}
+        Clang 3.9: {CXX: clang++-3.9, TOOLSET: clang, PACKAGES: clang-3.9, LLVM_VER: 3.9, LLVM_OS: 'xenial', CONTAINER: "ubuntu_1604"}
+        Clang 3.8: {CXX: clang++-3.8, TOOLSET: clang, PACKAGES: clang-3.8, LLVM_VER: 3.8, LLVM_OS: 'xenial', CONTAINER: "ubuntu_1604"}
+        Clang 3.7: {CXX: clang++-3.7, TOOLSET: clang, PACKAGES: clang-3.7, CONTAINER: "ubuntu_1604"}
+        Clang 3.6: {CXX: clang++-3.6, TOOLSET: clang, PACKAGES: clang-3.6, CONTAINER: "ubuntu_1604"}
+    pool:
+      vmImage: 'ubuntu-20.04'
+    container: $[ variables['CONTAINER'] ]
+    steps:
+    - script: |
+        which docker
+        /tmp/docker exec -t -u root container mv /etc/sudoers /etc/sudoers.bak
+        /tmp/docker exec -t -u root container apt-get -qq update
+        /tmp/docker exec -t -u root container apt-get -qq install sudo
+        /tmp/docker exec -t -u root container mv /etc/sudoers.bak /etc/sudoers
+      displayName: Sudorize
+    - bash: |
+        set -e
+        uname -a
+        ./tools/ci/linux-cxx-install.sh
+      displayName: 'Install CXX'
+    - bash: |
+        set -e
+        pushd ${HOME}
+        wget -nv https://github.com/bfgroup/b2/archive/release.tar.gz
+        tar -zxf release.tar.gz
+        cd b2-release
+        ./bootstrap.sh --cxx=${CXX} ${TOOLSET}
+        CXX_PATH=`which ${CXX}`
+        echo "using ${TOOLSET} : : ${CXX_PATH} ;" > "${HOME}/user-config.jam"
+        sudo ./b2 --debug-configuration "--user-config=${HOME}/user-config.jam" install toolset=${TOOLSET}
+        popd
+      displayName: 'Install B2'
+    - bash: |
+        set -e
+        pushd test
+        b2 --verbose-test "--user-config=${HOME}/user-config.jam" -a toolset=${TOOLSET} ${B2_ARGS} predef-info
+        b2 --debug-configuration "--user-config=${HOME}/user-config.jam" -a toolset=${TOOLSET} ${B2_ARGS} predef predef-headers
+        popd
       displayName: Test
 
 - stage: WebsiteUpdate
