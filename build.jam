@@ -17,13 +17,9 @@ exe my_thing : main.cpp : <dependency>/boost/predef ;
 ----
 |#
 
+import-search tools/check ;
 import project ;
 import modules ;
-
-path-constant PREDEF_ROOT : . ;
-
-modules.poke : BOOST_BUILD_PATH
-    : $(PREDEF_ROOT)/tools/check [ modules.peek : BOOST_BUILD_PATH ] ;
 
 project /boost/predef
     : common-requirements
