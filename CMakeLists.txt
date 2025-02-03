@@ -1,5 +1,5 @@
 # Copyright Mike Dev 2018
-# Copyright René Ferdinand Rivera Morell 2018-2023
+# Copyright René Ferdinand Rivera Morell 2018-2025
 # Distributed under the Boost Software License, Version 1.0.
 # See accompanying file LICENSE_1_0.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt
@@ -20,7 +20,7 @@ cmake_minimum_required( VERSION 3.5...3.999 )
 
 # Don't set LANGUAGES as we are multi-language and header only, so it's
 # irrelevant.
-set( BOOST_PREDEF_VERSION "1.15" )
+set( BOOST_PREDEF_VERSION "1.16" )
 project( boost_predef VERSION "${BOOST_SUPERPROJECT_VERSION}" LANGUAGES NONE )
 
 # Simple INTERFACE, and header only, library target.

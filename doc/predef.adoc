@@ -652,6 +652,8 @@ include::../include/boost/predef/compiler/sgi_mipspro.h[tag=reference]
 
 include::../include/boost/predef/compiler/sunpro.h[tag=reference]
 
+include::../include/boost/predef/compiler/tcc.h[tag=reference]
+
 include::../include/boost/predef/compiler/tendra.h[tag=reference]
 
 include::../include/boost/predef/compiler/visualc.h[tag=reference]

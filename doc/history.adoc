@@ -7,6 +7,10 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 = History
 
+== 1.16.0
+
+* Add detection for Tiny C Compiler (TCC). (from Kornel Ponikwicki)
+
 == 1.15.1
 
 * Guard against using the obsolete `predef/check/predef.jam` B2 module.
