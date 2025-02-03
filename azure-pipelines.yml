@@ -250,8 +250,50 @@ stages:
         popd
       displayName: Test
 
+- stage: Extra
+  dependsOn: [Test]
+  jobs:
+
+  - job: 'Linux'
+    strategy:
+      matrix:
+        TinyCC: {
+          EXE: tcc, PACKAGES: tcc, VM_IMAGE: 'ubuntu-latest',
+          TOOLSET: cc, VERSION: "tcc~0.9.27",
+          B2_CONFIG: '<cflags>"-std=c11" <-soname>-soname',
+          B2_ARGS: 'c' }
+    pool:
+      vmImage: $(VM_IMAGE)
+    continueOnError: 'true'
+    steps:
+    - bash: |
+        set -e
+        uname -a
+        ./tools/ci/linux-cxx-install.sh
+      displayName: 'Install CXX'
+    - bash: |
+        set -e
+        pushd ${HOME}
+        wget -nv https://github.com/bfgroup/b2/archive/main.tar.gz
+        tar -zxf main.tar.gz
+        cd b2-main
+        ./bootstrap.sh
+        sudo ./b2 install
+        popd
+      displayName: 'Install B2'
+    - bash: |
+        set -e
+        EXE_PATH=`which ${EXE}`
+        echo "using ${TOOLSET} : ${VERSION} : ${EXE_PATH} : ${B2_CONFIG} ;" > ${HOME}/user-config.jam
+        pushd test
+        b2 --verbose-test -a toolset=${TOOLSET} ${B2_ARGS}
+        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS}
+        popd
+      displayName: Test
+
 - stage: WebsiteUpdate
   displayName: 'Website Update'
+  dependsOn: [Test]
   condition: and(in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/develop'), eq(variables['Build.Repository.Name'], 'grafikrobot/hash-predef'))
   jobs:
 
