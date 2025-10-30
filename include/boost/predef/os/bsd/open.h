@@ -13,7 +13,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 /* tag::reference[]
 = `BOOST_OS_BSD_OPEN`
 
-http://en.wikipedia.org/wiki/Openbsd[OpenBSD] operating system.
+http://en.wikipedia.org/wiki/OpenBSD[OpenBSD] operating system.
 
 [options="header"]
 |===
