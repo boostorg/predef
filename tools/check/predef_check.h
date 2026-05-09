@@ -12,7 +12,7 @@ const char * str_token(const char ** str, const char * space)
     char * token;
     for (; **str != 0; *str += 1)
     {
-        if (0 == strchr(space, **str))
+        if ((char*)0 == strchr(space, **str))
         {
             break;
         }
@@ -23,7 +23,7 @@ const char * str_token(const char ** str, const char * space)
     token[span] = 0;
     for (*str += span; **str != 0; *str += 1)
     {
-        if (0 == strchr(space, **str))
+        if ((char*)0 == strchr(space, **str))
         {
             break;
         }
@@ -61,7 +61,7 @@ int main(int argc, const char ** argv)
             const char * exp_val_a = str_token(&exp, dot);
             const char * exp_val_b = str_token(&exp, dot);
             const char * exp_val_c = str_token(&exp, dot);
-            exp_version = BOOST_VERSION_NUMBER(atoi(exp_val_a), atoi(exp_val_b),atoi(exp_val_c));
+            exp_version = BOOST_VERSION_NUMBER((unsigned int)atoi(exp_val_a), (unsigned int)atoi(exp_val_b), (unsigned int)atoi(exp_val_c));
         }
         for (x = 0; x < generated_predef_info_count; ++x)
         {

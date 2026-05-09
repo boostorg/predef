@@ -43,7 +43,7 @@ using namespace std;
 #endif
 
 unsigned generated_predef_info_count = 0;
-predef_info* generated_predef_info = 0;
+predef_info* generated_predef_info = (predef_info*)(0);
 void * add_predef_entry(const char * name, const char * description, unsigned value)
 {
     if (0 == generated_predef_info_count)
@@ -60,7 +60,7 @@ void * add_predef_entry(const char * name, const char * description, unsigned va
     generated_predef_info[generated_predef_info_count-1].name = name;
     generated_predef_info[generated_predef_info_count-1].description = description;
     generated_predef_info[generated_predef_info_count-1].value = value;
-    return 0;
+    return (void*)0;
 }
 
 int predef_info_compare(const void * a, const void * b)

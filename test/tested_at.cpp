@@ -40,7 +40,7 @@ int main()
 {
     test_BOOST_PREDEF_TESTED_AT();
 
-    unsigned fail_count = 0;
+    int fail_count = 0;
     std::vector<test_info>::iterator i = test_results.begin();
     std::vector<test_info>::iterator e = test_results.end();
     for (; i != e; ++i)
@@ -48,15 +48,15 @@ int main()
         std::cout
             << (i->passed ? "[passed]" : "[failed]")
             << " " << i->value
-            << std::endl;
+            << "\n";
         fail_count += i->passed ? 0 : 1;
     }
     std::cout
-        << std::endl
+        << "\n"
         << "TOTAL: "
-        << "passed " << (test_results.size()-fail_count) << ", "
+        << "passed " << (test_results.size()-(unsigned)fail_count) << ", "
         << "failed " << (fail_count) << ", "
         << "of " << (test_results.size())
-        << std::endl;
+        << "\n";
     return fail_count;
 }

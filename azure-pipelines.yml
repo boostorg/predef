@@ -7,340 +7,147 @@
 trigger:
   branches:
     include:
-    - develop
-    - master
-    - feature/*
+      - develop
+      - master
+      - feature/*
   paths:
     exclude:
-    - .circleci/*
-    - .cirrus.yml
-    - .drone.star
-    - .github/workflows/*
-    - .semaphore/*
-    - .travis.yml
-    - appveyor.yml
+      - .circleci/*
+      - .cirrus.yml
+      - .drone.star
+      - .github/workflows/*
+      - .semaphore/*
+      - .travis.yml
+      - appveyor.yml
+      - README.*
 pr:
   branches:
     include:
-    - develop
-
-resources:
-  containers:
-    - { container: ubuntu_2404, image: 'ubuntu:24.04', options: '--name container -v /usr/bin/docker:/tmp/docker:ro' }
-    - { container: ubuntu_2204, image: 'ubuntu:22.04', options: '--name container -v /usr/bin/docker:/tmp/docker:ro' }
-    # - { container: ubuntu_2004, image: 'ubuntu:20.04', options: '--name container -v /usr/bin/docker:/tmp/docker:ro' }
-    - { container: ubuntu_1804, image: 'ubuntu:18.04', options: '--name container -v /usr/bin/docker:/tmp/docker:ro' }
-    - { container: ubuntu_1604, image: 'ubuntu:16.04', options: '--name container -v /usr/bin/docker:/tmp/docker:ro' }
+      - develop
 
 stages:
+  - template: "tools/ci/azp.yml"
+    parameters:
+      name: Core
+      toolsets:
+        - "gcc-16"
+      b2_tests:
+        - name: "GNU (info)"
+          dir: test
+          args: "--verbose-test -a predef-info cxxstd=03,11,14,17,20,23
+            cxxstd-dialect=gnu"
+        - name: "GNU (test)"
+          dir: test
+          args: "--debug-configuration -a predef predef-headers cxxstd=03,11,14,17,20,23
+            cxxstd-dialect=gnu"
+        - name: "ISO (info)"
+          dir: test
+          args: "--verbose-test -a predef-info cxxstd=03,11,14,17,20,23
+            cxxstd-dialect=iso"
+        - name: "ISO (test)"
+          dir: test
+          args: "--debug-configuration -a predef predef-headers cxxstd=03,11,14,17,20,23
+            cxxstd-dialect=iso"
+        - name: "ISO (warnings)"
+          dir: test
+          args: "--debug-configuration -a predef predef-headers cxxstd=03,11,14,17,20,23
+            cxxstd-dialect=iso warnings=pedantic warnings-as-errors=on
+            cxxflags=-Woverloaded-virtual cxxflags=-Wshadow
+            cxxflags=-Wnon-virtual-dtor cxxflags=-Wzero-as-null-pointer-constant
+            cxxflags=-Wsign-promo cxxflags=-Wsign-compare
+            cxxflags=-Wsign-conversion cxxflags=-Wundef"
 
-- stage: Test
-  jobs:
+  - template: "tools/ci/azp.yml"
+    parameters:
+      name: Compilers
+      depends_on: [ "Core" ]
+      b2_tests:
+        - name: "Info"
+          dir: test
+          args: "--verbose-test -a predef-info"
+        - name: "Test"
+          dir: test
+          args: "--debug-configuration -a predef predef-headers"
 
-  - job: 'Linux'
-    strategy:
-      matrix:
-        GCC 14 (GNU): { CXX: g++-14, PACKAGES: g++-14, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=gnu' }
-        GCC 14 (ISO): { CXX: g++-14, PACKAGES: g++-14, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc, B2_ARGS: 'cxxstd=03,11,14,17,20 cxxstd-dialect=iso' }
-        GCC 13: { CXX: g++-13, PACKAGES: g++-13, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc }
-        GCC 12: { CXX: g++-12, PACKAGES: g++-12, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc }
-        GCC 11: { CXX: g++-11, PACKAGES: g++-11, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc }
-        GCC 10: { CXX: g++-10, PACKAGES: g++-10, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc }
-        GCC 9: { CXX: g++-9, PACKAGES: g++-9, VM_IMAGE: 'ubuntu-24.04', TOOLSET: gcc }
-        Clang 18: { CXX: clang++-18, PACKAGES: clang-18, LLVM_OS: noble, LLVM_VER: 18, VM_IMAGE: 'ubuntu-24.04', TOOLSET: clang }
-        Clang 17: { CXX: clang++-17, PACKAGES: clang-17, LLVM_OS: noble, LLVM_VER: 17, VM_IMAGE: 'ubuntu-24.04', TOOLSET: clang }
-    pool:
-      vmImage: $(VM_IMAGE)
-    steps:
-    - bash: |
-        set -e
-        uname -a
-        ./tools/ci/linux-cxx-install.sh
-      displayName: 'Install CXX'
-    - bash: |
-        set -e
-        pushd ${HOME}
-        wget -nv https://github.com/bfgroup/b2/archive/release.tar.gz
-        tar -zxf release.tar.gz
-        cd b2-release
-        CXX= ./bootstrap.sh
-        sudo ./b2 install
-        popd
-      displayName: 'Install B2'
-    - bash: |
-        set -e
-        CXX_PATH=`which ${CXX}`
-        echo "using ${TOOLSET} : : ${CXX_PATH} ;" > ${HOME}/user-config.jam
-        pushd test
-        b2 --verbose-test -a toolset=${TOOLSET} ${B2_ARGS} predef-info
-        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS} predef predef-headers
-        popd
-      displayName: Test
+  - template: "tools/ci/azp.yml"
+    parameters:
+      name: "Windows_UWP"
+      toolsets:
+        - "msvc-14.5"
+      depends_on: [ "Core" ]
+      b2_tests:
+        - name: "UWP DESKTOP"
+          dir: test
+          args: "--verbose-test -a address-model=64 define=_WIN32_WINNT=0x0A00
+            define=WINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP"
+        - name: "UWP PHONE"
+          dir: test
+          args: "--verbose-test -a address-model=64 define=_WIN32_WINNT=0x0A00
+            define=WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP"
+        - name: "UWP STORE"
+          dir: test
+          args: "--verbose-test -a address-model=64 define=_WIN32_WINNT=0x0A00
+            define=WINAPI_FAMILY=WINAPI_FAMILY_PC_APP"
+        - name: "UWP SERVER"
+          dir: test
+          args: "--verbose-test -a address-model=64 define=_WIN32_WINNT=0x0A00
+            define=WINAPI_FAMILY=WINAPI_FAMILY_SERVER"
+        - name: "UWP SYSTEM"
+          dir: test
+          args: "--verbose-test -a address-model=64 define=_WIN32_WINNT=0x0A00
+            define=WINAPI_FAMILY=WINAPI_FAMILY_SYSTEM"
 
-  - job: 'macOS'
-    strategy:
-      matrix:
-        Xcode 16.0: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_16.0.app, VM_IMAGE: 'macOS-15'}
-        Xcode 15.4: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_15.4.app, VM_IMAGE: 'macOS-14'}
-        Xcode 14.3.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_14.3.1.app, VM_IMAGE: 'macOS-13'}
-        Xcode 14.2: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_14.2.app, VM_IMAGE: 'macOS-13'}
-        Xcode 14.1: {TOOLSET: clang, CXX: clang++, XCODE_APP: /Applications/Xcode_14.1.app, VM_IMAGE: 'macOS-13'}
-    pool:
-      vmImage: $(VM_IMAGE)
-    steps:
-    - bash: |
-        set -e
-        uname -a
-        sudo xcode-select -switch ${XCODE_APP}
-        which clang++
-        clang++ --version
-      displayName: 'Install CXX'
-    - bash: |
-        set -e
-        pushd ${HOME}
-        wget -nv https://github.com/bfgroup/b2/archive/release.tar.gz
-        tar -zxf release.tar.gz
-        cd b2-release
-        CXX= ./bootstrap.sh
-        sudo ./b2 install
-        popd
-      displayName: 'Install B2'
-    - bash: |
-        set -e
-        CXX_PATH=`which ${CXX}`
-        echo "using ${TOOLSET} : : ${CXX_PATH} ;" > ${HOME}/user-config.jam
-        pushd test
-        b2 --verbose-test -a toolset=${TOOLSET} ${B2_ARGS} predef-info
-        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS} predef predef-headers
-        popd
-      displayName: Test
-
-  - job: 'Windows'
-    strategy:
-      matrix:
-        VS 2019:
-          TOOLSET: msvc
-          TOOLSET_VERSION: 14.2
-          B2_ARGS: address-model=32,64 cxxstd=14,latest
-          VM_IMAGE: 'windows-2019'
-        VS 2019 (UWP DESKTOP):
-          TOOLSET: msvc
-          TOOLSET_VERSION: 14.2
-          B2_ARGS: address-model=64 define=_WIN32_WINNT=0x0A00 define=WINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP
-          VM_IMAGE: 'windows-2019'
-        VS 2019 (UWP PHONE):
-          TOOLSET: msvc
-          TOOLSET_VERSION: 14.2
-          B2_ARGS: address-model=64 define=_WIN32_WINNT=0x0A00 define=WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP
-          VM_IMAGE: 'windows-2019'
-        VS 2019 (UWP STORE):
-          TOOLSET: msvc
-          TOOLSET_VERSION: 14.2
-          B2_ARGS: address-model=64 define=_WIN32_WINNT=0x0A00 define=WINAPI_FAMILY=WINAPI_FAMILY_PC_APP
-          VM_IMAGE: 'windows-2019'
-        VS 2019 (UWP SERVER):
-          TOOLSET: msvc
-          TOOLSET_VERSION: 14.2
-          B2_ARGS: address-model=64 define=_WIN32_WINNT=0x0A00 define=WINAPI_FAMILY=WINAPI_FAMILY_SERVER
-          VM_IMAGE: 'windows-2019'
-        VS 2019 (UWP SYSTEM):
-          TOOLSET: msvc
-          TOOLSET_VERSION: 14.2
-          B2_ARGS: address-model=64 define=_WIN32_WINNT=0x0A00 define=WINAPI_FAMILY=WINAPI_FAMILY_SYSTEM
-          VM_IMAGE: 'windows-2019'
-        VS 2022:
-          TOOLSET: msvc
-          TOOLSET_VERSION: 14.3
-          VM_IMAGE: 'windows-2022'
-        MinGW 8.1.0:
-          TOOLSET: gcc
-          VM_IMAGE: 'windows-2019'
-        MinGW 8.1.0 (UWP DESKTOP):
-          TOOLSET: gcc
-          B2_ARGS: define=_WIN32_WINNT=0x0A00 define=WINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP
-          VM_IMAGE: 'windows-2019'
-        MinGW 8.1.0 (UWP STORE):
-          TOOLSET: gcc
-          B2_ARGS: define=_WIN32_WINNT=0x0A00 define=WINAPI_FAMILY=WINAPI_FAMILY_PC_APP
-          VM_IMAGE: 'windows-2019'
-    pool:
-      vmImage: $(VM_IMAGE)
-    steps:
-    - script: |
-        cd %BUILD_SOURCESDIRECTORY%/..
-        curl "https://github.com/bfgroup/b2/archive/release.zip" -L -o b2.zip
-      displayName: Download B2
-    - task: ExtractFiles@1
-      inputs:
-        archiveFilePatterns: $(Build.SourcesDirectory)/../b2.zip
-        destinationFolder: $(Build.SourcesDirectory)/..
-        cleanDestinationFolder: false
-      displayName: Extract B2
-    - script: |
-        echo using %TOOLSET% ^: %TOOLSET_VERSION% ^; > %HOMEDRIVE%%HOMEPATH%/user-config.jam
-        cd %BUILD_SOURCESDIRECTORY%/../b2-release
-        cmd.exe /c bootstrap.bat
-      displayName: Install B2
-    - script: |
-        set BOOST_BUILD_PATH=%BUILD_SOURCESDIRECTORY%/../b2-release
-        cd %BUILD_SOURCESDIRECTORY%/test
-        %BUILD_SOURCESDIRECTORY%/../b2-release/b2.exe --verbose-test -a toolset=%TOOLSET% %B2_ARGS% predef-info
-        %BUILD_SOURCESDIRECTORY%/../b2-release/b2.exe --debug-configuration -a toolset=%TOOLSET% %B2_ARGS% predef predef-headers
-      displayName: Test
-
-  - job: 'Co_Linux'
-    strategy:
-      matrix:
-        GCC 8: {CXX: g++-8, TOOLSET: gcc, PACKAGES: g++-8, CONTAINER: "ubuntu_1804"}
-        GCC 7: {CXX: g++-7, TOOLSET: gcc, PACKAGES: g++-7, CONTAINER: "ubuntu_1804"}
-        GCC 6: {CXX: g++-6, TOOLSET: gcc, PACKAGES: g++-6, CONTAINER: "ubuntu_1804"}
-        GCC 5: {CXX: g++-5, TOOLSET: gcc, PACKAGES: g++-5, CONTAINER: "ubuntu_1804"}
-        GCC 4.9: {CXX: g++-4.9, TOOLSET: gcc, PACKAGES: g++-4.9, CONTAINER: "ubuntu_1604"}
-        GCC 4.8: {CXX: g++-4.8, TOOLSET: gcc, PACKAGES: g++-4.8, CONTAINER: "ubuntu_1804"}
-        Clang 16: {CXX: clang++-16, TOOLSET: clang, PACKAGES: clang-16, LLVM_VER: 16, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
-        Clang 15: {CXX: clang++-15, TOOLSET: clang, PACKAGES: clang-15, LLVM_VER: 15, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
-        Clang 14: {CXX: clang++-14, TOOLSET: clang, PACKAGES: clang-14, LLVM_VER: 14, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
-        Clang 13: {CXX: clang++-13, TOOLSET: clang, PACKAGES: clang-13, LLVM_VER: 13, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
-        Clang 12: {CXX: clang++-12, TOOLSET: clang, PACKAGES: clang-12, LLVM_VER: 12, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
-        Clang 11: {CXX: clang++-11, TOOLSET: clang, PACKAGES: clang-11, LLVM_VER: 11, LLVM_OS: 'focal', CONTAINER: "ubuntu_2204"}
-        Clang 10: {CXX: clang++-10, TOOLSET: clang, PACKAGES: clang-10, CONTAINER: "ubuntu_1804"}
-        Clang 9: {CXX: clang++-9, TOOLSET: clang, PACKAGES: clang-9, CONTAINER: "ubuntu_1804"}
-        Clang 8: {CXX: clang++-8, TOOLSET: clang, PACKAGES: clang-8, CONTAINER: "ubuntu_1804"}
-        Clang 7: {CXX: clang++-7, TOOLSET: clang, PACKAGES: clang-7, CONTAINER: "ubuntu_1804"}
-        Clang 6: {CXX: clang++-6.0, TOOLSET: clang, PACKAGES: clang-6.0, CONTAINER: "ubuntu_1804"}
-        Clang 5: {CXX: clang++-5.0, TOOLSET: clang, PACKAGES: clang-5.0, LLVM_VER: 5.0, LLVM_OS: 'bionic', CONTAINER: "ubuntu_1804"}
-        Clang 4: {CXX: clang++-4.0, TOOLSET: clang, PACKAGES: clang-4.0, LLVM_VER: 4.0, LLVM_OS: 'xenial', CONTAINER: "ubuntu_1604"}
-        Clang 3.9: {CXX: clang++-3.9, TOOLSET: clang, PACKAGES: clang-3.9, LLVM_VER: 3.9, LLVM_OS: 'xenial', CONTAINER: "ubuntu_1604"}
-        Clang 3.8: {CXX: clang++-3.8, TOOLSET: clang, PACKAGES: clang-3.8, LLVM_VER: 3.8, LLVM_OS: 'xenial', CONTAINER: "ubuntu_1604"}
-        Clang 3.7: {CXX: clang++-3.7, TOOLSET: clang, PACKAGES: clang-3.7, CONTAINER: "ubuntu_1604"}
-        Clang 3.6: {CXX: clang++-3.6, TOOLSET: clang, PACKAGES: clang-3.6, CONTAINER: "ubuntu_1604"}
-    pool:
-      vmImage: 'ubuntu-20.04'
-    container: $[ variables['CONTAINER'] ]
-    steps:
-    - script: |
-        which docker
-        /tmp/docker exec -t -u root container mv /etc/sudoers /etc/sudoers.bak
-        /tmp/docker exec -t -u root container apt-get -qq update
-        /tmp/docker exec -t -u root container apt-get -qq install sudo
-        /tmp/docker exec -t -u root container mv /etc/sudoers.bak /etc/sudoers
-      displayName: Sudorize
-    - bash: |
-        set -e
-        uname -a
-        ./tools/ci/linux-cxx-install.sh
-      displayName: 'Install CXX'
-    - bash: |
-        set -e
-        pushd ${HOME}
-        wget -nv https://github.com/bfgroup/b2/archive/release.tar.gz
-        tar -zxf release.tar.gz
-        cd b2-release
-        ./bootstrap.sh --cxx=${CXX} ${TOOLSET}
-        CXX_PATH=`which ${CXX}`
-        echo "using ${TOOLSET} : : ${CXX_PATH} ;" > "${HOME}/user-config.jam"
-        sudo ./b2 --debug-configuration "--user-config=${HOME}/user-config.jam" install toolset=${TOOLSET}
-        popd
-      displayName: 'Install B2'
-    - bash: |
-        set -e
-        pushd test
-        b2 --verbose-test "--user-config=${HOME}/user-config.jam" -a toolset=${TOOLSET} ${B2_ARGS} predef-info
-        b2 --debug-configuration "--user-config=${HOME}/user-config.jam" -a toolset=${TOOLSET} ${B2_ARGS} predef predef-headers
-        popd
-      displayName: Test
-
-- stage: Extra
-  dependsOn: [Test]
-  jobs:
-
-  - job: 'Linux'
-    strategy:
-      matrix:
-        TinyCC: {
-          EXE: tcc, PACKAGES: tcc, VM_IMAGE: 'ubuntu-latest',
-          TOOLSET: cc, VERSION: "tcc~0.9.27",
-          B2_CONFIG: '<cflags>"-std=c11" <-soname>-soname',
-          B2_ARGS: 'c' }
-    pool:
-      vmImage: $(VM_IMAGE)
-    continueOnError: 'true'
-    steps:
-    - bash: |
-        set -e
-        uname -a
-        ./tools/ci/linux-cxx-install.sh
-      displayName: 'Install CXX'
-    - bash: |
-        set -e
-        pushd ${HOME}
-        wget -nv https://github.com/bfgroup/b2/archive/main.tar.gz
-        tar -zxf main.tar.gz
-        cd b2-main
-        ./bootstrap.sh
-        sudo ./b2 install
-        popd
-      displayName: 'Install B2'
-    - bash: |
-        set -e
-        EXE_PATH=`which ${EXE}`
-        echo "using ${TOOLSET} : ${VERSION} : ${EXE_PATH} : ${B2_CONFIG} ;" > ${HOME}/user-config.jam
-        pushd test
-        b2 --verbose-test -a toolset=${TOOLSET} ${B2_ARGS}
-        b2 --debug-configuration -a toolset=${TOOLSET} ${B2_ARGS}
-        popd
-      displayName: Test
-
-- stage: WebsiteUpdate
-  displayName: 'Website Update'
-  dependsOn: [Test]
-  condition: and(in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/develop'), eq(variables['Build.Repository.Name'], 'grafikrobot/hash-predef'))
-  jobs:
-
-  - job: Documentation
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - task: UseRubyVersion@0
-    - bash: |
-        gem install asciidoctor
-        gem install rouge
-      displayName: 'Install Doc Tools'
-    - bash: |
-        set -e
-        pushd ${HOME}
-        wget -nv https://github.com/bfgroup/b2/archive/release.tar.gz
-        tar -zxf release.tar.gz
-        cd b2-release
-        CXX= ./bootstrap.sh
-        sudo ./b2 install
-        popd
-      displayName: 'Install B2'
-    - bash: |
-        rm -rf ${WEB_DIR}
-        git clone --verbose --branch gh-pages --depth 1 "https://${GH_TOKEN}github.com/grafikrobot/hash-predef.git" ${WEB_DIR} || exit 1
-        pushd ${WEB_DIR}
-        git rm --ignore-unmatch -r "${DOC_DIR}" || exit 1
-        mkdir -p "${DOC_DIR}" || exit 1
-        popd
-      displayName: 'Clone Website'
-      env:
-        GH_TOKEN: $(GitHubToken)
-        WEB_DIR: website
-        DOC_DIR: manual/$(Build.SourceBranchName)
-    - bash: |
-        echo "using asciidoctor ;" > ${HOME}/user-config.jam
-        pushd doc
-        b2 --doc-dir=${WEB_DIR}/${DOC_DIR} html
-        git config user.email "doc-bot"
-        git config user.name "doc-bot"
-        cd ${WEB_DIR}/${DOC_DIR}
-        git add --verbose . || exit 1
-        git commit -m "Update documentation."
-        git push
-        popd
-      displayName: 'Build & Publish'
-      env:
-        GH_TOKEN: $(GitHubToken)
-        WEB_DIR: website
-        DOC_DIR: manual/$(Build.SourceBranchName)
+  - stage: WebsiteUpdate
+    displayName: "Website Update"
+    dependsOn: [ Core, Compilers, Windows_UWP ]
+    condition: and(in(variables['Build.SourceBranch'], 'refs/heads/master',
+      'refs/heads/develop'), eq(variables['Build.Repository.Name'],
+      'grafikrobot/hash-predef'))
+    jobs:
+      - job: Documentation
+        pool:
+          vmImage: "ubuntu-latest"
+        steps:
+          - task: UseRubyVersion@0
+          - bash: |
+              gem install asciidoctor
+              gem install rouge
+            displayName: "Install Doc Tools"
+          - bash: |
+              set -e
+              pushd ${HOME}
+              wget -nv https://github.com/bfgroup/b2/archive/release.tar.gz
+              tar -zxf release.tar.gz
+              cd b2-release
+              CXX= ./bootstrap.sh
+              sudo ./b2 install
+              popd
+            displayName: "Install B2"
+          - bash: |
+              rm -rf ${WEB_DIR}
+              git clone --verbose --branch gh-pages --depth 1 "https://${GH_TOKEN}github.com/grafikrobot/hash-predef.git" ${WEB_DIR} || exit 1
+              pushd ${WEB_DIR}
+              git rm --ignore-unmatch -r "${DOC_DIR}" || exit 1
+              mkdir -p "${DOC_DIR}" || exit 1
+              popd
+            displayName: "Clone Website"
+            env:
+              GH_TOKEN: $(GitHubToken)
+              WEB_DIR: website
+              DOC_DIR: manual/$(Build.SourceBranchName)
+          - bash: |
+              echo "using asciidoctor ;" > ${HOME}/user-config.jam
+              pushd doc
+              b2 --doc-dir=${WEB_DIR}/${DOC_DIR} html
+              git config user.email "doc-bot"
+              git config user.name "doc-bot"
+              cd ${WEB_DIR}/${DOC_DIR}
+              git add --verbose . || exit 1
+              git commit -m "Update documentation."
+              git push
+              popd
+            displayName: "Build & Publish"
+            env:
+              GH_TOKEN: $(GitHubToken)
+              WEB_DIR: website
+              DOC_DIR: manual/$(Build.SourceBranchName)

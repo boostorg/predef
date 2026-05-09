@@ -40,7 +40,7 @@ int main()
 {
     test_BOOST_PREDEF_WORKAROUND();
 
-    unsigned fail_count = 0;
+    int fail_count = 0;
     std::vector<test_info>::iterator i = test_results.begin();
     std::vector<test_info>::iterator e = test_results.end();
     for (; i != e; ++i)
@@ -54,7 +54,7 @@ int main()
     std::cout
         << std::endl
         << "TOTAL: "
-        << "passed " << (test_results.size()-fail_count) << ", "
+        << "passed " << (test_results.size()-(unsigned)fail_count) << ", "
         << "failed " << (fail_count) << ", "
         << "of " << (test_results.size())
         << std::endl;
