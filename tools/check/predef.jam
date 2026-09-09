@@ -85,7 +85,7 @@ rule architecture ( )
 {
     local result = ;
     local deducible-arch =
-        x86 ia64 sparc loongarch mips parisc arm riscv ;
+        x86 ia64 sparc loongarch mips parisc arm riscv alpha ;
     for arch in $(deducible-arch)
     {
         result += [ check BOOST_ARCH_$(arch:U) : : <architecture>$(arch) ] ;
