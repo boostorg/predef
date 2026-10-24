@@ -1,11 +1,16 @@
 ////
-Copyright 2014-2024 René Ferdinand Rivera Morell
+Copyright René Ferdinand Rivera Morell
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
 ////
 
 = History
+
+== 1.18.0
+
+* Fix version calculation for LLVM `libc++` to support the changed format of
+  LLVM versions 16 and above.
 
 == 1.17.0
 

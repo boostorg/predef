@@ -1,6 +1,6 @@
 /*
 Copyright Mike Dev 2018
-Copyright 2018 Rene Rivera
+Copyright René Ferdinand Rivera Morell
 Distributed under the Boost Software License, Version 1.0.
 See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt
@@ -13,7 +13,4 @@ files.
 
 #include <boost/predef.h>
 
-int main()
-{
-    return 0;
-}
+int main() { return 0; }

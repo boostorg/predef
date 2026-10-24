@@ -1,4 +1,4 @@
-# Copyright Rene Rivera 2015-2023
+# Copyright René Ferdinand Rivera Morell
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt)
@@ -29,7 +29,7 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
 {
     # Default to C++ on the check context.
     language ?= cpp ;
-    
+
     local project_target = [ project.target $(__name__) ] ;
     $(project_target).reset-alternatives ;
 	project.push-current $(project_target) ;
@@ -51,7 +51,7 @@ rule check ( expressions + : language ? : true-properties * : false-properties *
                 _message_(/check/predef//predef_check_cc_$(key)) = $(expression) ;
                 check_target $(language) $(key) : [ change_term_to_def $(expression) ] ;
             }
-            
+
             terms += /check/predef//predef_check_cc_$(key) ;
         }
     }
@@ -139,14 +139,14 @@ class check-expression-evaluator
 {
     import configure ;
     import property ;
-    
+
     rule __init__ ( expression + : true-properties * : false-properties * )
     {
         self.expression = $(expression) ;
         self.true-properties = $(true-properties) ;
         self.false-properties = $(false-properties) ;
     }
-    
+
     rule check ( properties * )
     {
         local to-eval ;
@@ -199,7 +199,7 @@ class check-expression-evaluator
         }
         return $(result) ;
     }
-    
+
     rule eval ( e * )
     {
         local r ;

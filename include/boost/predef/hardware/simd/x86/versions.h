@@ -19,7 +19,7 @@ Those defines represent x86 SIMD extensions versions.
 NOTE: You *MUST* compare them with the predef `BOOST_HW_SIMD_X86`.
 */ // end::reference[]
 
-// ---------------------------------
+//---------------------------------
 
 /* tag::reference[]
 = `BOOST_HW_SIMD_X86_MMX_VERSION`
@@ -66,7 +66,8 @@ The https://en.wikipedia.org/wiki/SSSE3[SSSE3] x86 extension version number.
 
 Version number is: *3.1.0*.
 */ // end::reference[]
-#define BOOST_HW_SIMD_X86_SSSE3_VERSION BOOST_VERSION_NUMBER(3, 1, 0)
+#define BOOST_HW_SIMD_X86_SSSE3_VERSION \
+	BOOST_VERSION_NUMBER(3, 1, 0)
 
 /* tag::reference[]
 = `BOOST_HW_SIMD_X86_SSE4_1_VERSION`
@@ -76,7 +77,8 @@ number.
 
 Version number is: *4.1.0*.
 */ // end::reference[]
-#define BOOST_HW_SIMD_X86_SSE4_1_VERSION BOOST_VERSION_NUMBER(4, 1, 0)
+#define BOOST_HW_SIMD_X86_SSE4_1_VERSION \
+	BOOST_VERSION_NUMBER(4, 1, 0)
 
 /* tag::reference[]
 = `BOOST_HW_SIMD_X86_SSE4_2_VERSION`
@@ -86,7 +88,8 @@ number.
 
 Version number is: *4.2.0*.
 */ // end::reference[]
-#define BOOST_HW_SIMD_X86_SSE4_2_VERSION BOOST_VERSION_NUMBER(4, 2, 0)
+#define BOOST_HW_SIMD_X86_SSE4_2_VERSION \
+	BOOST_VERSION_NUMBER(4, 2, 0)
 
 /* tag::reference[]
 = `BOOST_HW_SIMD_X86_AVX_VERSION`
@@ -111,7 +114,8 @@ Version number is: *5.2.0*.
 /* tag::reference[]
 = `BOOST_HW_SIMD_X86_AVX2_VERSION`
 
-The https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#Advanced_Vector_Extensions_2[AVX2]
+The
+https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#Advanced_Vector_Extensions_2[AVX2]
 x86 extension version number.
 
 Version number is: *5.3.0*.

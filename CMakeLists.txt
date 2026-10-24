@@ -1,5 +1,5 @@
 # Copyright Mike Dev 2018
-# Copyright René Ferdinand Rivera Morell 2018-2025
+# Copyright René Ferdinand Rivera Morell
 # Distributed under the Boost Software License, Version 1.0.
 # See accompanying file LICENSE_1_0.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt
@@ -16,7 +16,7 @@
 
 # Only need the basic minimum of project, add_library, and
 # target_include_directories commands.
-cmake_minimum_required( VERSION 3.5...3.999 )
+cmake_minimum_required( VERSION 3.5...4.999 )
 
 # Don't set LANGUAGES as we are multi-language and header only, so it's
 # irrelevant.

@@ -2,7 +2,7 @@
 # subject to the Boost Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 #
-# Copyright René Ferdinand Rivera Morell 2019-2021.
+# Copyright René Ferdinand Rivera Morell
 
 trigger:
   branches:
@@ -26,7 +26,7 @@ pr:
       - develop
 
 stages:
-  - template: "tools/ci/azp.yml"
+  - template: ".ci/azp.yml"
     parameters:
       name: Core
       toolsets:
@@ -38,7 +38,8 @@ stages:
             cxxstd-dialect=gnu"
         - name: "GNU (test)"
           dir: test
-          args: "--debug-configuration -a predef predef-headers cxxstd=03,11,14,17,20,23
+          args:
+            "--debug-configuration -a predef predef-headers cxxstd=03,11,14,17,20,23
             cxxstd-dialect=gnu"
         - name: "ISO (info)"
           dir: test
@@ -46,21 +47,23 @@ stages:
             cxxstd-dialect=iso"
         - name: "ISO (test)"
           dir: test
-          args: "--debug-configuration -a predef predef-headers cxxstd=03,11,14,17,20,23
+          args:
+            "--debug-configuration -a predef predef-headers cxxstd=03,11,14,17,20,23
             cxxstd-dialect=iso"
         - name: "ISO (warnings)"
           dir: test
-          args: "--debug-configuration -a predef predef-headers cxxstd=03,11,14,17,20,23
+          args:
+            "--debug-configuration -a predef predef-headers cxxstd=03,11,14,17,20,23
             cxxstd-dialect=iso warnings=pedantic warnings-as-errors=on
             cxxflags=-Woverloaded-virtual cxxflags=-Wshadow
             cxxflags=-Wnon-virtual-dtor cxxflags=-Wzero-as-null-pointer-constant
             cxxflags=-Wsign-promo cxxflags=-Wsign-compare
             cxxflags=-Wsign-conversion cxxflags=-Wundef"
 
-  - template: "tools/ci/azp.yml"
+  - template: ".ci/azp.yml"
     parameters:
       name: Compilers
-      depends_on: [ "Core" ]
+      depends_on: ["Core"]
       b2_tests:
         - name: "Info"
           dir: test
@@ -69,12 +72,12 @@ stages:
           dir: test
           args: "--debug-configuration -a predef predef-headers"
 
-  - template: "tools/ci/azp.yml"
+  - template: ".ci/azp.yml"
     parameters:
       name: "Windows_UWP"
       toolsets:
         - "msvc-14.5"
-      depends_on: [ "Core" ]
+      depends_on: ["Core"]
       b2_tests:
         - name: "UWP DESKTOP"
           dir: test
@@ -99,7 +102,7 @@ stages:
 
   - stage: WebsiteUpdate
     displayName: "Website Update"
-    dependsOn: [ Core, Compilers, Windows_UWP ]
+    dependsOn: [Core, Compilers, Windows_UWP]
     condition: and(in(variables['Build.SourceBranch'], 'refs/heads/master',
       'refs/heads/develop'), eq(variables['Build.Repository.Name'],
       'grafikrobot/hash-predef'))
@@ -116,11 +119,10 @@ stages:
           - bash: |
               set -e
               pushd ${HOME}
-              wget -nv https://github.com/bfgroup/b2/archive/release.tar.gz
-              tar -zxf release.tar.gz
-              cd b2-release
-              CXX= ./bootstrap.sh
-              sudo ./b2 install
+              B2_URL=`wget --tries=3 -q -O - https://api.github.com/repos/bfgroup/b2/releases/latest | grep browser_download_url | grep 'macos-x86_64[.]bz2["]' | cut -d '"' -f 4`
+              wget -nv "${B2_URL}" -O b2.bz2
+              tar -jxvf b2.bz2
+              mv b2-* b2
               popd
             displayName: "Install B2"
           - bash: |
@@ -138,7 +140,7 @@ stages:
           - bash: |
               echo "using asciidoctor ;" > ${HOME}/user-config.jam
               pushd doc
-              b2 --doc-dir=${WEB_DIR}/${DOC_DIR} html
+              "${HOME}/b2/b2" --doc-dir=${WEB_DIR}/${DOC_DIR} html
               git config user.email "doc-bot"
               git config user.name "doc-bot"
               cd ${WEB_DIR}/${DOC_DIR}

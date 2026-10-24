@@ -1,5 +1,5 @@
 /*
-Copyright Rene Rivera 2015
+Copyright René Ferdinand Rivera Morell
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -11,16 +11,16 @@ http://www.boost.org/LICENSE_1_0.txt)
  * program and the related BB support.
  */
 
-#include <boost/predef.h>
 #include <iostream>
+#include <boost/predef.h>
 #include <string>
 
 #ifndef CHECK_VALUE
-#define CHECK_VALUE "undefined"
+#	define CHECK_VALUE "undefined"
 #endif
 
 int main()
 {
-	std::cout << "CHECK_VALUE == " << CHECK_VALUE << "\n" ;
+	std::cout << "CHECK_VALUE == " << CHECK_VALUE << "\n";
 	return 0;
 }

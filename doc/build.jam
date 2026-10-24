@@ -1,5 +1,5 @@
 #|
-Copyright René Ferdinand Rivera Morell 2011-2021
+Copyright René Ferdinand Rivera Morell
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -9,7 +9,7 @@ import asciidoctor ;
 import modules ;
 import path ;
 
-project predefdoc ;
+project ;
 
 doc-dir = [ MATCH "--doc-dir=(.*)" : [ modules.peek : ARGV ] ] ;
 doc-dir ?= . ;
@@ -20,14 +20,12 @@ html index : predef.adoc :
     :
         <flags>--trace
         <flags>--verbose
-        <flags>--attribute=stylesheet=amber.css
-        <flags>--attribute=rouge-style=base16.solarized
         <dependency>$(headers)
+        <dependency>tufte.css
     ;
 explicit index ;
 
 install html : index : <location>$(doc-dir) ;
-explicit html ;
 
 alias boostdoc ;
 explicit boostdoc ;

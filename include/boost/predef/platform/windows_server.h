@@ -6,12 +6,12 @@ http://www.boost.org/LICENSE_1_0.txt)
 */
 
 #ifndef BOOST_PREDEF_PLAT_WINDOWS_SERVER_H
-#define BOOST_PREDEF_PLAT_WINDOWS_SERVER_H
+#	define BOOST_PREDEF_PLAT_WINDOWS_SERVER_H
 
-#include <boost/predef/make.h>
-#include <boost/predef/os/windows.h>
-#include <boost/predef/platform/windows_uwp.h>
-#include <boost/predef/version_number.h>
+#	include <boost/predef/make.h>
+#	include <boost/predef/os/windows.h>
+#	include <boost/predef/platform/windows_uwp.h>
+#	include <boost/predef/version_number.h>
 
 /* tag::reference[]
 = `BOOST_PLAT_WINDOWS_SERVER`
@@ -27,22 +27,25 @@ for Windows Server development.
 |===
 */ // end::reference[]
 
-#define BOOST_PLAT_WINDOWS_SERVER BOOST_VERSION_NUMBER_NOT_AVAILABLE
+#	define BOOST_PLAT_WINDOWS_SERVER \
+		BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if BOOST_OS_WINDOWS && \
-    defined(WINAPI_FAMILY_SERVER) && WINAPI_FAMILY == WINAPI_FAMILY_SERVER
-#   undef BOOST_PLAT_WINDOWS_SERVER
-#   define BOOST_PLAT_WINDOWS_SERVER BOOST_VERSION_NUMBER_AVAILABLE
-#endif
- 
-#if BOOST_PLAT_WINDOWS_SERVER
-#   define BOOST_PLAT_WINDOWS_SERVER_AVAILABLE
-#   include <boost/predef/detail/platform_detected.h>
-#endif
+#	if BOOST_OS_WINDOWS && defined(WINAPI_FAMILY_SERVER) \
+		&& WINAPI_FAMILY == WINAPI_FAMILY_SERVER
+#		undef BOOST_PLAT_WINDOWS_SERVER
+#		define BOOST_PLAT_WINDOWS_SERVER \
+			BOOST_VERSION_NUMBER_AVAILABLE
+#	endif
 
-#define BOOST_PLAT_WINDOWS_SERVER_NAME "Windows Server"
+#	if BOOST_PLAT_WINDOWS_SERVER
+#		define BOOST_PLAT_WINDOWS_SERVER_AVAILABLE
+#		include <boost/predef/detail/platform_detected.h>
+#	endif
+
+#	define BOOST_PLAT_WINDOWS_SERVER_NAME "Windows Server"
 
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_WINDOWS_SERVER,BOOST_PLAT_WINDOWS_SERVER_NAME)
+BOOST_PREDEF_DECLARE_TEST(
+	BOOST_PLAT_WINDOWS_SERVER, BOOST_PLAT_WINDOWS_SERVER_NAME)

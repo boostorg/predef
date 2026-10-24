@@ -1,23 +1,23 @@
 /*
-Copyright Rene Rivera 2008-2015
+Copyright René Ferdinand Rivera Morell
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
 #ifndef BOOST_PREDEF_LIBRARY_STD_STDCPP3_H
-#define BOOST_PREDEF_LIBRARY_STD_STDCPP3_H
+#	define BOOST_PREDEF_LIBRARY_STD_STDCPP3_H
 
-#include <boost/predef/library/std/_prefix.h>
+#	include <boost/predef/library/std/_prefix.h>
 
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
+#	include <boost/predef/make.h>
+#	include <boost/predef/version_number.h>
 
 /* tag::reference[]
 = `BOOST_LIB_STD_GNU`
 
-https://gcc.gnu.org/onlinedocs/libstdc%2b%2b/[GNU libstdc++] Standard {CPP} library.
-Version number available as year (from 1970), month, and day.
+https://gcc.gnu.org/onlinedocs/libstdc%2b%2b/[GNU libstdc++] Standard {CPP}
+library. Version number available as year (from 1970), month, and day.
 
 [options="header"]
 |===
@@ -31,24 +31,26 @@ Version number available as year (from 1970), month, and day.
 |===
 */ // end::reference[]
 
-#define BOOST_LIB_STD_GNU BOOST_VERSION_NUMBER_NOT_AVAILABLE
+#	define BOOST_LIB_STD_GNU BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-#if defined(__GLIBCPP__) || defined(__GLIBCXX__)
-#   undef BOOST_LIB_STD_GNU
-#   if defined(__GLIBCXX__)
-#       define BOOST_LIB_STD_GNU BOOST_PREDEF_MAKE_YYYYMMDD(__GLIBCXX__)
-#   else
-#       define BOOST_LIB_STD_GNU BOOST_PREDEF_MAKE_YYYYMMDD(__GLIBCPP__)
-#   endif
-#endif
+#	if defined(__GLIBCPP__) || defined(__GLIBCXX__)
+#		undef BOOST_LIB_STD_GNU
+#		if defined(__GLIBCXX__)
+#			define BOOST_LIB_STD_GNU \
+				BOOST_PREDEF_MAKE_YYYYMMDD(__GLIBCXX__)
+#		else
+#			define BOOST_LIB_STD_GNU \
+				BOOST_PREDEF_MAKE_YYYYMMDD(__GLIBCPP__)
+#		endif
+#	endif
 
-#if BOOST_LIB_STD_GNU
-#   define BOOST_LIB_STD_GNU_AVAILABLE
-#endif
+#	if BOOST_LIB_STD_GNU
+#		define BOOST_LIB_STD_GNU_AVAILABLE
+#	endif
 
-#define BOOST_LIB_STD_GNU_NAME "GNU"
+#	define BOOST_LIB_STD_GNU_NAME "GNU"
 
 #endif
 
 #include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_GNU,BOOST_LIB_STD_GNU_NAME)
+BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_GNU, BOOST_LIB_STD_GNU_NAME)

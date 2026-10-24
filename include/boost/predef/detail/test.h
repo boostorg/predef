@@ -1,5 +1,5 @@
 /*
-Copyright Rene Rivera 2011-2012
+Copyright René Ferdinand Rivera Morell
 Distributed under the Boost Software License, Version 1.0.
 (See accompanying file LICENSE_1_0.txt or copy at
 http://www.boost.org/LICENSE_1_0.txt)
@@ -10,7 +10,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #if !defined(BOOST_PREDEF_INTERNAL_GENERATE_TESTS)
 
-#define BOOST_PREDEF_DECLARE_TEST(x,s)
+#	define BOOST_PREDEF_DECLARE_TEST(x, s)
 
 #endif
 

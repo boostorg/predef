@@ -1,5 +1,5 @@
 # Copyright Mike Dev 2018
-# Copyright Rene Rivera 2018
+# Copyright René Ferdinand Rivera Morell
 # Distributed under the Boost Software License, Version 1.0.
 # See accompanying file LICENSE_1_0.txt or copy at
 # http://www.boost.org/LICENSE_1_0.txt
@@ -13,7 +13,7 @@
 
 # We have very simple cmake requirements we we still require the new style
 # declarative targets.
-cmake_minimum_required( VERSION 3.0 )
+cmake_minimum_required( VERSION 3.5 )
 
 project( PredefCMakeSelfTest )
 

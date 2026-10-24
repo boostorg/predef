@@ -19,12 +19,13 @@ Those defines represent ARM SIMD extensions versions.
 NOTE: You *MUST* compare them with the predef `BOOST_HW_SIMD_ARM`.
 */ // end::reference[]
 
-// ---------------------------------
+//---------------------------------
 
 /* tag::reference[]
 = `BOOST_HW_SIMD_ARM_NEON_VERSION`
 
-The https://en.wikipedia.org/wiki/ARM_architecture#Advanced_SIMD_.28NEON.29[NEON]
+The
+https://en.wikipedia.org/wiki/ARM_architecture#Advanced_SIMD_.28NEON.29[NEON]
 ARM extension version number.
 
 Version number is: *1.0.0*.

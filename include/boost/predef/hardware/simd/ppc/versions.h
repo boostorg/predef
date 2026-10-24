@@ -19,7 +19,7 @@ Those defines represent Power PC SIMD extensions versions.
 NOTE: You *MUST* compare them with the predef `BOOST_HW_SIMD_PPC`.
 */ // end::reference[]
 
-// ---------------------------------
+//---------------------------------
 
 /* tag::reference[]
 = `BOOST_HW_SIMD_PPC_VMX_VERSION`
