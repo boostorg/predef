@@ -11,6 +11,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 * Fix version calculation for LLVM `libc++` to support the changed format of
   LLVM versions 16 and above.
+* Detect `alpha` as an architecture in the B2 help utilities. (from Matt Turner)
 
 == 1.17.0
 
